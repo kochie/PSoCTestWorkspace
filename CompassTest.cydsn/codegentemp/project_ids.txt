@@ -1,0 +1,5 @@
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|b1c68e66-d0d1-4852-a97f-565e5e982ced
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|1f788114-1d7b-4a24-b305-f7e4bf72588a
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|58c9ea4f-01c4-4fb7-9ebf-8bd2472f935b
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|cbf07300-e4ee-4dac-a2a0-5304fb9d9e11
+C:\Users\robert\Documents\PSoC Creator\TestWorkspace\CompassTest.cydsn\CompassTest.cyprj|134041fe-1791-43a2-9da0-640279f7b338
