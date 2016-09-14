@@ -33,7 +33,7 @@
 #define UART_USB_HD_ENABLED                     (0u)
 #define UART_USB_RX_INTERRUPT_ENABLED           (0u)
 #define UART_USB_TX_INTERRUPT_ENABLED           (0u)
-#define UART_USB_INTERNAL_CLOCK_USED            (0u)
+#define UART_USB_INTERNAL_CLOCK_USED            (1u)
 #define UART_USB_RXHW_ADDRESS_ENABLED           (0u)
 #define UART_USB_OVER_SAMPLE_COUNT              (8u)
 #define UART_USB_PARITY_TYPE                    (0u)

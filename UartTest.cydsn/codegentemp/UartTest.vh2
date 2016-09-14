@@ -2,7 +2,7 @@
 --	Conversion of UartTest.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Wed Sep 14 16:27:33 2016
+--	Thu Sep 15 09:50:40 2016
 --
 
 USE cypress.cypress.all;
@@ -13,8 +13,8 @@ END top_RTL;
 --------------------------------------------------------
 ARCHITECTURE R_T_L OF top_RTL IS
 SIGNAL Net_1 : bit;
+SIGNAL \UART_USB:Net_9\ : bit;
 SIGNAL \UART_USB:Net_61\ : bit;
-SIGNAL Net_27 : bit;
 SIGNAL one : bit;
 SIGNAL \UART_USB:BUART:clock_op\ : bit;
 SIGNAL \UART_USB:BUART:reset_reg\ : bit;
@@ -505,9 +505,19 @@ Net_26D <= ((not \UART_USB:BUART:reset_reg\ and \UART_USB:BUART:tx_state_2\)
 
 \UART_USB:BUART:rx_address_detected\\D\ <= ((not \UART_USB:BUART:reset_reg\ and \UART_USB:BUART:rx_address_detected\));
 
+\UART_USB:IntClock\:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"b0162966-0060-4af5-82d1-fcb491ad7619/be0a0e37-ad17-42ca-b5a1-1a654d736358",
+		source_clock_id=>"",
+		divisor=>0,
+		period=>"1085069444.44444",
+		is_direct=>'0',
+		is_digital=>'1')
+	PORT MAP(clock_out=>\UART_USB:Net_9\,
+		dig_domain_out=>open);
 \UART_USB:BUART:ClkSync\:cy_psoc3_udb_clock_enable_v1_0
 	GENERIC MAP(sync_mode=>'1')
-	PORT MAP(clock_in=>Net_27,
+	PORT MAP(clock_in=>\UART_USB:Net_9\,
 		enable=>one,
 		clock_out=>\UART_USB:BUART:clock_op\);
 \UART_USB:BUART:sTX:TxShifter:u0\:cy_psoc3_dp
@@ -799,7 +809,7 @@ Net_26D <= ((not \UART_USB:BUART:reset_reg\ and \UART_USB:BUART:tx_state_2\)
 		clock=>\UART_USB:BUART:clock_op\,
 		status=>(Net_1, \UART_USB:BUART:rx_status_5\, \UART_USB:BUART:rx_status_4\, \UART_USB:BUART:rx_status_3\,
 			\UART_USB:BUART:rx_status_2\, Net_1, Net_1),
-		interrupt=>\UART_USB:BUART:rx_interrupt_out\);
+		interrupt=>Net_29);
 Rx_1:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"1425177d-0d0e-4468-8bcc-e638e5509a9b",
 		drive_mode=>"001",
@@ -940,16 +950,9 @@ Tx_1:cy_psoc3_pins_v1_10
 		out_clock_en=>one,
 		out_reset=>Net_1,
 		interrupt=>tmpINTERRUPT_0__Tx_1_net_0);
-UART_Clock:cy_clock_v1_0
-	GENERIC MAP(cy_registers=>"",
-		id=>"aa354000-3cc5-4437-a016-b8235660f3bd",
-		source_clock_id=>"",
-		divisor=>0,
-		period=>"125000000",
-		is_direct=>'0',
-		is_digital=>'1')
-	PORT MAP(clock_out=>Net_27,
-		dig_domain_out=>open);
+UART_Rx_INTERRUPT:cy_isr_v1_0
+	GENERIC MAP(int_type=>"00")
+	PORT MAP(int_signal=>Net_29);
 \UART_USB:BUART:reset_reg\:cy_dff
 	PORT MAP(d=>Net_1,
 		clk=>\UART_USB:BUART:clock_op\,

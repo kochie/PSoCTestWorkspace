@@ -12,6 +12,21 @@
 #include <project.h>
 #include <stdio.h>
 
+uint8 flag = 0;
+
+int CheckInterrupt(uint InterruptFlag)
+{
+    if (InterruptFlag == 1)
+    {
+        InterruptFlag = 0;
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
 int main()
 {
     CyGlobalIntEnable; /* Enable global interrupts. */
@@ -21,13 +36,24 @@ int main()
     int i = 0;
     char string[8];
     //UART_1_Enable();
+    char ch;
     for(;;)
     {
-        sprintf(string, "%d", i);
-        UART_USB_PutString(string);
-        UART_USB_PutString("\r\n");
-        i++;
-        /* Place your application code here. */
+        ch = UART_USB_GetChar();
+        UART_USB_PutChar(ch);
+        if (ch > 0u)
+        {
+            
+            //UART_USB_PutString("\r\n");
+            
+            //UART_USB_PutString("\r\n");
+        }
+//        sprintf(string, "%d", i);
+//        UART_USB_PutString(string);
+//        UART_USB_PutString("\r\n");
+//        i++;
+
+
     }
 }
 

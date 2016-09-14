@@ -28,6 +28,8 @@
 #include "RST_1.h"
 #include "I2C_1.h"
 #include "I2C_1_PVT.h"
+#include "UART_1.h"
+#include "UART_1_IntClock.h"
 #include "core_cm3_psoc5.h"
 #include "CyDmac.h"
 #include "CyFlash.h"

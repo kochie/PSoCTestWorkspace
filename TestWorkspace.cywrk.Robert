@@ -13,16 +13,16 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="TestWorkspace\UartTest\UartTest.cydwr">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="TestWorkspace\UartTest\Source Files\main.c">
 <ExpandedNodeIds>
 <v>TestWorkspace</v>
-<v>TestWorkspace\CompassTest</v>
 <v>TestWorkspace\CompassTest\TopDesign</v>
 <v>TestWorkspace\CompassTest\CompassTest.cydwr</v>
 <v>TestWorkspace\CompassTest\Header Files</v>
 <v>TestWorkspace\CompassTest\Header Files\cyapicallbacks.h</v>
 <v>TestWorkspace\CompassTest\Source Files</v>
 <v>TestWorkspace\CompassTest\Source Files\main.c</v>
+<v>TestWorkspace\CompassTest\Generated_Source</v>
 <v>TestWorkspace\CompassTest\Generated_Source\PSoC5</v>
 <v>TestWorkspace\CompassTest\Generated_Source\PSoC5\Clock_1</v>
 <v>TestWorkspace\CompassTest\Generated_Source\PSoC5\Clock_1\Clock_1.c</v>
@@ -75,6 +75,15 @@
 <v>TestWorkspace\CompassTest\Generated_Source\PSoC5\SDA_1\SDA_1.c</v>
 <v>TestWorkspace\CompassTest\Generated_Source\PSoC5\SDA_1\SDA_1.h</v>
 <v>TestWorkspace\CompassTest\Generated_Source\PSoC5\SDA_1\SDA_1_aliases.h</v>
+<v>TestWorkspace\CompassTest\Generated_Source\PSoC5\UART_1</v>
+<v>TestWorkspace\CompassTest\Generated_Source\PSoC5\UART_1\UART_1.c</v>
+<v>TestWorkspace\CompassTest\Generated_Source\PSoC5\UART_1\UART_1.h</v>
+<v>TestWorkspace\CompassTest\Generated_Source\PSoC5\UART_1\UART_1_BOOT.c</v>
+<v>TestWorkspace\CompassTest\Generated_Source\PSoC5\UART_1\UART_1_INT.c</v>
+<v>TestWorkspace\CompassTest\Generated_Source\PSoC5\UART_1\UART_1_PM.c</v>
+<v>TestWorkspace\CompassTest\Generated_Source\PSoC5\UART_1_IntClock</v>
+<v>TestWorkspace\CompassTest\Generated_Source\PSoC5\UART_1_IntClock\UART_1_IntClock.c</v>
+<v>TestWorkspace\CompassTest\Generated_Source\PSoC5\UART_1_IntClock\UART_1_IntClock.h</v>
 <v>TestWorkspace\CompassTest\Generated_Source\PSoC5\cycodeshareexport.ld</v>
 <v>TestWorkspace\CompassTest\Generated_Source\PSoC5\cycodeshareimport.ld</v>
 <v>TestWorkspace\CompassTest\Generated_Source\PSoC5\cycodeshareimport.scat</v>
@@ -102,7 +111,6 @@
 <v>TestWorkspace\UartTest\Header Files\cyapicallbacks.h</v>
 <v>TestWorkspace\UartTest\Source Files</v>
 <v>TestWorkspace\UartTest\Source Files\main.c</v>
-<v>TestWorkspace\UartTest\Generated_Source</v>
 <v>TestWorkspace\UartTest\Generated_Source\PSoC5</v>
 <v>TestWorkspace\UartTest\Generated_Source\PSoC5\cy_boot</v>
 <v>TestWorkspace\UartTest\Generated_Source\PSoC5\cy_boot\cm3gcc.ld</v>
@@ -131,15 +139,18 @@
 <v>TestWorkspace\UartTest\Generated_Source\PSoC5\cy_boot\CySpc.h</v>
 <v>TestWorkspace\UartTest\Generated_Source\PSoC5\cy_boot\cytypes.h</v>
 <v>TestWorkspace\UartTest\Generated_Source\PSoC5\cy_boot\cyutils.c</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5\UART_Clock</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5\UART_Clock\UART_Clock.c</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5\UART_Clock\UART_Clock.h</v>
+<v>TestWorkspace\UartTest\Generated_Source\PSoC5\UART_Rx_INTERRUPT</v>
+<v>TestWorkspace\UartTest\Generated_Source\PSoC5\UART_Rx_INTERRUPT\UART_Rx_INTERRUPT.c</v>
+<v>TestWorkspace\UartTest\Generated_Source\PSoC5\UART_Rx_INTERRUPT\UART_Rx_INTERRUPT.h</v>
 <v>TestWorkspace\UartTest\Generated_Source\PSoC5\UART_USB</v>
 <v>TestWorkspace\UartTest\Generated_Source\PSoC5\UART_USB\UART_USB.c</v>
 <v>TestWorkspace\UartTest\Generated_Source\PSoC5\UART_USB\UART_USB.h</v>
 <v>TestWorkspace\UartTest\Generated_Source\PSoC5\UART_USB\UART_USB_BOOT.c</v>
 <v>TestWorkspace\UartTest\Generated_Source\PSoC5\UART_USB\UART_USB_INT.c</v>
 <v>TestWorkspace\UartTest\Generated_Source\PSoC5\UART_USB\UART_USB_PM.c</v>
+<v>TestWorkspace\UartTest\Generated_Source\PSoC5\UART_USB_IntClock</v>
+<v>TestWorkspace\UartTest\Generated_Source\PSoC5\UART_USB_IntClock\UART_USB_IntClock.c</v>
+<v>TestWorkspace\UartTest\Generated_Source\PSoC5\UART_USB_IntClock\UART_USB_IntClock.h</v>
 <v>TestWorkspace\UartTest\Generated_Source\PSoC5\cycodeshareexport.ld</v>
 <v>TestWorkspace\UartTest\Generated_Source\PSoC5\cycodeshareimport.ld</v>
 <v>TestWorkspace\UartTest\Generated_Source\PSoC5\cycodeshareimport.scat</v>
@@ -164,13 +175,6 @@
 <VisibleNodeIds>
 <v>TestWorkspace</v>
 <v>TestWorkspace\CompassTest</v>
-<v>TestWorkspace\CompassTest\TopDesign</v>
-<v>TestWorkspace\CompassTest\CompassTest.cydwr</v>
-<v>TestWorkspace\CompassTest\Header Files</v>
-<v>TestWorkspace\CompassTest\Header Files\cyapicallbacks.h</v>
-<v>TestWorkspace\CompassTest\Source Files</v>
-<v>TestWorkspace\CompassTest\Source Files\main.c</v>
-<v>TestWorkspace\CompassTest\Generated_Source</v>
 <v>TestWorkspace\UartTest</v>
 <v>TestWorkspace\UartTest\TopDesign</v>
 <v>TestWorkspace\UartTest\UartTest.cydwr</v>
@@ -179,37 +183,6 @@
 <v>TestWorkspace\UartTest\Source Files</v>
 <v>TestWorkspace\UartTest\Source Files\main.c</v>
 <v>TestWorkspace\UartTest\Generated_Source</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5\cy_boot</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5\cy_boot\cm3gcc.ld</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5\cy_boot\Cm3Iar.icf</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5\cy_boot\Cm3RealView.scat</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5\cy_boot\Cm3Start.c</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5\cy_boot\cmsis_armcc.h</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5\cy_boot\cmsis_gcc.h</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5\cy_boot\core_cm3.h</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5\cy_boot\core_cm3_psoc5.h</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5\cy_boot\core_cmFunc.h</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5\cy_boot\core_cmInstr.h</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5\cy_boot\CyBootAsmGnu.s</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5\cy_boot\CyBootAsmIar.s</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5\cy_boot\CyBootAsmRv.s</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5\cy_boot\CyDmac.c</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5\cy_boot\CyDmac.h</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5\cy_boot\CyFlash.c</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5\cy_boot\CyFlash.h</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5\cy_boot\CyLib.c</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5\cy_boot\CyLib.h</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5\cy_boot\cypins.h</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5\cy_boot\cyPm.c</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5\cy_boot\cyPm.h</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5\cy_boot\CySpc.c</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5\cy_boot\CySpc.h</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5\cy_boot\cytypes.h</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5\cy_boot\cyutils.c</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5\UART_Clock</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5\UART_Clock\UART_Clock.c</v>
-<v>TestWorkspace\UartTest\Generated_Source\PSoC5\UART_Clock\UART_Clock.h</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -261,6 +234,11 @@
 <v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\Listing Files\RST_1.lst</v>
 <v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\Listing Files\SCL_1.lst</v>
 <v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\Listing Files\SDA_1.lst</v>
+<v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\Listing Files\UART_1.lst</v>
+<v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\Listing Files\UART_1_BOOT.lst</v>
+<v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\Listing Files\UART_1_INT.lst</v>
+<v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\Listing Files\UART_1_IntClock.lst</v>
+<v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\Listing Files\UART_1_PM.lst</v>
 <v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\CompassTest.elf</v>
 <v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\CompassTest.hex</v>
 <v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\CompassTest.map</v>
@@ -283,10 +261,11 @@
 <v>TestWorkspace\UartTest\CortexM3\ARM_GCC_493\Debug\Listing Files\CySpc.lst</v>
 <v>TestWorkspace\UartTest\CortexM3\ARM_GCC_493\Debug\Listing Files\cyutils.lst</v>
 <v>TestWorkspace\UartTest\CortexM3\ARM_GCC_493\Debug\Listing Files\main.lst</v>
-<v>TestWorkspace\UartTest\CortexM3\ARM_GCC_493\Debug\Listing Files\UART_Clock.lst</v>
+<v>TestWorkspace\UartTest\CortexM3\ARM_GCC_493\Debug\Listing Files\UART_Rx_INTERRUPT.lst</v>
 <v>TestWorkspace\UartTest\CortexM3\ARM_GCC_493\Debug\Listing Files\UART_USB.lst</v>
 <v>TestWorkspace\UartTest\CortexM3\ARM_GCC_493\Debug\Listing Files\UART_USB_BOOT.lst</v>
 <v>TestWorkspace\UartTest\CortexM3\ARM_GCC_493\Debug\Listing Files\UART_USB_INT.lst</v>
+<v>TestWorkspace\UartTest\CortexM3\ARM_GCC_493\Debug\Listing Files\UART_USB_IntClock.lst</v>
 <v>TestWorkspace\UartTest\CortexM3\ARM_GCC_493\Debug\Listing Files\UART_USB_PM.lst</v>
 <v>TestWorkspace\UartTest\CortexM3\ARM_GCC_493\Debug\UartTest.elf</v>
 <v>TestWorkspace\UartTest\CortexM3\ARM_GCC_493\Debug\UartTest.hex</v>
@@ -298,52 +277,9 @@
 <VisibleNodeIds>
 <v>TestWorkspace</v>
 <v>TestWorkspace\CompassTest</v>
-<v>TestWorkspace\CompassTest\CortexM3</v>
-<v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493</v>
-<v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug</v>
-<v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\Listing Files</v>
-<v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock_1.lst</v>
-<v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\Listing Files\Cm3Start.lst</v>
-<v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\Listing Files\CyBootAsmGnu.lst</v>
-<v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\Listing Files\CyDmac.lst</v>
-<v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\Listing Files\cyfitter_cfg.lst</v>
-<v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\Listing Files\CyFlash.lst</v>
-<v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\Listing Files\CyLib.lst</v>
-<v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\Listing Files\cymetadata.lst</v>
-<v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\Listing Files\cyPm.lst</v>
-<v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\Listing Files\CySpc.lst</v>
-<v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\Listing Files\cyutils.lst</v>
-<v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\Listing Files\I2C_1.lst</v>
-<v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\Listing Files\I2C_1_BOOT.lst</v>
-<v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\Listing Files\I2C_1_INT.lst</v>
-<v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\Listing Files\I2C_1_MASTER.lst</v>
-<v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\Listing Files\I2C_1_PM.lst</v>
-<v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\Listing Files\I2C_1_SLAVE.lst</v>
-<v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\Listing Files\main.lst</v>
-<v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\Listing Files\RST_1.lst</v>
-<v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\Listing Files\SCL_1.lst</v>
-<v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\Listing Files\SDA_1.lst</v>
-<v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\CompassTest.elf</v>
-<v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\CompassTest.hex</v>
-<v>TestWorkspace\CompassTest\CortexM3\ARM_GCC_493\Debug\CompassTest.map</v>
-<v>TestWorkspace\CompassTest\CompassTest.gpdsc</v>
 <v>TestWorkspace\CompassTest\CompassTest.rpt</v>
 <v>TestWorkspace\CompassTest\CompassTest_timing.html</v>
 <v>TestWorkspace\UartTest</v>
-<v>TestWorkspace\UartTest\CortexM3</v>
-<v>TestWorkspace\UartTest\CortexM3\ARM_GCC_493</v>
-<v>TestWorkspace\UartTest\CortexM3\ARM_GCC_493\Debug</v>
-<v>TestWorkspace\UartTest\CortexM3\ARM_GCC_493\Debug\Listing Files</v>
-<v>TestWorkspace\UartTest\CortexM3\ARM_GCC_493\Debug\Listing Files\Cm3Start.lst</v>
-<v>TestWorkspace\UartTest\CortexM3\ARM_GCC_493\Debug\Listing Files\CyBootAsmGnu.lst</v>
-<v>TestWorkspace\UartTest\CortexM3\ARM_GCC_493\Debug\Listing Files\CyDmac.lst</v>
-<v>TestWorkspace\UartTest\CortexM3\ARM_GCC_493\Debug\Listing Files\cyfitter_cfg.lst</v>
-<v>TestWorkspace\UartTest\CortexM3\ARM_GCC_493\Debug\Listing Files\CyFlash.lst</v>
-<v>TestWorkspace\UartTest\CortexM3\ARM_GCC_493\Debug\Listing Files\CyLib.lst</v>
-<v>TestWorkspace\UartTest\CortexM3\ARM_GCC_493\Debug\Listing Files\cymetadata.lst</v>
-<v>TestWorkspace\UartTest\CortexM3\ARM_GCC_493\Debug\Listing Files\cyPm.lst</v>
-<v>TestWorkspace\UartTest\CortexM3\ARM_GCC_493\Debug\Listing Files\CySpc.lst</v>
-<v>TestWorkspace\UartTest\CortexM3\ARM_GCC_493\Debug\Listing Files\cyutils.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -369,8 +305,8 @@
 <v>TestWorkspace\UartTest\CY8C58LP Family Datasheet</v>
 <v>TestWorkspace\UartTest\System Reference Guides</v>
 <v>TestWorkspace\UartTest\System Reference Guides\cy_boot_v5_40</v>
-<v>TestWorkspace\UartTest\cy_clock_v2_20.pdf</v>
 <v>TestWorkspace\UartTest\cy_constant_v1_0.pdf</v>
+<v>TestWorkspace\UartTest\cy_isr_v1_70.pdf</v>
 <v>TestWorkspace\UartTest\cy_pins_v2_20</v>
 <v>TestWorkspace\UartTest\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
 <v>TestWorkspace\UartTest\UART_v2_50.pdf</v>
@@ -392,8 +328,8 @@
 <v>TestWorkspace\UartTest\CY8C58LP Family Datasheet</v>
 <v>TestWorkspace\UartTest\System Reference Guides</v>
 <v>TestWorkspace\UartTest\System Reference Guides\cy_boot_v5_40</v>
-<v>TestWorkspace\UartTest\cy_clock_v2_20.pdf</v>
 <v>TestWorkspace\UartTest\cy_constant_v1_0.pdf</v>
+<v>TestWorkspace\UartTest\cy_isr_v1_70.pdf</v>
 <v>TestWorkspace\UartTest\cy_pins_v2_20</v>
 <v>TestWorkspace\UartTest\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
 <v>TestWorkspace\UartTest\UART_v2_50.pdf</v>
@@ -410,7 +346,12 @@
 </userData>
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
-<OpenDocs />
+<OpenDocs>
+<name v=".\UartTest.cydsn\UartTest.cydwr" />
+<name v=".\UartTest.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\UartTest.cydsn\main.c" />
+<name v=".\UartTest.cydsn\Generated_Source\PSoC5\UART_Rx_INTERRUPT.c" />
+</OpenDocs>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
