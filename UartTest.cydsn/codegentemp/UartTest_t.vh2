@@ -1,5 +1,5 @@
--- Project:   C:\Users\Robert\Documents\PSoC Creator\PSoCTestWorkspace\UartTest.cydsn\UartTest.cyprj
--- Generated: 09/15/2016 09:50:43
+-- Project:   C:\Users\robert\Documents\PSoC Creator\TestWorkspace\UartTest.cydsn\UartTest.cyprj
+-- Generated: 09/16/2016 13:24:46
 -- PSoC Creator  3.3 CP3
 
 ENTITY UartTest IS

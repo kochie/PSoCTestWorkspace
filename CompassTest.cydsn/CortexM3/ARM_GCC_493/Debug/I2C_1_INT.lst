@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 1
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccalVgBh.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 1
   29:.\Generated_Source\PSoC5/I2C_1_INT.c **** * Function Name: I2C_1_ISR
   30:.\Generated_Source\PSoC5/I2C_1_INT.c **** ********************************************************************************
   31:.\Generated_Source\PSoC5/I2C_1_INT.c **** *
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 2
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccalVgBh.s 			page 2
 
 
   32:.\Generated_Source\PSoC5/I2C_1_INT.c **** * Summary:
@@ -110,7 +110,7 @@ ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 1
   68:.\Generated_Source\PSoC5/I2C_1_INT.c **** 
   69:.\Generated_Source\PSoC5/I2C_1_INT.c ****     tmpCsr = I2C_1_CSR_REG;      /* Make copy as interrupts clear */
   37              		.loc 1 69 0
-  38 0002 AB4B     		ldr	r3, .L27
+  38 0002 A44B     		ldr	r3, .L27
   39 0004 1C78     		ldrb	r4, [r3]	@ zero_extendqisi2
   40 0006 E4B2     		uxtb	r4, r4
   41              	.LVL0:
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 1
   71:.\Generated_Source\PSoC5/I2C_1_INT.c **** #if(I2C_1_MODE_MULTI_MASTER_SLAVE_ENABLED)
   72:.\Generated_Source\PSoC5/I2C_1_INT.c ****     if(I2C_1_CHECK_START_GEN(I2C_1_MCSR_REG))
   73:.\Generated_Source\PSoC5/I2C_1_INT.c ****     {
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 3
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccalVgBh.s 			page 3
 
 
   74:.\Generated_Source\PSoC5/I2C_1_INT.c ****         I2C_1_CLEAR_START_GEN;
@@ -167,35 +167,35 @@ ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 1
  117:.\Generated_Source\PSoC5/I2C_1_INT.c ****     /* Check for master operation mode */
  118:.\Generated_Source\PSoC5/I2C_1_INT.c ****     if(I2C_1_CHECK_SM_MASTER)
   42              		.loc 1 118 0
-  43 0008 AA4B     		ldr	r3, .L27+4
+  43 0008 A34B     		ldr	r3, .L27+4
   44 000a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
   45 000c 13F0400F 		tst	r3, #64
-  46 0010 00F07881 		beq	.L2
+  46 0010 00F03781 		beq	.L2
  119:.\Generated_Source\PSoC5/I2C_1_INT.c ****     {
  120:.\Generated_Source\PSoC5/I2C_1_INT.c ****     #if(I2C_1_MODE_MASTER_ENABLED)
  121:.\Generated_Source\PSoC5/I2C_1_INT.c ****         if(I2C_1_CHECK_BYTE_COMPLETE(tmpCsr))
   47              		.loc 1 121 0
   48 0014 14F0010F 		tst	r4, #1
-  49 0018 00F04081 		beq	.L3
+  49 0018 00F01B81 		beq	.L3
  122:.\Generated_Source\PSoC5/I2C_1_INT.c ****         {
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 4
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccalVgBh.s 			page 4
 
 
  123:.\Generated_Source\PSoC5/I2C_1_INT.c ****             switch (I2C_1_state)
   50              		.loc 1 123 0
-  51 001c A54B     		ldr	r3, .L27+4
+  51 001c 9E4B     		ldr	r3, .L27+4
   52 001e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
   53 0020 453B     		subs	r3, r3, #69
   54 0022 052B     		cmp	r3, #5
-  55 0024 00F23781 		bhi	.L4
+  55 0024 00F21281 		bhi	.L4
   56 0028 DFE813F0 		tbh	[pc, r3, lsl #1]
   57              	.L6:
   58 002c 0600     		.2byte	(.L5-.L6)/2
-  59 002e 9200     		.2byte	(.L7-.L6)/2
-  60 0030 3501     		.2byte	(.L4-.L6)/2
-  61 0032 3501     		.2byte	(.L4-.L6)/2
+  59 002e 8200     		.2byte	(.L7-.L6)/2
+  60 0030 1001     		.2byte	(.L4-.L6)/2
+  61 0032 1001     		.2byte	(.L4-.L6)/2
   62 0034 0600     		.2byte	(.L5-.L6)/2
-  63 0036 F800     		.2byte	(.L8-.L6)/2
+  63 0036 DE00     		.2byte	(.L8-.L6)/2
   64              		.p2align 1
   65              	.L5:
  124:.\Generated_Source\PSoC5/I2C_1_INT.c ****             {
@@ -211,243 +211,225 @@ ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 1
   69              		.loc 1 130 0
   70 003c 04F00A04 		and	r4, r4, #10
   71 0040 082C     		cmp	r4, #8
-  72 0042 50D1     		bne	.L9
+  72 0042 42D1     		bne	.L9
  131:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 {
  132:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     /* Setup for transmit or receive of data */
  133:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     if(I2C_1_state == I2C_1_SM_MSTR_WR_ADDR)   /* TRANSMIT data */
   73              		.loc 1 133 0
-  74 0044 9B4B     		ldr	r3, .L27+4
+  74 0044 944B     		ldr	r3, .L27+4
   75 0046 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
   76 0048 DBB2     		uxtb	r3, r3
   77 004a 452B     		cmp	r3, #69
-  78 004c 3DD1     		bne	.L10
+  78 004c 35D1     		bne	.L10
  134:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     {
  135:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         /* Check if at least one byte to transfer */
  136:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         if(I2C_1_mstrWrBufSize > 0u)
   79              		.loc 1 136 0
-  80 004e 9A4B     		ldr	r3, .L27+8
+  80 004e 934B     		ldr	r3, .L27+8
   81 0050 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
   82 0052 13F0FF0F 		tst	r3, #255
-  83 0056 16D0     		beq	.L11
+  83 0056 10D0     		beq	.L11
  137:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         {
  138:.\Generated_Source\PSoC5/I2C_1_INT.c ****                             /* Load the 1st data byte */
  139:.\Generated_Source\PSoC5/I2C_1_INT.c ****                             I2C_1_DATA_REG = I2C_1_mstrWrBufPtr[0u];
   84              		.loc 1 139 0
-  85 0058 984B     		ldr	r3, .L27+12
+  85 0058 914B     		ldr	r3, .L27+12
   86 005a 1B68     		ldr	r3, [r3]
   87 005c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
   88 005e DBB2     		uxtb	r3, r3
-  89 0060 974A     		ldr	r2, .L27+16
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 5
+  89 0060 904A     		ldr	r2, .L27+16
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccalVgBh.s 			page 5
 
 
   90 0062 1370     		strb	r3, [r2]
  140:.\Generated_Source\PSoC5/I2C_1_INT.c ****                             I2C_1_TRANSMIT_DATA;
   91              		.loc 1 140 0
-  92 0064 0622     		movs	r2, #6
-  93 0066 974B     		ldr	r3, .L27+20
+  92 0064 0422     		movs	r2, #4
+  93 0066 8B4B     		ldr	r3, .L27
   94 0068 1A70     		strb	r2, [r3]
-  95 006a FF22     		movs	r2, #255
-  96 006c 5D3B     		subs	r3, r3, #93
-  97 006e 1A70     		strb	r2, [r3]
-  98 0070 0022     		movs	r2, #0
-  99 0072 4033     		adds	r3, r3, #64
- 100 0074 1A70     		strb	r2, [r3]
  141:.\Generated_Source\PSoC5/I2C_1_INT.c ****                             I2C_1_mstrWrBufIndex = 1u;   /* Set index to 2nd element */
- 101              		.loc 1 141 0
- 102 0076 0122     		movs	r2, #1
- 103 0078 934B     		ldr	r3, .L27+24
- 104 007a 1A70     		strb	r2, [r3]
+  95              		.loc 1 141 0
+  96 006a 0122     		movs	r2, #1
+  97 006c 8E4B     		ldr	r3, .L27+20
+  98 006e 1A70     		strb	r2, [r3]
  142:.\Generated_Source\PSoC5/I2C_1_INT.c **** 
  143:.\Generated_Source\PSoC5/I2C_1_INT.c ****                             /* Set transmit state until done */
  144:.\Generated_Source\PSoC5/I2C_1_INT.c ****                             I2C_1_state = I2C_1_SM_MSTR_WR_DATA;
- 105              		.loc 1 144 0
- 106 007c 4622     		movs	r2, #70
- 107 007e 8D4B     		ldr	r3, .L27+4
- 108 0080 1A70     		strb	r2, [r3]
+  99              		.loc 1 144 0
+ 100 0070 4622     		movs	r2, #70
+ 101 0072 894B     		ldr	r3, .L27+4
+ 102 0074 1A70     		strb	r2, [r3]
  128:.\Generated_Source\PSoC5/I2C_1_INT.c **** 
- 109              		.loc 1 128 0
- 110 0082 2C46     		mov	r4, r5
- 111 0084 0AE1     		b	.L3
- 112              	.L11:
+ 103              		.loc 1 128 0
+ 104 0076 2C46     		mov	r4, r5
+ 105 0078 EBE0     		b	.L3
+ 106              	.L11:
  145:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         }
  146:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         /* End of buffer: complete writing */
  147:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         else if(I2C_1_CHECK_NO_STOP(I2C_1_mstrControl))
- 113              		.loc 1 147 0
- 114 0086 914B     		ldr	r3, .L27+28
- 115 0088 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 116 008a 13F0020F 		tst	r3, #2
- 117 008e 0CD0     		beq	.L12
+ 107              		.loc 1 147 0
+ 108 007a 8C4B     		ldr	r3, .L27+24
+ 109 007c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 110 007e 13F0020F 		tst	r3, #2
+ 111 0082 0DD0     		beq	.L12
  148:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         {
  149:.\Generated_Source\PSoC5/I2C_1_INT.c ****                             /* Set write complete and master halted */
  150:.\Generated_Source\PSoC5/I2C_1_INT.c ****                             I2C_1_mstrStatus |= (I2C_1_MSTAT_XFER_HALT |
- 118              		.loc 1 150 0
- 119 0090 8F4A     		ldr	r2, .L27+32
- 120 0092 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 121 0094 43F00A03 		orr	r3, r3, #10
- 122 0098 1370     		strb	r3, [r2]
+ 112              		.loc 1 150 0
+ 113 0084 8A4A     		ldr	r2, .L27+28
+ 114 0086 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 115 0088 43F00A03 		orr	r3, r3, #10
+ 116 008c 1370     		strb	r3, [r2]
  151:.\Generated_Source\PSoC5/I2C_1_INT.c ****                                                             I2C_1_MSTAT_WR_CMPLT);
  152:.\Generated_Source\PSoC5/I2C_1_INT.c **** 
  153:.\Generated_Source\PSoC5/I2C_1_INT.c ****                             I2C_1_state = I2C_1_SM_MSTR_HALT; /* Expect ReStart */
- 123              		.loc 1 153 0
- 124 009a 6022     		movs	r2, #96
- 125 009c 854B     		ldr	r3, .L27+4
- 126 009e 1A70     		strb	r2, [r3]
+ 117              		.loc 1 153 0
+ 118 008e 6022     		movs	r2, #96
+ 119 0090 814B     		ldr	r3, .L27+4
+ 120 0092 1A70     		strb	r2, [r3]
  154:.\Generated_Source\PSoC5/I2C_1_INT.c ****                             I2C_1_DisableInt();
- 127              		.loc 1 154 0
- 128 00a0 0122     		movs	r2, #1
- 129 00a2 8C4B     		ldr	r3, .L27+36
- 130 00a4 1A60     		str	r2, [r3]
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 6
-
-
+ 121              		.loc 1 154 0
+ 122 0094 4FF40042 		mov	r2, #32768
+ 123 0098 864B     		ldr	r3, .L27+32
+ 124 009a 1A60     		str	r2, [r3]
  128:.\Generated_Source\PSoC5/I2C_1_INT.c **** 
- 131              		.loc 1 128 0
- 132 00a6 2C46     		mov	r4, r5
- 133 00a8 F8E0     		b	.L3
- 134              	.L12:
+ 125              		.loc 1 128 0
+ 126 009c 2C46     		mov	r4, r5
+ 127 009e D8E0     		b	.L3
+ 128              	.L12:
  155:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         }
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccalVgBh.s 			page 6
+
+
  156:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         else
  157:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         {
  158:.\Generated_Source\PSoC5/I2C_1_INT.c ****                             I2C_1_ENABLE_INT_ON_STOP; /* Enable interrupt on Stop, to catch it */
- 135              		.loc 1 158 0
- 136 00aa 8B4A     		ldr	r2, .L27+40
- 137 00ac 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 138 00ae 43F02003 		orr	r3, r3, #32
- 139 00b2 1370     		strb	r3, [r2]
+ 129              		.loc 1 158 0
+ 130 00a0 854A     		ldr	r2, .L27+36
+ 131 00a2 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 132 00a4 43F01003 		orr	r3, r3, #16
+ 133 00a8 1370     		strb	r3, [r2]
  159:.\Generated_Source\PSoC5/I2C_1_INT.c ****                             I2C_1_GENERATE_STOP;
- 140              		.loc 1 159 0
- 141 00b4 5222     		movs	r2, #82
- 142 00b6 834B     		ldr	r3, .L27+20
- 143 00b8 1A70     		strb	r2, [r3]
- 144 00ba FF22     		movs	r2, #255
- 145 00bc 5D3B     		subs	r3, r3, #93
- 146 00be 1A70     		strb	r2, [r3]
- 147 00c0 0022     		movs	r2, #0
- 148 00c2 4033     		adds	r3, r3, #64
- 149 00c4 1A70     		strb	r2, [r3]
+ 134              		.loc 1 159 0
+ 135 00aa 1022     		movs	r2, #16
+ 136 00ac 834B     		ldr	r3, .L27+40
+ 137 00ae 1A70     		strb	r2, [r3]
+ 138 00b0 0422     		movs	r2, #4
+ 139 00b2 023B     		subs	r3, r3, #2
+ 140 00b4 1A70     		strb	r2, [r3]
  128:.\Generated_Source\PSoC5/I2C_1_INT.c **** 
- 150              		.loc 1 128 0
- 151 00c6 2C46     		mov	r4, r5
- 152 00c8 E8E0     		b	.L3
- 153              	.L10:
+ 141              		.loc 1 128 0
+ 142 00b6 2C46     		mov	r4, r5
+ 143 00b8 CBE0     		b	.L3
+ 144              	.L10:
  160:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         }
  161:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     }
  162:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     else  /* Master receive data */
  163:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     {
  164:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         I2C_1_READY_TO_READ; /* Release bus to read data */
- 154              		.loc 1 164 0
- 155 00ca 0222     		movs	r2, #2
- 156 00cc 7D4B     		ldr	r3, .L27+20
- 157 00ce 1A70     		strb	r2, [r3]
- 158 00d0 FF22     		movs	r2, #255
- 159 00d2 5D3B     		subs	r3, r3, #93
- 160 00d4 1A70     		strb	r2, [r3]
- 161 00d6 0022     		movs	r2, #0
- 162 00d8 4033     		adds	r3, r3, #64
- 163 00da 1A70     		strb	r2, [r3]
+ 145              		.loc 1 164 0
+ 146 00ba 0022     		movs	r2, #0
+ 147 00bc 754B     		ldr	r3, .L27
+ 148 00be 1A70     		strb	r2, [r3]
  165:.\Generated_Source\PSoC5/I2C_1_INT.c **** 
  166:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         I2C_1_state  = I2C_1_SM_MSTR_RD_DATA;
- 164              		.loc 1 166 0
- 165 00dc 4A22     		movs	r2, #74
- 166 00de 754B     		ldr	r3, .L27+4
- 167 00e0 1A70     		strb	r2, [r3]
+ 149              		.loc 1 166 0
+ 150 00c0 4A22     		movs	r2, #74
+ 151 00c2 754B     		ldr	r3, .L27+4
+ 152 00c4 1A70     		strb	r2, [r3]
  128:.\Generated_Source\PSoC5/I2C_1_INT.c **** 
- 168              		.loc 1 128 0
- 169 00e2 2C46     		mov	r4, r5
- 170 00e4 DAE0     		b	.L3
- 171              	.L9:
+ 153              		.loc 1 128 0
+ 154 00c6 2C46     		mov	r4, r5
+ 155 00c8 C3E0     		b	.L3
+ 156              	.L9:
  167:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     }
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 7
-
-
  168:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 }
  169:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 /* Address is NACKed */
  170:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 else if(I2C_1_CHECK_ADDR_NAK(tmpCsr))
- 172              		.loc 1 170 0
- 173 00e6 0A2C     		cmp	r4, #10
- 174 00e8 2DD1     		bne	.L13
+ 157              		.loc 1 170 0
+ 158 00ca 0A2C     		cmp	r4, #10
+ 159 00cc 2BD1     		bne	.L13
  171:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 {
  172:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     /* Set Address NAK error */
  173:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     I2C_1_mstrStatus |= (I2C_1_MSTAT_ERR_XFER |
- 175              		.loc 1 173 0
- 176 00ea 794A     		ldr	r2, .L27+32
- 177 00ec 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 178 00ee 43F0A003 		orr	r3, r3, #160
- 179 00f2 1370     		strb	r3, [r2]
+ 160              		.loc 1 173 0
+ 161 00ce 784A     		ldr	r2, .L27+28
+ 162 00d0 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 163 00d2 43F0A003 		orr	r3, r3, #160
+ 164 00d6 1370     		strb	r3, [r2]
  174:.\Generated_Source\PSoC5/I2C_1_INT.c ****                                                     I2C_1_MSTAT_ERR_ADDR_NAK);
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccalVgBh.s 			page 7
+
+
  175:.\Generated_Source\PSoC5/I2C_1_INT.c **** 
  176:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     if(I2C_1_CHECK_NO_STOP(I2C_1_mstrControl))
- 180              		.loc 1 176 0
- 181 00f4 754B     		ldr	r3, .L27+28
- 182 00f6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 183 00f8 13F0020F 		tst	r3, #2
- 184 00fc 13D0     		beq	.L14
+ 165              		.loc 1 176 0
+ 166 00d8 744B     		ldr	r3, .L27+24
+ 167 00da 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 168 00dc 13F0020F 		tst	r3, #2
+ 169 00e0 14D0     		beq	.L14
  177:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     {
  178:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         I2C_1_mstrStatus |= (I2C_1_MSTAT_XFER_HALT |
  179:.\Generated_Source\PSoC5/I2C_1_INT.c ****                                                         I2C_1_GET_MSTAT_CMPLT);
- 185              		.loc 1 179 0
- 186 00fe 6D4B     		ldr	r3, .L27+4
- 187 0100 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 170              		.loc 1 179 0
+ 171 00e2 6D4B     		ldr	r3, .L27+4
+ 172 00e4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
  178:.\Generated_Source\PSoC5/I2C_1_INT.c ****                                                         I2C_1_GET_MSTAT_CMPLT);
- 188              		.loc 1 178 0
- 189 0102 13F0080F 		tst	r3, #8
- 190 0106 01D0     		beq	.L24
- 191 0108 0923     		movs	r3, #9
- 192 010a 00E0     		b	.L15
- 193              	.L24:
- 194 010c 0A23     		movs	r3, #10
- 195              	.L15:
+ 173              		.loc 1 178 0
+ 174 00e6 13F0080F 		tst	r3, #8
+ 175 00ea 01D0     		beq	.L24
+ 176 00ec 0923     		movs	r3, #9
+ 177 00ee 00E0     		b	.L15
+ 178              	.L24:
+ 179 00f0 0A23     		movs	r3, #10
+ 180              	.L15:
  178:.\Generated_Source\PSoC5/I2C_1_INT.c ****                                                         I2C_1_GET_MSTAT_CMPLT);
- 196              		.loc 1 178 0 is_stmt 0 discriminator 4
- 197 010e 704A     		ldr	r2, .L27+32
- 198 0110 1178     		ldrb	r1, [r2]	@ zero_extendqisi2
- 199 0112 0B43     		orrs	r3, r3, r1
- 200 0114 1370     		strb	r3, [r2]
+ 181              		.loc 1 178 0 is_stmt 0 discriminator 4
+ 182 00f2 6F4A     		ldr	r2, .L27+28
+ 183 00f4 1178     		ldrb	r1, [r2]	@ zero_extendqisi2
+ 184 00f6 0B43     		orrs	r3, r3, r1
+ 185 00f8 1370     		strb	r3, [r2]
  180:.\Generated_Source\PSoC5/I2C_1_INT.c **** 
  181:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         I2C_1_state = I2C_1_SM_MSTR_HALT; /* Expect RESTART */
- 201              		.loc 1 181 0 is_stmt 1 discriminator 4
- 202 0116 6022     		movs	r2, #96
- 203 0118 664B     		ldr	r3, .L27+4
- 204 011a 1A70     		strb	r2, [r3]
+ 186              		.loc 1 181 0 is_stmt 1 discriminator 4
+ 187 00fa 6022     		movs	r2, #96
+ 188 00fc 664B     		ldr	r3, .L27+4
+ 189 00fe 1A70     		strb	r2, [r3]
  182:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         I2C_1_DisableInt();
- 205              		.loc 1 182 0 discriminator 4
- 206 011c 0122     		movs	r2, #1
- 207 011e 6D4B     		ldr	r3, .L27+36
- 208 0120 1A60     		str	r2, [r3]
+ 190              		.loc 1 182 0 discriminator 4
+ 191 0100 4FF40042 		mov	r2, #32768
+ 192 0104 6B4B     		ldr	r3, .L27+32
+ 193 0106 1A60     		str	r2, [r3]
  128:.\Generated_Source\PSoC5/I2C_1_INT.c **** 
- 209              		.loc 1 128 0 discriminator 4
- 210 0122 2C46     		mov	r4, r5
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 8
-
-
- 211 0124 BAE0     		b	.L3
- 212              	.L14:
+ 194              		.loc 1 128 0 discriminator 4
+ 195 0108 2C46     		mov	r4, r5
+ 196 010a A2E0     		b	.L3
+ 197              	.L14:
  183:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     }
  184:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     else  /* Do normal Stop */
  185:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     {
  186:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         I2C_1_ENABLE_INT_ON_STOP; /* Enable interrupt on Stop, to catch it */
- 213              		.loc 1 186 0
- 214 0126 6C4A     		ldr	r2, .L27+40
- 215 0128 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 216 012a 43F02003 		orr	r3, r3, #32
- 217 012e 1370     		strb	r3, [r2]
+ 198              		.loc 1 186 0
+ 199 010c 6A4A     		ldr	r2, .L27+36
+ 200 010e 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 201 0110 43F01003 		orr	r3, r3, #16
+ 202 0114 1370     		strb	r3, [r2]
  187:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         I2C_1_GENERATE_STOP;
- 218              		.loc 1 187 0
- 219 0130 5222     		movs	r2, #82
- 220 0132 644B     		ldr	r3, .L27+20
- 221 0134 1A70     		strb	r2, [r3]
- 222 0136 FF22     		movs	r2, #255
- 223 0138 5D3B     		subs	r3, r3, #93
- 224 013a 1A70     		strb	r2, [r3]
- 225 013c 0022     		movs	r2, #0
- 226 013e 4033     		adds	r3, r3, #64
- 227 0140 1A70     		strb	r2, [r3]
+ 203              		.loc 1 187 0
+ 204 0116 1022     		movs	r2, #16
+ 205 0118 684B     		ldr	r3, .L27+40
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccalVgBh.s 			page 8
+
+
+ 206 011a 1A70     		strb	r2, [r3]
+ 207 011c 0422     		movs	r2, #4
+ 208 011e 023B     		subs	r3, r3, #2
+ 209 0120 1A70     		strb	r2, [r3]
  128:.\Generated_Source\PSoC5/I2C_1_INT.c **** 
- 228              		.loc 1 128 0
- 229 0142 2C46     		mov	r4, r5
- 230 0144 AAE0     		b	.L3
- 231              	.L13:
+ 210              		.loc 1 128 0
+ 211 0122 2C46     		mov	r4, r5
+ 212 0124 95E0     		b	.L3
+ 213              	.L13:
  188:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     }
  189:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 }
  190:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 else
@@ -460,16 +442,16 @@ ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 1
  197:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     #else
  198:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         /* Block execution flow: unexpected condition */
  199:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         CYASSERT(0u != 0u);
- 232              		.loc 1 199 0 discriminator 1
- 233 0146 0020     		movs	r0, #0
- 234 0148 FFF7FEFF 		bl	CyHalt
- 235              	.LVL2:
+ 214              		.loc 1 199 0 discriminator 1
+ 215 0126 0020     		movs	r0, #0
+ 216 0128 FFF7FEFF 		bl	CyHalt
+ 217              	.LVL2:
  128:.\Generated_Source\PSoC5/I2C_1_INT.c **** 
- 236              		.loc 1 128 0 discriminator 1
- 237 014c 2C46     		mov	r4, r5
- 238 014e A5E0     		b	.L3
- 239              	.LVL3:
- 240              	.L7:
+ 218              		.loc 1 128 0 discriminator 1
+ 219 012c 2C46     		mov	r4, r5
+ 220 012e 90E0     		b	.L3
+ 221              	.LVL3:
+ 222              	.L7:
  200:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     #endif /* (I2C_1_TIMEOUT_ENABLED) */
  201:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 }
  202:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 break;
@@ -477,178 +459,166 @@ ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 1
  204:.\Generated_Source\PSoC5/I2C_1_INT.c ****             case I2C_1_SM_MSTR_WR_DATA:
  205:.\Generated_Source\PSoC5/I2C_1_INT.c **** 
  206:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 if(I2C_1_CHECK_DATA_ACK(tmpCsr))
- 241              		.loc 1 206 0
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 9
-
-
- 242 0150 14F0020F 		tst	r4, #2
- 243 0154 3DD1     		bne	.L16
+ 223              		.loc 1 206 0
+ 224 0130 14F0020F 		tst	r4, #2
+ 225 0134 35D1     		bne	.L16
  207:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 {
  208:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     /* Check if end of buffer */
  209:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     if(I2C_1_mstrWrBufIndex  < I2C_1_mstrWrBufSize)
- 244              		.loc 1 209 0
- 245 0156 5C4B     		ldr	r3, .L27+24
- 246 0158 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 247 015a 574A     		ldr	r2, .L27+8
- 248 015c 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
- 249 015e DBB2     		uxtb	r3, r3
- 250 0160 9342     		cmp	r3, r2
- 251 0162 16D2     		bcs	.L17
+ 226              		.loc 1 209 0
+ 227 0136 5C4B     		ldr	r3, .L27+20
+ 228 0138 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 229 013a 584A     		ldr	r2, .L27+8
+ 230 013c 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 231 013e DBB2     		uxtb	r3, r3
+ 232 0140 9342     		cmp	r3, r2
+ 233 0142 10D2     		bcs	.L17
  210:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     {
  211:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         I2C_1_DATA_REG =
  212:.\Generated_Source\PSoC5/I2C_1_INT.c ****                                                  I2C_1_mstrWrBufPtr[I2C_1_mstrWrBufIndex];
- 252              		.loc 1 212 0
- 253 0164 584A     		ldr	r2, .L27+24
- 254 0166 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 255 0168 DBB2     		uxtb	r3, r3
- 256 016a 5449     		ldr	r1, .L27+12
- 257 016c 0968     		ldr	r1, [r1]
- 258 016e CB5C     		ldrb	r3, [r1, r3]	@ zero_extendqisi2
- 259 0170 DBB2     		uxtb	r3, r3
+ 234              		.loc 1 212 0
+ 235 0144 584A     		ldr	r2, .L27+20
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccalVgBh.s 			page 9
+
+
+ 236 0146 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 237 0148 DBB2     		uxtb	r3, r3
+ 238 014a 5549     		ldr	r1, .L27+12
+ 239 014c 0968     		ldr	r1, [r1]
+ 240 014e CB5C     		ldrb	r3, [r1, r3]	@ zero_extendqisi2
+ 241 0150 DBB2     		uxtb	r3, r3
  211:.\Generated_Source\PSoC5/I2C_1_INT.c ****                                                  I2C_1_mstrWrBufPtr[I2C_1_mstrWrBufIndex];
- 260              		.loc 1 211 0
- 261 0172 5349     		ldr	r1, .L27+16
- 262 0174 0B70     		strb	r3, [r1]
+ 242              		.loc 1 211 0
+ 243 0152 5449     		ldr	r1, .L27+16
+ 244 0154 0B70     		strb	r3, [r1]
  213:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         I2C_1_TRANSMIT_DATA;
- 263              		.loc 1 213 0
- 264 0176 0621     		movs	r1, #6
- 265 0178 524B     		ldr	r3, .L27+20
- 266 017a 1970     		strb	r1, [r3]
- 267 017c FF21     		movs	r1, #255
- 268 017e 5D3B     		subs	r3, r3, #93
- 269 0180 1970     		strb	r1, [r3]
- 270 0182 0021     		movs	r1, #0
- 271 0184 4033     		adds	r3, r3, #64
- 272 0186 1970     		strb	r1, [r3]
+ 245              		.loc 1 213 0
+ 246 0156 0421     		movs	r1, #4
+ 247 0158 4E4B     		ldr	r3, .L27
+ 248 015a 1970     		strb	r1, [r3]
  214:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         I2C_1_mstrWrBufIndex++;
- 273              		.loc 1 214 0
- 274 0188 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 275 018a 0133     		adds	r3, r3, #1
- 276 018c DBB2     		uxtb	r3, r3
- 277 018e 1370     		strb	r3, [r2]
- 278 0190 84E0     		b	.L3
- 279              	.L17:
+ 249              		.loc 1 214 0
+ 250 015c 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 251 015e 0133     		adds	r3, r3, #1
+ 252 0160 DBB2     		uxtb	r3, r3
+ 253 0162 1370     		strb	r3, [r2]
+ 254 0164 75E0     		b	.L3
+ 255              	.L17:
  215:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     }
  216:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     /* End of buffer: complete writing */
  217:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     else if(I2C_1_CHECK_NO_STOP(I2C_1_mstrControl))
- 280              		.loc 1 217 0
- 281 0192 4E4B     		ldr	r3, .L27+28
- 282 0194 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 283 0196 13F0020F 		tst	r3, #2
- 284 019a 0BD0     		beq	.L18
+ 256              		.loc 1 217 0
+ 257 0166 514B     		ldr	r3, .L27+24
+ 258 0168 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 259 016a 13F0020F 		tst	r3, #2
+ 260 016e 0CD0     		beq	.L18
  218:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     {
  219:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         /* Set write complete and master halted */
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 10
-
-
  220:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         I2C_1_mstrStatus |= (I2C_1_MSTAT_XFER_HALT |
- 285              		.loc 1 220 0
- 286 019c 4C4A     		ldr	r2, .L27+32
- 287 019e 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 288 01a0 43F00A03 		orr	r3, r3, #10
- 289 01a4 1370     		strb	r3, [r2]
+ 261              		.loc 1 220 0
+ 262 0170 4F4A     		ldr	r2, .L27+28
+ 263 0172 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 264 0174 43F00A03 		orr	r3, r3, #10
+ 265 0178 1370     		strb	r3, [r2]
  221:.\Generated_Source\PSoC5/I2C_1_INT.c ****                                                         I2C_1_MSTAT_WR_CMPLT);
  222:.\Generated_Source\PSoC5/I2C_1_INT.c **** 
  223:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         I2C_1_state = I2C_1_SM_MSTR_HALT;    /* Expect restart */
- 290              		.loc 1 223 0
- 291 01a6 6022     		movs	r2, #96
- 292 01a8 424B     		ldr	r3, .L27+4
- 293 01aa 1A70     		strb	r2, [r3]
+ 266              		.loc 1 223 0
+ 267 017a 6022     		movs	r2, #96
+ 268 017c 464B     		ldr	r3, .L27+4
+ 269 017e 1A70     		strb	r2, [r3]
  224:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         I2C_1_DisableInt();
- 294              		.loc 1 224 0
- 295 01ac 0122     		movs	r2, #1
- 296 01ae 494B     		ldr	r3, .L27+36
- 297 01b0 1A60     		str	r2, [r3]
- 298 01b2 73E0     		b	.L3
- 299              	.L18:
+ 270              		.loc 1 224 0
+ 271 0180 4FF40042 		mov	r2, #32768
+ 272 0184 4B4B     		ldr	r3, .L27+32
+ 273 0186 1A60     		str	r2, [r3]
+ 274 0188 63E0     		b	.L3
+ 275              	.L18:
  225:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     }
  226:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     else  /* Do normal Stop */
  227:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     {
  228:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         I2C_1_ENABLE_INT_ON_STOP;    /* Enable interrupt on Stop, to catch it */
- 300              		.loc 1 228 0
- 301 01b4 484A     		ldr	r2, .L27+40
- 302 01b6 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 303 01b8 43F02003 		orr	r3, r3, #32
- 304 01bc 1370     		strb	r3, [r2]
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccalVgBh.s 			page 10
+
+
+ 276              		.loc 1 228 0
+ 277 018a 4B4A     		ldr	r2, .L27+36
+ 278 018c 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 279 018e 43F01003 		orr	r3, r3, #16
+ 280 0192 1370     		strb	r3, [r2]
  229:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         I2C_1_GENERATE_STOP;
- 305              		.loc 1 229 0
- 306 01be 5222     		movs	r2, #82
- 307 01c0 404B     		ldr	r3, .L27+20
- 308 01c2 1A70     		strb	r2, [r3]
- 309 01c4 FF22     		movs	r2, #255
- 310 01c6 5D3B     		subs	r3, r3, #93
- 311 01c8 1A70     		strb	r2, [r3]
- 312 01ca 0022     		movs	r2, #0
- 313 01cc 4033     		adds	r3, r3, #64
- 314 01ce 1A70     		strb	r2, [r3]
- 315 01d0 64E0     		b	.L3
- 316              	.L16:
+ 281              		.loc 1 229 0
+ 282 0194 1022     		movs	r2, #16
+ 283 0196 494B     		ldr	r3, .L27+40
+ 284 0198 1A70     		strb	r2, [r3]
+ 285 019a 0422     		movs	r2, #4
+ 286 019c 023B     		subs	r3, r3, #2
+ 287 019e 1A70     		strb	r2, [r3]
+ 288 01a0 57E0     		b	.L3
+ 289              	.L16:
  230:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     }
  231:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 }
  232:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 /* Last byte NAKed: end writing */
  233:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 else if(I2C_1_CHECK_NO_STOP(I2C_1_mstrControl))
- 317              		.loc 1 233 0
- 318 01d2 3E4B     		ldr	r3, .L27+28
- 319 01d4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 320 01d6 13F0020F 		tst	r3, #2
- 321 01da 0BD0     		beq	.L19
+ 290              		.loc 1 233 0
+ 291 01a2 424B     		ldr	r3, .L27+24
+ 292 01a4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 293 01a6 13F0020F 		tst	r3, #2
+ 294 01aa 0CD0     		beq	.L19
  234:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 {
  235:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     /* Set write complete, short transfer and master halted */
  236:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     I2C_1_mstrStatus |= (I2C_1_MSTAT_ERR_XFER       |
- 322              		.loc 1 236 0
- 323 01dc 3C4A     		ldr	r2, .L27+32
- 324 01de 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 11
-
-
- 325 01e0 43F09A03 		orr	r3, r3, #154
- 326 01e4 1370     		strb	r3, [r2]
+ 295              		.loc 1 236 0
+ 296 01ac 404A     		ldr	r2, .L27+28
+ 297 01ae 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 298 01b0 43F09A03 		orr	r3, r3, #154
+ 299 01b4 1370     		strb	r3, [r2]
  237:.\Generated_Source\PSoC5/I2C_1_INT.c ****                                                     I2C_1_MSTAT_ERR_SHORT_XFER |
  238:.\Generated_Source\PSoC5/I2C_1_INT.c ****                                                     I2C_1_MSTAT_XFER_HALT      |
  239:.\Generated_Source\PSoC5/I2C_1_INT.c ****                                                     I2C_1_MSTAT_WR_CMPLT);
  240:.\Generated_Source\PSoC5/I2C_1_INT.c **** 
  241:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     I2C_1_state = I2C_1_SM_MSTR_HALT;    /* Expect ReStart */
- 327              		.loc 1 241 0
- 328 01e6 6022     		movs	r2, #96
- 329 01e8 324B     		ldr	r3, .L27+4
- 330 01ea 1A70     		strb	r2, [r3]
+ 300              		.loc 1 241 0
+ 301 01b6 6022     		movs	r2, #96
+ 302 01b8 374B     		ldr	r3, .L27+4
+ 303 01ba 1A70     		strb	r2, [r3]
  242:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     I2C_1_DisableInt();
- 331              		.loc 1 242 0
- 332 01ec 0122     		movs	r2, #1
- 333 01ee 394B     		ldr	r3, .L27+36
- 334 01f0 1A60     		str	r2, [r3]
- 335 01f2 53E0     		b	.L3
- 336              	.L19:
+ 304              		.loc 1 242 0
+ 305 01bc 4FF40042 		mov	r2, #32768
+ 306 01c0 3C4B     		ldr	r3, .L27+32
+ 307 01c2 1A60     		str	r2, [r3]
+ 308 01c4 45E0     		b	.L3
+ 309              	.L19:
  243:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 }
  244:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 else  /* Do normal Stop */
  245:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 {
  246:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     I2C_1_ENABLE_INT_ON_STOP;    /* Enable interrupt on Stop, to catch it */
- 337              		.loc 1 246 0
- 338 01f4 384A     		ldr	r2, .L27+40
- 339 01f6 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 340 01f8 43F02003 		orr	r3, r3, #32
- 341 01fc 1370     		strb	r3, [r2]
+ 310              		.loc 1 246 0
+ 311 01c6 3C4A     		ldr	r2, .L27+36
+ 312 01c8 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 313 01ca 43F01003 		orr	r3, r3, #16
+ 314 01ce 1370     		strb	r3, [r2]
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccalVgBh.s 			page 11
+
+
  247:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     I2C_1_GENERATE_STOP;
- 342              		.loc 1 247 0
- 343 01fe 5222     		movs	r2, #82
- 344 0200 304B     		ldr	r3, .L27+20
- 345 0202 1A70     		strb	r2, [r3]
- 346 0204 FF22     		movs	r2, #255
- 347 0206 5D3B     		subs	r3, r3, #93
- 348 0208 1A70     		strb	r2, [r3]
- 349 020a 0022     		movs	r2, #0
- 350 020c 4033     		adds	r3, r3, #64
- 351 020e 1A70     		strb	r2, [r3]
+ 315              		.loc 1 247 0
+ 316 01d0 1022     		movs	r2, #16
+ 317 01d2 3A4B     		ldr	r3, .L27+40
+ 318 01d4 1A70     		strb	r2, [r3]
+ 319 01d6 0422     		movs	r2, #4
+ 320 01d8 023B     		subs	r3, r3, #2
+ 321 01da 1A70     		strb	r2, [r3]
  248:.\Generated_Source\PSoC5/I2C_1_INT.c **** 
  249:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     /* Set short transfer and error flag */
  250:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     I2C_1_mstrStatus |= (I2C_1_MSTAT_ERR_SHORT_XFER |
- 352              		.loc 1 250 0
- 353 0210 2F4A     		ldr	r2, .L27+32
- 354 0212 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 355 0214 43F09003 		orr	r3, r3, #144
- 356 0218 1370     		strb	r3, [r2]
- 357 021a 3FE0     		b	.L3
- 358              	.L8:
+ 322              		.loc 1 250 0
+ 323 01dc 344A     		ldr	r2, .L27+28
+ 324 01de 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 325 01e0 43F09003 		orr	r3, r3, #144
+ 326 01e4 1370     		strb	r3, [r2]
+ 327 01e6 34E0     		b	.L3
+ 328              	.L8:
  251:.\Generated_Source\PSoC5/I2C_1_INT.c ****                                                     I2C_1_MSTAT_ERR_XFER);
  252:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 }
  253:.\Generated_Source\PSoC5/I2C_1_INT.c **** 
@@ -657,104 +627,89 @@ ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 1
  256:.\Generated_Source\PSoC5/I2C_1_INT.c ****             case I2C_1_SM_MSTR_RD_DATA:
  257:.\Generated_Source\PSoC5/I2C_1_INT.c **** 
  258:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 I2C_1_mstrRdBufPtr[I2C_1_mstrRdBufIndex] = I2C_1_DATA_REG;
- 359              		.loc 1 258 0
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 12
-
-
- 360 021c 2F4A     		ldr	r2, .L27+44
- 361 021e 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 362 0220 DBB2     		uxtb	r3, r3
- 363 0222 2F49     		ldr	r1, .L27+48
- 364 0224 0868     		ldr	r0, [r1]
- 365 0226 2649     		ldr	r1, .L27+16
- 366 0228 0978     		ldrb	r1, [r1]	@ zero_extendqisi2
- 367 022a C9B2     		uxtb	r1, r1
- 368 022c C154     		strb	r1, [r0, r3]
+ 329              		.loc 1 258 0
+ 330 01e8 354A     		ldr	r2, .L27+44
+ 331 01ea 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 332 01ec DBB2     		uxtb	r3, r3
+ 333 01ee 3549     		ldr	r1, .L27+48
+ 334 01f0 0868     		ldr	r0, [r1]
+ 335 01f2 2C49     		ldr	r1, .L27+16
+ 336 01f4 0978     		ldrb	r1, [r1]	@ zero_extendqisi2
+ 337 01f6 C9B2     		uxtb	r1, r1
+ 338 01f8 C154     		strb	r1, [r0, r3]
  259:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 I2C_1_mstrRdBufIndex++;
- 369              		.loc 1 259 0
- 370 022e 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 371 0230 0133     		adds	r3, r3, #1
- 372 0232 DBB2     		uxtb	r3, r3
- 373 0234 1370     		strb	r3, [r2]
+ 339              		.loc 1 259 0
+ 340 01fa 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 341 01fc 0133     		adds	r3, r3, #1
+ 342 01fe DBB2     		uxtb	r3, r3
+ 343 0200 1370     		strb	r3, [r2]
  260:.\Generated_Source\PSoC5/I2C_1_INT.c **** 
  261:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 /* Check if end of buffer */
  262:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 if(I2C_1_mstrRdBufIndex < I2C_1_mstrRdBufSize)
- 374              		.loc 1 262 0
- 375 0236 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 376 0238 2A4A     		ldr	r2, .L27+52
- 377 023a 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
- 378 023c DBB2     		uxtb	r3, r3
- 379 023e 9342     		cmp	r3, r2
- 380 0240 09D2     		bcs	.L20
+ 344              		.loc 1 262 0
+ 345 0202 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 346 0204 304A     		ldr	r2, .L27+52
+ 347 0206 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 348 0208 DBB2     		uxtb	r3, r3
+ 349 020a 9342     		cmp	r3, r2
+ 350 020c 03D2     		bcs	.L20
  263:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 {
  264:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     I2C_1_ACK_AND_RECEIVE;       /* ACK and receive byte */
- 381              		.loc 1 264 0
- 382 0242 0222     		movs	r2, #2
- 383 0244 1F4B     		ldr	r3, .L27+20
- 384 0246 1A70     		strb	r2, [r3]
- 385 0248 FF22     		movs	r2, #255
- 386 024a 5D3B     		subs	r3, r3, #93
- 387 024c 1A70     		strb	r2, [r3]
- 388 024e 0022     		movs	r2, #0
- 389 0250 4033     		adds	r3, r3, #64
- 390 0252 1A70     		strb	r2, [r3]
- 391 0254 22E0     		b	.L3
- 392              	.L20:
+ 351              		.loc 1 264 0
+ 352 020e 1022     		movs	r2, #16
+ 353 0210 204B     		ldr	r3, .L27
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccalVgBh.s 			page 12
+
+
+ 354 0212 1A70     		strb	r2, [r3]
+ 355 0214 1DE0     		b	.L3
+ 356              	.L20:
  265:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 }
  266:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 /* End of buffer: complete reading */
  267:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 else if(I2C_1_CHECK_NO_STOP(I2C_1_mstrControl))
- 393              		.loc 1 267 0
- 394 0256 1D4B     		ldr	r3, .L27+28
- 395 0258 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 396 025a 13F0020F 		tst	r3, #2
- 397 025e 0BD0     		beq	.L21
+ 357              		.loc 1 267 0
+ 358 0216 254B     		ldr	r3, .L27+24
+ 359 0218 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 360 021a 13F0020F 		tst	r3, #2
+ 361 021e 0CD0     		beq	.L21
  268:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 {
  269:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     /* Set read complete and master halted */
  270:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     I2C_1_mstrStatus |= (I2C_1_MSTAT_XFER_HALT |
- 398              		.loc 1 270 0
- 399 0260 1B4A     		ldr	r2, .L27+32
- 400 0262 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 401 0264 43F00903 		orr	r3, r3, #9
- 402 0268 1370     		strb	r3, [r2]
+ 362              		.loc 1 270 0
+ 363 0220 234A     		ldr	r2, .L27+28
+ 364 0222 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 365 0224 43F00903 		orr	r3, r3, #9
+ 366 0228 1370     		strb	r3, [r2]
  271:.\Generated_Source\PSoC5/I2C_1_INT.c ****                                                     I2C_1_MSTAT_RD_CMPLT);
  272:.\Generated_Source\PSoC5/I2C_1_INT.c **** 
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 13
-
-
  273:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     I2C_1_state = I2C_1_SM_MSTR_HALT;    /* Expect ReStart */
- 403              		.loc 1 273 0
- 404 026a 6022     		movs	r2, #96
- 405 026c 114B     		ldr	r3, .L27+4
- 406 026e 1A70     		strb	r2, [r3]
+ 367              		.loc 1 273 0
+ 368 022a 6022     		movs	r2, #96
+ 369 022c 1A4B     		ldr	r3, .L27+4
+ 370 022e 1A70     		strb	r2, [r3]
  274:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     I2C_1_DisableInt();
- 407              		.loc 1 274 0
- 408 0270 0122     		movs	r2, #1
- 409 0272 184B     		ldr	r3, .L27+36
- 410 0274 1A60     		str	r2, [r3]
- 411 0276 11E0     		b	.L3
- 412              	.L21:
+ 371              		.loc 1 274 0
+ 372 0230 4FF40042 		mov	r2, #32768
+ 373 0234 1F4B     		ldr	r3, .L27+32
+ 374 0236 1A60     		str	r2, [r3]
+ 375 0238 0BE0     		b	.L3
+ 376              	.L21:
  275:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 }
  276:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 else
  277:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 {
  278:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     I2C_1_ENABLE_INT_ON_STOP;
- 413              		.loc 1 278 0
- 414 0278 174A     		ldr	r2, .L27+40
- 415 027a 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 416 027c 43F02003 		orr	r3, r3, #32
- 417 0280 1370     		strb	r3, [r2]
+ 377              		.loc 1 278 0
+ 378 023a 1F4A     		ldr	r2, .L27+36
+ 379 023c 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 380 023e 43F01003 		orr	r3, r3, #16
+ 381 0242 1370     		strb	r3, [r2]
  279:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     I2C_1_NAK_AND_RECEIVE;       /* NACK and TRY to generate Stop */
- 418              		.loc 1 279 0
- 419 0282 1222     		movs	r2, #18
- 420 0284 0F4B     		ldr	r3, .L27+20
- 421 0286 1A70     		strb	r2, [r3]
- 422 0288 FF22     		movs	r2, #255
- 423 028a 5D3B     		subs	r3, r3, #93
- 424 028c 1A70     		strb	r2, [r3]
- 425 028e 0022     		movs	r2, #0
- 426 0290 4033     		adds	r3, r3, #64
- 427 0292 1A70     		strb	r2, [r3]
- 428 0294 02E0     		b	.L3
- 429              	.L4:
+ 382              		.loc 1 279 0
+ 383 0244 0022     		movs	r2, #0
+ 384 0246 134B     		ldr	r3, .L27
+ 385 0248 1A70     		strb	r2, [r3]
+ 386 024a 02E0     		b	.L3
+ 387              	.L4:
  280:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 }
  281:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 break;
  282:.\Generated_Source\PSoC5/I2C_1_INT.c **** 
@@ -763,90 +718,73 @@ ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 1
  285:.\Generated_Source\PSoC5/I2C_1_INT.c ****             #if(I2C_1_TIMEOUT_ENABLED)
  286:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 /* Exit interrupt to take chance for timeout timer to handles this case */
  287:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 I2C_1_DisableInt();
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccalVgBh.s 			page 13
+
+
  288:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 I2C_1_ClearPendingInt();
  289:.\Generated_Source\PSoC5/I2C_1_INT.c ****             #else
  290:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 /* Block execution flow: unexpected condition */
  291:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 CYASSERT(0u != 0u);
- 430              		.loc 1 291 0 discriminator 1
- 431 0296 0020     		movs	r0, #0
- 432 0298 FFF7FEFF 		bl	CyHalt
- 433              	.LVL4:
- 434              	.L3:
+ 388              		.loc 1 291 0 discriminator 1
+ 389 024c 0020     		movs	r0, #0
+ 390 024e FFF7FEFF 		bl	CyHalt
+ 391              	.LVL4:
+ 392              	.L3:
  292:.\Generated_Source\PSoC5/I2C_1_INT.c ****             #endif /* (I2C_1_TIMEOUT_ENABLED) */
  293:.\Generated_Source\PSoC5/I2C_1_INT.c **** 
  294:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 break;
  295:.\Generated_Source\PSoC5/I2C_1_INT.c ****             }
  296:.\Generated_Source\PSoC5/I2C_1_INT.c ****         }
  297:.\Generated_Source\PSoC5/I2C_1_INT.c **** 
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 14
-
-
  298:.\Generated_Source\PSoC5/I2C_1_INT.c ****         /* Catches Stop: end of transaction */
  299:.\Generated_Source\PSoC5/I2C_1_INT.c ****         if(I2C_1_CHECK_STOP_STS(tmpCsr))
- 435              		.loc 1 299 0
- 436 029c 14F0200F 		tst	r4, #32
- 437 02a0 38D0     		beq	.L1
+ 393              		.loc 1 299 0
+ 394 0252 14F0200F 		tst	r4, #32
+ 395 0256 1CD0     		beq	.L1
  300:.\Generated_Source\PSoC5/I2C_1_INT.c ****         {
  301:.\Generated_Source\PSoC5/I2C_1_INT.c ****             I2C_1_mstrStatus |= I2C_1_GET_MSTAT_CMPLT;
- 438              		.loc 1 301 0
- 439 02a2 044B     		ldr	r3, .L27+4
- 440 02a4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 441 02a6 13F0080F 		tst	r3, #8
- 442 02aa 1DD0     		beq	.L25
- 443 02ac 0123     		movs	r3, #1
- 444 02ae 1CE0     		b	.L23
- 445              	.L28:
- 446              		.align	2
- 447              	.L27:
- 448 02b0 6C640040 		.word	1073767532
- 449 02b4 00000000 		.word	I2C_1_state
- 450 02b8 00000000 		.word	I2C_1_mstrWrBufSize
- 451 02bc 00000000 		.word	I2C_1_mstrWrBufPtr
- 452 02c0 0F640040 		.word	1073767439
- 453 02c4 7C640040 		.word	1073767548
- 454 02c8 00000000 		.word	I2C_1_mstrWrBufIndex
- 455 02cc 00000000 		.word	I2C_1_mstrControl
- 456 02d0 00000000 		.word	I2C_1_mstrStatus
- 457 02d4 80E100E0 		.word	-536813184
- 458 02d8 8C640040 		.word	1073767564
- 459 02dc 00000000 		.word	I2C_1_mstrRdBufIndex
- 460 02e0 00000000 		.word	I2C_1_mstrRdBufPtr
- 461 02e4 00000000 		.word	I2C_1_mstrRdBufSize
- 462              	.L25:
- 463 02e8 0223     		movs	r3, #2
- 464              	.L23:
- 465              		.loc 1 301 0 is_stmt 0 discriminator 4
- 466 02ea 0B4A     		ldr	r2, .L29
- 467 02ec 1178     		ldrb	r1, [r2]	@ zero_extendqisi2
- 468 02ee 0B43     		orrs	r3, r3, r1
- 469 02f0 1370     		strb	r3, [r2]
+ 396              		.loc 1 301 0
+ 397 0258 0F4B     		ldr	r3, .L27+4
+ 398 025a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 399 025c 13F0080F 		tst	r3, #8
+ 400 0260 01D0     		beq	.L25
+ 401 0262 0123     		movs	r3, #1
+ 402 0264 00E0     		b	.L23
+ 403              	.L25:
+ 404 0266 0223     		movs	r3, #2
+ 405              	.L23:
+ 406              		.loc 1 301 0 is_stmt 0 discriminator 4
+ 407 0268 114A     		ldr	r2, .L27+28
+ 408 026a 1178     		ldrb	r1, [r2]	@ zero_extendqisi2
+ 409 026c 0B43     		orrs	r3, r3, r1
+ 410 026e 1370     		strb	r3, [r2]
  302:.\Generated_Source\PSoC5/I2C_1_INT.c **** 
  303:.\Generated_Source\PSoC5/I2C_1_INT.c ****             I2C_1_DISABLE_INT_ON_STOP;
- 470              		.loc 1 303 0 is_stmt 1 discriminator 4
- 471 02f2 0A4A     		ldr	r2, .L29+4
- 472 02f4 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 473 02f6 03F0DF03 		and	r3, r3, #223
- 474 02fa 1370     		strb	r3, [r2]
+ 411              		.loc 1 303 0 is_stmt 1 discriminator 4
+ 412 0270 114A     		ldr	r2, .L27+36
+ 413 0272 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 414 0274 03F0EF03 		and	r3, r3, #239
+ 415 0278 1370     		strb	r3, [r2]
  304:.\Generated_Source\PSoC5/I2C_1_INT.c ****             I2C_1_state = I2C_1_SM_IDLE;
- 475              		.loc 1 304 0 discriminator 4
- 476 02fc 1022     		movs	r2, #16
- 477 02fe 084B     		ldr	r3, .L29+8
- 478 0300 1A70     		strb	r2, [r3]
- 479 0302 38BD     		pop	{r3, r4, r5, pc}
- 480              	.LVL5:
- 481              	.L2:
+ 416              		.loc 1 304 0 discriminator 4
+ 417 027a 1022     		movs	r2, #16
+ 418 027c 064B     		ldr	r3, .L27+4
+ 419 027e 1A70     		strb	r2, [r3]
+ 420 0280 38BD     		pop	{r3, r4, r5, pc}
+ 421              	.LVL5:
+ 422              	.L2:
  305:.\Generated_Source\PSoC5/I2C_1_INT.c ****         }
  306:.\Generated_Source\PSoC5/I2C_1_INT.c ****     #endif /* (I2C_1_MODE_MASTER_ENABLED) */
  307:.\Generated_Source\PSoC5/I2C_1_INT.c ****     }
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 15
-
-
  308:.\Generated_Source\PSoC5/I2C_1_INT.c ****     else if(I2C_1_CHECK_SM_SLAVE)
- 482              		.loc 1 308 0
- 483 0304 064B     		ldr	r3, .L29+8
- 484 0306 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 485 0308 13F0100F 		tst	r3, #16
- 486 030c 02D1     		bne	.L1
+ 423              		.loc 1 308 0
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccalVgBh.s 			page 14
+
+
+ 424 0282 054B     		ldr	r3, .L27+4
+ 425 0284 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 426 0286 13F0100F 		tst	r3, #16
+ 427 028a 02D1     		bne	.L1
  309:.\Generated_Source\PSoC5/I2C_1_INT.c ****     {
  310:.\Generated_Source\PSoC5/I2C_1_INT.c ****     #if(I2C_1_MODE_SLAVE_ENABLED)
  311:.\Generated_Source\PSoC5/I2C_1_INT.c **** 
@@ -898,11 +836,11 @@ ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 1
  357:.\Generated_Source\PSoC5/I2C_1_INT.c ****                             I2C_1_DATA_REG = I2C_1_slRdBufPtr[I2C_1_slRdBufIndex];
  358:.\Generated_Source\PSoC5/I2C_1_INT.c ****                             I2C_1_ACK_AND_TRANSMIT;
  359:.\Generated_Source\PSoC5/I2C_1_INT.c ****                             I2C_1_slRdBufIndex++;
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 16
-
-
  360:.\Generated_Source\PSoC5/I2C_1_INT.c **** 
  361:.\Generated_Source\PSoC5/I2C_1_INT.c ****                             I2C_1_slStatus |= I2C_1_SSTAT_RD_BUSY;
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccalVgBh.s 			page 15
+
+
  362:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         }
  363:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         else    /* Overflow: provide 0xFF on bus */
  364:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         {
@@ -958,11 +896,11 @@ ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 1
  414:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     
  415:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 #ifdef I2C_1_HW_PREPARE_READ_BUF_CALLBACK
  416:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     I2C_1_HwPrepareReadBuf_Callback();
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 17
-
-
  417:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 #endif /* I2C_1_HW_PREPARE_READ_BUF_CALLBACK */
  418:.\Generated_Source\PSoC5/I2C_1_INT.c **** 
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccalVgBh.s 			page 16
+
+
  419:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     /* Prepare next operation to read, get data and place in data register */
  420:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     if(I2C_1_slRdBufIndex < I2C_1_slRdBufSize)
  421:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     {
@@ -1018,11 +956,11 @@ ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 1
  471:.\Generated_Source\PSoC5/I2C_1_INT.c ****             {
  472:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 if(I2C_1_CHECK_DATA_ACK(tmpCsr))
  473:.\Generated_Source\PSoC5/I2C_1_INT.c ****                 {
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 18
-
-
  474:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     if(I2C_1_slRdBufIndex < I2C_1_slRdBufSize)
  475:.\Generated_Source\PSoC5/I2C_1_INT.c ****                     {
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccalVgBh.s 			page 17
+
+
  476:.\Generated_Source\PSoC5/I2C_1_INT.c ****                          /* Get data from array */
  477:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         I2C_1_DATA_REG = I2C_1_slRdBufPtr[I2C_1_slRdBufIndex];
  478:.\Generated_Source\PSoC5/I2C_1_INT.c ****                         I2C_1_TRANSMIT_DATA;
@@ -1066,633 +1004,644 @@ ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 1
  516:.\Generated_Source\PSoC5/I2C_1_INT.c ****     {
  517:.\Generated_Source\PSoC5/I2C_1_INT.c ****         /* The FSM skips master and slave processing: return to IDLE */
  518:.\Generated_Source\PSoC5/I2C_1_INT.c ****         I2C_1_state = I2C_1_SM_IDLE;
- 487              		.loc 1 518 0
- 488 030e 1022     		movs	r2, #16
- 489 0310 034B     		ldr	r3, .L29+8
- 490 0312 1A70     		strb	r2, [r3]
- 491              	.L1:
- 492 0314 38BD     		pop	{r3, r4, r5, pc}
- 493              	.LVL6:
- 494              	.L30:
- 495 0316 00BF     		.align	2
- 496              	.L29:
- 497 0318 00000000 		.word	I2C_1_mstrStatus
- 498 031c 8C640040 		.word	1073767564
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 19
+ 428              		.loc 1 518 0
+ 429 028c 1022     		movs	r2, #16
+ 430 028e 024B     		ldr	r3, .L27+4
+ 431 0290 1A70     		strb	r2, [r3]
+ 432              	.L1:
+ 433 0292 38BD     		pop	{r3, r4, r5, pc}
+ 434              	.LVL6:
+ 435              	.L28:
+ 436              		.align	2
+ 437              	.L27:
+ 438 0294 D7490040 		.word	1073760727
+ 439 0298 00000000 		.word	I2C_1_state
+ 440 029c 00000000 		.word	I2C_1_mstrWrBufSize
+ 441 02a0 00000000 		.word	I2C_1_mstrWrBufPtr
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccalVgBh.s 			page 18
 
 
- 499 0320 00000000 		.word	I2C_1_state
- 500              		.cfi_endproc
- 501              	.LFE0:
- 502              		.size	I2C_1_ISR, .-I2C_1_ISR
- 503              		.text
- 504              	.Letext0:
- 505              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
- 506              		.file 3 ".\\Generated_Source\\PSoC5\\I2C_1_PVT.h"
- 507              		.file 4 ".\\Generated_Source\\PSoC5\\CyLib.h"
- 508              		.section	.debug_info,"",%progbits
- 509              	.Ldebug_info0:
- 510 0000 7B010000 		.4byte	0x17b
- 511 0004 0400     		.2byte	0x4
- 512 0006 00000000 		.4byte	.Ldebug_abbrev0
- 513 000a 04       		.byte	0x4
- 514 000b 01       		.uleb128 0x1
- 515 000c 45010000 		.4byte	.LASF26
- 516 0010 01       		.byte	0x1
- 517 0011 DF000000 		.4byte	.LASF27
- 518 0015 35000000 		.4byte	.LASF28
- 519 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 520 001d 00000000 		.4byte	0
- 521 0021 00000000 		.4byte	.Ldebug_line0
- 522 0025 02       		.uleb128 0x2
- 523 0026 01       		.byte	0x1
- 524 0027 06       		.byte	0x6
- 525 0028 42020000 		.4byte	.LASF0
- 526 002c 02       		.uleb128 0x2
- 527 002d 01       		.byte	0x1
- 528 002e 08       		.byte	0x8
- 529 002f AD000000 		.4byte	.LASF1
- 530 0033 02       		.uleb128 0x2
- 531 0034 02       		.byte	0x2
- 532 0035 05       		.byte	0x5
- 533 0036 1A020000 		.4byte	.LASF2
- 534 003a 02       		.uleb128 0x2
- 535 003b 02       		.byte	0x2
- 536 003c 07       		.byte	0x7
- 537 003d 80000000 		.4byte	.LASF3
- 538 0041 02       		.uleb128 0x2
- 539 0042 04       		.byte	0x4
- 540 0043 05       		.byte	0x5
- 541 0044 39020000 		.4byte	.LASF4
- 542 0048 02       		.uleb128 0x2
- 543 0049 04       		.byte	0x4
- 544 004a 07       		.byte	0x7
- 545 004b C0000000 		.4byte	.LASF5
- 546 004f 02       		.uleb128 0x2
- 547 0050 08       		.byte	0x8
- 548 0051 05       		.byte	0x5
- 549 0052 F4010000 		.4byte	.LASF6
- 550 0056 02       		.uleb128 0x2
- 551 0057 08       		.byte	0x8
- 552 0058 07       		.byte	0x7
- 553 0059 2E010000 		.4byte	.LASF7
- 554 005d 03       		.uleb128 0x3
- 555 005e 04       		.byte	0x4
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 20
+ 442 02a4 D8490040 		.word	1073760728
+ 443 02a8 00000000 		.word	I2C_1_mstrWrBufIndex
+ 444 02ac 00000000 		.word	I2C_1_mstrControl
+ 445 02b0 00000000 		.word	I2C_1_mstrStatus
+ 446 02b4 80E100E0 		.word	-536813184
+ 447 02b8 D6490040 		.word	1073760726
+ 448 02bc D9490040 		.word	1073760729
+ 449 02c0 00000000 		.word	I2C_1_mstrRdBufIndex
+ 450 02c4 00000000 		.word	I2C_1_mstrRdBufPtr
+ 451 02c8 00000000 		.word	I2C_1_mstrRdBufSize
+ 452              		.cfi_endproc
+ 453              	.LFE0:
+ 454              		.size	I2C_1_ISR, .-I2C_1_ISR
+ 455              		.text
+ 456              	.Letext0:
+ 457              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 458              		.file 3 ".\\Generated_Source\\PSoC5\\I2C_1_PVT.h"
+ 459              		.file 4 ".\\Generated_Source\\PSoC5\\CyLib.h"
+ 460              		.section	.debug_info,"",%progbits
+ 461              	.Ldebug_info0:
+ 462 0000 7B010000 		.4byte	0x17b
+ 463 0004 0400     		.2byte	0x4
+ 464 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 465 000a 04       		.byte	0x4
+ 466 000b 01       		.uleb128 0x1
+ 467 000c 41010000 		.4byte	.LASF26
+ 468 0010 01       		.byte	0x1
+ 469 0011 DB000000 		.4byte	.LASF27
+ 470 0015 70000000 		.4byte	.LASF28
+ 471 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 472 001d 00000000 		.4byte	0
+ 473 0021 00000000 		.4byte	.Ldebug_line0
+ 474 0025 02       		.uleb128 0x2
+ 475 0026 01       		.byte	0x1
+ 476 0027 06       		.byte	0x6
+ 477 0028 3E020000 		.4byte	.LASF0
+ 478 002c 02       		.uleb128 0x2
+ 479 002d 01       		.byte	0x1
+ 480 002e 08       		.byte	0x8
+ 481 002f 62000000 		.4byte	.LASF1
+ 482 0033 02       		.uleb128 0x2
+ 483 0034 02       		.byte	0x2
+ 484 0035 05       		.byte	0x5
+ 485 0036 16020000 		.4byte	.LASF2
+ 486 003a 02       		.uleb128 0x2
+ 487 003b 02       		.byte	0x2
+ 488 003c 07       		.byte	0x7
+ 489 003d 35000000 		.4byte	.LASF3
+ 490 0041 02       		.uleb128 0x2
+ 491 0042 04       		.byte	0x4
+ 492 0043 05       		.byte	0x5
+ 493 0044 35020000 		.4byte	.LASF4
+ 494 0048 02       		.uleb128 0x2
+ 495 0049 04       		.byte	0x4
+ 496 004a 07       		.byte	0x7
+ 497 004b BC000000 		.4byte	.LASF5
+ 498 004f 02       		.uleb128 0x2
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccalVgBh.s 			page 19
 
 
- 556 005f 05       		.byte	0x5
- 557 0060 696E7400 		.ascii	"int\000"
- 558 0064 02       		.uleb128 0x2
- 559 0065 04       		.byte	0x4
- 560 0066 07       		.byte	0x7
- 561 0067 21010000 		.4byte	.LASF8
- 562 006b 04       		.uleb128 0x4
- 563 006c D2000000 		.4byte	.LASF9
- 564 0070 02       		.byte	0x2
- 565 0071 9201     		.2byte	0x192
- 566 0073 2C000000 		.4byte	0x2c
- 567 0077 04       		.uleb128 0x4
- 568 0078 0E010000 		.4byte	.LASF10
- 569 007c 02       		.byte	0x2
- 570 007d 9401     		.2byte	0x194
- 571 007f 48000000 		.4byte	0x48
- 572 0083 02       		.uleb128 0x2
- 573 0084 04       		.byte	0x4
- 574 0085 04       		.byte	0x4
- 575 0086 A7000000 		.4byte	.LASF11
- 576 008a 02       		.uleb128 0x2
- 577 008b 08       		.byte	0x8
- 578 008c 04       		.byte	0x4
- 579 008d D8000000 		.4byte	.LASF12
- 580 0091 02       		.uleb128 0x2
- 581 0092 01       		.byte	0x1
- 582 0093 08       		.byte	0x8
- 583 0094 02020000 		.4byte	.LASF13
- 584 0098 04       		.uleb128 0x4
- 585 0099 BB000000 		.4byte	.LASF14
- 586 009d 02       		.byte	0x2
- 587 009e 3C02     		.2byte	0x23c
- 588 00a0 A4000000 		.4byte	0xa4
- 589 00a4 05       		.uleb128 0x5
- 590 00a5 6B000000 		.4byte	0x6b
- 591 00a9 04       		.uleb128 0x4
- 592 00aa 07000000 		.4byte	.LASF15
- 593 00ae 02       		.byte	0x2
- 594 00af 3E02     		.2byte	0x23e
- 595 00b1 B5000000 		.4byte	0xb5
- 596 00b5 05       		.uleb128 0x5
- 597 00b6 77000000 		.4byte	0x77
- 598 00ba 02       		.uleb128 0x2
- 599 00bb 04       		.byte	0x4
- 600 00bc 07       		.byte	0x7
- 601 00bd EB010000 		.4byte	.LASF16
- 602 00c1 06       		.uleb128 0x6
- 603 00c2 04010000 		.4byte	.LASF29
- 604 00c6 01       		.byte	0x1
- 605 00c7 2E       		.byte	0x2e
- 606 00c8 00000000 		.4byte	.LFB0
- 607 00cc 24030000 		.4byte	.LFE0-.LFB0
- 608 00d0 01       		.uleb128 0x1
- 609 00d1 9C       		.byte	0x9c
- 610 00d2 08010000 		.4byte	0x108
- 611 00d6 07       		.uleb128 0x7
- 612 00d7 00000000 		.4byte	.LASF30
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 21
+ 499 0050 08       		.byte	0x8
+ 500 0051 05       		.byte	0x5
+ 501 0052 F0010000 		.4byte	.LASF6
+ 502 0056 02       		.uleb128 0x2
+ 503 0057 08       		.byte	0x8
+ 504 0058 07       		.byte	0x7
+ 505 0059 2A010000 		.4byte	.LASF7
+ 506 005d 03       		.uleb128 0x3
+ 507 005e 04       		.byte	0x4
+ 508 005f 05       		.byte	0x5
+ 509 0060 696E7400 		.ascii	"int\000"
+ 510 0064 02       		.uleb128 0x2
+ 511 0065 04       		.byte	0x4
+ 512 0066 07       		.byte	0x7
+ 513 0067 1D010000 		.4byte	.LASF8
+ 514 006b 04       		.uleb128 0x4
+ 515 006c CE000000 		.4byte	.LASF9
+ 516 0070 02       		.byte	0x2
+ 517 0071 9201     		.2byte	0x192
+ 518 0073 2C000000 		.4byte	0x2c
+ 519 0077 04       		.uleb128 0x4
+ 520 0078 0A010000 		.4byte	.LASF10
+ 521 007c 02       		.byte	0x2
+ 522 007d 9401     		.2byte	0x194
+ 523 007f 48000000 		.4byte	0x48
+ 524 0083 02       		.uleb128 0x2
+ 525 0084 04       		.byte	0x4
+ 526 0085 04       		.byte	0x4
+ 527 0086 5C000000 		.4byte	.LASF11
+ 528 008a 02       		.uleb128 0x2
+ 529 008b 08       		.byte	0x8
+ 530 008c 04       		.byte	0x4
+ 531 008d D4000000 		.4byte	.LASF12
+ 532 0091 02       		.uleb128 0x2
+ 533 0092 01       		.byte	0x1
+ 534 0093 08       		.byte	0x8
+ 535 0094 FE010000 		.4byte	.LASF13
+ 536 0098 04       		.uleb128 0x4
+ 537 0099 B7000000 		.4byte	.LASF14
+ 538 009d 02       		.byte	0x2
+ 539 009e 3C02     		.2byte	0x23c
+ 540 00a0 A4000000 		.4byte	0xa4
+ 541 00a4 05       		.uleb128 0x5
+ 542 00a5 6B000000 		.4byte	0x6b
+ 543 00a9 04       		.uleb128 0x4
+ 544 00aa 07000000 		.4byte	.LASF15
+ 545 00ae 02       		.byte	0x2
+ 546 00af 3E02     		.2byte	0x23e
+ 547 00b1 B5000000 		.4byte	0xb5
+ 548 00b5 05       		.uleb128 0x5
+ 549 00b6 77000000 		.4byte	0x77
+ 550 00ba 02       		.uleb128 0x2
+ 551 00bb 04       		.byte	0x4
+ 552 00bc 07       		.byte	0x7
+ 553 00bd E7010000 		.4byte	.LASF16
+ 554 00c1 06       		.uleb128 0x6
+ 555 00c2 00010000 		.4byte	.LASF29
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccalVgBh.s 			page 20
 
 
- 613 00db 01       		.byte	0x1
- 614 00dc 34       		.byte	0x34
- 615 00dd 6B000000 		.4byte	0x6b
- 616 00e1 00000000 		.4byte	.LLST0
- 617 00e5 08       		.uleb128 0x8
- 618 00e6 4C010000 		.4byte	.LVL2
- 619 00ea 71010000 		.4byte	0x171
- 620 00ee F8000000 		.4byte	0xf8
- 621 00f2 09       		.uleb128 0x9
- 622 00f3 01       		.uleb128 0x1
- 623 00f4 50       		.byte	0x50
- 624 00f5 01       		.uleb128 0x1
- 625 00f6 30       		.byte	0x30
- 626 00f7 00       		.byte	0
- 627 00f8 0A       		.uleb128 0xa
- 628 00f9 9C020000 		.4byte	.LVL4
- 629 00fd 71010000 		.4byte	0x171
- 630 0101 09       		.uleb128 0x9
- 631 0102 01       		.uleb128 0x1
- 632 0103 50       		.byte	0x50
- 633 0104 01       		.uleb128 0x1
- 634 0105 30       		.byte	0x30
- 635 0106 00       		.byte	0
- 636 0107 00       		.byte	0
- 637 0108 0B       		.uleb128 0xb
- 638 0109 15010000 		.4byte	.LASF17
- 639 010d 03       		.byte	0x3
- 640 010e 23       		.byte	0x23
- 641 010f A4000000 		.4byte	0xa4
- 642 0113 0B       		.uleb128 0xb
- 643 0114 D3010000 		.4byte	.LASF18
- 644 0118 03       		.byte	0x3
- 645 0119 27       		.byte	0x27
- 646 011a A4000000 		.4byte	0xa4
- 647 011e 0B       		.uleb128 0xb
- 648 011f 62020000 		.4byte	.LASF19
- 649 0123 03       		.byte	0x3
- 650 0124 28       		.byte	0x28
- 651 0125 A4000000 		.4byte	0xa4
- 652 0129 0B       		.uleb128 0xb
- 653 012a 07020000 		.4byte	.LASF20
- 654 012e 03       		.byte	0x3
- 655 012f 2B       		.byte	0x2b
- 656 0130 34010000 		.4byte	0x134
- 657 0134 0C       		.uleb128 0xc
- 658 0135 04       		.byte	0x4
- 659 0136 A4000000 		.4byte	0xa4
- 660 013a 0B       		.uleb128 0xb
- 661 013b 4E020000 		.4byte	.LASF21
- 662 013f 03       		.byte	0x3
- 663 0140 2C       		.byte	0x2c
- 664 0141 A4000000 		.4byte	0xa4
- 665 0145 0B       		.uleb128 0xb
- 666 0146 0D000000 		.4byte	.LASF22
- 667 014a 03       		.byte	0x3
- 668 014b 2D       		.byte	0x2d
- 669 014c A4000000 		.4byte	0xa4
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 22
+ 556 00c6 01       		.byte	0x1
+ 557 00c7 2E       		.byte	0x2e
+ 558 00c8 00000000 		.4byte	.LFB0
+ 559 00cc CC020000 		.4byte	.LFE0-.LFB0
+ 560 00d0 01       		.uleb128 0x1
+ 561 00d1 9C       		.byte	0x9c
+ 562 00d2 08010000 		.4byte	0x108
+ 563 00d6 07       		.uleb128 0x7
+ 564 00d7 00000000 		.4byte	.LASF30
+ 565 00db 01       		.byte	0x1
+ 566 00dc 34       		.byte	0x34
+ 567 00dd 6B000000 		.4byte	0x6b
+ 568 00e1 00000000 		.4byte	.LLST0
+ 569 00e5 08       		.uleb128 0x8
+ 570 00e6 2C010000 		.4byte	.LVL2
+ 571 00ea 71010000 		.4byte	0x171
+ 572 00ee F8000000 		.4byte	0xf8
+ 573 00f2 09       		.uleb128 0x9
+ 574 00f3 01       		.uleb128 0x1
+ 575 00f4 50       		.byte	0x50
+ 576 00f5 01       		.uleb128 0x1
+ 577 00f6 30       		.byte	0x30
+ 578 00f7 00       		.byte	0
+ 579 00f8 0A       		.uleb128 0xa
+ 580 00f9 52020000 		.4byte	.LVL4
+ 581 00fd 71010000 		.4byte	0x171
+ 582 0101 09       		.uleb128 0x9
+ 583 0102 01       		.uleb128 0x1
+ 584 0103 50       		.byte	0x50
+ 585 0104 01       		.uleb128 0x1
+ 586 0105 30       		.byte	0x30
+ 587 0106 00       		.byte	0
+ 588 0107 00       		.byte	0
+ 589 0108 0B       		.uleb128 0xb
+ 590 0109 11010000 		.4byte	.LASF17
+ 591 010d 03       		.byte	0x3
+ 592 010e 23       		.byte	0x23
+ 593 010f A4000000 		.4byte	0xa4
+ 594 0113 0B       		.uleb128 0xb
+ 595 0114 CF010000 		.4byte	.LASF18
+ 596 0118 03       		.byte	0x3
+ 597 0119 27       		.byte	0x27
+ 598 011a A4000000 		.4byte	0xa4
+ 599 011e 0B       		.uleb128 0xb
+ 600 011f 5E020000 		.4byte	.LASF19
+ 601 0123 03       		.byte	0x3
+ 602 0124 28       		.byte	0x28
+ 603 0125 A4000000 		.4byte	0xa4
+ 604 0129 0B       		.uleb128 0xb
+ 605 012a 03020000 		.4byte	.LASF20
+ 606 012e 03       		.byte	0x3
+ 607 012f 2B       		.byte	0x2b
+ 608 0130 34010000 		.4byte	0x134
+ 609 0134 0C       		.uleb128 0xc
+ 610 0135 04       		.byte	0x4
+ 611 0136 A4000000 		.4byte	0xa4
+ 612 013a 0B       		.uleb128 0xb
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccalVgBh.s 			page 21
 
 
- 670 0150 0B       		.uleb128 0xb
- 671 0151 22000000 		.4byte	.LASF23
- 672 0155 03       		.byte	0x3
- 673 0156 30       		.byte	0x30
- 674 0157 34010000 		.4byte	0x134
- 675 015b 0B       		.uleb128 0xb
- 676 015c 93000000 		.4byte	.LASF24
- 677 0160 03       		.byte	0x3
- 678 0161 31       		.byte	0x31
- 679 0162 A4000000 		.4byte	0xa4
- 680 0166 0B       		.uleb128 0xb
- 681 0167 24020000 		.4byte	.LASF25
- 682 016b 03       		.byte	0x3
- 683 016c 32       		.byte	0x32
- 684 016d A4000000 		.4byte	0xa4
- 685 0171 0D       		.uleb128 0xd
- 686 0172 E4010000 		.4byte	.LASF31
- 687 0176 04       		.byte	0x4
- 688 0177 7F       		.byte	0x7f
- 689 0178 0E       		.uleb128 0xe
- 690 0179 6B000000 		.4byte	0x6b
- 691 017d 00       		.byte	0
- 692 017e 00       		.byte	0
- 693              		.section	.debug_abbrev,"",%progbits
- 694              	.Ldebug_abbrev0:
- 695 0000 01       		.uleb128 0x1
- 696 0001 11       		.uleb128 0x11
- 697 0002 01       		.byte	0x1
- 698 0003 25       		.uleb128 0x25
- 699 0004 0E       		.uleb128 0xe
- 700 0005 13       		.uleb128 0x13
- 701 0006 0B       		.uleb128 0xb
- 702 0007 03       		.uleb128 0x3
- 703 0008 0E       		.uleb128 0xe
- 704 0009 1B       		.uleb128 0x1b
- 705 000a 0E       		.uleb128 0xe
- 706 000b 55       		.uleb128 0x55
- 707 000c 17       		.uleb128 0x17
- 708 000d 11       		.uleb128 0x11
- 709 000e 01       		.uleb128 0x1
- 710 000f 10       		.uleb128 0x10
- 711 0010 17       		.uleb128 0x17
- 712 0011 00       		.byte	0
- 713 0012 00       		.byte	0
- 714 0013 02       		.uleb128 0x2
- 715 0014 24       		.uleb128 0x24
- 716 0015 00       		.byte	0
- 717 0016 0B       		.uleb128 0xb
- 718 0017 0B       		.uleb128 0xb
- 719 0018 3E       		.uleb128 0x3e
- 720 0019 0B       		.uleb128 0xb
- 721 001a 03       		.uleb128 0x3
- 722 001b 0E       		.uleb128 0xe
- 723 001c 00       		.byte	0
- 724 001d 00       		.byte	0
- 725 001e 03       		.uleb128 0x3
- 726 001f 24       		.uleb128 0x24
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 23
+ 613 013b 4A020000 		.4byte	.LASF21
+ 614 013f 03       		.byte	0x3
+ 615 0140 2C       		.byte	0x2c
+ 616 0141 A4000000 		.4byte	0xa4
+ 617 0145 0B       		.uleb128 0xb
+ 618 0146 0D000000 		.4byte	.LASF22
+ 619 014a 03       		.byte	0x3
+ 620 014b 2D       		.byte	0x2d
+ 621 014c A4000000 		.4byte	0xa4
+ 622 0150 0B       		.uleb128 0xb
+ 623 0151 22000000 		.4byte	.LASF23
+ 624 0155 03       		.byte	0x3
+ 625 0156 30       		.byte	0x30
+ 626 0157 34010000 		.4byte	0x134
+ 627 015b 0B       		.uleb128 0xb
+ 628 015c 48000000 		.4byte	.LASF24
+ 629 0160 03       		.byte	0x3
+ 630 0161 31       		.byte	0x31
+ 631 0162 A4000000 		.4byte	0xa4
+ 632 0166 0B       		.uleb128 0xb
+ 633 0167 20020000 		.4byte	.LASF25
+ 634 016b 03       		.byte	0x3
+ 635 016c 32       		.byte	0x32
+ 636 016d A4000000 		.4byte	0xa4
+ 637 0171 0D       		.uleb128 0xd
+ 638 0172 E0010000 		.4byte	.LASF31
+ 639 0176 04       		.byte	0x4
+ 640 0177 7F       		.byte	0x7f
+ 641 0178 0E       		.uleb128 0xe
+ 642 0179 6B000000 		.4byte	0x6b
+ 643 017d 00       		.byte	0
+ 644 017e 00       		.byte	0
+ 645              		.section	.debug_abbrev,"",%progbits
+ 646              	.Ldebug_abbrev0:
+ 647 0000 01       		.uleb128 0x1
+ 648 0001 11       		.uleb128 0x11
+ 649 0002 01       		.byte	0x1
+ 650 0003 25       		.uleb128 0x25
+ 651 0004 0E       		.uleb128 0xe
+ 652 0005 13       		.uleb128 0x13
+ 653 0006 0B       		.uleb128 0xb
+ 654 0007 03       		.uleb128 0x3
+ 655 0008 0E       		.uleb128 0xe
+ 656 0009 1B       		.uleb128 0x1b
+ 657 000a 0E       		.uleb128 0xe
+ 658 000b 55       		.uleb128 0x55
+ 659 000c 17       		.uleb128 0x17
+ 660 000d 11       		.uleb128 0x11
+ 661 000e 01       		.uleb128 0x1
+ 662 000f 10       		.uleb128 0x10
+ 663 0010 17       		.uleb128 0x17
+ 664 0011 00       		.byte	0
+ 665 0012 00       		.byte	0
+ 666 0013 02       		.uleb128 0x2
+ 667 0014 24       		.uleb128 0x24
+ 668 0015 00       		.byte	0
+ 669 0016 0B       		.uleb128 0xb
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccalVgBh.s 			page 22
 
 
- 727 0020 00       		.byte	0
- 728 0021 0B       		.uleb128 0xb
- 729 0022 0B       		.uleb128 0xb
- 730 0023 3E       		.uleb128 0x3e
- 731 0024 0B       		.uleb128 0xb
- 732 0025 03       		.uleb128 0x3
- 733 0026 08       		.uleb128 0x8
- 734 0027 00       		.byte	0
- 735 0028 00       		.byte	0
- 736 0029 04       		.uleb128 0x4
- 737 002a 16       		.uleb128 0x16
- 738 002b 00       		.byte	0
- 739 002c 03       		.uleb128 0x3
- 740 002d 0E       		.uleb128 0xe
- 741 002e 3A       		.uleb128 0x3a
- 742 002f 0B       		.uleb128 0xb
- 743 0030 3B       		.uleb128 0x3b
- 744 0031 05       		.uleb128 0x5
- 745 0032 49       		.uleb128 0x49
- 746 0033 13       		.uleb128 0x13
- 747 0034 00       		.byte	0
- 748 0035 00       		.byte	0
- 749 0036 05       		.uleb128 0x5
- 750 0037 35       		.uleb128 0x35
- 751 0038 00       		.byte	0
- 752 0039 49       		.uleb128 0x49
- 753 003a 13       		.uleb128 0x13
- 754 003b 00       		.byte	0
- 755 003c 00       		.byte	0
- 756 003d 06       		.uleb128 0x6
- 757 003e 2E       		.uleb128 0x2e
- 758 003f 01       		.byte	0x1
- 759 0040 3F       		.uleb128 0x3f
- 760 0041 19       		.uleb128 0x19
- 761 0042 03       		.uleb128 0x3
- 762 0043 0E       		.uleb128 0xe
- 763 0044 3A       		.uleb128 0x3a
- 764 0045 0B       		.uleb128 0xb
- 765 0046 3B       		.uleb128 0x3b
- 766 0047 0B       		.uleb128 0xb
- 767 0048 27       		.uleb128 0x27
- 768 0049 19       		.uleb128 0x19
- 769 004a 11       		.uleb128 0x11
- 770 004b 01       		.uleb128 0x1
- 771 004c 12       		.uleb128 0x12
- 772 004d 06       		.uleb128 0x6
- 773 004e 40       		.uleb128 0x40
- 774 004f 18       		.uleb128 0x18
- 775 0050 9742     		.uleb128 0x2117
- 776 0052 19       		.uleb128 0x19
- 777 0053 01       		.uleb128 0x1
- 778 0054 13       		.uleb128 0x13
- 779 0055 00       		.byte	0
- 780 0056 00       		.byte	0
- 781 0057 07       		.uleb128 0x7
- 782 0058 34       		.uleb128 0x34
- 783 0059 00       		.byte	0
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 24
+ 670 0017 0B       		.uleb128 0xb
+ 671 0018 3E       		.uleb128 0x3e
+ 672 0019 0B       		.uleb128 0xb
+ 673 001a 03       		.uleb128 0x3
+ 674 001b 0E       		.uleb128 0xe
+ 675 001c 00       		.byte	0
+ 676 001d 00       		.byte	0
+ 677 001e 03       		.uleb128 0x3
+ 678 001f 24       		.uleb128 0x24
+ 679 0020 00       		.byte	0
+ 680 0021 0B       		.uleb128 0xb
+ 681 0022 0B       		.uleb128 0xb
+ 682 0023 3E       		.uleb128 0x3e
+ 683 0024 0B       		.uleb128 0xb
+ 684 0025 03       		.uleb128 0x3
+ 685 0026 08       		.uleb128 0x8
+ 686 0027 00       		.byte	0
+ 687 0028 00       		.byte	0
+ 688 0029 04       		.uleb128 0x4
+ 689 002a 16       		.uleb128 0x16
+ 690 002b 00       		.byte	0
+ 691 002c 03       		.uleb128 0x3
+ 692 002d 0E       		.uleb128 0xe
+ 693 002e 3A       		.uleb128 0x3a
+ 694 002f 0B       		.uleb128 0xb
+ 695 0030 3B       		.uleb128 0x3b
+ 696 0031 05       		.uleb128 0x5
+ 697 0032 49       		.uleb128 0x49
+ 698 0033 13       		.uleb128 0x13
+ 699 0034 00       		.byte	0
+ 700 0035 00       		.byte	0
+ 701 0036 05       		.uleb128 0x5
+ 702 0037 35       		.uleb128 0x35
+ 703 0038 00       		.byte	0
+ 704 0039 49       		.uleb128 0x49
+ 705 003a 13       		.uleb128 0x13
+ 706 003b 00       		.byte	0
+ 707 003c 00       		.byte	0
+ 708 003d 06       		.uleb128 0x6
+ 709 003e 2E       		.uleb128 0x2e
+ 710 003f 01       		.byte	0x1
+ 711 0040 3F       		.uleb128 0x3f
+ 712 0041 19       		.uleb128 0x19
+ 713 0042 03       		.uleb128 0x3
+ 714 0043 0E       		.uleb128 0xe
+ 715 0044 3A       		.uleb128 0x3a
+ 716 0045 0B       		.uleb128 0xb
+ 717 0046 3B       		.uleb128 0x3b
+ 718 0047 0B       		.uleb128 0xb
+ 719 0048 27       		.uleb128 0x27
+ 720 0049 19       		.uleb128 0x19
+ 721 004a 11       		.uleb128 0x11
+ 722 004b 01       		.uleb128 0x1
+ 723 004c 12       		.uleb128 0x12
+ 724 004d 06       		.uleb128 0x6
+ 725 004e 40       		.uleb128 0x40
+ 726 004f 18       		.uleb128 0x18
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccalVgBh.s 			page 23
 
 
- 784 005a 03       		.uleb128 0x3
- 785 005b 0E       		.uleb128 0xe
- 786 005c 3A       		.uleb128 0x3a
- 787 005d 0B       		.uleb128 0xb
- 788 005e 3B       		.uleb128 0x3b
- 789 005f 0B       		.uleb128 0xb
- 790 0060 49       		.uleb128 0x49
- 791 0061 13       		.uleb128 0x13
- 792 0062 02       		.uleb128 0x2
- 793 0063 17       		.uleb128 0x17
- 794 0064 00       		.byte	0
- 795 0065 00       		.byte	0
- 796 0066 08       		.uleb128 0x8
- 797 0067 898201   		.uleb128 0x4109
- 798 006a 01       		.byte	0x1
- 799 006b 11       		.uleb128 0x11
- 800 006c 01       		.uleb128 0x1
- 801 006d 31       		.uleb128 0x31
- 802 006e 13       		.uleb128 0x13
- 803 006f 01       		.uleb128 0x1
- 804 0070 13       		.uleb128 0x13
- 805 0071 00       		.byte	0
- 806 0072 00       		.byte	0
- 807 0073 09       		.uleb128 0x9
- 808 0074 8A8201   		.uleb128 0x410a
- 809 0077 00       		.byte	0
- 810 0078 02       		.uleb128 0x2
- 811 0079 18       		.uleb128 0x18
- 812 007a 9142     		.uleb128 0x2111
- 813 007c 18       		.uleb128 0x18
- 814 007d 00       		.byte	0
- 815 007e 00       		.byte	0
- 816 007f 0A       		.uleb128 0xa
- 817 0080 898201   		.uleb128 0x4109
- 818 0083 01       		.byte	0x1
- 819 0084 11       		.uleb128 0x11
- 820 0085 01       		.uleb128 0x1
- 821 0086 31       		.uleb128 0x31
- 822 0087 13       		.uleb128 0x13
- 823 0088 00       		.byte	0
- 824 0089 00       		.byte	0
- 825 008a 0B       		.uleb128 0xb
- 826 008b 34       		.uleb128 0x34
- 827 008c 00       		.byte	0
- 828 008d 03       		.uleb128 0x3
- 829 008e 0E       		.uleb128 0xe
- 830 008f 3A       		.uleb128 0x3a
- 831 0090 0B       		.uleb128 0xb
- 832 0091 3B       		.uleb128 0x3b
- 833 0092 0B       		.uleb128 0xb
- 834 0093 49       		.uleb128 0x49
- 835 0094 13       		.uleb128 0x13
- 836 0095 3F       		.uleb128 0x3f
- 837 0096 19       		.uleb128 0x19
- 838 0097 3C       		.uleb128 0x3c
- 839 0098 19       		.uleb128 0x19
- 840 0099 00       		.byte	0
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 25
+ 727 0050 9742     		.uleb128 0x2117
+ 728 0052 19       		.uleb128 0x19
+ 729 0053 01       		.uleb128 0x1
+ 730 0054 13       		.uleb128 0x13
+ 731 0055 00       		.byte	0
+ 732 0056 00       		.byte	0
+ 733 0057 07       		.uleb128 0x7
+ 734 0058 34       		.uleb128 0x34
+ 735 0059 00       		.byte	0
+ 736 005a 03       		.uleb128 0x3
+ 737 005b 0E       		.uleb128 0xe
+ 738 005c 3A       		.uleb128 0x3a
+ 739 005d 0B       		.uleb128 0xb
+ 740 005e 3B       		.uleb128 0x3b
+ 741 005f 0B       		.uleb128 0xb
+ 742 0060 49       		.uleb128 0x49
+ 743 0061 13       		.uleb128 0x13
+ 744 0062 02       		.uleb128 0x2
+ 745 0063 17       		.uleb128 0x17
+ 746 0064 00       		.byte	0
+ 747 0065 00       		.byte	0
+ 748 0066 08       		.uleb128 0x8
+ 749 0067 898201   		.uleb128 0x4109
+ 750 006a 01       		.byte	0x1
+ 751 006b 11       		.uleb128 0x11
+ 752 006c 01       		.uleb128 0x1
+ 753 006d 31       		.uleb128 0x31
+ 754 006e 13       		.uleb128 0x13
+ 755 006f 01       		.uleb128 0x1
+ 756 0070 13       		.uleb128 0x13
+ 757 0071 00       		.byte	0
+ 758 0072 00       		.byte	0
+ 759 0073 09       		.uleb128 0x9
+ 760 0074 8A8201   		.uleb128 0x410a
+ 761 0077 00       		.byte	0
+ 762 0078 02       		.uleb128 0x2
+ 763 0079 18       		.uleb128 0x18
+ 764 007a 9142     		.uleb128 0x2111
+ 765 007c 18       		.uleb128 0x18
+ 766 007d 00       		.byte	0
+ 767 007e 00       		.byte	0
+ 768 007f 0A       		.uleb128 0xa
+ 769 0080 898201   		.uleb128 0x4109
+ 770 0083 01       		.byte	0x1
+ 771 0084 11       		.uleb128 0x11
+ 772 0085 01       		.uleb128 0x1
+ 773 0086 31       		.uleb128 0x31
+ 774 0087 13       		.uleb128 0x13
+ 775 0088 00       		.byte	0
+ 776 0089 00       		.byte	0
+ 777 008a 0B       		.uleb128 0xb
+ 778 008b 34       		.uleb128 0x34
+ 779 008c 00       		.byte	0
+ 780 008d 03       		.uleb128 0x3
+ 781 008e 0E       		.uleb128 0xe
+ 782 008f 3A       		.uleb128 0x3a
+ 783 0090 0B       		.uleb128 0xb
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccalVgBh.s 			page 24
 
 
- 841 009a 00       		.byte	0
- 842 009b 0C       		.uleb128 0xc
- 843 009c 0F       		.uleb128 0xf
- 844 009d 00       		.byte	0
- 845 009e 0B       		.uleb128 0xb
- 846 009f 0B       		.uleb128 0xb
- 847 00a0 49       		.uleb128 0x49
- 848 00a1 13       		.uleb128 0x13
- 849 00a2 00       		.byte	0
- 850 00a3 00       		.byte	0
- 851 00a4 0D       		.uleb128 0xd
- 852 00a5 2E       		.uleb128 0x2e
- 853 00a6 01       		.byte	0x1
- 854 00a7 3F       		.uleb128 0x3f
- 855 00a8 19       		.uleb128 0x19
- 856 00a9 03       		.uleb128 0x3
- 857 00aa 0E       		.uleb128 0xe
- 858 00ab 3A       		.uleb128 0x3a
- 859 00ac 0B       		.uleb128 0xb
- 860 00ad 3B       		.uleb128 0x3b
- 861 00ae 0B       		.uleb128 0xb
- 862 00af 27       		.uleb128 0x27
- 863 00b0 19       		.uleb128 0x19
- 864 00b1 3C       		.uleb128 0x3c
- 865 00b2 19       		.uleb128 0x19
- 866 00b3 00       		.byte	0
- 867 00b4 00       		.byte	0
- 868 00b5 0E       		.uleb128 0xe
- 869 00b6 05       		.uleb128 0x5
- 870 00b7 00       		.byte	0
- 871 00b8 49       		.uleb128 0x49
- 872 00b9 13       		.uleb128 0x13
- 873 00ba 00       		.byte	0
- 874 00bb 00       		.byte	0
- 875 00bc 00       		.byte	0
- 876              		.section	.debug_loc,"",%progbits
- 877              	.Ldebug_loc0:
- 878              	.LLST0:
- 879 0000 08000000 		.4byte	.LVL0
- 880 0004 3C000000 		.4byte	.LVL1
- 881 0008 0100     		.2byte	0x1
- 882 000a 54       		.byte	0x54
- 883 000b 3C000000 		.4byte	.LVL1
- 884 000f 50010000 		.4byte	.LVL3
- 885 0013 0100     		.2byte	0x1
- 886 0015 55       		.byte	0x55
- 887 0016 50010000 		.4byte	.LVL3
- 888 001a 16030000 		.4byte	.LVL6
- 889 001e 0100     		.2byte	0x1
- 890 0020 54       		.byte	0x54
- 891 0021 00000000 		.4byte	0
- 892 0025 00000000 		.4byte	0
- 893              		.section	.debug_aranges,"",%progbits
- 894 0000 1C000000 		.4byte	0x1c
- 895 0004 0200     		.2byte	0x2
- 896 0006 00000000 		.4byte	.Ldebug_info0
- 897 000a 04       		.byte	0x4
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 26
+ 784 0091 3B       		.uleb128 0x3b
+ 785 0092 0B       		.uleb128 0xb
+ 786 0093 49       		.uleb128 0x49
+ 787 0094 13       		.uleb128 0x13
+ 788 0095 3F       		.uleb128 0x3f
+ 789 0096 19       		.uleb128 0x19
+ 790 0097 3C       		.uleb128 0x3c
+ 791 0098 19       		.uleb128 0x19
+ 792 0099 00       		.byte	0
+ 793 009a 00       		.byte	0
+ 794 009b 0C       		.uleb128 0xc
+ 795 009c 0F       		.uleb128 0xf
+ 796 009d 00       		.byte	0
+ 797 009e 0B       		.uleb128 0xb
+ 798 009f 0B       		.uleb128 0xb
+ 799 00a0 49       		.uleb128 0x49
+ 800 00a1 13       		.uleb128 0x13
+ 801 00a2 00       		.byte	0
+ 802 00a3 00       		.byte	0
+ 803 00a4 0D       		.uleb128 0xd
+ 804 00a5 2E       		.uleb128 0x2e
+ 805 00a6 01       		.byte	0x1
+ 806 00a7 3F       		.uleb128 0x3f
+ 807 00a8 19       		.uleb128 0x19
+ 808 00a9 03       		.uleb128 0x3
+ 809 00aa 0E       		.uleb128 0xe
+ 810 00ab 3A       		.uleb128 0x3a
+ 811 00ac 0B       		.uleb128 0xb
+ 812 00ad 3B       		.uleb128 0x3b
+ 813 00ae 0B       		.uleb128 0xb
+ 814 00af 27       		.uleb128 0x27
+ 815 00b0 19       		.uleb128 0x19
+ 816 00b1 3C       		.uleb128 0x3c
+ 817 00b2 19       		.uleb128 0x19
+ 818 00b3 00       		.byte	0
+ 819 00b4 00       		.byte	0
+ 820 00b5 0E       		.uleb128 0xe
+ 821 00b6 05       		.uleb128 0x5
+ 822 00b7 00       		.byte	0
+ 823 00b8 49       		.uleb128 0x49
+ 824 00b9 13       		.uleb128 0x13
+ 825 00ba 00       		.byte	0
+ 826 00bb 00       		.byte	0
+ 827 00bc 00       		.byte	0
+ 828              		.section	.debug_loc,"",%progbits
+ 829              	.Ldebug_loc0:
+ 830              	.LLST0:
+ 831 0000 08000000 		.4byte	.LVL0
+ 832 0004 3C000000 		.4byte	.LVL1
+ 833 0008 0100     		.2byte	0x1
+ 834 000a 54       		.byte	0x54
+ 835 000b 3C000000 		.4byte	.LVL1
+ 836 000f 30010000 		.4byte	.LVL3
+ 837 0013 0100     		.2byte	0x1
+ 838 0015 55       		.byte	0x55
+ 839 0016 30010000 		.4byte	.LVL3
+ 840 001a 94020000 		.4byte	.LVL6
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccalVgBh.s 			page 25
 
 
- 898 000b 00       		.byte	0
- 899 000c 0000     		.2byte	0
- 900 000e 0000     		.2byte	0
- 901 0010 00000000 		.4byte	.LFB0
- 902 0014 24030000 		.4byte	.LFE0-.LFB0
- 903 0018 00000000 		.4byte	0
- 904 001c 00000000 		.4byte	0
- 905              		.section	.debug_ranges,"",%progbits
- 906              	.Ldebug_ranges0:
- 907 0000 00000000 		.4byte	.LFB0
- 908 0004 24030000 		.4byte	.LFE0
- 909 0008 00000000 		.4byte	0
- 910 000c 00000000 		.4byte	0
- 911              		.section	.debug_line,"",%progbits
- 912              	.Ldebug_line0:
- 913 0000 18010000 		.section	.debug_str,"MS",%progbits,1
- 913      02006200 
- 913      00000201 
- 913      FB0E0D00 
- 913      01010101 
- 914              	.LASF30:
- 915 0000 746D7043 		.ascii	"tmpCsr\000"
- 915      737200
- 916              	.LASF15:
- 917 0007 72656733 		.ascii	"reg32\000"
- 917      3200
- 918              	.LASF22:
- 919 000d 4932435F 		.ascii	"I2C_1_mstrRdBufIndex\000"
- 919      315F6D73 
- 919      74725264 
- 919      42756649 
- 919      6E646578 
- 920              	.LASF23:
- 921 0022 4932435F 		.ascii	"I2C_1_mstrWrBufPtr\000"
- 921      315F6D73 
- 921      74725772 
- 921      42756650 
- 921      747200
- 922              	.LASF28:
- 923 0035 433A5C55 		.ascii	"C:\\Users\\Robert\\Documents\\PSoC Creator\\PSoCTes"
- 923      73657273 
- 923      5C526F62 
- 923      6572745C 
- 923      446F6375 
- 924 0063 74576F72 		.ascii	"tWorkspace\\CompassTest.cydsn\000"
- 924      6B737061 
- 924      63655C43 
- 924      6F6D7061 
- 924      73735465 
- 925              	.LASF3:
- 926 0080 73686F72 		.ascii	"short unsigned int\000"
- 926      7420756E 
- 926      7369676E 
- 926      65642069 
- 926      6E7400
- 927              	.LASF24:
- 928 0093 4932435F 		.ascii	"I2C_1_mstrWrBufSize\000"
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 27
+ 841 001e 0100     		.2byte	0x1
+ 842 0020 54       		.byte	0x54
+ 843 0021 00000000 		.4byte	0
+ 844 0025 00000000 		.4byte	0
+ 845              		.section	.debug_aranges,"",%progbits
+ 846 0000 1C000000 		.4byte	0x1c
+ 847 0004 0200     		.2byte	0x2
+ 848 0006 00000000 		.4byte	.Ldebug_info0
+ 849 000a 04       		.byte	0x4
+ 850 000b 00       		.byte	0
+ 851 000c 0000     		.2byte	0
+ 852 000e 0000     		.2byte	0
+ 853 0010 00000000 		.4byte	.LFB0
+ 854 0014 CC020000 		.4byte	.LFE0-.LFB0
+ 855 0018 00000000 		.4byte	0
+ 856 001c 00000000 		.4byte	0
+ 857              		.section	.debug_ranges,"",%progbits
+ 858              	.Ldebug_ranges0:
+ 859 0000 00000000 		.4byte	.LFB0
+ 860 0004 CC020000 		.4byte	.LFE0
+ 861 0008 00000000 		.4byte	0
+ 862 000c 00000000 		.4byte	0
+ 863              		.section	.debug_line,"",%progbits
+ 864              	.Ldebug_line0:
+ 865 0000 16010000 		.section	.debug_str,"MS",%progbits,1
+ 865      02006200 
+ 865      00000201 
+ 865      FB0E0D00 
+ 865      01010101 
+ 866              	.LASF30:
+ 867 0000 746D7043 		.ascii	"tmpCsr\000"
+ 867      737200
+ 868              	.LASF15:
+ 869 0007 72656733 		.ascii	"reg32\000"
+ 869      3200
+ 870              	.LASF22:
+ 871 000d 4932435F 		.ascii	"I2C_1_mstrRdBufIndex\000"
+ 871      315F6D73 
+ 871      74725264 
+ 871      42756649 
+ 871      6E646578 
+ 872              	.LASF23:
+ 873 0022 4932435F 		.ascii	"I2C_1_mstrWrBufPtr\000"
+ 873      315F6D73 
+ 873      74725772 
+ 873      42756650 
+ 873      747200
+ 874              	.LASF3:
+ 875 0035 73686F72 		.ascii	"short unsigned int\000"
+ 875      7420756E 
+ 875      7369676E 
+ 875      65642069 
+ 875      6E7400
+ 876              	.LASF24:
+ 877 0048 4932435F 		.ascii	"I2C_1_mstrWrBufSize\000"
+ 877      315F6D73 
+ 877      74725772 
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccalVgBh.s 			page 26
 
 
- 928      315F6D73 
- 928      74725772 
- 928      42756653 
- 928      697A6500 
- 929              	.LASF11:
- 930 00a7 666C6F61 		.ascii	"float\000"
- 930      7400
- 931              	.LASF1:
- 932 00ad 756E7369 		.ascii	"unsigned char\000"
- 932      676E6564 
- 932      20636861 
- 932      7200
- 933              	.LASF14:
- 934 00bb 72656738 		.ascii	"reg8\000"
- 934      00
- 935              	.LASF5:
- 936 00c0 6C6F6E67 		.ascii	"long unsigned int\000"
- 936      20756E73 
- 936      69676E65 
- 936      6420696E 
- 936      7400
- 937              	.LASF9:
- 938 00d2 75696E74 		.ascii	"uint8\000"
- 938      3800
- 939              	.LASF12:
- 940 00d8 646F7562 		.ascii	"double\000"
- 940      6C6500
- 941              	.LASF27:
- 942 00df 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\I2C_1_INT.c\000"
- 942      6E657261 
- 942      7465645F 
- 942      536F7572 
- 942      63655C50 
- 943              	.LASF29:
- 944 0104 4932435F 		.ascii	"I2C_1_ISR\000"
- 944      315F4953 
- 944      5200
- 945              	.LASF10:
- 946 010e 75696E74 		.ascii	"uint32\000"
- 946      333200
- 947              	.LASF17:
- 948 0115 4932435F 		.ascii	"I2C_1_state\000"
- 948      315F7374 
- 948      61746500 
- 949              	.LASF8:
- 950 0121 756E7369 		.ascii	"unsigned int\000"
- 950      676E6564 
- 950      20696E74 
- 950      00
- 951              	.LASF7:
- 952 012e 6C6F6E67 		.ascii	"long long unsigned int\000"
- 952      206C6F6E 
- 952      6720756E 
- 952      7369676E 
- 952      65642069 
- 953              	.LASF26:
- 954 0145 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 28
+ 877      42756653 
+ 877      697A6500 
+ 878              	.LASF11:
+ 879 005c 666C6F61 		.ascii	"float\000"
+ 879      7400
+ 880              	.LASF1:
+ 881 0062 756E7369 		.ascii	"unsigned char\000"
+ 881      676E6564 
+ 881      20636861 
+ 881      7200
+ 882              	.LASF28:
+ 883 0070 433A5C55 		.ascii	"C:\\Users\\robert\\Documents\\PSoC Creator\\TestWor"
+ 883      73657273 
+ 883      5C726F62 
+ 883      6572745C 
+ 883      446F6375 
+ 884 009e 6B737061 		.ascii	"kspace\\CompassTest.cydsn\000"
+ 884      63655C43 
+ 884      6F6D7061 
+ 884      73735465 
+ 884      73742E63 
+ 885              	.LASF14:
+ 886 00b7 72656738 		.ascii	"reg8\000"
+ 886      00
+ 887              	.LASF5:
+ 888 00bc 6C6F6E67 		.ascii	"long unsigned int\000"
+ 888      20756E73 
+ 888      69676E65 
+ 888      6420696E 
+ 888      7400
+ 889              	.LASF9:
+ 890 00ce 75696E74 		.ascii	"uint8\000"
+ 890      3800
+ 891              	.LASF12:
+ 892 00d4 646F7562 		.ascii	"double\000"
+ 892      6C6500
+ 893              	.LASF27:
+ 894 00db 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\I2C_1_INT.c\000"
+ 894      6E657261 
+ 894      7465645F 
+ 894      536F7572 
+ 894      63655C50 
+ 895              	.LASF29:
+ 896 0100 4932435F 		.ascii	"I2C_1_ISR\000"
+ 896      315F4953 
+ 896      5200
+ 897              	.LASF10:
+ 898 010a 75696E74 		.ascii	"uint32\000"
+ 898      333200
+ 899              	.LASF17:
+ 900 0111 4932435F 		.ascii	"I2C_1_state\000"
+ 900      315F7374 
+ 900      61746500 
+ 901              	.LASF8:
+ 902 011d 756E7369 		.ascii	"unsigned int\000"
+ 902      676E6564 
+ 902      20696E74 
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccalVgBh.s 			page 27
 
 
- 954      4320342E 
- 954      392E3320 
- 954      32303135 
- 954      30333033 
- 955 0178 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
- 955      20726576 
- 955      6973696F 
- 955      6E203232 
- 955      31323230 
- 956 01ab 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 956      66756E63 
- 956      74696F6E 
- 956      2D736563 
- 956      74696F6E 
- 957              	.LASF18:
- 958 01d3 4932435F 		.ascii	"I2C_1_mstrStatus\000"
- 958      315F6D73 
- 958      74725374 
- 958      61747573 
- 958      00
- 959              	.LASF31:
- 960 01e4 43794861 		.ascii	"CyHalt\000"
- 960      6C7400
- 961              	.LASF16:
- 962 01eb 73697A65 		.ascii	"sizetype\000"
- 962      74797065 
- 962      00
- 963              	.LASF6:
- 964 01f4 6C6F6E67 		.ascii	"long long int\000"
- 964      206C6F6E 
- 964      6720696E 
- 964      7400
- 965              	.LASF13:
- 966 0202 63686172 		.ascii	"char\000"
- 966      00
- 967              	.LASF20:
- 968 0207 4932435F 		.ascii	"I2C_1_mstrRdBufPtr\000"
- 968      315F6D73 
- 968      74725264 
- 968      42756650 
- 968      747200
- 969              	.LASF2:
- 970 021a 73686F72 		.ascii	"short int\000"
- 970      7420696E 
- 970      7400
- 971              	.LASF25:
- 972 0224 4932435F 		.ascii	"I2C_1_mstrWrBufIndex\000"
- 972      315F6D73 
- 972      74725772 
- 972      42756649 
- 972      6E646578 
- 973              	.LASF4:
- 974 0239 6C6F6E67 		.ascii	"long int\000"
- 974      20696E74 
- 974      00
- 975              	.LASF0:
- 976 0242 7369676E 		.ascii	"signed char\000"
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccafRwgF.s 			page 29
+ 902      00
+ 903              	.LASF7:
+ 904 012a 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 904      206C6F6E 
+ 904      6720756E 
+ 904      7369676E 
+ 904      65642069 
+ 905              	.LASF26:
+ 906 0141 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 906      4320342E 
+ 906      392E3320 
+ 906      32303135 
+ 906      30333033 
+ 907 0174 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 907      20726576 
+ 907      6973696F 
+ 907      6E203232 
+ 907      31323230 
+ 908 01a7 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 908      66756E63 
+ 908      74696F6E 
+ 908      2D736563 
+ 908      74696F6E 
+ 909              	.LASF18:
+ 910 01cf 4932435F 		.ascii	"I2C_1_mstrStatus\000"
+ 910      315F6D73 
+ 910      74725374 
+ 910      61747573 
+ 910      00
+ 911              	.LASF31:
+ 912 01e0 43794861 		.ascii	"CyHalt\000"
+ 912      6C7400
+ 913              	.LASF16:
+ 914 01e7 73697A65 		.ascii	"sizetype\000"
+ 914      74797065 
+ 914      00
+ 915              	.LASF6:
+ 916 01f0 6C6F6E67 		.ascii	"long long int\000"
+ 916      206C6F6E 
+ 916      6720696E 
+ 916      7400
+ 917              	.LASF13:
+ 918 01fe 63686172 		.ascii	"char\000"
+ 918      00
+ 919              	.LASF20:
+ 920 0203 4932435F 		.ascii	"I2C_1_mstrRdBufPtr\000"
+ 920      315F6D73 
+ 920      74725264 
+ 920      42756650 
+ 920      747200
+ 921              	.LASF2:
+ 922 0216 73686F72 		.ascii	"short int\000"
+ 922      7420696E 
+ 922      7400
+ 923              	.LASF25:
+ 924 0220 4932435F 		.ascii	"I2C_1_mstrWrBufIndex\000"
+ 924      315F6D73 
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccalVgBh.s 			page 28
 
 
- 976      65642063 
- 976      68617200 
- 977              	.LASF21:
- 978 024e 4932435F 		.ascii	"I2C_1_mstrRdBufSize\000"
- 978      315F6D73 
- 978      74725264 
- 978      42756653 
- 978      697A6500 
- 979              	.LASF19:
- 980 0262 4932435F 		.ascii	"I2C_1_mstrControl\000"
- 980      315F6D73 
- 980      7472436F 
- 980      6E74726F 
- 980      6C00
- 981              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
+ 924      74725772 
+ 924      42756649 
+ 924      6E646578 
+ 925              	.LASF4:
+ 926 0235 6C6F6E67 		.ascii	"long int\000"
+ 926      20696E74 
+ 926      00
+ 927              	.LASF0:
+ 928 023e 7369676E 		.ascii	"signed char\000"
+ 928      65642063 
+ 928      68617200 
+ 929              	.LASF21:
+ 930 024a 4932435F 		.ascii	"I2C_1_mstrRdBufSize\000"
+ 930      315F6D73 
+ 930      74725264 
+ 930      42756653 
+ 930      697A6500 
+ 931              	.LASF19:
+ 932 025e 4932435F 		.ascii	"I2C_1_mstrControl\000"
+ 932      315F6D73 
+ 932      7472436F 
+ 932      6E74726F 
+ 932      6C00
+ 933              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

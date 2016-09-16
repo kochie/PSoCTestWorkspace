@@ -2,7 +2,7 @@
 --	Conversion of UartTest.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Thu Sep 15 09:50:40 2016
+--	Fri Sep 16 13:24:42 2016
 --
 
 USE cypress.cypress.all;

@@ -1,7 +1,6 @@
-C:\Users\Robert\Documents\PSoC Creator\PSoCTestWorkspace\CompassTest.cydsn\CompassTest.cyprj|4341c166-5b93-4062-b832-0d955be29feb
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|41f75453-8d29-4cbc-9e68-9cafa83733b0
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|0f2d6250-4c30-4292-9335-5a3242c66977
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|829915a3-7376-41e7-a9e9-9790b919355a
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|149f7f67-b616-4fb5-9eaa-e8c8af0e272d
-C:\Users\Robert\Documents\PSoC Creator\PSoCTestWorkspace\UartTest.cydsn\UartTest.cyprj|e3be8fce-7318-4279-9d72-cb8496a3f31d
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|f1ba5cef-4ee9-4283-9cd2-3d0176a2c2e6
+C:\Users\robert\Documents\PSoC Creator\TestWorkspace\CompassTest.cydsn\CompassTest.cyprj|a4ff0e99-e010-480d-be94-983f213ba0ca
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|af11b1e1-be11-4298-bc4f-0a01fcfcbf12
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|936e1ed6-ab48-41a0-a561-2baf3e41f26d
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|6c383474-6620-48f5-83a2-556d84b2d619
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|ecc4f4eb-0820-4329-8bd6-bd3b417d5a1f
+C:\Users\robert\Documents\PSoC Creator\TestWorkspace\UartTest.cydsn\UartTest.cyprj|eb5e6c30-f952-4366-9b38-d6da220ea263

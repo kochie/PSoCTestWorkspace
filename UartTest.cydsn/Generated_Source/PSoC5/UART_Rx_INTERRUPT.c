@@ -27,7 +27,7 @@
 *  Place your includes, defines and code here 
 ********************************************************************************/
 /* `#START UART_Rx_INTERRUPT_intc` */
-extern uint8 flag;
+extern uint8 UART_RX_INTERRUPT_FLAG;
 /* `#END` */
 
 #ifndef CYINT_IRQ_BASE
@@ -159,13 +159,14 @@ void UART_Rx_INTERRUPT_Stop(void)
 *******************************************************************************/
 CY_ISR(UART_Rx_INTERRUPT_Interrupt)
 {
+    
     #ifdef UART_Rx_INTERRUPT_INTERRUPT_INTERRUPT_CALLBACK
         UART_Rx_INTERRUPT_Interrupt_InterruptCallback();
     #endif /* UART_Rx_INTERRUPT_INTERRUPT_INTERRUPT_CALLBACK */ 
 
     /*  Place your Interrupt code here. */
     /* `#START UART_Rx_INTERRUPT_Interrupt` */
-
+    UART_RX_INTERRUPT_FLAG = 1;
     /* `#END` */
 }
 

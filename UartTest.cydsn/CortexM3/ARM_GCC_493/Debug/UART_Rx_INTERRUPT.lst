@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 1
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccl2eJed.s 			page 1
 
 
    1              		.syntax unified
@@ -56,9 +56,9 @@ ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 1
   27:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *  Place your includes, defines and code here 
   28:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** ********************************************************************************/
   29:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** /* `#START UART_Rx_INTERRUPT_intc` */
-  30:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** extern uint8 flag;
+  30:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** extern uint8 UART_RX_INTERRUPT_FLAG;
   31:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** /* `#END` */
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 2
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccl2eJed.s 			page 2
 
 
   32:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 1
   86:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *  
   87:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *  When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
   88:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *  used to provide consistent definition across compilers:
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 3
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccl2eJed.s 			page 3
 
 
   89:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *  
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 1
  143:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
  144:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** /*******************************************************************************
  145:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Function Name: UART_Rx_INTERRUPT_Interrupt
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 4
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccl2eJed.s 			page 4
 
 
  146:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** ********************************************************************************
@@ -202,1687 +202,1727 @@ ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 1
   29              		@ args = 0, pretend = 0, frame = 0
   30              		@ frame_needed = 0, uses_anonymous_args = 0
   31              		@ link register save eliminated.
-  32 0000 7047     		bx	lr
-  33              		.cfi_endproc
-  34              	.LFE3:
-  35              		.size	UART_Rx_INTERRUPT_Interrupt, .-UART_Rx_INTERRUPT_Interrupt
-  36 0002 00BF     		.section	.text.UART_Rx_INTERRUPT_SetVector,"ax",%progbits
-  37              		.align	2
-  38              		.global	UART_Rx_INTERRUPT_SetVector
-  39              		.thumb
-  40              		.thumb_func
-  41              		.type	UART_Rx_INTERRUPT_SetVector, %function
-  42              	UART_Rx_INTERRUPT_SetVector:
-  43              	.LFB4:
- 162:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     #ifdef UART_Rx_INTERRUPT_INTERRUPT_INTERRUPT_CALLBACK
- 163:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****         UART_Rx_INTERRUPT_Interrupt_InterruptCallback();
- 164:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     #endif /* UART_Rx_INTERRUPT_INTERRUPT_INTERRUPT_CALLBACK */ 
- 165:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
- 166:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     /*  Place your Interrupt code here. */
- 167:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     /* `#START UART_Rx_INTERRUPT_Interrupt` */
- 168:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
- 169:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     /* `#END` */
- 170:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** }
- 171:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
+ 162:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     
+ 163:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     #ifdef UART_Rx_INTERRUPT_INTERRUPT_INTERRUPT_CALLBACK
+ 164:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****         UART_Rx_INTERRUPT_Interrupt_InterruptCallback();
+ 165:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     #endif /* UART_Rx_INTERRUPT_INTERRUPT_INTERRUPT_CALLBACK */ 
+ 166:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
+ 167:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     /*  Place your Interrupt code here. */
+ 168:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     /* `#START UART_Rx_INTERRUPT_Interrupt` */
+ 169:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     UART_RX_INTERRUPT_FLAG = 1;
+  32              		.loc 1 169 0
+  33 0000 0122     		movs	r2, #1
+  34 0002 014B     		ldr	r3, .L2
+  35 0004 1A70     		strb	r2, [r3]
+  36 0006 7047     		bx	lr
+  37              	.L3:
+  38              		.align	2
+  39              	.L2:
+  40 0008 00000000 		.word	UART_RX_INTERRUPT_FLAG
+  41              		.cfi_endproc
+  42              	.LFE3:
+  43              		.size	UART_Rx_INTERRUPT_Interrupt, .-UART_Rx_INTERRUPT_Interrupt
+  44              		.section	.text.UART_Rx_INTERRUPT_SetVector,"ax",%progbits
+  45              		.align	2
+  46              		.global	UART_Rx_INTERRUPT_SetVector
+  47              		.thumb
+  48              		.thumb_func
+  49              		.type	UART_Rx_INTERRUPT_SetVector, %function
+  50              	UART_Rx_INTERRUPT_SetVector:
+  51              	.LFB4:
+ 170:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     /* `#END` */
+ 171:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** }
  172:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
- 173:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** /*******************************************************************************
- 174:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Function Name: UART_Rx_INTERRUPT_SetVector
- 175:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** ********************************************************************************
- 176:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 177:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Summary:
- 178:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Change the ISR vector for the Interrupt. Note calling UART_Rx_INTERRUPT_Start
- 179:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   will override any effect this method would have had. To set the vector 
- 180:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   before the component has been started use UART_Rx_INTERRUPT_StartEx instead.
- 181:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * 
- 182:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
- 183:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   used to provide consistent definition across compilers:
- 184:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 185:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Function definition example:
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 5
+ 173:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
+ 174:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** /*******************************************************************************
+ 175:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Function Name: UART_Rx_INTERRUPT_SetVector
+ 176:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** ********************************************************************************
+ 177:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccl2eJed.s 			page 5
 
 
- 186:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   CY_ISR(MyISR)
- 187:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   {
- 188:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   }
- 189:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 190:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Function prototype example:
- 191:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *     CY_ISR_PROTO(MyISR);
- 192:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 193:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Parameters:
- 194:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   address: Address of the ISR to set in the interrupt vector table.
- 195:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 196:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Return:
- 197:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   None
- 198:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 199:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *******************************************************************************/
- 200:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** void UART_Rx_INTERRUPT_SetVector(cyisraddress address)
- 201:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** {
-  44              		.loc 1 201 0
-  45              		.cfi_startproc
-  46              		@ args = 0, pretend = 0, frame = 0
-  47              		@ frame_needed = 0, uses_anonymous_args = 0
-  48              		@ link register save eliminated.
-  49              	.LVL0:
- 202:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     cyisraddress * ramVectorTable;
- 203:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
- 204:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     ramVectorTable = (cyisraddress *) *CYINT_VECT_TABLE;
-  50              		.loc 1 204 0
-  51 0000 014B     		ldr	r3, .L3
-  52 0002 1B68     		ldr	r3, [r3]
-  53              	.LVL1:
- 205:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
- 206:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     ramVectorTable[CYINT_IRQ_BASE + (uint32)UART_Rx_INTERRUPT__INTC_NUMBER] = address;
-  54              		.loc 1 206 0
-  55 0004 1864     		str	r0, [r3, #64]
-  56 0006 7047     		bx	lr
-  57              	.L4:
-  58              		.align	2
-  59              	.L3:
-  60 0008 08ED00E0 		.word	-536810232
-  61              		.cfi_endproc
-  62              	.LFE4:
-  63              		.size	UART_Rx_INTERRUPT_SetVector, .-UART_Rx_INTERRUPT_SetVector
-  64              		.section	.text.UART_Rx_INTERRUPT_GetVector,"ax",%progbits
-  65              		.align	2
-  66              		.global	UART_Rx_INTERRUPT_GetVector
-  67              		.thumb
-  68              		.thumb_func
-  69              		.type	UART_Rx_INTERRUPT_GetVector, %function
-  70              	UART_Rx_INTERRUPT_GetVector:
-  71              	.LFB5:
- 207:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** }
- 208:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
+ 178:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Summary:
+ 179:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Change the ISR vector for the Interrupt. Note calling UART_Rx_INTERRUPT_Start
+ 180:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   will override any effect this method would have had. To set the vector 
+ 181:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   before the component has been started use UART_Rx_INTERRUPT_StartEx instead.
+ 182:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * 
+ 183:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
+ 184:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   used to provide consistent definition across compilers:
+ 185:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 186:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Function definition example:
+ 187:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   CY_ISR(MyISR)
+ 188:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   {
+ 189:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   }
+ 190:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 191:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Function prototype example:
+ 192:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *     CY_ISR_PROTO(MyISR);
+ 193:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 194:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Parameters:
+ 195:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   address: Address of the ISR to set in the interrupt vector table.
+ 196:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 197:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Return:
+ 198:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   None
+ 199:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 200:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *******************************************************************************/
+ 201:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** void UART_Rx_INTERRUPT_SetVector(cyisraddress address)
+ 202:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** {
+  52              		.loc 1 202 0
+  53              		.cfi_startproc
+  54              		@ args = 0, pretend = 0, frame = 0
+  55              		@ frame_needed = 0, uses_anonymous_args = 0
+  56              		@ link register save eliminated.
+  57              	.LVL0:
+ 203:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     cyisraddress * ramVectorTable;
+ 204:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
+ 205:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     ramVectorTable = (cyisraddress *) *CYINT_VECT_TABLE;
+  58              		.loc 1 205 0
+  59 0000 014B     		ldr	r3, .L5
+  60 0002 1B68     		ldr	r3, [r3]
+  61              	.LVL1:
+ 206:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
+ 207:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     ramVectorTable[CYINT_IRQ_BASE + (uint32)UART_Rx_INTERRUPT__INTC_NUMBER] = address;
+  62              		.loc 1 207 0
+  63 0004 1864     		str	r0, [r3, #64]
+  64 0006 7047     		bx	lr
+  65              	.L6:
+  66              		.align	2
+  67              	.L5:
+  68 0008 08ED00E0 		.word	-536810232
+  69              		.cfi_endproc
+  70              	.LFE4:
+  71              		.size	UART_Rx_INTERRUPT_SetVector, .-UART_Rx_INTERRUPT_SetVector
+  72              		.section	.text.UART_Rx_INTERRUPT_GetVector,"ax",%progbits
+  73              		.align	2
+  74              		.global	UART_Rx_INTERRUPT_GetVector
+  75              		.thumb
+  76              		.thumb_func
+  77              		.type	UART_Rx_INTERRUPT_GetVector, %function
+  78              	UART_Rx_INTERRUPT_GetVector:
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccl2eJed.s 			page 6
+
+
+  79              	.LFB5:
+ 208:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** }
  209:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
- 210:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** /*******************************************************************************
- 211:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Function Name: UART_Rx_INTERRUPT_GetVector
- 212:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** ********************************************************************************
- 213:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 214:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Summary:
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 6
-
-
- 215:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Gets the "address" of the current ISR vector for the Interrupt.
- 216:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 217:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Parameters:
- 218:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   None
- 219:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 220:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Return:
- 221:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Address of the ISR in the interrupt vector table.
- 222:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 223:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *******************************************************************************/
- 224:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** cyisraddress UART_Rx_INTERRUPT_GetVector(void)
- 225:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** {
-  72              		.loc 1 225 0
-  73              		.cfi_startproc
-  74              		@ args = 0, pretend = 0, frame = 0
-  75              		@ frame_needed = 0, uses_anonymous_args = 0
-  76              		@ link register save eliminated.
- 226:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     cyisraddress * ramVectorTable;
- 227:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
- 228:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     ramVectorTable = (cyisraddress *) *CYINT_VECT_TABLE;
-  77              		.loc 1 228 0
-  78 0000 014B     		ldr	r3, .L6
-  79 0002 1B68     		ldr	r3, [r3]
-  80              	.LVL2:
- 229:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
- 230:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     return ramVectorTable[CYINT_IRQ_BASE + (uint32)UART_Rx_INTERRUPT__INTC_NUMBER];
- 231:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** }
-  81              		.loc 1 231 0
-  82 0004 186C     		ldr	r0, [r3, #64]
-  83 0006 7047     		bx	lr
-  84              	.L7:
-  85              		.align	2
-  86              	.L6:
-  87 0008 08ED00E0 		.word	-536810232
-  88              		.cfi_endproc
-  89              	.LFE5:
-  90              		.size	UART_Rx_INTERRUPT_GetVector, .-UART_Rx_INTERRUPT_GetVector
-  91              		.section	.text.UART_Rx_INTERRUPT_SetPriority,"ax",%progbits
-  92              		.align	2
-  93              		.global	UART_Rx_INTERRUPT_SetPriority
-  94              		.thumb
-  95              		.thumb_func
-  96              		.type	UART_Rx_INTERRUPT_SetPriority, %function
-  97              	UART_Rx_INTERRUPT_SetPriority:
-  98              	.LFB6:
- 232:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
+ 210:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
+ 211:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** /*******************************************************************************
+ 212:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Function Name: UART_Rx_INTERRUPT_GetVector
+ 213:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** ********************************************************************************
+ 214:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 215:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Summary:
+ 216:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Gets the "address" of the current ISR vector for the Interrupt.
+ 217:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 218:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Parameters:
+ 219:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   None
+ 220:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 221:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Return:
+ 222:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Address of the ISR in the interrupt vector table.
+ 223:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 224:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *******************************************************************************/
+ 225:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** cyisraddress UART_Rx_INTERRUPT_GetVector(void)
+ 226:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** {
+  80              		.loc 1 226 0
+  81              		.cfi_startproc
+  82              		@ args = 0, pretend = 0, frame = 0
+  83              		@ frame_needed = 0, uses_anonymous_args = 0
+  84              		@ link register save eliminated.
+ 227:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     cyisraddress * ramVectorTable;
+ 228:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
+ 229:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     ramVectorTable = (cyisraddress *) *CYINT_VECT_TABLE;
+  85              		.loc 1 229 0
+  86 0000 014B     		ldr	r3, .L8
+  87 0002 1B68     		ldr	r3, [r3]
+  88              	.LVL2:
+ 230:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
+ 231:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     return ramVectorTable[CYINT_IRQ_BASE + (uint32)UART_Rx_INTERRUPT__INTC_NUMBER];
+ 232:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** }
+  89              		.loc 1 232 0
+  90 0004 186C     		ldr	r0, [r3, #64]
+  91 0006 7047     		bx	lr
+  92              	.L9:
+  93              		.align	2
+  94              	.L8:
+  95 0008 08ED00E0 		.word	-536810232
+  96              		.cfi_endproc
+  97              	.LFE5:
+  98              		.size	UART_Rx_INTERRUPT_GetVector, .-UART_Rx_INTERRUPT_GetVector
+  99              		.section	.text.UART_Rx_INTERRUPT_SetPriority,"ax",%progbits
+ 100              		.align	2
+ 101              		.global	UART_Rx_INTERRUPT_SetPriority
+ 102              		.thumb
+ 103              		.thumb_func
+ 104              		.type	UART_Rx_INTERRUPT_SetPriority, %function
+ 105              	UART_Rx_INTERRUPT_SetPriority:
+ 106              	.LFB6:
  233:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
- 234:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** /*******************************************************************************
- 235:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Function Name: UART_Rx_INTERRUPT_SetPriority
- 236:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** ********************************************************************************
- 237:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 238:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Summary:
- 239:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Sets the Priority of the Interrupt. 
- 240:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 241:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Note calling UART_Rx_INTERRUPT_Start or UART_Rx_INTERRUPT_StartEx will 
- 242:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   override any effect this API would have had. This API should only be called
- 243:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   after UART_Rx_INTERRUPT_Start or UART_Rx_INTERRUPT_StartEx has been called. 
- 244:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   To set the initial priority for the component, use the Design-Wide Resources
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 7
+ 234:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
+ 235:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** /*******************************************************************************
+ 236:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Function Name: UART_Rx_INTERRUPT_SetPriority
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccl2eJed.s 			page 7
 
 
- 245:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Interrupt Editor.
- 246:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 247:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Note This API has no effect on Non-maskable interrupt NMI).
- 248:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 249:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Parameters:
- 250:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   priority: Priority of the interrupt, 0 being the highest priority
- 251:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *             PSoC 3 and PSoC 5LP: Priority is from 0 to 7.
- 252:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *             PSoC 4: Priority is from 0 to 3.
- 253:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 254:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Return:
- 255:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   None
- 256:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 257:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *******************************************************************************/
- 258:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** void UART_Rx_INTERRUPT_SetPriority(uint8 priority)
- 259:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** {
-  99              		.loc 1 259 0
- 100              		.cfi_startproc
- 101              		@ args = 0, pretend = 0, frame = 0
- 102              		@ frame_needed = 0, uses_anonymous_args = 0
- 103              		@ link register save eliminated.
- 104              	.LVL3:
- 260:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     *UART_Rx_INTERRUPT_INTC_PRIOR = priority << 5;
- 105              		.loc 1 260 0
- 106 0000 4001     		lsls	r0, r0, #5
- 107              	.LVL4:
- 108 0002 C0B2     		uxtb	r0, r0
- 109 0004 014B     		ldr	r3, .L9
- 110 0006 1870     		strb	r0, [r3]
- 111 0008 7047     		bx	lr
- 112              	.L10:
- 113 000a 00BF     		.align	2
- 114              	.L9:
- 115 000c 00E400E0 		.word	-536812544
- 116              		.cfi_endproc
- 117              	.LFE6:
- 118              		.size	UART_Rx_INTERRUPT_SetPriority, .-UART_Rx_INTERRUPT_SetPriority
- 119              		.section	.text.UART_Rx_INTERRUPT_GetPriority,"ax",%progbits
- 120              		.align	2
- 121              		.global	UART_Rx_INTERRUPT_GetPriority
- 122              		.thumb
- 123              		.thumb_func
- 124              		.type	UART_Rx_INTERRUPT_GetPriority, %function
- 125              	UART_Rx_INTERRUPT_GetPriority:
- 126              	.LFB7:
- 261:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** }
- 262:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
+ 237:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** ********************************************************************************
+ 238:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 239:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Summary:
+ 240:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Sets the Priority of the Interrupt. 
+ 241:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 242:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Note calling UART_Rx_INTERRUPT_Start or UART_Rx_INTERRUPT_StartEx will 
+ 243:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   override any effect this API would have had. This API should only be called
+ 244:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   after UART_Rx_INTERRUPT_Start or UART_Rx_INTERRUPT_StartEx has been called. 
+ 245:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   To set the initial priority for the component, use the Design-Wide Resources
+ 246:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Interrupt Editor.
+ 247:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 248:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Note This API has no effect on Non-maskable interrupt NMI).
+ 249:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 250:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Parameters:
+ 251:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   priority: Priority of the interrupt, 0 being the highest priority
+ 252:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *             PSoC 3 and PSoC 5LP: Priority is from 0 to 7.
+ 253:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *             PSoC 4: Priority is from 0 to 3.
+ 254:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 255:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Return:
+ 256:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   None
+ 257:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 258:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *******************************************************************************/
+ 259:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** void UART_Rx_INTERRUPT_SetPriority(uint8 priority)
+ 260:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** {
+ 107              		.loc 1 260 0
+ 108              		.cfi_startproc
+ 109              		@ args = 0, pretend = 0, frame = 0
+ 110              		@ frame_needed = 0, uses_anonymous_args = 0
+ 111              		@ link register save eliminated.
+ 112              	.LVL3:
+ 261:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     *UART_Rx_INTERRUPT_INTC_PRIOR = priority << 5;
+ 113              		.loc 1 261 0
+ 114 0000 4001     		lsls	r0, r0, #5
+ 115              	.LVL4:
+ 116 0002 C0B2     		uxtb	r0, r0
+ 117 0004 014B     		ldr	r3, .L11
+ 118 0006 1870     		strb	r0, [r3]
+ 119 0008 7047     		bx	lr
+ 120              	.L12:
+ 121 000a 00BF     		.align	2
+ 122              	.L11:
+ 123 000c 00E400E0 		.word	-536812544
+ 124              		.cfi_endproc
+ 125              	.LFE6:
+ 126              		.size	UART_Rx_INTERRUPT_SetPriority, .-UART_Rx_INTERRUPT_SetPriority
+ 127              		.section	.text.UART_Rx_INTERRUPT_GetPriority,"ax",%progbits
+ 128              		.align	2
+ 129              		.global	UART_Rx_INTERRUPT_GetPriority
+ 130              		.thumb
+ 131              		.thumb_func
+ 132              		.type	UART_Rx_INTERRUPT_GetPriority, %function
+ 133              	UART_Rx_INTERRUPT_GetPriority:
+ 134              	.LFB7:
+ 262:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** }
  263:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
- 264:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** /*******************************************************************************
- 265:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Function Name: UART_Rx_INTERRUPT_GetPriority
- 266:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** ********************************************************************************
- 267:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 268:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Summary:
- 269:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Gets the Priority of the Interrupt.
- 270:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 271:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Parameters:
- 272:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   None
- 273:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 8
+ 264:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
+ 265:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** /*******************************************************************************
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccl2eJed.s 			page 8
 
 
- 274:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Return:
- 275:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Priority of the interrupt, 0 being the highest priority
- 276:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *    PSoC 3 and PSoC 5LP: Priority is from 0 to 7.
- 277:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *    PSoC 4: Priority is from 0 to 3.
- 278:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 279:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *******************************************************************************/
- 280:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** uint8 UART_Rx_INTERRUPT_GetPriority(void)
- 281:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** {
- 127              		.loc 1 281 0
- 128              		.cfi_startproc
- 129              		@ args = 0, pretend = 0, frame = 0
- 130              		@ frame_needed = 0, uses_anonymous_args = 0
- 131              		@ link register save eliminated.
- 282:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     uint8 priority;
- 283:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
+ 266:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Function Name: UART_Rx_INTERRUPT_GetPriority
+ 267:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** ********************************************************************************
+ 268:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 269:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Summary:
+ 270:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Gets the Priority of the Interrupt.
+ 271:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 272:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Parameters:
+ 273:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   None
+ 274:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 275:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Return:
+ 276:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Priority of the interrupt, 0 being the highest priority
+ 277:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *    PSoC 3 and PSoC 5LP: Priority is from 0 to 7.
+ 278:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *    PSoC 4: Priority is from 0 to 3.
+ 279:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 280:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *******************************************************************************/
+ 281:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** uint8 UART_Rx_INTERRUPT_GetPriority(void)
+ 282:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** {
+ 135              		.loc 1 282 0
+ 136              		.cfi_startproc
+ 137              		@ args = 0, pretend = 0, frame = 0
+ 138              		@ frame_needed = 0, uses_anonymous_args = 0
+ 139              		@ link register save eliminated.
+ 283:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     uint8 priority;
  284:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
- 285:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     priority = *UART_Rx_INTERRUPT_INTC_PRIOR >> 5;
- 132              		.loc 1 285 0
- 133 0000 014B     		ldr	r3, .L12
- 134 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
- 135              	.LVL5:
- 286:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
- 287:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     return priority;
- 288:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** }
- 136              		.loc 1 288 0
- 137 0004 4009     		lsrs	r0, r0, #5
- 138              	.LVL6:
- 139 0006 7047     		bx	lr
- 140              	.L13:
- 141              		.align	2
- 142              	.L12:
- 143 0008 00E400E0 		.word	-536812544
- 144              		.cfi_endproc
- 145              	.LFE7:
- 146              		.size	UART_Rx_INTERRUPT_GetPriority, .-UART_Rx_INTERRUPT_GetPriority
- 147              		.section	.text.UART_Rx_INTERRUPT_Enable,"ax",%progbits
- 148              		.align	2
- 149              		.global	UART_Rx_INTERRUPT_Enable
- 150              		.thumb
- 151              		.thumb_func
- 152              		.type	UART_Rx_INTERRUPT_Enable, %function
- 153              	UART_Rx_INTERRUPT_Enable:
- 154              	.LFB8:
- 289:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
+ 285:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
+ 286:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     priority = *UART_Rx_INTERRUPT_INTC_PRIOR >> 5;
+ 140              		.loc 1 286 0
+ 141 0000 014B     		ldr	r3, .L14
+ 142 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 143              	.LVL5:
+ 287:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
+ 288:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     return priority;
+ 289:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** }
+ 144              		.loc 1 289 0
+ 145 0004 4009     		lsrs	r0, r0, #5
+ 146              	.LVL6:
+ 147 0006 7047     		bx	lr
+ 148              	.L15:
+ 149              		.align	2
+ 150              	.L14:
+ 151 0008 00E400E0 		.word	-536812544
+ 152              		.cfi_endproc
+ 153              	.LFE7:
+ 154              		.size	UART_Rx_INTERRUPT_GetPriority, .-UART_Rx_INTERRUPT_GetPriority
+ 155              		.section	.text.UART_Rx_INTERRUPT_Enable,"ax",%progbits
+ 156              		.align	2
+ 157              		.global	UART_Rx_INTERRUPT_Enable
+ 158              		.thumb
+ 159              		.thumb_func
+ 160              		.type	UART_Rx_INTERRUPT_Enable, %function
+ 161              	UART_Rx_INTERRUPT_Enable:
+ 162              	.LFB8:
  290:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
- 291:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** /*******************************************************************************
- 292:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Function Name: UART_Rx_INTERRUPT_Enable
- 293:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** ********************************************************************************
- 294:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 295:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Summary:
- 296:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Enables the interrupt to the interrupt controller. Do not call this function
- 297:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   unless ISR_Start() has been called or the functionality of the ISR_Start() 
- 298:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   function, which sets the vector and the priority, has been called.
- 299:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 300:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Parameters:
- 301:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   None
- 302:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 9
+ 291:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
+ 292:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** /*******************************************************************************
+ 293:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Function Name: UART_Rx_INTERRUPT_Enable
+ 294:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** ********************************************************************************
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccl2eJed.s 			page 9
 
 
- 303:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Return:
- 304:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   None
- 305:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 306:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *******************************************************************************/
- 307:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** void UART_Rx_INTERRUPT_Enable(void)
- 308:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** {
- 155              		.loc 1 308 0
- 156              		.cfi_startproc
- 157              		@ args = 0, pretend = 0, frame = 0
- 158              		@ frame_needed = 0, uses_anonymous_args = 0
- 159              		@ link register save eliminated.
- 309:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     /* Enable the general interrupt. */
- 310:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     *UART_Rx_INTERRUPT_INTC_SET_EN = UART_Rx_INTERRUPT__INTC_MASK;
- 160              		.loc 1 310 0
- 161 0000 0122     		movs	r2, #1
- 162 0002 014B     		ldr	r3, .L15
- 163 0004 1A60     		str	r2, [r3]
- 164 0006 7047     		bx	lr
- 165              	.L16:
- 166              		.align	2
- 167              	.L15:
- 168 0008 00E100E0 		.word	-536813312
- 169              		.cfi_endproc
- 170              	.LFE8:
- 171              		.size	UART_Rx_INTERRUPT_Enable, .-UART_Rx_INTERRUPT_Enable
- 172              		.section	.text.UART_Rx_INTERRUPT_GetState,"ax",%progbits
- 173              		.align	2
- 174              		.global	UART_Rx_INTERRUPT_GetState
- 175              		.thumb
- 176              		.thumb_func
- 177              		.type	UART_Rx_INTERRUPT_GetState, %function
- 178              	UART_Rx_INTERRUPT_GetState:
- 179              	.LFB9:
- 311:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** }
- 312:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
+ 295:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 296:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Summary:
+ 297:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Enables the interrupt to the interrupt controller. Do not call this function
+ 298:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   unless ISR_Start() has been called or the functionality of the ISR_Start() 
+ 299:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   function, which sets the vector and the priority, has been called.
+ 300:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 301:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Parameters:
+ 302:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   None
+ 303:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 304:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Return:
+ 305:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   None
+ 306:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 307:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *******************************************************************************/
+ 308:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** void UART_Rx_INTERRUPT_Enable(void)
+ 309:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** {
+ 163              		.loc 1 309 0
+ 164              		.cfi_startproc
+ 165              		@ args = 0, pretend = 0, frame = 0
+ 166              		@ frame_needed = 0, uses_anonymous_args = 0
+ 167              		@ link register save eliminated.
+ 310:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     /* Enable the general interrupt. */
+ 311:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     *UART_Rx_INTERRUPT_INTC_SET_EN = UART_Rx_INTERRUPT__INTC_MASK;
+ 168              		.loc 1 311 0
+ 169 0000 0122     		movs	r2, #1
+ 170 0002 014B     		ldr	r3, .L17
+ 171 0004 1A60     		str	r2, [r3]
+ 172 0006 7047     		bx	lr
+ 173              	.L18:
+ 174              		.align	2
+ 175              	.L17:
+ 176 0008 00E100E0 		.word	-536813312
+ 177              		.cfi_endproc
+ 178              	.LFE8:
+ 179              		.size	UART_Rx_INTERRUPT_Enable, .-UART_Rx_INTERRUPT_Enable
+ 180              		.section	.text.UART_Rx_INTERRUPT_GetState,"ax",%progbits
+ 181              		.align	2
+ 182              		.global	UART_Rx_INTERRUPT_GetState
+ 183              		.thumb
+ 184              		.thumb_func
+ 185              		.type	UART_Rx_INTERRUPT_GetState, %function
+ 186              	UART_Rx_INTERRUPT_GetState:
+ 187              	.LFB9:
+ 312:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** }
  313:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
- 314:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** /*******************************************************************************
- 315:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Function Name: UART_Rx_INTERRUPT_GetState
- 316:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** ********************************************************************************
- 317:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 318:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Summary:
- 319:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Gets the state (enabled, disabled) of the Interrupt.
- 320:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 321:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Parameters:
- 322:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   None
- 323:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 324:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Return:
- 325:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   1 if enabled, 0 if disabled.
- 326:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 327:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *******************************************************************************/
- 328:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** uint8 UART_Rx_INTERRUPT_GetState(void)
- 329:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** {
- 180              		.loc 1 329 0
- 181              		.cfi_startproc
- 182              		@ args = 0, pretend = 0, frame = 0
- 183              		@ frame_needed = 0, uses_anonymous_args = 0
- 184              		@ link register save eliminated.
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 10
+ 314:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
+ 315:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** /*******************************************************************************
+ 316:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Function Name: UART_Rx_INTERRUPT_GetState
+ 317:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** ********************************************************************************
+ 318:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 319:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Summary:
+ 320:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Gets the state (enabled, disabled) of the Interrupt.
+ 321:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 322:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Parameters:
+ 323:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   None
+ 324:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 325:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Return:
+ 326:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   1 if enabled, 0 if disabled.
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccl2eJed.s 			page 10
 
 
- 330:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     /* Get the state of the general interrupt. */
- 331:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     return ((*UART_Rx_INTERRUPT_INTC_SET_EN & (uint32)UART_Rx_INTERRUPT__INTC_MASK) != 0u) ? 1u:0u;
- 185              		.loc 1 331 0
- 186 0000 024B     		ldr	r3, .L18
- 187 0002 1868     		ldr	r0, [r3]
- 332:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** }
- 188              		.loc 1 332 0
- 189 0004 00F00100 		and	r0, r0, #1
- 190 0008 7047     		bx	lr
- 191              	.L19:
- 192 000a 00BF     		.align	2
- 193              	.L18:
- 194 000c 00E100E0 		.word	-536813312
- 195              		.cfi_endproc
- 196              	.LFE9:
- 197              		.size	UART_Rx_INTERRUPT_GetState, .-UART_Rx_INTERRUPT_GetState
- 198              		.section	.text.UART_Rx_INTERRUPT_Disable,"ax",%progbits
- 199              		.align	2
- 200              		.global	UART_Rx_INTERRUPT_Disable
- 201              		.thumb
- 202              		.thumb_func
- 203              		.type	UART_Rx_INTERRUPT_Disable, %function
- 204              	UART_Rx_INTERRUPT_Disable:
- 205              	.LFB10:
- 333:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
+ 327:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 328:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *******************************************************************************/
+ 329:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** uint8 UART_Rx_INTERRUPT_GetState(void)
+ 330:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** {
+ 188              		.loc 1 330 0
+ 189              		.cfi_startproc
+ 190              		@ args = 0, pretend = 0, frame = 0
+ 191              		@ frame_needed = 0, uses_anonymous_args = 0
+ 192              		@ link register save eliminated.
+ 331:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     /* Get the state of the general interrupt. */
+ 332:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     return ((*UART_Rx_INTERRUPT_INTC_SET_EN & (uint32)UART_Rx_INTERRUPT__INTC_MASK) != 0u) ? 1u:0u;
+ 193              		.loc 1 332 0
+ 194 0000 024B     		ldr	r3, .L20
+ 195 0002 1868     		ldr	r0, [r3]
+ 333:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** }
+ 196              		.loc 1 333 0
+ 197 0004 00F00100 		and	r0, r0, #1
+ 198 0008 7047     		bx	lr
+ 199              	.L21:
+ 200 000a 00BF     		.align	2
+ 201              	.L20:
+ 202 000c 00E100E0 		.word	-536813312
+ 203              		.cfi_endproc
+ 204              	.LFE9:
+ 205              		.size	UART_Rx_INTERRUPT_GetState, .-UART_Rx_INTERRUPT_GetState
+ 206              		.section	.text.UART_Rx_INTERRUPT_Disable,"ax",%progbits
+ 207              		.align	2
+ 208              		.global	UART_Rx_INTERRUPT_Disable
+ 209              		.thumb
+ 210              		.thumb_func
+ 211              		.type	UART_Rx_INTERRUPT_Disable, %function
+ 212              	UART_Rx_INTERRUPT_Disable:
+ 213              	.LFB10:
  334:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
- 335:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** /*******************************************************************************
- 336:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Function Name: UART_Rx_INTERRUPT_Disable
- 337:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** ********************************************************************************
- 338:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 339:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Summary:
- 340:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Disables the Interrupt in the interrupt controller.
- 341:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 342:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Parameters:
- 343:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   None
- 344:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 345:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Return:
- 346:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   None
- 347:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 348:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *******************************************************************************/
- 349:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** void UART_Rx_INTERRUPT_Disable(void)
- 350:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** {
- 206              		.loc 1 350 0
- 207              		.cfi_startproc
- 208              		@ args = 0, pretend = 0, frame = 0
- 209              		@ frame_needed = 0, uses_anonymous_args = 0
- 210              		@ link register save eliminated.
- 351:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     /* Disable the general interrupt. */
- 352:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     *UART_Rx_INTERRUPT_INTC_CLR_EN = UART_Rx_INTERRUPT__INTC_MASK;
- 211              		.loc 1 352 0
- 212 0000 0122     		movs	r2, #1
- 213 0002 014B     		ldr	r3, .L21
- 214 0004 1A60     		str	r2, [r3]
- 215 0006 7047     		bx	lr
- 216              	.L22:
- 217              		.align	2
- 218              	.L21:
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 11
+ 335:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
+ 336:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** /*******************************************************************************
+ 337:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Function Name: UART_Rx_INTERRUPT_Disable
+ 338:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** ********************************************************************************
+ 339:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 340:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Summary:
+ 341:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Disables the Interrupt in the interrupt controller.
+ 342:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 343:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Parameters:
+ 344:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   None
+ 345:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 346:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Return:
+ 347:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   None
+ 348:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 349:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *******************************************************************************/
+ 350:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** void UART_Rx_INTERRUPT_Disable(void)
+ 351:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** {
+ 214              		.loc 1 351 0
+ 215              		.cfi_startproc
+ 216              		@ args = 0, pretend = 0, frame = 0
+ 217              		@ frame_needed = 0, uses_anonymous_args = 0
+ 218              		@ link register save eliminated.
+ 352:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     /* Disable the general interrupt. */
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccl2eJed.s 			page 11
 
 
- 219 0008 80E100E0 		.word	-536813184
- 220              		.cfi_endproc
- 221              	.LFE10:
- 222              		.size	UART_Rx_INTERRUPT_Disable, .-UART_Rx_INTERRUPT_Disable
- 223              		.section	.text.UART_Rx_INTERRUPT_Start,"ax",%progbits
- 224              		.align	2
- 225              		.global	UART_Rx_INTERRUPT_Start
- 226              		.thumb
- 227              		.thumb_func
- 228              		.type	UART_Rx_INTERRUPT_Start, %function
- 229              	UART_Rx_INTERRUPT_Start:
- 230              	.LFB0:
+ 353:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     *UART_Rx_INTERRUPT_INTC_CLR_EN = UART_Rx_INTERRUPT__INTC_MASK;
+ 219              		.loc 1 353 0
+ 220 0000 0122     		movs	r2, #1
+ 221 0002 014B     		ldr	r3, .L23
+ 222 0004 1A60     		str	r2, [r3]
+ 223 0006 7047     		bx	lr
+ 224              	.L24:
+ 225              		.align	2
+ 226              	.L23:
+ 227 0008 80E100E0 		.word	-536813184
+ 228              		.cfi_endproc
+ 229              	.LFE10:
+ 230              		.size	UART_Rx_INTERRUPT_Disable, .-UART_Rx_INTERRUPT_Disable
+ 231              		.section	.text.UART_Rx_INTERRUPT_Start,"ax",%progbits
+ 232              		.align	2
+ 233              		.global	UART_Rx_INTERRUPT_Start
+ 234              		.thumb
+ 235              		.thumb_func
+ 236              		.type	UART_Rx_INTERRUPT_Start, %function
+ 237              	UART_Rx_INTERRUPT_Start:
+ 238              	.LFB0:
   62:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     /* For all we know the interrupt is active. */
- 231              		.loc 1 62 0
- 232              		.cfi_startproc
- 233              		@ args = 0, pretend = 0, frame = 0
- 234              		@ frame_needed = 0, uses_anonymous_args = 0
- 235 0000 08B5     		push	{r3, lr}
- 236              		.cfi_def_cfa_offset 8
- 237              		.cfi_offset 3, -8
- 238              		.cfi_offset 14, -4
+ 239              		.loc 1 62 0
+ 240              		.cfi_startproc
+ 241              		@ args = 0, pretend = 0, frame = 0
+ 242              		@ frame_needed = 0, uses_anonymous_args = 0
+ 243 0000 08B5     		push	{r3, lr}
+ 244              		.cfi_def_cfa_offset 8
+ 245              		.cfi_offset 3, -8
+ 246              		.cfi_offset 14, -4
   64:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
- 239              		.loc 1 64 0
- 240 0002 FFF7FEFF 		bl	UART_Rx_INTERRUPT_Disable
- 241              	.LVL7:
+ 247              		.loc 1 64 0
+ 248 0002 FFF7FEFF 		bl	UART_Rx_INTERRUPT_Disable
+ 249              	.LVL7:
   67:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
- 242              		.loc 1 67 0
- 243 0006 0448     		ldr	r0, .L25
- 244 0008 FFF7FEFF 		bl	UART_Rx_INTERRUPT_SetVector
- 245              	.LVL8:
+ 250              		.loc 1 67 0
+ 251 0006 0448     		ldr	r0, .L27
+ 252 0008 FFF7FEFF 		bl	UART_Rx_INTERRUPT_SetVector
+ 253              	.LVL8:
   70:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
- 246              		.loc 1 70 0
- 247 000c 0720     		movs	r0, #7
- 248 000e FFF7FEFF 		bl	UART_Rx_INTERRUPT_SetPriority
- 249              	.LVL9:
+ 254              		.loc 1 70 0
+ 255 000c 0720     		movs	r0, #7
+ 256 000e FFF7FEFF 		bl	UART_Rx_INTERRUPT_SetPriority
+ 257              	.LVL9:
   73:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** }
- 250              		.loc 1 73 0
- 251 0012 FFF7FEFF 		bl	UART_Rx_INTERRUPT_Enable
- 252              	.LVL10:
- 253 0016 08BD     		pop	{r3, pc}
- 254              	.L26:
- 255              		.align	2
- 256              	.L25:
- 257 0018 00000000 		.word	UART_Rx_INTERRUPT_Interrupt
- 258              		.cfi_endproc
- 259              	.LFE0:
- 260              		.size	UART_Rx_INTERRUPT_Start, .-UART_Rx_INTERRUPT_Start
- 261              		.section	.text.UART_Rx_INTERRUPT_StartEx,"ax",%progbits
- 262              		.align	2
- 263              		.global	UART_Rx_INTERRUPT_StartEx
- 264              		.thumb
- 265              		.thumb_func
- 266              		.type	UART_Rx_INTERRUPT_StartEx, %function
- 267              	UART_Rx_INTERRUPT_StartEx:
- 268              	.LFB1:
+ 258              		.loc 1 73 0
+ 259 0012 FFF7FEFF 		bl	UART_Rx_INTERRUPT_Enable
+ 260              	.LVL10:
+ 261 0016 08BD     		pop	{r3, pc}
+ 262              	.L28:
+ 263              		.align	2
+ 264              	.L27:
+ 265 0018 00000000 		.word	UART_Rx_INTERRUPT_Interrupt
+ 266              		.cfi_endproc
+ 267              	.LFE0:
+ 268              		.size	UART_Rx_INTERRUPT_Start, .-UART_Rx_INTERRUPT_Start
+ 269              		.section	.text.UART_Rx_INTERRUPT_StartEx,"ax",%progbits
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccl2eJed.s 			page 12
+
+
+ 270              		.align	2
+ 271              		.global	UART_Rx_INTERRUPT_StartEx
+ 272              		.thumb
+ 273              		.thumb_func
+ 274              		.type	UART_Rx_INTERRUPT_StartEx, %function
+ 275              	UART_Rx_INTERRUPT_StartEx:
+ 276              	.LFB1:
  105:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     /* For all we know the interrupt is active. */
- 269              		.loc 1 105 0
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 12
-
-
- 270              		.cfi_startproc
- 271              		@ args = 0, pretend = 0, frame = 0
- 272              		@ frame_needed = 0, uses_anonymous_args = 0
- 273              	.LVL11:
- 274 0000 10B5     		push	{r4, lr}
- 275              		.cfi_def_cfa_offset 8
- 276              		.cfi_offset 4, -8
- 277              		.cfi_offset 14, -4
- 278 0002 0446     		mov	r4, r0
+ 277              		.loc 1 105 0
+ 278              		.cfi_startproc
+ 279              		@ args = 0, pretend = 0, frame = 0
+ 280              		@ frame_needed = 0, uses_anonymous_args = 0
+ 281              	.LVL11:
+ 282 0000 10B5     		push	{r4, lr}
+ 283              		.cfi_def_cfa_offset 8
+ 284              		.cfi_offset 4, -8
+ 285              		.cfi_offset 14, -4
+ 286 0002 0446     		mov	r4, r0
  107:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
- 279              		.loc 1 107 0
- 280 0004 FFF7FEFF 		bl	UART_Rx_INTERRUPT_Disable
- 281              	.LVL12:
+ 287              		.loc 1 107 0
+ 288 0004 FFF7FEFF 		bl	UART_Rx_INTERRUPT_Disable
+ 289              	.LVL12:
  110:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
- 282              		.loc 1 110 0
- 283 0008 2046     		mov	r0, r4
- 284 000a FFF7FEFF 		bl	UART_Rx_INTERRUPT_SetVector
- 285              	.LVL13:
+ 290              		.loc 1 110 0
+ 291 0008 2046     		mov	r0, r4
+ 292 000a FFF7FEFF 		bl	UART_Rx_INTERRUPT_SetVector
+ 293              	.LVL13:
  113:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
- 286              		.loc 1 113 0
- 287 000e 0720     		movs	r0, #7
- 288 0010 FFF7FEFF 		bl	UART_Rx_INTERRUPT_SetPriority
- 289              	.LVL14:
+ 294              		.loc 1 113 0
+ 295 000e 0720     		movs	r0, #7
+ 296 0010 FFF7FEFF 		bl	UART_Rx_INTERRUPT_SetPriority
+ 297              	.LVL14:
  116:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** }
- 290              		.loc 1 116 0
- 291 0014 FFF7FEFF 		bl	UART_Rx_INTERRUPT_Enable
- 292              	.LVL15:
- 293 0018 10BD     		pop	{r4, pc}
- 294              		.cfi_endproc
- 295              	.LFE1:
- 296              		.size	UART_Rx_INTERRUPT_StartEx, .-UART_Rx_INTERRUPT_StartEx
- 297 001a 00BF     		.section	.text.UART_Rx_INTERRUPT_Stop,"ax",%progbits
- 298              		.align	2
- 299              		.global	UART_Rx_INTERRUPT_Stop
- 300              		.thumb
- 301              		.thumb_func
- 302              		.type	UART_Rx_INTERRUPT_Stop, %function
- 303              	UART_Rx_INTERRUPT_Stop:
- 304              	.LFB2:
+ 298              		.loc 1 116 0
+ 299 0014 FFF7FEFF 		bl	UART_Rx_INTERRUPT_Enable
+ 300              	.LVL15:
+ 301 0018 10BD     		pop	{r4, pc}
+ 302              		.cfi_endproc
+ 303              	.LFE1:
+ 304              		.size	UART_Rx_INTERRUPT_StartEx, .-UART_Rx_INTERRUPT_StartEx
+ 305 001a 00BF     		.section	.text.UART_Rx_INTERRUPT_Stop,"ax",%progbits
+ 306              		.align	2
+ 307              		.global	UART_Rx_INTERRUPT_Stop
+ 308              		.thumb
+ 309              		.thumb_func
+ 310              		.type	UART_Rx_INTERRUPT_Stop, %function
+ 311              	UART_Rx_INTERRUPT_Stop:
+ 312              	.LFB2:
  135:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     /* Disable this interrupt. */
- 305              		.loc 1 135 0
- 306              		.cfi_startproc
- 307              		@ args = 0, pretend = 0, frame = 0
- 308              		@ frame_needed = 0, uses_anonymous_args = 0
- 309 0000 08B5     		push	{r3, lr}
- 310              		.cfi_def_cfa_offset 8
- 311              		.cfi_offset 3, -8
- 312              		.cfi_offset 14, -4
+ 313              		.loc 1 135 0
+ 314              		.cfi_startproc
+ 315              		@ args = 0, pretend = 0, frame = 0
+ 316              		@ frame_needed = 0, uses_anonymous_args = 0
+ 317 0000 08B5     		push	{r3, lr}
+ 318              		.cfi_def_cfa_offset 8
+ 319              		.cfi_offset 3, -8
+ 320              		.cfi_offset 14, -4
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccl2eJed.s 			page 13
+
+
  137:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
- 313              		.loc 1 137 0
- 314 0002 FFF7FEFF 		bl	UART_Rx_INTERRUPT_Disable
- 315              	.LVL16:
+ 321              		.loc 1 137 0
+ 322 0002 FFF7FEFF 		bl	UART_Rx_INTERRUPT_Disable
+ 323              	.LVL16:
  140:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** }
- 316              		.loc 1 140 0
- 317 0006 0248     		ldr	r0, .L31
- 318 0008 FFF7FEFF 		bl	UART_Rx_INTERRUPT_SetVector
- 319              	.LVL17:
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 13
-
-
- 320 000c 08BD     		pop	{r3, pc}
- 321              	.L32:
- 322 000e 00BF     		.align	2
- 323              	.L31:
- 324 0010 00000000 		.word	IntDefaultHandler
- 325              		.cfi_endproc
- 326              	.LFE2:
- 327              		.size	UART_Rx_INTERRUPT_Stop, .-UART_Rx_INTERRUPT_Stop
- 328              		.section	.text.UART_Rx_INTERRUPT_SetPending,"ax",%progbits
- 329              		.align	2
- 330              		.global	UART_Rx_INTERRUPT_SetPending
- 331              		.thumb
- 332              		.thumb_func
- 333              		.type	UART_Rx_INTERRUPT_SetPending, %function
- 334              	UART_Rx_INTERRUPT_SetPending:
- 335              	.LFB11:
- 353:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** }
- 354:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
+ 324              		.loc 1 140 0
+ 325 0006 0248     		ldr	r0, .L33
+ 326 0008 FFF7FEFF 		bl	UART_Rx_INTERRUPT_SetVector
+ 327              	.LVL17:
+ 328 000c 08BD     		pop	{r3, pc}
+ 329              	.L34:
+ 330 000e 00BF     		.align	2
+ 331              	.L33:
+ 332 0010 00000000 		.word	IntDefaultHandler
+ 333              		.cfi_endproc
+ 334              	.LFE2:
+ 335              		.size	UART_Rx_INTERRUPT_Stop, .-UART_Rx_INTERRUPT_Stop
+ 336              		.section	.text.UART_Rx_INTERRUPT_SetPending,"ax",%progbits
+ 337              		.align	2
+ 338              		.global	UART_Rx_INTERRUPT_SetPending
+ 339              		.thumb
+ 340              		.thumb_func
+ 341              		.type	UART_Rx_INTERRUPT_SetPending, %function
+ 342              	UART_Rx_INTERRUPT_SetPending:
+ 343              	.LFB11:
+ 354:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** }
  355:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
- 356:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** /*******************************************************************************
- 357:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Function Name: UART_Rx_INTERRUPT_SetPending
- 358:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** ********************************************************************************
- 359:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 360:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Summary:
- 361:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Causes the Interrupt to enter the pending state, a software method of
- 362:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   generating the interrupt.
- 363:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 364:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Parameters:
- 365:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   None
- 366:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 367:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Return:
- 368:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   None
- 369:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 370:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Side Effects:
- 371:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   If interrupts are enabled and the interrupt is set up properly, the ISR is
- 372:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   entered (depending on the priority of this interrupt and other pending 
- 373:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   interrupts).
- 374:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 375:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *******************************************************************************/
- 376:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** void UART_Rx_INTERRUPT_SetPending(void)
- 377:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** {
- 336              		.loc 1 377 0
- 337              		.cfi_startproc
- 338              		@ args = 0, pretend = 0, frame = 0
- 339              		@ frame_needed = 0, uses_anonymous_args = 0
- 340              		@ link register save eliminated.
- 378:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     *UART_Rx_INTERRUPT_INTC_SET_PD = UART_Rx_INTERRUPT__INTC_MASK;
- 341              		.loc 1 378 0
- 342 0000 0122     		movs	r2, #1
- 343 0002 014B     		ldr	r3, .L34
- 344 0004 1A60     		str	r2, [r3]
- 345 0006 7047     		bx	lr
- 346              	.L35:
- 347              		.align	2
- 348              	.L34:
- 349 0008 00E200E0 		.word	-536813056
- 350              		.cfi_endproc
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 14
+ 356:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
+ 357:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** /*******************************************************************************
+ 358:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Function Name: UART_Rx_INTERRUPT_SetPending
+ 359:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** ********************************************************************************
+ 360:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 361:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Summary:
+ 362:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Causes the Interrupt to enter the pending state, a software method of
+ 363:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   generating the interrupt.
+ 364:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 365:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Parameters:
+ 366:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   None
+ 367:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 368:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Return:
+ 369:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   None
+ 370:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 371:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Side Effects:
+ 372:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   If interrupts are enabled and the interrupt is set up properly, the ISR is
+ 373:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   entered (depending on the priority of this interrupt and other pending 
+ 374:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   interrupts).
+ 375:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 376:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *******************************************************************************/
+ 377:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** void UART_Rx_INTERRUPT_SetPending(void)
+ 378:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** {
+ 344              		.loc 1 378 0
+ 345              		.cfi_startproc
+ 346              		@ args = 0, pretend = 0, frame = 0
+ 347              		@ frame_needed = 0, uses_anonymous_args = 0
+ 348              		@ link register save eliminated.
+ 379:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     *UART_Rx_INTERRUPT_INTC_SET_PD = UART_Rx_INTERRUPT__INTC_MASK;
+ 349              		.loc 1 379 0
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccl2eJed.s 			page 14
 
 
- 351              	.LFE11:
- 352              		.size	UART_Rx_INTERRUPT_SetPending, .-UART_Rx_INTERRUPT_SetPending
- 353              		.section	.text.UART_Rx_INTERRUPT_ClearPending,"ax",%progbits
- 354              		.align	2
- 355              		.global	UART_Rx_INTERRUPT_ClearPending
- 356              		.thumb
- 357              		.thumb_func
- 358              		.type	UART_Rx_INTERRUPT_ClearPending, %function
- 359              	UART_Rx_INTERRUPT_ClearPending:
- 360              	.LFB12:
- 379:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** }
- 380:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
+ 350 0000 0122     		movs	r2, #1
+ 351 0002 014B     		ldr	r3, .L36
+ 352 0004 1A60     		str	r2, [r3]
+ 353 0006 7047     		bx	lr
+ 354              	.L37:
+ 355              		.align	2
+ 356              	.L36:
+ 357 0008 00E200E0 		.word	-536813056
+ 358              		.cfi_endproc
+ 359              	.LFE11:
+ 360              		.size	UART_Rx_INTERRUPT_SetPending, .-UART_Rx_INTERRUPT_SetPending
+ 361              		.section	.text.UART_Rx_INTERRUPT_ClearPending,"ax",%progbits
+ 362              		.align	2
+ 363              		.global	UART_Rx_INTERRUPT_ClearPending
+ 364              		.thumb
+ 365              		.thumb_func
+ 366              		.type	UART_Rx_INTERRUPT_ClearPending, %function
+ 367              	UART_Rx_INTERRUPT_ClearPending:
+ 368              	.LFB12:
+ 380:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** }
  381:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
- 382:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** /*******************************************************************************
- 383:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Function Name: UART_Rx_INTERRUPT_ClearPending
- 384:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** ********************************************************************************
- 385:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 386:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Summary:
- 387:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Clears a pending interrupt in the interrupt controller.
- 388:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 389:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Note Some interrupt sources are clear-on-read and require the block 
- 390:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   interrupt/status register to be read/cleared with the appropriate block API 
- 391:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   (GPIO, UART, and so on). Otherwise the ISR will continue to remain in 
- 392:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   pending state even though the interrupt itself is cleared using this API.
- 393:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 394:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Parameters:
- 395:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   None
- 396:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 397:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Return:
- 398:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   None
- 399:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
- 400:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *******************************************************************************/
- 401:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** void UART_Rx_INTERRUPT_ClearPending(void)
- 402:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** {
- 361              		.loc 1 402 0
- 362              		.cfi_startproc
- 363              		@ args = 0, pretend = 0, frame = 0
- 364              		@ frame_needed = 0, uses_anonymous_args = 0
- 365              		@ link register save eliminated.
- 403:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     *UART_Rx_INTERRUPT_INTC_CLR_PD = UART_Rx_INTERRUPT__INTC_MASK;
- 366              		.loc 1 403 0
- 367 0000 0122     		movs	r2, #1
- 368 0002 014B     		ldr	r3, .L37
- 369 0004 1A60     		str	r2, [r3]
- 370 0006 7047     		bx	lr
- 371              	.L38:
- 372              		.align	2
- 373              	.L37:
- 374 0008 80E200E0 		.word	-536812928
- 375              		.cfi_endproc
- 376              	.LFE12:
- 377              		.size	UART_Rx_INTERRUPT_ClearPending, .-UART_Rx_INTERRUPT_ClearPending
- 378              		.text
- 379              	.Letext0:
- 380              		.file 2 "Generated_Source\\PSoC5/cytypes.h"
- 381              		.section	.debug_info,"",%progbits
- 382              	.Ldebug_info0:
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 15
+ 382:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** 
+ 383:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** /*******************************************************************************
+ 384:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Function Name: UART_Rx_INTERRUPT_ClearPending
+ 385:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** ********************************************************************************
+ 386:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 387:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Summary:
+ 388:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Clears a pending interrupt in the interrupt controller.
+ 389:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 390:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   Note Some interrupt sources are clear-on-read and require the block 
+ 391:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   interrupt/status register to be read/cleared with the appropriate block API 
+ 392:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   (GPIO, UART, and so on). Otherwise the ISR will continue to remain in 
+ 393:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   pending state even though the interrupt itself is cleared using this API.
+ 394:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 395:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Parameters:
+ 396:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   None
+ 397:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 398:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** * Return:
+ 399:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *   None
+ 400:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *
+ 401:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** *******************************************************************************/
+ 402:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** void UART_Rx_INTERRUPT_ClearPending(void)
+ 403:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c **** {
+ 369              		.loc 1 403 0
+ 370              		.cfi_startproc
+ 371              		@ args = 0, pretend = 0, frame = 0
+ 372              		@ frame_needed = 0, uses_anonymous_args = 0
+ 373              		@ link register save eliminated.
+ 404:.\Generated_Source\PSoC5/UART_Rx_INTERRUPT.c ****     *UART_Rx_INTERRUPT_INTC_CLR_PD = UART_Rx_INTERRUPT__INTC_MASK;
+ 374              		.loc 1 404 0
+ 375 0000 0122     		movs	r2, #1
+ 376 0002 014B     		ldr	r3, .L39
+ 377 0004 1A60     		str	r2, [r3]
+ 378 0006 7047     		bx	lr
+ 379              	.L40:
+ 380              		.align	2
+ 381              	.L39:
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccl2eJed.s 			page 15
 
 
- 383 0000 C7020000 		.4byte	0x2c7
- 384 0004 0400     		.2byte	0x4
- 385 0006 00000000 		.4byte	.Ldebug_abbrev0
- 386 000a 04       		.byte	0x4
- 387 000b 01       		.uleb128 0x1
- 388 000c 3A010000 		.4byte	.LASF33
- 389 0010 01       		.byte	0x1
- 390 0011 C8010000 		.4byte	.LASF34
- 391 0015 06000000 		.4byte	.LASF35
- 392 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 393 001d 00000000 		.4byte	0
- 394 0021 00000000 		.4byte	.Ldebug_line0
- 395 0025 02       		.uleb128 0x2
- 396 0026 04       		.byte	0x4
- 397 0027 05       		.byte	0x5
- 398 0028 696E7400 		.ascii	"int\000"
- 399 002c 03       		.uleb128 0x3
- 400 002d 04       		.byte	0x4
- 401 002e 07       		.byte	0x7
- 402 002f F5010000 		.4byte	.LASF0
- 403 0033 03       		.uleb128 0x3
- 404 0034 01       		.byte	0x1
- 405 0035 06       		.byte	0x6
- 406 0036 3E030000 		.4byte	.LASF1
- 407 003a 03       		.uleb128 0x3
- 408 003b 01       		.byte	0x1
- 409 003c 08       		.byte	0x8
- 410 003d F8000000 		.4byte	.LASF2
- 411 0041 03       		.uleb128 0x3
- 412 0042 02       		.byte	0x2
- 413 0043 05       		.byte	0x5
- 414 0044 B9020000 		.4byte	.LASF3
- 415 0048 03       		.uleb128 0x3
- 416 0049 02       		.byte	0x2
- 417 004a 07       		.byte	0x7
- 418 004b A3000000 		.4byte	.LASF4
- 419 004f 03       		.uleb128 0x3
- 420 0050 04       		.byte	0x4
- 421 0051 05       		.byte	0x5
- 422 0052 FC020000 		.4byte	.LASF5
- 423 0056 03       		.uleb128 0x3
- 424 0057 04       		.byte	0x4
- 425 0058 07       		.byte	0x7
- 426 0059 0B010000 		.4byte	.LASF6
- 427 005d 03       		.uleb128 0x3
- 428 005e 08       		.byte	0x8
- 429 005f 05       		.byte	0x5
- 430 0060 69020000 		.4byte	.LASF7
- 431 0064 03       		.uleb128 0x3
- 432 0065 08       		.byte	0x8
- 433 0066 07       		.byte	0x7
- 434 0067 22020000 		.4byte	.LASF8
- 435 006b 03       		.uleb128 0x3
- 436 006c 04       		.byte	0x4
- 437 006d 07       		.byte	0x7
- 438 006e 60020000 		.4byte	.LASF9
- 439 0072 04       		.uleb128 0x4
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 16
+ 382 0008 80E200E0 		.word	-536812928
+ 383              		.cfi_endproc
+ 384              	.LFE12:
+ 385              		.size	UART_Rx_INTERRUPT_ClearPending, .-UART_Rx_INTERRUPT_ClearPending
+ 386              		.text
+ 387              	.Letext0:
+ 388              		.file 2 "Generated_Source\\PSoC5/cytypes.h"
+ 389              		.section	.debug_info,"",%progbits
+ 390              	.Ldebug_info0:
+ 391 0000 D2020000 		.4byte	0x2d2
+ 392 0004 0400     		.2byte	0x4
+ 393 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 394 000a 04       		.byte	0x4
+ 395 000b 01       		.uleb128 0x1
+ 396 000c 36010000 		.4byte	.LASF33
+ 397 0010 01       		.byte	0x1
+ 398 0011 C4010000 		.4byte	.LASF34
+ 399 0015 C3000000 		.4byte	.LASF35
+ 400 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 401 001d 00000000 		.4byte	0
+ 402 0021 00000000 		.4byte	.Ldebug_line0
+ 403 0025 02       		.uleb128 0x2
+ 404 0026 04       		.byte	0x4
+ 405 0027 05       		.byte	0x5
+ 406 0028 696E7400 		.ascii	"int\000"
+ 407 002c 03       		.uleb128 0x3
+ 408 002d 04       		.byte	0x4
+ 409 002e 07       		.byte	0x7
+ 410 002f F1010000 		.4byte	.LASF0
+ 411 0033 03       		.uleb128 0x3
+ 412 0034 01       		.byte	0x1
+ 413 0035 06       		.byte	0x6
+ 414 0036 51030000 		.4byte	.LASF1
+ 415 003a 03       		.uleb128 0x3
+ 416 003b 01       		.byte	0x1
+ 417 003c 08       		.byte	0x8
+ 418 003d B0000000 		.4byte	.LASF2
+ 419 0041 03       		.uleb128 0x3
+ 420 0042 02       		.byte	0x2
+ 421 0043 05       		.byte	0x5
+ 422 0044 B5020000 		.4byte	.LASF3
+ 423 0048 03       		.uleb128 0x3
+ 424 0049 02       		.byte	0x2
+ 425 004a 07       		.byte	0x7
+ 426 004b 5B000000 		.4byte	.LASF4
+ 427 004f 03       		.uleb128 0x3
+ 428 0050 04       		.byte	0x4
+ 429 0051 05       		.byte	0x5
+ 430 0052 0F030000 		.4byte	.LASF5
+ 431 0056 03       		.uleb128 0x3
+ 432 0057 04       		.byte	0x4
+ 433 0058 07       		.byte	0x7
+ 434 0059 07010000 		.4byte	.LASF6
+ 435 005d 03       		.uleb128 0x3
+ 436 005e 08       		.byte	0x8
+ 437 005f 05       		.byte	0x5
+ 438 0060 65020000 		.4byte	.LASF7
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccl2eJed.s 			page 16
 
 
- 440 0073 04       		.byte	0x4
- 441 0074 78000000 		.4byte	0x78
- 442 0078 05       		.uleb128 0x5
- 443 0079 03       		.uleb128 0x3
- 444 007a 01       		.byte	0x1
- 445 007b 08       		.byte	0x8
- 446 007c B6000000 		.4byte	.LASF10
- 447 0080 06       		.uleb128 0x6
- 448 0081 1D010000 		.4byte	.LASF11
- 449 0085 02       		.byte	0x2
- 450 0086 9201     		.2byte	0x192
- 451 0088 3A000000 		.4byte	0x3a
- 452 008c 06       		.uleb128 0x6
- 453 008d 33010000 		.4byte	.LASF12
- 454 0091 02       		.byte	0x2
- 455 0092 9401     		.2byte	0x194
- 456 0094 56000000 		.4byte	0x56
- 457 0098 03       		.uleb128 0x3
- 458 0099 04       		.byte	0x4
- 459 009a 04       		.byte	0x4
- 460 009b D4000000 		.4byte	.LASF13
- 461 009f 03       		.uleb128 0x3
- 462 00a0 08       		.byte	0x8
- 463 00a1 04       		.byte	0x4
- 464 00a2 2C010000 		.4byte	.LASF14
- 465 00a6 06       		.uleb128 0x6
- 466 00a7 06010000 		.4byte	.LASF15
- 467 00ab 02       		.byte	0x2
- 468 00ac 3C02     		.2byte	0x23c
- 469 00ae B2000000 		.4byte	0xb2
- 470 00b2 07       		.uleb128 0x7
- 471 00b3 80000000 		.4byte	0x80
- 472 00b7 06       		.uleb128 0x6
- 473 00b8 00000000 		.4byte	.LASF16
- 474 00bc 02       		.byte	0x2
- 475 00bd 3E02     		.2byte	0x23e
- 476 00bf C3000000 		.4byte	0xc3
- 477 00c3 07       		.uleb128 0x7
- 478 00c4 8C000000 		.4byte	0x8c
- 479 00c8 06       		.uleb128 0x6
- 480 00c9 39020000 		.4byte	.LASF17
- 481 00cd 02       		.byte	0x2
- 482 00ce 4E02     		.2byte	0x24e
- 483 00d0 72000000 		.4byte	0x72
- 484 00d4 08       		.uleb128 0x8
- 485 00d5 87000000 		.4byte	.LASF25
- 486 00d9 01       		.byte	0x1
- 487 00da A0       		.byte	0xa0
- 488 00db 00000000 		.4byte	.LFB3
- 489 00df 02000000 		.4byte	.LFE3-.LFB3
- 490 00e3 01       		.uleb128 0x1
- 491 00e4 9C       		.byte	0x9c
- 492 00e5 09       		.uleb128 0x9
- 493 00e6 77020000 		.4byte	.LASF19
- 494 00ea 01       		.byte	0x1
- 495 00eb C8       		.byte	0xc8
- 496 00ec 00000000 		.4byte	.LFB4
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 17
+ 439 0064 03       		.uleb128 0x3
+ 440 0065 08       		.byte	0x8
+ 441 0066 07       		.byte	0x7
+ 442 0067 1E020000 		.4byte	.LASF8
+ 443 006b 03       		.uleb128 0x3
+ 444 006c 04       		.byte	0x4
+ 445 006d 07       		.byte	0x7
+ 446 006e 5C020000 		.4byte	.LASF9
+ 447 0072 04       		.uleb128 0x4
+ 448 0073 04       		.byte	0x4
+ 449 0074 78000000 		.4byte	0x78
+ 450 0078 05       		.uleb128 0x5
+ 451 0079 03       		.uleb128 0x3
+ 452 007a 01       		.byte	0x1
+ 453 007b 08       		.byte	0x8
+ 454 007c 6E000000 		.4byte	.LASF10
+ 455 0080 06       		.uleb128 0x6
+ 456 0081 19010000 		.4byte	.LASF11
+ 457 0085 02       		.byte	0x2
+ 458 0086 9201     		.2byte	0x192
+ 459 0088 3A000000 		.4byte	0x3a
+ 460 008c 06       		.uleb128 0x6
+ 461 008d 2F010000 		.4byte	.LASF12
+ 462 0091 02       		.byte	0x2
+ 463 0092 9401     		.2byte	0x194
+ 464 0094 56000000 		.4byte	0x56
+ 465 0098 03       		.uleb128 0x3
+ 466 0099 04       		.byte	0x4
+ 467 009a 04       		.byte	0x4
+ 468 009b 8C000000 		.4byte	.LASF13
+ 469 009f 03       		.uleb128 0x3
+ 470 00a0 08       		.byte	0x8
+ 471 00a1 04       		.byte	0x4
+ 472 00a2 28010000 		.4byte	.LASF14
+ 473 00a6 06       		.uleb128 0x6
+ 474 00a7 BE000000 		.4byte	.LASF15
+ 475 00ab 02       		.byte	0x2
+ 476 00ac 3C02     		.2byte	0x23c
+ 477 00ae B2000000 		.4byte	0xb2
+ 478 00b2 07       		.uleb128 0x7
+ 479 00b3 80000000 		.4byte	0x80
+ 480 00b7 06       		.uleb128 0x6
+ 481 00b8 00000000 		.4byte	.LASF16
+ 482 00bc 02       		.byte	0x2
+ 483 00bd 3E02     		.2byte	0x23e
+ 484 00bf C3000000 		.4byte	0xc3
+ 485 00c3 07       		.uleb128 0x7
+ 486 00c4 8C000000 		.4byte	0x8c
+ 487 00c8 06       		.uleb128 0x6
+ 488 00c9 35020000 		.4byte	.LASF17
+ 489 00cd 02       		.byte	0x2
+ 490 00ce 4E02     		.2byte	0x24e
+ 491 00d0 72000000 		.4byte	0x72
+ 492 00d4 08       		.uleb128 0x8
+ 493 00d5 3F000000 		.4byte	.LASF25
+ 494 00d9 01       		.byte	0x1
+ 495 00da A0       		.byte	0xa0
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccl2eJed.s 			page 17
 
 
- 497 00f0 0C000000 		.4byte	.LFE4-.LFB4
- 498 00f4 01       		.uleb128 0x1
- 499 00f5 9C       		.byte	0x9c
- 500 00f6 15010000 		.4byte	0x115
- 501 00fa 0A       		.uleb128 0xa
- 502 00fb 1A020000 		.4byte	.LASF21
- 503 00ff 01       		.byte	0x1
- 504 0100 C8       		.byte	0xc8
- 505 0101 C8000000 		.4byte	0xc8
- 506 0105 01       		.uleb128 0x1
- 507 0106 50       		.byte	0x50
- 508 0107 0B       		.uleb128 0xb
- 509 0108 93020000 		.4byte	.LASF18
- 510 010c 01       		.byte	0x1
- 511 010d CA       		.byte	0xca
- 512 010e 15010000 		.4byte	0x115
- 513 0112 01       		.uleb128 0x1
- 514 0113 53       		.byte	0x53
- 515 0114 00       		.byte	0
- 516 0115 04       		.uleb128 0x4
- 517 0116 04       		.byte	0x4
- 518 0117 C8000000 		.4byte	0xc8
- 519 011b 0C       		.uleb128 0xc
- 520 011c 4E000000 		.4byte	.LASF23
- 521 0120 01       		.byte	0x1
- 522 0121 E0       		.byte	0xe0
- 523 0122 C8000000 		.4byte	0xc8
- 524 0126 00000000 		.4byte	.LFB5
- 525 012a 0C000000 		.4byte	.LFE5-.LFB5
- 526 012e 01       		.uleb128 0x1
- 527 012f 9C       		.byte	0x9c
- 528 0130 42010000 		.4byte	0x142
- 529 0134 0B       		.uleb128 0xb
- 530 0135 93020000 		.4byte	.LASF18
- 531 0139 01       		.byte	0x1
- 532 013a E2       		.byte	0xe2
- 533 013b 15010000 		.4byte	0x115
- 534 013f 01       		.uleb128 0x1
- 535 0140 53       		.byte	0x53
- 536 0141 00       		.byte	0
- 537 0142 0D       		.uleb128 0xd
- 538 0143 DA000000 		.4byte	.LASF20
- 539 0147 01       		.byte	0x1
- 540 0148 0201     		.2byte	0x102
- 541 014a 00000000 		.4byte	.LFB6
- 542 014e 10000000 		.4byte	.LFE6-.LFB6
- 543 0152 01       		.uleb128 0x1
- 544 0153 9C       		.byte	0x9c
- 545 0154 69010000 		.4byte	0x169
- 546 0158 0E       		.uleb128 0xe
- 547 0159 23010000 		.4byte	.LASF22
- 548 015d 01       		.byte	0x1
- 549 015e 0201     		.2byte	0x102
- 550 0160 80000000 		.4byte	0x80
- 551 0164 00000000 		.4byte	.LLST0
- 552 0168 00       		.byte	0
- 553 0169 0F       		.uleb128 0xf
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 18
+ 496 00db 00000000 		.4byte	.LFB3
+ 497 00df 0C000000 		.4byte	.LFE3-.LFB3
+ 498 00e3 01       		.uleb128 0x1
+ 499 00e4 9C       		.byte	0x9c
+ 500 00e5 09       		.uleb128 0x9
+ 501 00e6 73020000 		.4byte	.LASF19
+ 502 00ea 01       		.byte	0x1
+ 503 00eb C9       		.byte	0xc9
+ 504 00ec 00000000 		.4byte	.LFB4
+ 505 00f0 0C000000 		.4byte	.LFE4-.LFB4
+ 506 00f4 01       		.uleb128 0x1
+ 507 00f5 9C       		.byte	0x9c
+ 508 00f6 15010000 		.4byte	0x115
+ 509 00fa 0A       		.uleb128 0xa
+ 510 00fb 16020000 		.4byte	.LASF21
+ 511 00ff 01       		.byte	0x1
+ 512 0100 C9       		.byte	0xc9
+ 513 0101 C8000000 		.4byte	0xc8
+ 514 0105 01       		.uleb128 0x1
+ 515 0106 50       		.byte	0x50
+ 516 0107 0B       		.uleb128 0xb
+ 517 0108 8F020000 		.4byte	.LASF18
+ 518 010c 01       		.byte	0x1
+ 519 010d CB       		.byte	0xcb
+ 520 010e 15010000 		.4byte	0x115
+ 521 0112 01       		.uleb128 0x1
+ 522 0113 53       		.byte	0x53
+ 523 0114 00       		.byte	0
+ 524 0115 04       		.uleb128 0x4
+ 525 0116 04       		.byte	0x4
+ 526 0117 C8000000 		.4byte	0xc8
+ 527 011b 0C       		.uleb128 0xc
+ 528 011c 06000000 		.4byte	.LASF23
+ 529 0120 01       		.byte	0x1
+ 530 0121 E1       		.byte	0xe1
+ 531 0122 C8000000 		.4byte	0xc8
+ 532 0126 00000000 		.4byte	.LFB5
+ 533 012a 0C000000 		.4byte	.LFE5-.LFB5
+ 534 012e 01       		.uleb128 0x1
+ 535 012f 9C       		.byte	0x9c
+ 536 0130 42010000 		.4byte	0x142
+ 537 0134 0B       		.uleb128 0xb
+ 538 0135 8F020000 		.4byte	.LASF18
+ 539 0139 01       		.byte	0x1
+ 540 013a E3       		.byte	0xe3
+ 541 013b 15010000 		.4byte	0x115
+ 542 013f 01       		.uleb128 0x1
+ 543 0140 53       		.byte	0x53
+ 544 0141 00       		.byte	0
+ 545 0142 0D       		.uleb128 0xd
+ 546 0143 92000000 		.4byte	.LASF20
+ 547 0147 01       		.byte	0x1
+ 548 0148 0301     		.2byte	0x103
+ 549 014a 00000000 		.4byte	.LFB6
+ 550 014e 10000000 		.4byte	.LFE6-.LFB6
+ 551 0152 01       		.uleb128 0x1
+ 552 0153 9C       		.byte	0x9c
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccl2eJed.s 			page 18
 
 
- 554 016a 05030000 		.4byte	.LASF24
- 555 016e 01       		.byte	0x1
- 556 016f 1801     		.2byte	0x118
- 557 0171 80000000 		.4byte	0x80
- 558 0175 00000000 		.4byte	.LFB7
- 559 0179 0C000000 		.4byte	.LFE7-.LFB7
- 560 017d 01       		.uleb128 0x1
- 561 017e 9C       		.byte	0x9c
- 562 017f 94010000 		.4byte	0x194
- 563 0183 10       		.uleb128 0x10
- 564 0184 23010000 		.4byte	.LASF22
- 565 0188 01       		.byte	0x1
- 566 0189 1A01     		.2byte	0x11a
- 567 018b 80000000 		.4byte	0x80
- 568 018f 21000000 		.4byte	.LLST1
- 569 0193 00       		.byte	0
- 570 0194 11       		.uleb128 0x11
- 571 0195 BB000000 		.4byte	.LASF26
- 572 0199 01       		.byte	0x1
- 573 019a 3301     		.2byte	0x133
- 574 019c 00000000 		.4byte	.LFB8
- 575 01a0 0C000000 		.4byte	.LFE8-.LFB8
- 576 01a4 01       		.uleb128 0x1
- 577 01a5 9C       		.byte	0x9c
- 578 01a6 12       		.uleb128 0x12
- 579 01a7 23030000 		.4byte	.LASF36
- 580 01ab 01       		.byte	0x1
- 581 01ac 4801     		.2byte	0x148
- 582 01ae 80000000 		.4byte	0x80
- 583 01b2 00000000 		.4byte	.LFB9
- 584 01b6 10000000 		.4byte	.LFE9-.LFB9
- 585 01ba 01       		.uleb128 0x1
- 586 01bb 9C       		.byte	0x9c
- 587 01bc 11       		.uleb128 0x11
- 588 01bd 46020000 		.4byte	.LASF27
- 589 01c1 01       		.byte	0x1
- 590 01c2 5D01     		.2byte	0x15d
- 591 01c4 00000000 		.4byte	.LFB10
- 592 01c8 0C000000 		.4byte	.LFE10-.LFB10
- 593 01cc 01       		.uleb128 0x1
- 594 01cd 9C       		.byte	0x9c
- 595 01ce 09       		.uleb128 0x9
- 596 01cf 02020000 		.4byte	.LASF28
- 597 01d3 01       		.byte	0x1
- 598 01d4 3D       		.byte	0x3d
- 599 01d5 00000000 		.4byte	.LFB0
- 600 01d9 1C000000 		.4byte	.LFE0-.LFB0
- 601 01dd 01       		.uleb128 0x1
- 602 01de 9C       		.byte	0x9c
- 603 01df 20020000 		.4byte	0x220
- 604 01e3 13       		.uleb128 0x13
- 605 01e4 06000000 		.4byte	.LVL7
- 606 01e8 BC010000 		.4byte	0x1bc
- 607 01ec 14       		.uleb128 0x14
- 608 01ed 0C000000 		.4byte	.LVL8
- 609 01f1 E5000000 		.4byte	0xe5
- 610 01f5 03020000 		.4byte	0x203
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 19
+ 553 0154 69010000 		.4byte	0x169
+ 554 0158 0E       		.uleb128 0xe
+ 555 0159 1F010000 		.4byte	.LASF22
+ 556 015d 01       		.byte	0x1
+ 557 015e 0301     		.2byte	0x103
+ 558 0160 80000000 		.4byte	0x80
+ 559 0164 00000000 		.4byte	.LLST0
+ 560 0168 00       		.byte	0
+ 561 0169 0F       		.uleb128 0xf
+ 562 016a 18030000 		.4byte	.LASF24
+ 563 016e 01       		.byte	0x1
+ 564 016f 1901     		.2byte	0x119
+ 565 0171 80000000 		.4byte	0x80
+ 566 0175 00000000 		.4byte	.LFB7
+ 567 0179 0C000000 		.4byte	.LFE7-.LFB7
+ 568 017d 01       		.uleb128 0x1
+ 569 017e 9C       		.byte	0x9c
+ 570 017f 94010000 		.4byte	0x194
+ 571 0183 10       		.uleb128 0x10
+ 572 0184 1F010000 		.4byte	.LASF22
+ 573 0188 01       		.byte	0x1
+ 574 0189 1B01     		.2byte	0x11b
+ 575 018b 80000000 		.4byte	0x80
+ 576 018f 21000000 		.4byte	.LLST1
+ 577 0193 00       		.byte	0
+ 578 0194 11       		.uleb128 0x11
+ 579 0195 73000000 		.4byte	.LASF26
+ 580 0199 01       		.byte	0x1
+ 581 019a 3401     		.2byte	0x134
+ 582 019c 00000000 		.4byte	.LFB8
+ 583 01a0 0C000000 		.4byte	.LFE8-.LFB8
+ 584 01a4 01       		.uleb128 0x1
+ 585 01a5 9C       		.byte	0x9c
+ 586 01a6 12       		.uleb128 0x12
+ 587 01a7 36030000 		.4byte	.LASF36
+ 588 01ab 01       		.byte	0x1
+ 589 01ac 4901     		.2byte	0x149
+ 590 01ae 80000000 		.4byte	0x80
+ 591 01b2 00000000 		.4byte	.LFB9
+ 592 01b6 10000000 		.4byte	.LFE9-.LFB9
+ 593 01ba 01       		.uleb128 0x1
+ 594 01bb 9C       		.byte	0x9c
+ 595 01bc 11       		.uleb128 0x11
+ 596 01bd 42020000 		.4byte	.LASF27
+ 597 01c1 01       		.byte	0x1
+ 598 01c2 5E01     		.2byte	0x15e
+ 599 01c4 00000000 		.4byte	.LFB10
+ 600 01c8 0C000000 		.4byte	.LFE10-.LFB10
+ 601 01cc 01       		.uleb128 0x1
+ 602 01cd 9C       		.byte	0x9c
+ 603 01ce 09       		.uleb128 0x9
+ 604 01cf FE010000 		.4byte	.LASF28
+ 605 01d3 01       		.byte	0x1
+ 606 01d4 3D       		.byte	0x3d
+ 607 01d5 00000000 		.4byte	.LFB0
+ 608 01d9 1C000000 		.4byte	.LFE0-.LFB0
+ 609 01dd 01       		.uleb128 0x1
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccl2eJed.s 			page 19
 
 
- 611 01f9 15       		.uleb128 0x15
- 612 01fa 01       		.uleb128 0x1
- 613 01fb 50       		.byte	0x50
- 614 01fc 05       		.uleb128 0x5
- 615 01fd 03       		.byte	0x3
- 616 01fe 00000000 		.4byte	UART_Rx_INTERRUPT_Interrupt
- 617 0202 00       		.byte	0
- 618 0203 14       		.uleb128 0x14
- 619 0204 12000000 		.4byte	.LVL9
- 620 0208 42010000 		.4byte	0x142
- 621 020c 16020000 		.4byte	0x216
- 622 0210 15       		.uleb128 0x15
- 623 0211 01       		.uleb128 0x1
- 624 0212 50       		.byte	0x50
- 625 0213 01       		.uleb128 0x1
- 626 0214 37       		.byte	0x37
- 627 0215 00       		.byte	0
- 628 0216 13       		.uleb128 0x13
- 629 0217 16000000 		.4byte	.LVL10
- 630 021b 94010000 		.4byte	0x194
- 631 021f 00       		.byte	0
- 632 0220 09       		.uleb128 0x9
- 633 0221 E2020000 		.4byte	.LASF29
- 634 0225 01       		.byte	0x1
- 635 0226 68       		.byte	0x68
- 636 0227 00000000 		.4byte	.LFB1
- 637 022b 1A000000 		.4byte	.LFE1-.LFB1
- 638 022f 01       		.uleb128 0x1
- 639 0230 9C       		.byte	0x9c
- 640 0231 7E020000 		.4byte	0x27e
- 641 0235 16       		.uleb128 0x16
- 642 0236 1A020000 		.4byte	.LASF21
- 643 023a 01       		.byte	0x1
- 644 023b 68       		.byte	0x68
- 645 023c C8000000 		.4byte	0xc8
- 646 0240 38000000 		.4byte	.LLST2
- 647 0244 13       		.uleb128 0x13
- 648 0245 08000000 		.4byte	.LVL12
- 649 0249 BC010000 		.4byte	0x1bc
- 650 024d 14       		.uleb128 0x14
- 651 024e 0E000000 		.4byte	.LVL13
- 652 0252 E5000000 		.4byte	0xe5
- 653 0256 61020000 		.4byte	0x261
- 654 025a 15       		.uleb128 0x15
- 655 025b 01       		.uleb128 0x1
- 656 025c 50       		.byte	0x50
- 657 025d 02       		.uleb128 0x2
- 658 025e 74       		.byte	0x74
- 659 025f 00       		.sleb128 0
- 660 0260 00       		.byte	0
- 661 0261 14       		.uleb128 0x14
- 662 0262 14000000 		.4byte	.LVL14
- 663 0266 42010000 		.4byte	0x142
- 664 026a 74020000 		.4byte	0x274
- 665 026e 15       		.uleb128 0x15
- 666 026f 01       		.uleb128 0x1
- 667 0270 50       		.byte	0x50
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 20
+ 610 01de 9C       		.byte	0x9c
+ 611 01df 20020000 		.4byte	0x220
+ 612 01e3 13       		.uleb128 0x13
+ 613 01e4 06000000 		.4byte	.LVL7
+ 614 01e8 BC010000 		.4byte	0x1bc
+ 615 01ec 14       		.uleb128 0x14
+ 616 01ed 0C000000 		.4byte	.LVL8
+ 617 01f1 E5000000 		.4byte	0xe5
+ 618 01f5 03020000 		.4byte	0x203
+ 619 01f9 15       		.uleb128 0x15
+ 620 01fa 01       		.uleb128 0x1
+ 621 01fb 50       		.byte	0x50
+ 622 01fc 05       		.uleb128 0x5
+ 623 01fd 03       		.byte	0x3
+ 624 01fe 00000000 		.4byte	UART_Rx_INTERRUPT_Interrupt
+ 625 0202 00       		.byte	0
+ 626 0203 14       		.uleb128 0x14
+ 627 0204 12000000 		.4byte	.LVL9
+ 628 0208 42010000 		.4byte	0x142
+ 629 020c 16020000 		.4byte	0x216
+ 630 0210 15       		.uleb128 0x15
+ 631 0211 01       		.uleb128 0x1
+ 632 0212 50       		.byte	0x50
+ 633 0213 01       		.uleb128 0x1
+ 634 0214 37       		.byte	0x37
+ 635 0215 00       		.byte	0
+ 636 0216 13       		.uleb128 0x13
+ 637 0217 16000000 		.4byte	.LVL10
+ 638 021b 94010000 		.4byte	0x194
+ 639 021f 00       		.byte	0
+ 640 0220 09       		.uleb128 0x9
+ 641 0221 DE020000 		.4byte	.LASF29
+ 642 0225 01       		.byte	0x1
+ 643 0226 68       		.byte	0x68
+ 644 0227 00000000 		.4byte	.LFB1
+ 645 022b 1A000000 		.4byte	.LFE1-.LFB1
+ 646 022f 01       		.uleb128 0x1
+ 647 0230 9C       		.byte	0x9c
+ 648 0231 7E020000 		.4byte	0x27e
+ 649 0235 16       		.uleb128 0x16
+ 650 0236 16020000 		.4byte	.LASF21
+ 651 023a 01       		.byte	0x1
+ 652 023b 68       		.byte	0x68
+ 653 023c C8000000 		.4byte	0xc8
+ 654 0240 38000000 		.4byte	.LLST2
+ 655 0244 13       		.uleb128 0x13
+ 656 0245 08000000 		.4byte	.LVL12
+ 657 0249 BC010000 		.4byte	0x1bc
+ 658 024d 14       		.uleb128 0x14
+ 659 024e 0E000000 		.4byte	.LVL13
+ 660 0252 E5000000 		.4byte	0xe5
+ 661 0256 61020000 		.4byte	0x261
+ 662 025a 15       		.uleb128 0x15
+ 663 025b 01       		.uleb128 0x1
+ 664 025c 50       		.byte	0x50
+ 665 025d 02       		.uleb128 0x2
+ 666 025e 74       		.byte	0x74
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccl2eJed.s 			page 20
 
 
- 668 0271 01       		.uleb128 0x1
- 669 0272 37       		.byte	0x37
- 670 0273 00       		.byte	0
- 671 0274 13       		.uleb128 0x13
- 672 0275 18000000 		.4byte	.LVL15
- 673 0279 94010000 		.4byte	0x194
- 674 027d 00       		.byte	0
- 675 027e 09       		.uleb128 0x9
- 676 027f A2020000 		.4byte	.LASF30
- 677 0283 01       		.byte	0x1
- 678 0284 86       		.byte	0x86
- 679 0285 00000000 		.4byte	.LFB2
- 680 0289 14000000 		.4byte	.LFE2-.LFB2
- 681 028d 01       		.uleb128 0x1
- 682 028e 9C       		.byte	0x9c
- 683 028f A6020000 		.4byte	0x2a6
- 684 0293 13       		.uleb128 0x13
- 685 0294 06000000 		.4byte	.LVL16
- 686 0298 BC010000 		.4byte	0x1bc
- 687 029c 13       		.uleb128 0x13
- 688 029d 0C000000 		.4byte	.LVL17
- 689 02a1 E5000000 		.4byte	0xe5
- 690 02a5 00       		.byte	0
- 691 02a6 11       		.uleb128 0x11
- 692 02a7 6A000000 		.4byte	.LASF31
- 693 02ab 01       		.byte	0x1
- 694 02ac 7801     		.2byte	0x178
- 695 02ae 00000000 		.4byte	.LFB11
- 696 02b2 0C000000 		.4byte	.LFE11-.LFB11
- 697 02b6 01       		.uleb128 0x1
- 698 02b7 9C       		.byte	0x9c
- 699 02b8 11       		.uleb128 0x11
- 700 02b9 C3020000 		.4byte	.LASF32
- 701 02bd 01       		.byte	0x1
- 702 02be 9101     		.2byte	0x191
- 703 02c0 00000000 		.4byte	.LFB12
- 704 02c4 0C000000 		.4byte	.LFE12-.LFB12
- 705 02c8 01       		.uleb128 0x1
- 706 02c9 9C       		.byte	0x9c
- 707 02ca 00       		.byte	0
- 708              		.section	.debug_abbrev,"",%progbits
- 709              	.Ldebug_abbrev0:
- 710 0000 01       		.uleb128 0x1
- 711 0001 11       		.uleb128 0x11
- 712 0002 01       		.byte	0x1
- 713 0003 25       		.uleb128 0x25
- 714 0004 0E       		.uleb128 0xe
- 715 0005 13       		.uleb128 0x13
- 716 0006 0B       		.uleb128 0xb
- 717 0007 03       		.uleb128 0x3
- 718 0008 0E       		.uleb128 0xe
- 719 0009 1B       		.uleb128 0x1b
- 720 000a 0E       		.uleb128 0xe
- 721 000b 55       		.uleb128 0x55
- 722 000c 17       		.uleb128 0x17
- 723 000d 11       		.uleb128 0x11
- 724 000e 01       		.uleb128 0x1
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 21
+ 667 025f 00       		.sleb128 0
+ 668 0260 00       		.byte	0
+ 669 0261 14       		.uleb128 0x14
+ 670 0262 14000000 		.4byte	.LVL14
+ 671 0266 42010000 		.4byte	0x142
+ 672 026a 74020000 		.4byte	0x274
+ 673 026e 15       		.uleb128 0x15
+ 674 026f 01       		.uleb128 0x1
+ 675 0270 50       		.byte	0x50
+ 676 0271 01       		.uleb128 0x1
+ 677 0272 37       		.byte	0x37
+ 678 0273 00       		.byte	0
+ 679 0274 13       		.uleb128 0x13
+ 680 0275 18000000 		.4byte	.LVL15
+ 681 0279 94010000 		.4byte	0x194
+ 682 027d 00       		.byte	0
+ 683 027e 09       		.uleb128 0x9
+ 684 027f 9E020000 		.4byte	.LASF30
+ 685 0283 01       		.byte	0x1
+ 686 0284 86       		.byte	0x86
+ 687 0285 00000000 		.4byte	.LFB2
+ 688 0289 14000000 		.4byte	.LFE2-.LFB2
+ 689 028d 01       		.uleb128 0x1
+ 690 028e 9C       		.byte	0x9c
+ 691 028f A6020000 		.4byte	0x2a6
+ 692 0293 13       		.uleb128 0x13
+ 693 0294 06000000 		.4byte	.LVL16
+ 694 0298 BC010000 		.4byte	0x1bc
+ 695 029c 13       		.uleb128 0x13
+ 696 029d 0C000000 		.4byte	.LVL17
+ 697 02a1 E5000000 		.4byte	0xe5
+ 698 02a5 00       		.byte	0
+ 699 02a6 11       		.uleb128 0x11
+ 700 02a7 22000000 		.4byte	.LASF31
+ 701 02ab 01       		.byte	0x1
+ 702 02ac 7901     		.2byte	0x179
+ 703 02ae 00000000 		.4byte	.LFB11
+ 704 02b2 0C000000 		.4byte	.LFE11-.LFB11
+ 705 02b6 01       		.uleb128 0x1
+ 706 02b7 9C       		.byte	0x9c
+ 707 02b8 11       		.uleb128 0x11
+ 708 02b9 BF020000 		.4byte	.LASF32
+ 709 02bd 01       		.byte	0x1
+ 710 02be 9201     		.2byte	0x192
+ 711 02c0 00000000 		.4byte	.LFB12
+ 712 02c4 0C000000 		.4byte	.LFE12-.LFB12
+ 713 02c8 01       		.uleb128 0x1
+ 714 02c9 9C       		.byte	0x9c
+ 715 02ca 17       		.uleb128 0x17
+ 716 02cb F8020000 		.4byte	.LASF37
+ 717 02cf 01       		.byte	0x1
+ 718 02d0 1E       		.byte	0x1e
+ 719 02d1 80000000 		.4byte	0x80
+ 720 02d5 00       		.byte	0
+ 721              		.section	.debug_abbrev,"",%progbits
+ 722              	.Ldebug_abbrev0:
+ 723 0000 01       		.uleb128 0x1
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccl2eJed.s 			page 21
 
 
- 725 000f 10       		.uleb128 0x10
- 726 0010 17       		.uleb128 0x17
- 727 0011 00       		.byte	0
- 728 0012 00       		.byte	0
- 729 0013 02       		.uleb128 0x2
- 730 0014 24       		.uleb128 0x24
- 731 0015 00       		.byte	0
- 732 0016 0B       		.uleb128 0xb
- 733 0017 0B       		.uleb128 0xb
- 734 0018 3E       		.uleb128 0x3e
- 735 0019 0B       		.uleb128 0xb
- 736 001a 03       		.uleb128 0x3
- 737 001b 08       		.uleb128 0x8
- 738 001c 00       		.byte	0
- 739 001d 00       		.byte	0
- 740 001e 03       		.uleb128 0x3
- 741 001f 24       		.uleb128 0x24
- 742 0020 00       		.byte	0
- 743 0021 0B       		.uleb128 0xb
- 744 0022 0B       		.uleb128 0xb
- 745 0023 3E       		.uleb128 0x3e
- 746 0024 0B       		.uleb128 0xb
- 747 0025 03       		.uleb128 0x3
- 748 0026 0E       		.uleb128 0xe
- 749 0027 00       		.byte	0
- 750 0028 00       		.byte	0
- 751 0029 04       		.uleb128 0x4
- 752 002a 0F       		.uleb128 0xf
- 753 002b 00       		.byte	0
- 754 002c 0B       		.uleb128 0xb
- 755 002d 0B       		.uleb128 0xb
- 756 002e 49       		.uleb128 0x49
- 757 002f 13       		.uleb128 0x13
- 758 0030 00       		.byte	0
- 759 0031 00       		.byte	0
- 760 0032 05       		.uleb128 0x5
- 761 0033 15       		.uleb128 0x15
- 762 0034 00       		.byte	0
- 763 0035 27       		.uleb128 0x27
- 764 0036 19       		.uleb128 0x19
- 765 0037 00       		.byte	0
- 766 0038 00       		.byte	0
- 767 0039 06       		.uleb128 0x6
- 768 003a 16       		.uleb128 0x16
- 769 003b 00       		.byte	0
- 770 003c 03       		.uleb128 0x3
- 771 003d 0E       		.uleb128 0xe
- 772 003e 3A       		.uleb128 0x3a
- 773 003f 0B       		.uleb128 0xb
- 774 0040 3B       		.uleb128 0x3b
- 775 0041 05       		.uleb128 0x5
- 776 0042 49       		.uleb128 0x49
- 777 0043 13       		.uleb128 0x13
- 778 0044 00       		.byte	0
- 779 0045 00       		.byte	0
- 780 0046 07       		.uleb128 0x7
- 781 0047 35       		.uleb128 0x35
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 22
+ 724 0001 11       		.uleb128 0x11
+ 725 0002 01       		.byte	0x1
+ 726 0003 25       		.uleb128 0x25
+ 727 0004 0E       		.uleb128 0xe
+ 728 0005 13       		.uleb128 0x13
+ 729 0006 0B       		.uleb128 0xb
+ 730 0007 03       		.uleb128 0x3
+ 731 0008 0E       		.uleb128 0xe
+ 732 0009 1B       		.uleb128 0x1b
+ 733 000a 0E       		.uleb128 0xe
+ 734 000b 55       		.uleb128 0x55
+ 735 000c 17       		.uleb128 0x17
+ 736 000d 11       		.uleb128 0x11
+ 737 000e 01       		.uleb128 0x1
+ 738 000f 10       		.uleb128 0x10
+ 739 0010 17       		.uleb128 0x17
+ 740 0011 00       		.byte	0
+ 741 0012 00       		.byte	0
+ 742 0013 02       		.uleb128 0x2
+ 743 0014 24       		.uleb128 0x24
+ 744 0015 00       		.byte	0
+ 745 0016 0B       		.uleb128 0xb
+ 746 0017 0B       		.uleb128 0xb
+ 747 0018 3E       		.uleb128 0x3e
+ 748 0019 0B       		.uleb128 0xb
+ 749 001a 03       		.uleb128 0x3
+ 750 001b 08       		.uleb128 0x8
+ 751 001c 00       		.byte	0
+ 752 001d 00       		.byte	0
+ 753 001e 03       		.uleb128 0x3
+ 754 001f 24       		.uleb128 0x24
+ 755 0020 00       		.byte	0
+ 756 0021 0B       		.uleb128 0xb
+ 757 0022 0B       		.uleb128 0xb
+ 758 0023 3E       		.uleb128 0x3e
+ 759 0024 0B       		.uleb128 0xb
+ 760 0025 03       		.uleb128 0x3
+ 761 0026 0E       		.uleb128 0xe
+ 762 0027 00       		.byte	0
+ 763 0028 00       		.byte	0
+ 764 0029 04       		.uleb128 0x4
+ 765 002a 0F       		.uleb128 0xf
+ 766 002b 00       		.byte	0
+ 767 002c 0B       		.uleb128 0xb
+ 768 002d 0B       		.uleb128 0xb
+ 769 002e 49       		.uleb128 0x49
+ 770 002f 13       		.uleb128 0x13
+ 771 0030 00       		.byte	0
+ 772 0031 00       		.byte	0
+ 773 0032 05       		.uleb128 0x5
+ 774 0033 15       		.uleb128 0x15
+ 775 0034 00       		.byte	0
+ 776 0035 27       		.uleb128 0x27
+ 777 0036 19       		.uleb128 0x19
+ 778 0037 00       		.byte	0
+ 779 0038 00       		.byte	0
+ 780 0039 06       		.uleb128 0x6
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccl2eJed.s 			page 22
 
 
- 782 0048 00       		.byte	0
- 783 0049 49       		.uleb128 0x49
- 784 004a 13       		.uleb128 0x13
- 785 004b 00       		.byte	0
- 786 004c 00       		.byte	0
- 787 004d 08       		.uleb128 0x8
- 788 004e 2E       		.uleb128 0x2e
- 789 004f 00       		.byte	0
- 790 0050 3F       		.uleb128 0x3f
- 791 0051 19       		.uleb128 0x19
- 792 0052 03       		.uleb128 0x3
- 793 0053 0E       		.uleb128 0xe
- 794 0054 3A       		.uleb128 0x3a
- 795 0055 0B       		.uleb128 0xb
- 796 0056 3B       		.uleb128 0x3b
- 797 0057 0B       		.uleb128 0xb
- 798 0058 27       		.uleb128 0x27
- 799 0059 19       		.uleb128 0x19
- 800 005a 11       		.uleb128 0x11
- 801 005b 01       		.uleb128 0x1
- 802 005c 12       		.uleb128 0x12
- 803 005d 06       		.uleb128 0x6
- 804 005e 40       		.uleb128 0x40
- 805 005f 18       		.uleb128 0x18
- 806 0060 9742     		.uleb128 0x2117
- 807 0062 19       		.uleb128 0x19
- 808 0063 00       		.byte	0
- 809 0064 00       		.byte	0
- 810 0065 09       		.uleb128 0x9
- 811 0066 2E       		.uleb128 0x2e
- 812 0067 01       		.byte	0x1
- 813 0068 3F       		.uleb128 0x3f
- 814 0069 19       		.uleb128 0x19
- 815 006a 03       		.uleb128 0x3
- 816 006b 0E       		.uleb128 0xe
- 817 006c 3A       		.uleb128 0x3a
- 818 006d 0B       		.uleb128 0xb
- 819 006e 3B       		.uleb128 0x3b
- 820 006f 0B       		.uleb128 0xb
- 821 0070 27       		.uleb128 0x27
- 822 0071 19       		.uleb128 0x19
- 823 0072 11       		.uleb128 0x11
- 824 0073 01       		.uleb128 0x1
- 825 0074 12       		.uleb128 0x12
- 826 0075 06       		.uleb128 0x6
- 827 0076 40       		.uleb128 0x40
- 828 0077 18       		.uleb128 0x18
- 829 0078 9742     		.uleb128 0x2117
- 830 007a 19       		.uleb128 0x19
- 831 007b 01       		.uleb128 0x1
- 832 007c 13       		.uleb128 0x13
- 833 007d 00       		.byte	0
- 834 007e 00       		.byte	0
- 835 007f 0A       		.uleb128 0xa
- 836 0080 05       		.uleb128 0x5
- 837 0081 00       		.byte	0
- 838 0082 03       		.uleb128 0x3
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 23
+ 781 003a 16       		.uleb128 0x16
+ 782 003b 00       		.byte	0
+ 783 003c 03       		.uleb128 0x3
+ 784 003d 0E       		.uleb128 0xe
+ 785 003e 3A       		.uleb128 0x3a
+ 786 003f 0B       		.uleb128 0xb
+ 787 0040 3B       		.uleb128 0x3b
+ 788 0041 05       		.uleb128 0x5
+ 789 0042 49       		.uleb128 0x49
+ 790 0043 13       		.uleb128 0x13
+ 791 0044 00       		.byte	0
+ 792 0045 00       		.byte	0
+ 793 0046 07       		.uleb128 0x7
+ 794 0047 35       		.uleb128 0x35
+ 795 0048 00       		.byte	0
+ 796 0049 49       		.uleb128 0x49
+ 797 004a 13       		.uleb128 0x13
+ 798 004b 00       		.byte	0
+ 799 004c 00       		.byte	0
+ 800 004d 08       		.uleb128 0x8
+ 801 004e 2E       		.uleb128 0x2e
+ 802 004f 00       		.byte	0
+ 803 0050 3F       		.uleb128 0x3f
+ 804 0051 19       		.uleb128 0x19
+ 805 0052 03       		.uleb128 0x3
+ 806 0053 0E       		.uleb128 0xe
+ 807 0054 3A       		.uleb128 0x3a
+ 808 0055 0B       		.uleb128 0xb
+ 809 0056 3B       		.uleb128 0x3b
+ 810 0057 0B       		.uleb128 0xb
+ 811 0058 27       		.uleb128 0x27
+ 812 0059 19       		.uleb128 0x19
+ 813 005a 11       		.uleb128 0x11
+ 814 005b 01       		.uleb128 0x1
+ 815 005c 12       		.uleb128 0x12
+ 816 005d 06       		.uleb128 0x6
+ 817 005e 40       		.uleb128 0x40
+ 818 005f 18       		.uleb128 0x18
+ 819 0060 9742     		.uleb128 0x2117
+ 820 0062 19       		.uleb128 0x19
+ 821 0063 00       		.byte	0
+ 822 0064 00       		.byte	0
+ 823 0065 09       		.uleb128 0x9
+ 824 0066 2E       		.uleb128 0x2e
+ 825 0067 01       		.byte	0x1
+ 826 0068 3F       		.uleb128 0x3f
+ 827 0069 19       		.uleb128 0x19
+ 828 006a 03       		.uleb128 0x3
+ 829 006b 0E       		.uleb128 0xe
+ 830 006c 3A       		.uleb128 0x3a
+ 831 006d 0B       		.uleb128 0xb
+ 832 006e 3B       		.uleb128 0x3b
+ 833 006f 0B       		.uleb128 0xb
+ 834 0070 27       		.uleb128 0x27
+ 835 0071 19       		.uleb128 0x19
+ 836 0072 11       		.uleb128 0x11
+ 837 0073 01       		.uleb128 0x1
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccl2eJed.s 			page 23
 
 
- 839 0083 0E       		.uleb128 0xe
- 840 0084 3A       		.uleb128 0x3a
- 841 0085 0B       		.uleb128 0xb
- 842 0086 3B       		.uleb128 0x3b
- 843 0087 0B       		.uleb128 0xb
- 844 0088 49       		.uleb128 0x49
- 845 0089 13       		.uleb128 0x13
- 846 008a 02       		.uleb128 0x2
- 847 008b 18       		.uleb128 0x18
- 848 008c 00       		.byte	0
- 849 008d 00       		.byte	0
- 850 008e 0B       		.uleb128 0xb
- 851 008f 34       		.uleb128 0x34
- 852 0090 00       		.byte	0
- 853 0091 03       		.uleb128 0x3
- 854 0092 0E       		.uleb128 0xe
- 855 0093 3A       		.uleb128 0x3a
- 856 0094 0B       		.uleb128 0xb
- 857 0095 3B       		.uleb128 0x3b
- 858 0096 0B       		.uleb128 0xb
- 859 0097 49       		.uleb128 0x49
- 860 0098 13       		.uleb128 0x13
- 861 0099 02       		.uleb128 0x2
- 862 009a 18       		.uleb128 0x18
- 863 009b 00       		.byte	0
- 864 009c 00       		.byte	0
- 865 009d 0C       		.uleb128 0xc
- 866 009e 2E       		.uleb128 0x2e
- 867 009f 01       		.byte	0x1
- 868 00a0 3F       		.uleb128 0x3f
- 869 00a1 19       		.uleb128 0x19
- 870 00a2 03       		.uleb128 0x3
- 871 00a3 0E       		.uleb128 0xe
- 872 00a4 3A       		.uleb128 0x3a
- 873 00a5 0B       		.uleb128 0xb
- 874 00a6 3B       		.uleb128 0x3b
- 875 00a7 0B       		.uleb128 0xb
- 876 00a8 27       		.uleb128 0x27
- 877 00a9 19       		.uleb128 0x19
- 878 00aa 49       		.uleb128 0x49
- 879 00ab 13       		.uleb128 0x13
- 880 00ac 11       		.uleb128 0x11
- 881 00ad 01       		.uleb128 0x1
- 882 00ae 12       		.uleb128 0x12
- 883 00af 06       		.uleb128 0x6
- 884 00b0 40       		.uleb128 0x40
- 885 00b1 18       		.uleb128 0x18
- 886 00b2 9742     		.uleb128 0x2117
- 887 00b4 19       		.uleb128 0x19
- 888 00b5 01       		.uleb128 0x1
- 889 00b6 13       		.uleb128 0x13
- 890 00b7 00       		.byte	0
- 891 00b8 00       		.byte	0
- 892 00b9 0D       		.uleb128 0xd
- 893 00ba 2E       		.uleb128 0x2e
- 894 00bb 01       		.byte	0x1
- 895 00bc 3F       		.uleb128 0x3f
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 24
+ 838 0074 12       		.uleb128 0x12
+ 839 0075 06       		.uleb128 0x6
+ 840 0076 40       		.uleb128 0x40
+ 841 0077 18       		.uleb128 0x18
+ 842 0078 9742     		.uleb128 0x2117
+ 843 007a 19       		.uleb128 0x19
+ 844 007b 01       		.uleb128 0x1
+ 845 007c 13       		.uleb128 0x13
+ 846 007d 00       		.byte	0
+ 847 007e 00       		.byte	0
+ 848 007f 0A       		.uleb128 0xa
+ 849 0080 05       		.uleb128 0x5
+ 850 0081 00       		.byte	0
+ 851 0082 03       		.uleb128 0x3
+ 852 0083 0E       		.uleb128 0xe
+ 853 0084 3A       		.uleb128 0x3a
+ 854 0085 0B       		.uleb128 0xb
+ 855 0086 3B       		.uleb128 0x3b
+ 856 0087 0B       		.uleb128 0xb
+ 857 0088 49       		.uleb128 0x49
+ 858 0089 13       		.uleb128 0x13
+ 859 008a 02       		.uleb128 0x2
+ 860 008b 18       		.uleb128 0x18
+ 861 008c 00       		.byte	0
+ 862 008d 00       		.byte	0
+ 863 008e 0B       		.uleb128 0xb
+ 864 008f 34       		.uleb128 0x34
+ 865 0090 00       		.byte	0
+ 866 0091 03       		.uleb128 0x3
+ 867 0092 0E       		.uleb128 0xe
+ 868 0093 3A       		.uleb128 0x3a
+ 869 0094 0B       		.uleb128 0xb
+ 870 0095 3B       		.uleb128 0x3b
+ 871 0096 0B       		.uleb128 0xb
+ 872 0097 49       		.uleb128 0x49
+ 873 0098 13       		.uleb128 0x13
+ 874 0099 02       		.uleb128 0x2
+ 875 009a 18       		.uleb128 0x18
+ 876 009b 00       		.byte	0
+ 877 009c 00       		.byte	0
+ 878 009d 0C       		.uleb128 0xc
+ 879 009e 2E       		.uleb128 0x2e
+ 880 009f 01       		.byte	0x1
+ 881 00a0 3F       		.uleb128 0x3f
+ 882 00a1 19       		.uleb128 0x19
+ 883 00a2 03       		.uleb128 0x3
+ 884 00a3 0E       		.uleb128 0xe
+ 885 00a4 3A       		.uleb128 0x3a
+ 886 00a5 0B       		.uleb128 0xb
+ 887 00a6 3B       		.uleb128 0x3b
+ 888 00a7 0B       		.uleb128 0xb
+ 889 00a8 27       		.uleb128 0x27
+ 890 00a9 19       		.uleb128 0x19
+ 891 00aa 49       		.uleb128 0x49
+ 892 00ab 13       		.uleb128 0x13
+ 893 00ac 11       		.uleb128 0x11
+ 894 00ad 01       		.uleb128 0x1
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccl2eJed.s 			page 24
 
 
- 896 00bd 19       		.uleb128 0x19
- 897 00be 03       		.uleb128 0x3
- 898 00bf 0E       		.uleb128 0xe
- 899 00c0 3A       		.uleb128 0x3a
- 900 00c1 0B       		.uleb128 0xb
- 901 00c2 3B       		.uleb128 0x3b
- 902 00c3 05       		.uleb128 0x5
- 903 00c4 27       		.uleb128 0x27
- 904 00c5 19       		.uleb128 0x19
- 905 00c6 11       		.uleb128 0x11
- 906 00c7 01       		.uleb128 0x1
- 907 00c8 12       		.uleb128 0x12
- 908 00c9 06       		.uleb128 0x6
- 909 00ca 40       		.uleb128 0x40
- 910 00cb 18       		.uleb128 0x18
- 911 00cc 9742     		.uleb128 0x2117
- 912 00ce 19       		.uleb128 0x19
- 913 00cf 01       		.uleb128 0x1
- 914 00d0 13       		.uleb128 0x13
- 915 00d1 00       		.byte	0
- 916 00d2 00       		.byte	0
- 917 00d3 0E       		.uleb128 0xe
- 918 00d4 05       		.uleb128 0x5
- 919 00d5 00       		.byte	0
- 920 00d6 03       		.uleb128 0x3
- 921 00d7 0E       		.uleb128 0xe
- 922 00d8 3A       		.uleb128 0x3a
- 923 00d9 0B       		.uleb128 0xb
- 924 00da 3B       		.uleb128 0x3b
- 925 00db 05       		.uleb128 0x5
- 926 00dc 49       		.uleb128 0x49
- 927 00dd 13       		.uleb128 0x13
- 928 00de 02       		.uleb128 0x2
- 929 00df 17       		.uleb128 0x17
- 930 00e0 00       		.byte	0
- 931 00e1 00       		.byte	0
- 932 00e2 0F       		.uleb128 0xf
- 933 00e3 2E       		.uleb128 0x2e
- 934 00e4 01       		.byte	0x1
- 935 00e5 3F       		.uleb128 0x3f
- 936 00e6 19       		.uleb128 0x19
- 937 00e7 03       		.uleb128 0x3
- 938 00e8 0E       		.uleb128 0xe
- 939 00e9 3A       		.uleb128 0x3a
- 940 00ea 0B       		.uleb128 0xb
- 941 00eb 3B       		.uleb128 0x3b
- 942 00ec 05       		.uleb128 0x5
- 943 00ed 27       		.uleb128 0x27
- 944 00ee 19       		.uleb128 0x19
- 945 00ef 49       		.uleb128 0x49
- 946 00f0 13       		.uleb128 0x13
- 947 00f1 11       		.uleb128 0x11
- 948 00f2 01       		.uleb128 0x1
- 949 00f3 12       		.uleb128 0x12
- 950 00f4 06       		.uleb128 0x6
- 951 00f5 40       		.uleb128 0x40
- 952 00f6 18       		.uleb128 0x18
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 25
+ 895 00ae 12       		.uleb128 0x12
+ 896 00af 06       		.uleb128 0x6
+ 897 00b0 40       		.uleb128 0x40
+ 898 00b1 18       		.uleb128 0x18
+ 899 00b2 9742     		.uleb128 0x2117
+ 900 00b4 19       		.uleb128 0x19
+ 901 00b5 01       		.uleb128 0x1
+ 902 00b6 13       		.uleb128 0x13
+ 903 00b7 00       		.byte	0
+ 904 00b8 00       		.byte	0
+ 905 00b9 0D       		.uleb128 0xd
+ 906 00ba 2E       		.uleb128 0x2e
+ 907 00bb 01       		.byte	0x1
+ 908 00bc 3F       		.uleb128 0x3f
+ 909 00bd 19       		.uleb128 0x19
+ 910 00be 03       		.uleb128 0x3
+ 911 00bf 0E       		.uleb128 0xe
+ 912 00c0 3A       		.uleb128 0x3a
+ 913 00c1 0B       		.uleb128 0xb
+ 914 00c2 3B       		.uleb128 0x3b
+ 915 00c3 05       		.uleb128 0x5
+ 916 00c4 27       		.uleb128 0x27
+ 917 00c5 19       		.uleb128 0x19
+ 918 00c6 11       		.uleb128 0x11
+ 919 00c7 01       		.uleb128 0x1
+ 920 00c8 12       		.uleb128 0x12
+ 921 00c9 06       		.uleb128 0x6
+ 922 00ca 40       		.uleb128 0x40
+ 923 00cb 18       		.uleb128 0x18
+ 924 00cc 9742     		.uleb128 0x2117
+ 925 00ce 19       		.uleb128 0x19
+ 926 00cf 01       		.uleb128 0x1
+ 927 00d0 13       		.uleb128 0x13
+ 928 00d1 00       		.byte	0
+ 929 00d2 00       		.byte	0
+ 930 00d3 0E       		.uleb128 0xe
+ 931 00d4 05       		.uleb128 0x5
+ 932 00d5 00       		.byte	0
+ 933 00d6 03       		.uleb128 0x3
+ 934 00d7 0E       		.uleb128 0xe
+ 935 00d8 3A       		.uleb128 0x3a
+ 936 00d9 0B       		.uleb128 0xb
+ 937 00da 3B       		.uleb128 0x3b
+ 938 00db 05       		.uleb128 0x5
+ 939 00dc 49       		.uleb128 0x49
+ 940 00dd 13       		.uleb128 0x13
+ 941 00de 02       		.uleb128 0x2
+ 942 00df 17       		.uleb128 0x17
+ 943 00e0 00       		.byte	0
+ 944 00e1 00       		.byte	0
+ 945 00e2 0F       		.uleb128 0xf
+ 946 00e3 2E       		.uleb128 0x2e
+ 947 00e4 01       		.byte	0x1
+ 948 00e5 3F       		.uleb128 0x3f
+ 949 00e6 19       		.uleb128 0x19
+ 950 00e7 03       		.uleb128 0x3
+ 951 00e8 0E       		.uleb128 0xe
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccl2eJed.s 			page 25
 
 
- 953 00f7 9742     		.uleb128 0x2117
- 954 00f9 19       		.uleb128 0x19
- 955 00fa 01       		.uleb128 0x1
- 956 00fb 13       		.uleb128 0x13
- 957 00fc 00       		.byte	0
- 958 00fd 00       		.byte	0
- 959 00fe 10       		.uleb128 0x10
- 960 00ff 34       		.uleb128 0x34
- 961 0100 00       		.byte	0
- 962 0101 03       		.uleb128 0x3
- 963 0102 0E       		.uleb128 0xe
- 964 0103 3A       		.uleb128 0x3a
- 965 0104 0B       		.uleb128 0xb
- 966 0105 3B       		.uleb128 0x3b
- 967 0106 05       		.uleb128 0x5
- 968 0107 49       		.uleb128 0x49
- 969 0108 13       		.uleb128 0x13
- 970 0109 02       		.uleb128 0x2
- 971 010a 17       		.uleb128 0x17
- 972 010b 00       		.byte	0
- 973 010c 00       		.byte	0
- 974 010d 11       		.uleb128 0x11
- 975 010e 2E       		.uleb128 0x2e
- 976 010f 00       		.byte	0
- 977 0110 3F       		.uleb128 0x3f
- 978 0111 19       		.uleb128 0x19
- 979 0112 03       		.uleb128 0x3
- 980 0113 0E       		.uleb128 0xe
- 981 0114 3A       		.uleb128 0x3a
- 982 0115 0B       		.uleb128 0xb
- 983 0116 3B       		.uleb128 0x3b
- 984 0117 05       		.uleb128 0x5
- 985 0118 27       		.uleb128 0x27
- 986 0119 19       		.uleb128 0x19
- 987 011a 11       		.uleb128 0x11
- 988 011b 01       		.uleb128 0x1
- 989 011c 12       		.uleb128 0x12
- 990 011d 06       		.uleb128 0x6
- 991 011e 40       		.uleb128 0x40
- 992 011f 18       		.uleb128 0x18
- 993 0120 9742     		.uleb128 0x2117
- 994 0122 19       		.uleb128 0x19
- 995 0123 00       		.byte	0
- 996 0124 00       		.byte	0
- 997 0125 12       		.uleb128 0x12
- 998 0126 2E       		.uleb128 0x2e
- 999 0127 00       		.byte	0
- 1000 0128 3F       		.uleb128 0x3f
- 1001 0129 19       		.uleb128 0x19
- 1002 012a 03       		.uleb128 0x3
- 1003 012b 0E       		.uleb128 0xe
- 1004 012c 3A       		.uleb128 0x3a
- 1005 012d 0B       		.uleb128 0xb
- 1006 012e 3B       		.uleb128 0x3b
- 1007 012f 05       		.uleb128 0x5
- 1008 0130 27       		.uleb128 0x27
- 1009 0131 19       		.uleb128 0x19
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 26
+ 952 00e9 3A       		.uleb128 0x3a
+ 953 00ea 0B       		.uleb128 0xb
+ 954 00eb 3B       		.uleb128 0x3b
+ 955 00ec 05       		.uleb128 0x5
+ 956 00ed 27       		.uleb128 0x27
+ 957 00ee 19       		.uleb128 0x19
+ 958 00ef 49       		.uleb128 0x49
+ 959 00f0 13       		.uleb128 0x13
+ 960 00f1 11       		.uleb128 0x11
+ 961 00f2 01       		.uleb128 0x1
+ 962 00f3 12       		.uleb128 0x12
+ 963 00f4 06       		.uleb128 0x6
+ 964 00f5 40       		.uleb128 0x40
+ 965 00f6 18       		.uleb128 0x18
+ 966 00f7 9742     		.uleb128 0x2117
+ 967 00f9 19       		.uleb128 0x19
+ 968 00fa 01       		.uleb128 0x1
+ 969 00fb 13       		.uleb128 0x13
+ 970 00fc 00       		.byte	0
+ 971 00fd 00       		.byte	0
+ 972 00fe 10       		.uleb128 0x10
+ 973 00ff 34       		.uleb128 0x34
+ 974 0100 00       		.byte	0
+ 975 0101 03       		.uleb128 0x3
+ 976 0102 0E       		.uleb128 0xe
+ 977 0103 3A       		.uleb128 0x3a
+ 978 0104 0B       		.uleb128 0xb
+ 979 0105 3B       		.uleb128 0x3b
+ 980 0106 05       		.uleb128 0x5
+ 981 0107 49       		.uleb128 0x49
+ 982 0108 13       		.uleb128 0x13
+ 983 0109 02       		.uleb128 0x2
+ 984 010a 17       		.uleb128 0x17
+ 985 010b 00       		.byte	0
+ 986 010c 00       		.byte	0
+ 987 010d 11       		.uleb128 0x11
+ 988 010e 2E       		.uleb128 0x2e
+ 989 010f 00       		.byte	0
+ 990 0110 3F       		.uleb128 0x3f
+ 991 0111 19       		.uleb128 0x19
+ 992 0112 03       		.uleb128 0x3
+ 993 0113 0E       		.uleb128 0xe
+ 994 0114 3A       		.uleb128 0x3a
+ 995 0115 0B       		.uleb128 0xb
+ 996 0116 3B       		.uleb128 0x3b
+ 997 0117 05       		.uleb128 0x5
+ 998 0118 27       		.uleb128 0x27
+ 999 0119 19       		.uleb128 0x19
+ 1000 011a 11       		.uleb128 0x11
+ 1001 011b 01       		.uleb128 0x1
+ 1002 011c 12       		.uleb128 0x12
+ 1003 011d 06       		.uleb128 0x6
+ 1004 011e 40       		.uleb128 0x40
+ 1005 011f 18       		.uleb128 0x18
+ 1006 0120 9742     		.uleb128 0x2117
+ 1007 0122 19       		.uleb128 0x19
+ 1008 0123 00       		.byte	0
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccl2eJed.s 			page 26
 
 
- 1010 0132 49       		.uleb128 0x49
- 1011 0133 13       		.uleb128 0x13
- 1012 0134 11       		.uleb128 0x11
- 1013 0135 01       		.uleb128 0x1
- 1014 0136 12       		.uleb128 0x12
- 1015 0137 06       		.uleb128 0x6
- 1016 0138 40       		.uleb128 0x40
- 1017 0139 18       		.uleb128 0x18
- 1018 013a 9742     		.uleb128 0x2117
- 1019 013c 19       		.uleb128 0x19
- 1020 013d 00       		.byte	0
- 1021 013e 00       		.byte	0
- 1022 013f 13       		.uleb128 0x13
- 1023 0140 898201   		.uleb128 0x4109
- 1024 0143 00       		.byte	0
- 1025 0144 11       		.uleb128 0x11
- 1026 0145 01       		.uleb128 0x1
- 1027 0146 31       		.uleb128 0x31
- 1028 0147 13       		.uleb128 0x13
- 1029 0148 00       		.byte	0
- 1030 0149 00       		.byte	0
- 1031 014a 14       		.uleb128 0x14
- 1032 014b 898201   		.uleb128 0x4109
- 1033 014e 01       		.byte	0x1
- 1034 014f 11       		.uleb128 0x11
- 1035 0150 01       		.uleb128 0x1
- 1036 0151 31       		.uleb128 0x31
- 1037 0152 13       		.uleb128 0x13
- 1038 0153 01       		.uleb128 0x1
- 1039 0154 13       		.uleb128 0x13
- 1040 0155 00       		.byte	0
- 1041 0156 00       		.byte	0
- 1042 0157 15       		.uleb128 0x15
- 1043 0158 8A8201   		.uleb128 0x410a
- 1044 015b 00       		.byte	0
- 1045 015c 02       		.uleb128 0x2
- 1046 015d 18       		.uleb128 0x18
- 1047 015e 9142     		.uleb128 0x2111
- 1048 0160 18       		.uleb128 0x18
- 1049 0161 00       		.byte	0
- 1050 0162 00       		.byte	0
- 1051 0163 16       		.uleb128 0x16
- 1052 0164 05       		.uleb128 0x5
- 1053 0165 00       		.byte	0
- 1054 0166 03       		.uleb128 0x3
- 1055 0167 0E       		.uleb128 0xe
- 1056 0168 3A       		.uleb128 0x3a
- 1057 0169 0B       		.uleb128 0xb
- 1058 016a 3B       		.uleb128 0x3b
- 1059 016b 0B       		.uleb128 0xb
- 1060 016c 49       		.uleb128 0x49
- 1061 016d 13       		.uleb128 0x13
- 1062 016e 02       		.uleb128 0x2
- 1063 016f 17       		.uleb128 0x17
- 1064 0170 00       		.byte	0
- 1065 0171 00       		.byte	0
- 1066 0172 00       		.byte	0
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 27
+ 1009 0124 00       		.byte	0
+ 1010 0125 12       		.uleb128 0x12
+ 1011 0126 2E       		.uleb128 0x2e
+ 1012 0127 00       		.byte	0
+ 1013 0128 3F       		.uleb128 0x3f
+ 1014 0129 19       		.uleb128 0x19
+ 1015 012a 03       		.uleb128 0x3
+ 1016 012b 0E       		.uleb128 0xe
+ 1017 012c 3A       		.uleb128 0x3a
+ 1018 012d 0B       		.uleb128 0xb
+ 1019 012e 3B       		.uleb128 0x3b
+ 1020 012f 05       		.uleb128 0x5
+ 1021 0130 27       		.uleb128 0x27
+ 1022 0131 19       		.uleb128 0x19
+ 1023 0132 49       		.uleb128 0x49
+ 1024 0133 13       		.uleb128 0x13
+ 1025 0134 11       		.uleb128 0x11
+ 1026 0135 01       		.uleb128 0x1
+ 1027 0136 12       		.uleb128 0x12
+ 1028 0137 06       		.uleb128 0x6
+ 1029 0138 40       		.uleb128 0x40
+ 1030 0139 18       		.uleb128 0x18
+ 1031 013a 9742     		.uleb128 0x2117
+ 1032 013c 19       		.uleb128 0x19
+ 1033 013d 00       		.byte	0
+ 1034 013e 00       		.byte	0
+ 1035 013f 13       		.uleb128 0x13
+ 1036 0140 898201   		.uleb128 0x4109
+ 1037 0143 00       		.byte	0
+ 1038 0144 11       		.uleb128 0x11
+ 1039 0145 01       		.uleb128 0x1
+ 1040 0146 31       		.uleb128 0x31
+ 1041 0147 13       		.uleb128 0x13
+ 1042 0148 00       		.byte	0
+ 1043 0149 00       		.byte	0
+ 1044 014a 14       		.uleb128 0x14
+ 1045 014b 898201   		.uleb128 0x4109
+ 1046 014e 01       		.byte	0x1
+ 1047 014f 11       		.uleb128 0x11
+ 1048 0150 01       		.uleb128 0x1
+ 1049 0151 31       		.uleb128 0x31
+ 1050 0152 13       		.uleb128 0x13
+ 1051 0153 01       		.uleb128 0x1
+ 1052 0154 13       		.uleb128 0x13
+ 1053 0155 00       		.byte	0
+ 1054 0156 00       		.byte	0
+ 1055 0157 15       		.uleb128 0x15
+ 1056 0158 8A8201   		.uleb128 0x410a
+ 1057 015b 00       		.byte	0
+ 1058 015c 02       		.uleb128 0x2
+ 1059 015d 18       		.uleb128 0x18
+ 1060 015e 9142     		.uleb128 0x2111
+ 1061 0160 18       		.uleb128 0x18
+ 1062 0161 00       		.byte	0
+ 1063 0162 00       		.byte	0
+ 1064 0163 16       		.uleb128 0x16
+ 1065 0164 05       		.uleb128 0x5
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccl2eJed.s 			page 27
 
 
- 1067              		.section	.debug_loc,"",%progbits
- 1068              	.Ldebug_loc0:
- 1069              	.LLST0:
- 1070 0000 00000000 		.4byte	.LVL3
- 1071 0004 02000000 		.4byte	.LVL4
- 1072 0008 0100     		.2byte	0x1
- 1073 000a 50       		.byte	0x50
- 1074 000b 02000000 		.4byte	.LVL4
- 1075 000f 10000000 		.4byte	.LFE6
- 1076 0013 0400     		.2byte	0x4
- 1077 0015 F3       		.byte	0xf3
- 1078 0016 01       		.uleb128 0x1
- 1079 0017 50       		.byte	0x50
- 1080 0018 9F       		.byte	0x9f
- 1081 0019 00000000 		.4byte	0
- 1082 001d 00000000 		.4byte	0
- 1083              	.LLST1:
- 1084 0021 04000000 		.4byte	.LVL5
- 1085 0025 06000000 		.4byte	.LVL6
- 1086 0029 0500     		.2byte	0x5
- 1087 002b 70       		.byte	0x70
- 1088 002c 00       		.sleb128 0
- 1089 002d 35       		.byte	0x35
- 1090 002e 25       		.byte	0x25
- 1091 002f 9F       		.byte	0x9f
- 1092 0030 00000000 		.4byte	0
- 1093 0034 00000000 		.4byte	0
- 1094              	.LLST2:
- 1095 0038 00000000 		.4byte	.LVL11
- 1096 003c 07000000 		.4byte	.LVL12-1
- 1097 0040 0100     		.2byte	0x1
- 1098 0042 50       		.byte	0x50
- 1099 0043 07000000 		.4byte	.LVL12-1
- 1100 0047 1A000000 		.4byte	.LFE1
- 1101 004b 0100     		.2byte	0x1
- 1102 004d 54       		.byte	0x54
- 1103 004e 00000000 		.4byte	0
- 1104 0052 00000000 		.4byte	0
- 1105              		.section	.debug_aranges,"",%progbits
- 1106 0000 7C000000 		.4byte	0x7c
- 1107 0004 0200     		.2byte	0x2
- 1108 0006 00000000 		.4byte	.Ldebug_info0
- 1109 000a 04       		.byte	0x4
- 1110 000b 00       		.byte	0
- 1111 000c 0000     		.2byte	0
- 1112 000e 0000     		.2byte	0
- 1113 0010 00000000 		.4byte	.LFB3
- 1114 0014 02000000 		.4byte	.LFE3-.LFB3
- 1115 0018 00000000 		.4byte	.LFB4
- 1116 001c 0C000000 		.4byte	.LFE4-.LFB4
- 1117 0020 00000000 		.4byte	.LFB5
- 1118 0024 0C000000 		.4byte	.LFE5-.LFB5
- 1119 0028 00000000 		.4byte	.LFB6
- 1120 002c 10000000 		.4byte	.LFE6-.LFB6
- 1121 0030 00000000 		.4byte	.LFB7
- 1122 0034 0C000000 		.4byte	.LFE7-.LFB7
- 1123 0038 00000000 		.4byte	.LFB8
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 28
+ 1066 0165 00       		.byte	0
+ 1067 0166 03       		.uleb128 0x3
+ 1068 0167 0E       		.uleb128 0xe
+ 1069 0168 3A       		.uleb128 0x3a
+ 1070 0169 0B       		.uleb128 0xb
+ 1071 016a 3B       		.uleb128 0x3b
+ 1072 016b 0B       		.uleb128 0xb
+ 1073 016c 49       		.uleb128 0x49
+ 1074 016d 13       		.uleb128 0x13
+ 1075 016e 02       		.uleb128 0x2
+ 1076 016f 17       		.uleb128 0x17
+ 1077 0170 00       		.byte	0
+ 1078 0171 00       		.byte	0
+ 1079 0172 17       		.uleb128 0x17
+ 1080 0173 34       		.uleb128 0x34
+ 1081 0174 00       		.byte	0
+ 1082 0175 03       		.uleb128 0x3
+ 1083 0176 0E       		.uleb128 0xe
+ 1084 0177 3A       		.uleb128 0x3a
+ 1085 0178 0B       		.uleb128 0xb
+ 1086 0179 3B       		.uleb128 0x3b
+ 1087 017a 0B       		.uleb128 0xb
+ 1088 017b 49       		.uleb128 0x49
+ 1089 017c 13       		.uleb128 0x13
+ 1090 017d 3F       		.uleb128 0x3f
+ 1091 017e 19       		.uleb128 0x19
+ 1092 017f 3C       		.uleb128 0x3c
+ 1093 0180 19       		.uleb128 0x19
+ 1094 0181 00       		.byte	0
+ 1095 0182 00       		.byte	0
+ 1096 0183 00       		.byte	0
+ 1097              		.section	.debug_loc,"",%progbits
+ 1098              	.Ldebug_loc0:
+ 1099              	.LLST0:
+ 1100 0000 00000000 		.4byte	.LVL3
+ 1101 0004 02000000 		.4byte	.LVL4
+ 1102 0008 0100     		.2byte	0x1
+ 1103 000a 50       		.byte	0x50
+ 1104 000b 02000000 		.4byte	.LVL4
+ 1105 000f 10000000 		.4byte	.LFE6
+ 1106 0013 0400     		.2byte	0x4
+ 1107 0015 F3       		.byte	0xf3
+ 1108 0016 01       		.uleb128 0x1
+ 1109 0017 50       		.byte	0x50
+ 1110 0018 9F       		.byte	0x9f
+ 1111 0019 00000000 		.4byte	0
+ 1112 001d 00000000 		.4byte	0
+ 1113              	.LLST1:
+ 1114 0021 04000000 		.4byte	.LVL5
+ 1115 0025 06000000 		.4byte	.LVL6
+ 1116 0029 0500     		.2byte	0x5
+ 1117 002b 70       		.byte	0x70
+ 1118 002c 00       		.sleb128 0
+ 1119 002d 35       		.byte	0x35
+ 1120 002e 25       		.byte	0x25
+ 1121 002f 9F       		.byte	0x9f
+ 1122 0030 00000000 		.4byte	0
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccl2eJed.s 			page 28
 
 
- 1124 003c 0C000000 		.4byte	.LFE8-.LFB8
- 1125 0040 00000000 		.4byte	.LFB9
- 1126 0044 10000000 		.4byte	.LFE9-.LFB9
- 1127 0048 00000000 		.4byte	.LFB10
- 1128 004c 0C000000 		.4byte	.LFE10-.LFB10
- 1129 0050 00000000 		.4byte	.LFB0
- 1130 0054 1C000000 		.4byte	.LFE0-.LFB0
- 1131 0058 00000000 		.4byte	.LFB1
- 1132 005c 1A000000 		.4byte	.LFE1-.LFB1
- 1133 0060 00000000 		.4byte	.LFB2
- 1134 0064 14000000 		.4byte	.LFE2-.LFB2
- 1135 0068 00000000 		.4byte	.LFB11
- 1136 006c 0C000000 		.4byte	.LFE11-.LFB11
- 1137 0070 00000000 		.4byte	.LFB12
- 1138 0074 0C000000 		.4byte	.LFE12-.LFB12
- 1139 0078 00000000 		.4byte	0
- 1140 007c 00000000 		.4byte	0
- 1141              		.section	.debug_ranges,"",%progbits
- 1142              	.Ldebug_ranges0:
- 1143 0000 00000000 		.4byte	.LFB3
- 1144 0004 02000000 		.4byte	.LFE3
- 1145 0008 00000000 		.4byte	.LFB4
- 1146 000c 0C000000 		.4byte	.LFE4
- 1147 0010 00000000 		.4byte	.LFB5
- 1148 0014 0C000000 		.4byte	.LFE5
- 1149 0018 00000000 		.4byte	.LFB6
- 1150 001c 10000000 		.4byte	.LFE6
- 1151 0020 00000000 		.4byte	.LFB7
- 1152 0024 0C000000 		.4byte	.LFE7
- 1153 0028 00000000 		.4byte	.LFB8
- 1154 002c 0C000000 		.4byte	.LFE8
- 1155 0030 00000000 		.4byte	.LFB9
- 1156 0034 10000000 		.4byte	.LFE9
- 1157 0038 00000000 		.4byte	.LFB10
- 1158 003c 0C000000 		.4byte	.LFE10
- 1159 0040 00000000 		.4byte	.LFB0
- 1160 0044 1C000000 		.4byte	.LFE0
- 1161 0048 00000000 		.4byte	.LFB1
- 1162 004c 1A000000 		.4byte	.LFE1
- 1163 0050 00000000 		.4byte	.LFB2
- 1164 0054 14000000 		.4byte	.LFE2
- 1165 0058 00000000 		.4byte	.LFB11
- 1166 005c 0C000000 		.4byte	.LFE11
- 1167 0060 00000000 		.4byte	.LFB12
- 1168 0064 0C000000 		.4byte	.LFE12
- 1169 0068 00000000 		.4byte	0
- 1170 006c 00000000 		.4byte	0
- 1171              		.section	.debug_line,"",%progbits
- 1172              	.Ldebug_line0:
- 1173 0000 53010000 		.section	.debug_str,"MS",%progbits,1
- 1173      02006700 
- 1173      00000201 
- 1173      FB0E0D00 
- 1173      01010101 
- 1174              	.LASF16:
- 1175 0000 72656733 		.ascii	"reg32\000"
- 1175      3200
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 29
+ 1123 0034 00000000 		.4byte	0
+ 1124              	.LLST2:
+ 1125 0038 00000000 		.4byte	.LVL11
+ 1126 003c 07000000 		.4byte	.LVL12-1
+ 1127 0040 0100     		.2byte	0x1
+ 1128 0042 50       		.byte	0x50
+ 1129 0043 07000000 		.4byte	.LVL12-1
+ 1130 0047 1A000000 		.4byte	.LFE1
+ 1131 004b 0100     		.2byte	0x1
+ 1132 004d 54       		.byte	0x54
+ 1133 004e 00000000 		.4byte	0
+ 1134 0052 00000000 		.4byte	0
+ 1135              		.section	.debug_aranges,"",%progbits
+ 1136 0000 7C000000 		.4byte	0x7c
+ 1137 0004 0200     		.2byte	0x2
+ 1138 0006 00000000 		.4byte	.Ldebug_info0
+ 1139 000a 04       		.byte	0x4
+ 1140 000b 00       		.byte	0
+ 1141 000c 0000     		.2byte	0
+ 1142 000e 0000     		.2byte	0
+ 1143 0010 00000000 		.4byte	.LFB3
+ 1144 0014 0C000000 		.4byte	.LFE3-.LFB3
+ 1145 0018 00000000 		.4byte	.LFB4
+ 1146 001c 0C000000 		.4byte	.LFE4-.LFB4
+ 1147 0020 00000000 		.4byte	.LFB5
+ 1148 0024 0C000000 		.4byte	.LFE5-.LFB5
+ 1149 0028 00000000 		.4byte	.LFB6
+ 1150 002c 10000000 		.4byte	.LFE6-.LFB6
+ 1151 0030 00000000 		.4byte	.LFB7
+ 1152 0034 0C000000 		.4byte	.LFE7-.LFB7
+ 1153 0038 00000000 		.4byte	.LFB8
+ 1154 003c 0C000000 		.4byte	.LFE8-.LFB8
+ 1155 0040 00000000 		.4byte	.LFB9
+ 1156 0044 10000000 		.4byte	.LFE9-.LFB9
+ 1157 0048 00000000 		.4byte	.LFB10
+ 1158 004c 0C000000 		.4byte	.LFE10-.LFB10
+ 1159 0050 00000000 		.4byte	.LFB0
+ 1160 0054 1C000000 		.4byte	.LFE0-.LFB0
+ 1161 0058 00000000 		.4byte	.LFB1
+ 1162 005c 1A000000 		.4byte	.LFE1-.LFB1
+ 1163 0060 00000000 		.4byte	.LFB2
+ 1164 0064 14000000 		.4byte	.LFE2-.LFB2
+ 1165 0068 00000000 		.4byte	.LFB11
+ 1166 006c 0C000000 		.4byte	.LFE11-.LFB11
+ 1167 0070 00000000 		.4byte	.LFB12
+ 1168 0074 0C000000 		.4byte	.LFE12-.LFB12
+ 1169 0078 00000000 		.4byte	0
+ 1170 007c 00000000 		.4byte	0
+ 1171              		.section	.debug_ranges,"",%progbits
+ 1172              	.Ldebug_ranges0:
+ 1173 0000 00000000 		.4byte	.LFB3
+ 1174 0004 0C000000 		.4byte	.LFE3
+ 1175 0008 00000000 		.4byte	.LFB4
+ 1176 000c 0C000000 		.4byte	.LFE4
+ 1177 0010 00000000 		.4byte	.LFB5
+ 1178 0014 0C000000 		.4byte	.LFE5
+ 1179 0018 00000000 		.4byte	.LFB6
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccl2eJed.s 			page 29
 
 
- 1176              	.LASF35:
- 1177 0006 433A5C55 		.ascii	"C:\\Users\\Robert\\Documents\\PSoC Creator\\PSoCTes"
- 1177      73657273 
- 1177      5C526F62 
- 1177      6572745C 
- 1177      446F6375 
- 1178 0034 74576F72 		.ascii	"tWorkspace\\UartTest.cydsn\000"
- 1178      6B737061 
- 1178      63655C55 
- 1178      61727454 
- 1178      6573742E 
- 1179              	.LASF23:
- 1180 004e 55415254 		.ascii	"UART_Rx_INTERRUPT_GetVector\000"
- 1180      5F52785F 
- 1180      494E5445 
- 1180      52525550 
- 1180      545F4765 
- 1181              	.LASF31:
- 1182 006a 55415254 		.ascii	"UART_Rx_INTERRUPT_SetPending\000"
- 1182      5F52785F 
- 1182      494E5445 
- 1182      52525550 
- 1182      545F5365 
- 1183              	.LASF25:
- 1184 0087 55415254 		.ascii	"UART_Rx_INTERRUPT_Interrupt\000"
- 1184      5F52785F 
- 1184      494E5445 
- 1184      52525550 
- 1184      545F496E 
- 1185              	.LASF4:
- 1186 00a3 73686F72 		.ascii	"short unsigned int\000"
- 1186      7420756E 
- 1186      7369676E 
- 1186      65642069 
- 1186      6E7400
- 1187              	.LASF10:
- 1188 00b6 63686172 		.ascii	"char\000"
- 1188      00
- 1189              	.LASF26:
- 1190 00bb 55415254 		.ascii	"UART_Rx_INTERRUPT_Enable\000"
- 1190      5F52785F 
- 1190      494E5445 
- 1190      52525550 
- 1190      545F456E 
- 1191              	.LASF13:
- 1192 00d4 666C6F61 		.ascii	"float\000"
- 1192      7400
- 1193              	.LASF20:
- 1194 00da 55415254 		.ascii	"UART_Rx_INTERRUPT_SetPriority\000"
- 1194      5F52785F 
- 1194      494E5445 
- 1194      52525550 
- 1194      545F5365 
- 1195              	.LASF2:
- 1196 00f8 756E7369 		.ascii	"unsigned char\000"
- 1196      676E6564 
- 1196      20636861 
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 30
+ 1180 001c 10000000 		.4byte	.LFE6
+ 1181 0020 00000000 		.4byte	.LFB7
+ 1182 0024 0C000000 		.4byte	.LFE7
+ 1183 0028 00000000 		.4byte	.LFB8
+ 1184 002c 0C000000 		.4byte	.LFE8
+ 1185 0030 00000000 		.4byte	.LFB9
+ 1186 0034 10000000 		.4byte	.LFE9
+ 1187 0038 00000000 		.4byte	.LFB10
+ 1188 003c 0C000000 		.4byte	.LFE10
+ 1189 0040 00000000 		.4byte	.LFB0
+ 1190 0044 1C000000 		.4byte	.LFE0
+ 1191 0048 00000000 		.4byte	.LFB1
+ 1192 004c 1A000000 		.4byte	.LFE1
+ 1193 0050 00000000 		.4byte	.LFB2
+ 1194 0054 14000000 		.4byte	.LFE2
+ 1195 0058 00000000 		.4byte	.LFB11
+ 1196 005c 0C000000 		.4byte	.LFE11
+ 1197 0060 00000000 		.4byte	.LFB12
+ 1198 0064 0C000000 		.4byte	.LFE12
+ 1199 0068 00000000 		.4byte	0
+ 1200 006c 00000000 		.4byte	0
+ 1201              		.section	.debug_line,"",%progbits
+ 1202              	.Ldebug_line0:
+ 1203 0000 54010000 		.section	.debug_str,"MS",%progbits,1
+ 1203      02006700 
+ 1203      00000201 
+ 1203      FB0E0D00 
+ 1203      01010101 
+ 1204              	.LASF16:
+ 1205 0000 72656733 		.ascii	"reg32\000"
+ 1205      3200
+ 1206              	.LASF23:
+ 1207 0006 55415254 		.ascii	"UART_Rx_INTERRUPT_GetVector\000"
+ 1207      5F52785F 
+ 1207      494E5445 
+ 1207      52525550 
+ 1207      545F4765 
+ 1208              	.LASF31:
+ 1209 0022 55415254 		.ascii	"UART_Rx_INTERRUPT_SetPending\000"
+ 1209      5F52785F 
+ 1209      494E5445 
+ 1209      52525550 
+ 1209      545F5365 
+ 1210              	.LASF25:
+ 1211 003f 55415254 		.ascii	"UART_Rx_INTERRUPT_Interrupt\000"
+ 1211      5F52785F 
+ 1211      494E5445 
+ 1211      52525550 
+ 1211      545F496E 
+ 1212              	.LASF4:
+ 1213 005b 73686F72 		.ascii	"short unsigned int\000"
+ 1213      7420756E 
+ 1213      7369676E 
+ 1213      65642069 
+ 1213      6E7400
+ 1214              	.LASF10:
+ 1215 006e 63686172 		.ascii	"char\000"
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccl2eJed.s 			page 30
 
 
- 1196      7200
- 1197              	.LASF15:
- 1198 0106 72656738 		.ascii	"reg8\000"
- 1198      00
- 1199              	.LASF6:
- 1200 010b 6C6F6E67 		.ascii	"long unsigned int\000"
- 1200      20756E73 
- 1200      69676E65 
- 1200      6420696E 
- 1200      7400
- 1201              	.LASF11:
- 1202 011d 75696E74 		.ascii	"uint8\000"
- 1202      3800
- 1203              	.LASF22:
- 1204 0123 7072696F 		.ascii	"priority\000"
- 1204      72697479 
- 1204      00
- 1205              	.LASF14:
- 1206 012c 646F7562 		.ascii	"double\000"
- 1206      6C6500
- 1207              	.LASF12:
- 1208 0133 75696E74 		.ascii	"uint32\000"
- 1208      333200
- 1209              	.LASF33:
- 1210 013a 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 1210      4320342E 
- 1210      392E3320 
- 1210      32303135 
- 1210      30333033 
- 1211 016d 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
- 1211      20726576 
- 1211      6973696F 
- 1211      6E203232 
- 1211      31323230 
- 1212 01a0 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 1212      66756E63 
- 1212      74696F6E 
- 1212      2D736563 
- 1212      74696F6E 
- 1213              	.LASF34:
- 1214 01c8 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\UART_Rx_INTERRUPT.c\000"
- 1214      6E657261 
- 1214      7465645F 
- 1214      536F7572 
- 1214      63655C50 
- 1215              	.LASF0:
- 1216 01f5 756E7369 		.ascii	"unsigned int\000"
- 1216      676E6564 
- 1216      20696E74 
- 1216      00
- 1217              	.LASF28:
- 1218 0202 55415254 		.ascii	"UART_Rx_INTERRUPT_Start\000"
- 1218      5F52785F 
- 1218      494E5445 
- 1218      52525550 
- 1218      545F5374 
- 1219              	.LASF21:
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 31
-
-
- 1220 021a 61646472 		.ascii	"address\000"
- 1220      65737300 
- 1221              	.LASF8:
- 1222 0222 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1222      206C6F6E 
- 1222      6720756E 
- 1222      7369676E 
- 1222      65642069 
- 1223              	.LASF17:
- 1224 0239 63796973 		.ascii	"cyisraddress\000"
- 1224      72616464 
- 1224      72657373 
- 1224      00
- 1225              	.LASF27:
- 1226 0246 55415254 		.ascii	"UART_Rx_INTERRUPT_Disable\000"
- 1226      5F52785F 
- 1226      494E5445 
- 1226      52525550 
- 1226      545F4469 
- 1227              	.LASF9:
- 1228 0260 73697A65 		.ascii	"sizetype\000"
- 1228      74797065 
- 1228      00
- 1229              	.LASF7:
- 1230 0269 6C6F6E67 		.ascii	"long long int\000"
- 1230      206C6F6E 
- 1230      6720696E 
+ 1215      00
+ 1216              	.LASF26:
+ 1217 0073 55415254 		.ascii	"UART_Rx_INTERRUPT_Enable\000"
+ 1217      5F52785F 
+ 1217      494E5445 
+ 1217      52525550 
+ 1217      545F456E 
+ 1218              	.LASF13:
+ 1219 008c 666C6F61 		.ascii	"float\000"
+ 1219      7400
+ 1220              	.LASF20:
+ 1221 0092 55415254 		.ascii	"UART_Rx_INTERRUPT_SetPriority\000"
+ 1221      5F52785F 
+ 1221      494E5445 
+ 1221      52525550 
+ 1221      545F5365 
+ 1222              	.LASF2:
+ 1223 00b0 756E7369 		.ascii	"unsigned char\000"
+ 1223      676E6564 
+ 1223      20636861 
+ 1223      7200
+ 1224              	.LASF15:
+ 1225 00be 72656738 		.ascii	"reg8\000"
+ 1225      00
+ 1226              	.LASF35:
+ 1227 00c3 433A5C55 		.ascii	"C:\\Users\\robert\\Documents\\PSoC Creator\\TestWor"
+ 1227      73657273 
+ 1227      5C726F62 
+ 1227      6572745C 
+ 1227      446F6375 
+ 1228 00f1 6B737061 		.ascii	"kspace\\UartTest.cydsn\000"
+ 1228      63655C55 
+ 1228      61727454 
+ 1228      6573742E 
+ 1228      63796473 
+ 1229              	.LASF6:
+ 1230 0107 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1230      20756E73 
+ 1230      69676E65 
+ 1230      6420696E 
  1230      7400
- 1231              	.LASF19:
- 1232 0277 55415254 		.ascii	"UART_Rx_INTERRUPT_SetVector\000"
- 1232      5F52785F 
- 1232      494E5445 
- 1232      52525550 
- 1232      545F5365 
- 1233              	.LASF18:
- 1234 0293 72616D56 		.ascii	"ramVectorTable\000"
- 1234      6563746F 
- 1234      72546162 
- 1234      6C6500
- 1235              	.LASF30:
- 1236 02a2 55415254 		.ascii	"UART_Rx_INTERRUPT_Stop\000"
- 1236      5F52785F 
- 1236      494E5445 
- 1236      52525550 
- 1236      545F5374 
- 1237              	.LASF3:
- 1238 02b9 73686F72 		.ascii	"short int\000"
- 1238      7420696E 
- 1238      7400
- 1239              	.LASF32:
- 1240 02c3 55415254 		.ascii	"UART_Rx_INTERRUPT_ClearPending\000"
- 1240      5F52785F 
- 1240      494E5445 
- 1240      52525550 
- 1240      545F436C 
- 1241              	.LASF29:
- 1242 02e2 55415254 		.ascii	"UART_Rx_INTERRUPT_StartEx\000"
-ARM GAS  C:\Users\Robert\AppData\Local\Temp\ccn1r0lV.s 			page 32
+ 1231              	.LASF11:
+ 1232 0119 75696E74 		.ascii	"uint8\000"
+ 1232      3800
+ 1233              	.LASF22:
+ 1234 011f 7072696F 		.ascii	"priority\000"
+ 1234      72697479 
+ 1234      00
+ 1235              	.LASF14:
+ 1236 0128 646F7562 		.ascii	"double\000"
+ 1236      6C6500
+ 1237              	.LASF12:
+ 1238 012f 75696E74 		.ascii	"uint32\000"
+ 1238      333200
+ 1239              	.LASF33:
+ 1240 0136 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1240      4320342E 
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccl2eJed.s 			page 31
 
 
- 1242      5F52785F 
- 1242      494E5445 
- 1242      52525550 
- 1242      545F5374 
- 1243              	.LASF5:
- 1244 02fc 6C6F6E67 		.ascii	"long int\000"
- 1244      20696E74 
- 1244      00
- 1245              	.LASF24:
- 1246 0305 55415254 		.ascii	"UART_Rx_INTERRUPT_GetPriority\000"
- 1246      5F52785F 
- 1246      494E5445 
- 1246      52525550 
- 1246      545F4765 
- 1247              	.LASF36:
- 1248 0323 55415254 		.ascii	"UART_Rx_INTERRUPT_GetState\000"
+ 1240      392E3320 
+ 1240      32303135 
+ 1240      30333033 
+ 1241 0169 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1241      20726576 
+ 1241      6973696F 
+ 1241      6E203232 
+ 1241      31323230 
+ 1242 019c 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1242      66756E63 
+ 1242      74696F6E 
+ 1242      2D736563 
+ 1242      74696F6E 
+ 1243              	.LASF34:
+ 1244 01c4 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\UART_Rx_INTERRUPT.c\000"
+ 1244      6E657261 
+ 1244      7465645F 
+ 1244      536F7572 
+ 1244      63655C50 
+ 1245              	.LASF0:
+ 1246 01f1 756E7369 		.ascii	"unsigned int\000"
+ 1246      676E6564 
+ 1246      20696E74 
+ 1246      00
+ 1247              	.LASF28:
+ 1248 01fe 55415254 		.ascii	"UART_Rx_INTERRUPT_Start\000"
  1248      5F52785F 
  1248      494E5445 
  1248      52525550 
- 1248      545F4765 
- 1249              	.LASF1:
- 1250 033e 7369676E 		.ascii	"signed char\000"
- 1250      65642063 
- 1250      68617200 
- 1251              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
+ 1248      545F5374 
+ 1249              	.LASF21:
+ 1250 0216 61646472 		.ascii	"address\000"
+ 1250      65737300 
+ 1251              	.LASF8:
+ 1252 021e 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1252      206C6F6E 
+ 1252      6720756E 
+ 1252      7369676E 
+ 1252      65642069 
+ 1253              	.LASF17:
+ 1254 0235 63796973 		.ascii	"cyisraddress\000"
+ 1254      72616464 
+ 1254      72657373 
+ 1254      00
+ 1255              	.LASF27:
+ 1256 0242 55415254 		.ascii	"UART_Rx_INTERRUPT_Disable\000"
+ 1256      5F52785F 
+ 1256      494E5445 
+ 1256      52525550 
+ 1256      545F4469 
+ 1257              	.LASF9:
+ 1258 025c 73697A65 		.ascii	"sizetype\000"
+ 1258      74797065 
+ 1258      00
+ 1259              	.LASF7:
+ 1260 0265 6C6F6E67 		.ascii	"long long int\000"
+ 1260      206C6F6E 
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccl2eJed.s 			page 32
+
+
+ 1260      6720696E 
+ 1260      7400
+ 1261              	.LASF19:
+ 1262 0273 55415254 		.ascii	"UART_Rx_INTERRUPT_SetVector\000"
+ 1262      5F52785F 
+ 1262      494E5445 
+ 1262      52525550 
+ 1262      545F5365 
+ 1263              	.LASF18:
+ 1264 028f 72616D56 		.ascii	"ramVectorTable\000"
+ 1264      6563746F 
+ 1264      72546162 
+ 1264      6C6500
+ 1265              	.LASF30:
+ 1266 029e 55415254 		.ascii	"UART_Rx_INTERRUPT_Stop\000"
+ 1266      5F52785F 
+ 1266      494E5445 
+ 1266      52525550 
+ 1266      545F5374 
+ 1267              	.LASF3:
+ 1268 02b5 73686F72 		.ascii	"short int\000"
+ 1268      7420696E 
+ 1268      7400
+ 1269              	.LASF32:
+ 1270 02bf 55415254 		.ascii	"UART_Rx_INTERRUPT_ClearPending\000"
+ 1270      5F52785F 
+ 1270      494E5445 
+ 1270      52525550 
+ 1270      545F436C 
+ 1271              	.LASF29:
+ 1272 02de 55415254 		.ascii	"UART_Rx_INTERRUPT_StartEx\000"
+ 1272      5F52785F 
+ 1272      494E5445 
+ 1272      52525550 
+ 1272      545F5374 
+ 1273              	.LASF37:
+ 1274 02f8 55415254 		.ascii	"UART_RX_INTERRUPT_FLAG\000"
+ 1274      5F52585F 
+ 1274      494E5445 
+ 1274      52525550 
+ 1274      545F464C 
+ 1275              	.LASF5:
+ 1276 030f 6C6F6E67 		.ascii	"long int\000"
+ 1276      20696E74 
+ 1276      00
+ 1277              	.LASF24:
+ 1278 0318 55415254 		.ascii	"UART_Rx_INTERRUPT_GetPriority\000"
+ 1278      5F52785F 
+ 1278      494E5445 
+ 1278      52525550 
+ 1278      545F4765 
+ 1279              	.LASF36:
+ 1280 0336 55415254 		.ascii	"UART_Rx_INTERRUPT_GetState\000"
+ 1280      5F52785F 
+ 1280      494E5445 
+ 1280      52525550 
+ 1280      545F4765 
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccl2eJed.s 			page 33
+
+
+ 1281              	.LASF1:
+ 1282 0351 7369676E 		.ascii	"signed char\000"
+ 1282      65642063 
+ 1282      68617200 
+ 1283              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

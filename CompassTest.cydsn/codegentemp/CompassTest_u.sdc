@@ -1,3 +1,3 @@
-# Component constraints for C:\Users\Robert\Documents\PSoC Creator\PSoCTestWorkspace\CompassTest.cydsn\TopDesign\TopDesign.cysch
-# Project: C:\Users\Robert\Documents\PSoC Creator\PSoCTestWorkspace\CompassTest.cydsn\CompassTest.cyprj
-# Date: Wed, 14 Sep 2016 23:24:16 GMT
+# Component constraints for C:\Users\robert\Documents\PSoC Creator\TestWorkspace\CompassTest.cydsn\TopDesign\TopDesign.cysch
+# Project: C:\Users\robert\Documents\PSoC Creator\TestWorkspace\CompassTest.cydsn\CompassTest.cyprj
+# Date: Fri, 16 Sep 2016 07:44:58 GMT

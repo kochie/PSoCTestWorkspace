@@ -1,0 +1,1447 @@
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccGLB0kf.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"main.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.FlipLcdIsr,"ax",%progbits
+  19              		.align	2
+  20              		.global	FlipLcdIsr
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	FlipLcdIsr, %function
+  24              	FlipLcdIsr:
+  25              	.LFB63:
+  26              		.file 1 ".\\main.c"
+   1:.\main.c      **** /*******************************************************************************
+   2:.\main.c      **** * File Name: main.c
+   3:.\main.c      **** *
+   4:.\main.c      **** * Version: 1.0
+   5:.\main.c      **** *
+   6:.\main.c      **** * Description:
+   7:.\main.c      **** *  This is source code for the datasheet example of the I2C LCD component.
+   8:.\main.c      **** *   
+   9:.\main.c      **** * Related Document:
+  10:.\main.c      **** *  PCF2119x LCD controllers/drivers
+  11:.\main.c      **** *
+  12:.\main.c      **** ********************************************************************************
+  13:.\main.c      **** * Copyright 2013-2014, Cypress Semiconductor Corporation. All rights reserved.
+  14:.\main.c      **** * This software is owned by Cypress Semiconductor Corporation and is protected
+  15:.\main.c      **** * by and subject to worldwide patent and copyright laws and treaties.
+  16:.\main.c      **** * Therefore, you may use this software only as provided in the license agreement
+  17:.\main.c      **** * accompanying the software package from which you obtained this software.
+  18:.\main.c      **** * CYPRESS AND ITS SUPPLIERS MAKE NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+  19:.\main.c      **** * WITH REGARD TO THIS SOFTWARE, INCLUDING, BUT NOT LIMITED TO, NONINFRINGEMENT,
+  20:.\main.c      **** * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+  21:.\main.c      **** *******************************************************************************/
+  22:.\main.c      **** 
+  23:.\main.c      **** #include <device.h>
+  24:.\main.c      **** 
+  25:.\main.c      **** 
+  26:.\main.c      **** #define NUM_CUSTOM_CHARS       (8u)
+  27:.\main.c      **** #define LCD_MODULE_ADDRESS     (0x74u)
+  28:.\main.c      **** 
+  29:.\main.c      **** #define NORMAL_STATE           (0u)
+  30:.\main.c      **** #define FLIPPED_STATE          (1u)
+  31:.\main.c      **** 
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccGLB0kf.s 			page 2
+
+
+  32:.\main.c      **** #define ROW_ZERO               (0u)
+  33:.\main.c      **** #define ROW_ONE                (1u)
+  34:.\main.c      **** #define COLUMN_ZERO            (0u)
+  35:.\main.c      **** 
+  36:.\main.c      **** CY_ISR_PROTO(FlipLcdIsr);
+  37:.\main.c      **** 
+  38:.\main.c      **** 
+  39:.\main.c      **** /**********************************************************************  
+  40:.\main.c      **** * Array with IDs of custom characters. The constants are defined by the 
+  41:.\main.c      **** * I2C LCD component.
+  42:.\main.c      **** **********************************************************************/
+  43:.\main.c      **** char8 string[] = {I2C_LCD_CUSTOM_0, I2C_LCD_CUSTOM_1, I2C_LCD_CUSTOM_2, I2C_LCD_CUSTOM_3, 
+  44:.\main.c      ****                   I2C_LCD_CUSTOM_4, I2C_LCD_CUSTOM_5, I2C_LCD_CUSTOM_6, I2C_LCD_CUSTOM_7};
+  45:.\main.c      **** 
+  46:.\main.c      **** /* Stores state of display */
+  47:.\main.c      **** volatile uint8 lcdState = NORMAL_STATE;
+  48:.\main.c      **** 
+  49:.\main.c      **** /*******************************************************************************
+  50:.\main.c      **** * Function Name: WakeupIsr
+  51:.\main.c      **** ********************************************************************************
+  52:.\main.c      **** * Summary:
+  53:.\main.c      **** *  Changes the state of the display.
+  54:.\main.c      **** *
+  55:.\main.c      **** * Parameters:
+  56:.\main.c      **** *  None
+  57:.\main.c      **** *
+  58:.\main.c      **** * Return:
+  59:.\main.c      **** *  None
+  60:.\main.c      **** *
+  61:.\main.c      **** *******************************************************************************/
+  62:.\main.c      **** CY_ISR(FlipLcdIsr)
+  63:.\main.c      **** {
+  27              		.loc 1 63 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31 0000 08B5     		push	{r3, lr}
+  32              		.cfi_def_cfa_offset 8
+  33              		.cfi_offset 3, -8
+  34              		.cfi_offset 14, -4
+  64:.\main.c      ****     /***********************************************************************
+  65:.\main.c      ****     * Analyze the display state and change the variable value to opposite
+  66:.\main.c      ****     * the actual flipping will occur in main loop.
+  67:.\main.c      ****     ***********************************************************************/
+  68:.\main.c      ****     if(NORMAL_STATE == lcdState)
+  35              		.loc 1 68 0
+  36 0002 094B     		ldr	r3, .L5
+  37 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  38 0006 13F0FF0F 		tst	r3, #255
+  39 000a 03D1     		bne	.L2
+  69:.\main.c      ****     {
+  70:.\main.c      ****         lcdState = FLIPPED_STATE;
+  40              		.loc 1 70 0
+  41 000c 0122     		movs	r2, #1
+  42 000e 064B     		ldr	r3, .L5
+  43 0010 1A70     		strb	r2, [r3]
+  44 0012 02E0     		b	.L3
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccGLB0kf.s 			page 3
+
+
+  45              	.L2:
+  71:.\main.c      ****     }
+  72:.\main.c      ****     else
+  73:.\main.c      ****     {
+  74:.\main.c      ****         lcdState = NORMAL_STATE;
+  46              		.loc 1 74 0
+  47 0014 0022     		movs	r2, #0
+  48 0016 044B     		ldr	r3, .L5
+  49 0018 1A70     		strb	r2, [r3]
+  50              	.L3:
+  75:.\main.c      ****     }
+  76:.\main.c      ****     
+  77:.\main.c      ****     /* Some delay to avoid "multiple" button press at one time */
+  78:.\main.c      ****     CyDelay(200u);
+  51              		.loc 1 78 0
+  52 001a C820     		movs	r0, #200
+  53 001c FFF7FEFF 		bl	CyDelay
+  54              	.LVL0:
+  79:.\main.c      ****     
+  80:.\main.c      ****     /* Clear interrupt flag for this port */
+  81:.\main.c      ****     Button_ClearInterrupt();
+  55              		.loc 1 81 0
+  56 0020 FFF7FEFF 		bl	Button_ClearInterrupt
+  57              	.LVL1:
+  58 0024 08BD     		pop	{r3, pc}
+  59              	.L6:
+  60 0026 00BF     		.align	2
+  61              	.L5:
+  62 0028 00000000 		.word	.LANCHOR0
+  63              		.cfi_endproc
+  64              	.LFE63:
+  65              		.size	FlipLcdIsr, .-FlipLcdIsr
+  66              		.section	.text.main,"ax",%progbits
+  67              		.align	2
+  68              		.global	main
+  69              		.thumb
+  70              		.thumb_func
+  71              		.type	main, %function
+  72              	main:
+  73              	.LFB64:
+  82:.\main.c      **** }
+  83:.\main.c      **** 
+  84:.\main.c      **** 
+  85:.\main.c      **** /*******************************************************************************
+  86:.\main.c      **** * Function Name: main
+  87:.\main.c      **** ********************************************************************************
+  88:.\main.c      **** * Summary:
+  89:.\main.c      **** *  Demonstrate some of the functionality of I2C LCD.
+  90:.\main.c      **** *
+  91:.\main.c      **** * Parameters:
+  92:.\main.c      **** *  None
+  93:.\main.c      **** *
+  94:.\main.c      **** * Return:
+  95:.\main.c      **** *  None
+  96:.\main.c      **** *
+  97:.\main.c      **** *******************************************************************************/
+  98:.\main.c      **** int main(void)
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccGLB0kf.s 			page 4
+
+
+  99:.\main.c      **** {
+  74              		.loc 1 99 0
+  75              		.cfi_startproc
+  76              		@ args = 0, pretend = 0, frame = 0
+  77              		@ frame_needed = 0, uses_anonymous_args = 0
+  78 0000 10B5     		push	{r4, lr}
+  79              		.cfi_def_cfa_offset 8
+  80              		.cfi_offset 4, -8
+  81              		.cfi_offset 14, -4
+ 100:.\main.c      ****     uint8 i;
+ 101:.\main.c      ****     
+ 102:.\main.c      ****     /********************************************************************** 
+ 103:.\main.c      ****     * Interrupts should be enabled as the I2C Master uses interrupt to
+ 104:.\main.c      ****     * transfer data.
+ 105:.\main.c      ****     **********************************************************************/
+ 106:.\main.c      ****     CyGlobalIntEnable;
+  82              		.loc 1 106 0
+  83              	@ 106 ".\main.c" 1
+  84 0002 62B6     		CPSIE   i
+  85              	@ 0 "" 2
+ 107:.\main.c      ****     
+ 108:.\main.c      ****     /* ISR initialization */
+ 109:.\main.c      ****     Button_Isr_StartEx(FlipLcdIsr);
+  86              		.loc 1 109 0
+  87              		.thumb
+  88 0004 1D48     		ldr	r0, .L14
+  89 0006 FFF7FEFF 		bl	Button_Isr_StartEx
+  90              	.LVL2:
+ 110:.\main.c      ****     
+ 111:.\main.c      ****     /* Required 1 ms reset pulse for LCD Module */
+ 112:.\main.c      ****     LCD_RST_Write(1u);
+  91              		.loc 1 112 0
+  92 000a 0120     		movs	r0, #1
+  93 000c FFF7FEFF 		bl	LCD_RST_Write
+  94              	.LVL3:
+ 113:.\main.c      ****     CyDelay(1u);
+  95              		.loc 1 113 0
+  96 0010 0120     		movs	r0, #1
+  97 0012 FFF7FEFF 		bl	CyDelay
+  98              	.LVL4:
+ 114:.\main.c      ****     LCD_RST_Write(0u);
+  99              		.loc 1 114 0
+ 100 0016 0020     		movs	r0, #0
+ 101 0018 FFF7FEFF 		bl	LCD_RST_Write
+ 102              	.LVL5:
+ 115:.\main.c      ****     
+ 116:.\main.c      ****     /*********************************************************************** 
+ 117:.\main.c      ****     * I2C LCD component doesn't start the I2C master but it should be
+ 118:.\main.c      ****     * enabled for I2C LCD operation.
+ 119:.\main.c      ****     ***********************************************************************/
+ 120:.\main.c      ****     I2C_M_Start();
+ 103              		.loc 1 120 0
+ 104 001c FFF7FEFF 		bl	I2C_M_Start
+ 105              	.LVL6:
+ 121:.\main.c      ****     
+ 122:.\main.c      ****     /***********************************************************************
+ 123:.\main.c      ****     * Start the component. It also loads the custom font which is specified 
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccGLB0kf.s 			page 5
+
+
+ 124:.\main.c      ****     * in the customizer.
+ 125:.\main.c      ****     ***********************************************************************/
+ 126:.\main.c      ****     I2C_LCD_Start();
+ 106              		.loc 1 126 0
+ 107 0020 FFF7FEFF 		bl	I2C_LCD_Start
+ 108              	.LVL7:
+ 127:.\main.c      ****     
+ 128:.\main.c      ****     /* Delay prior of printing custom characters */
+ 129:.\main.c      ****     CyDelay(1000u);
+ 109              		.loc 1 129 0
+ 110 0024 4FF47A70 		mov	r0, #1000
+ 111 0028 FFF7FEFF 		bl	CyDelay
+ 112              	.LVL8:
+ 130:.\main.c      ****     
+ 131:.\main.c      ****     /***********************************************************************
+ 132:.\main.c      ****     * Following code will print the eight custom characters in the first row 
+ 133:.\main.c      ****     * of the LCD. The data is displayed using I2C_LCD_WriteData().
+ 134:.\main.c      ****     ***********************************************************************/
+ 135:.\main.c      ****     /* Set position to the start of the first row of the LCD module */
+ 136:.\main.c      ****     I2C_LCD_Position(ROW_ZERO, COLUMN_ZERO);
+ 113              		.loc 1 136 0
+ 114 002c 0020     		movs	r0, #0
+ 115 002e 0146     		mov	r1, r0
+ 116 0030 FFF7FEFF 		bl	I2C_LCD_Position
+ 117              	.LVL9:
+ 137:.\main.c      ****     
+ 138:.\main.c      ****     for(i = 0u; i < NUM_CUSTOM_CHARS; i++)
+ 118              		.loc 1 138 0
+ 119 0034 0024     		movs	r4, #0
+ 120 0036 05E0     		b	.L8
+ 121              	.LVL10:
+ 122              	.L9:
+ 139:.\main.c      ****     {
+ 140:.\main.c      ****         /* Display custom character specified by 'i' */
+ 141:.\main.c      ****         I2C_LCD_WriteData(string[i]);
+ 123              		.loc 1 141 0 discriminator 3
+ 124 0038 114B     		ldr	r3, .L14+4
+ 125 003a 185D     		ldrb	r0, [r3, r4]	@ zero_extendqisi2
+ 126 003c FFF7FEFF 		bl	I2C_LCD_WriteData
+ 127              	.LVL11:
+ 138:.\main.c      ****     {
+ 128              		.loc 1 138 0 discriminator 3
+ 129 0040 0134     		adds	r4, r4, #1
+ 130              	.LVL12:
+ 131 0042 E4B2     		uxtb	r4, r4
+ 132              	.LVL13:
+ 133              	.L8:
+ 138:.\main.c      ****     {
+ 134              		.loc 1 138 0 is_stmt 0 discriminator 1
+ 135 0044 072C     		cmp	r4, #7
+ 136 0046 F7D9     		bls	.L9
+ 142:.\main.c      ****     }
+ 143:.\main.c      ****     
+ 144:.\main.c      ****     /***********************************************************************
+ 145:.\main.c      ****     * Following code will print the eight custom characters in the second 
+ 146:.\main.c      ****     * row of the LCD. The data is displayed using I2C_LCD_PrintString().
+ 147:.\main.c      ****     * This is more efficient way of displaying data as the data is sent with 
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccGLB0kf.s 			page 6
+
+
+ 148:.\main.c      ****     * one transaction comparing to eight transaction done with 
+ 149:.\main.c      ****     * I2C_LCD_WriteData().
+ 150:.\main.c      ****     ***********************************************************************/
+ 151:.\main.c      ****     /* Set position to start of second row of LCD module */
+ 152:.\main.c      ****     I2C_LCD_Position(ROW_ONE, COLUMN_ZERO);
+ 137              		.loc 1 152 0 is_stmt 1
+ 138 0048 0120     		movs	r0, #1
+ 139 004a 0021     		movs	r1, #0
+ 140 004c FFF7FEFF 		bl	I2C_LCD_Position
+ 141              	.LVL14:
+ 153:.\main.c      ****     
+ 154:.\main.c      ****     /* Display entire string of custom characters */
+ 155:.\main.c      ****     I2C_LCD_PrintString("Cypress!");
+ 142              		.loc 1 155 0
+ 143 0050 0C48     		ldr	r0, .L14+8
+ 144 0052 FFF7FEFF 		bl	I2C_LCD_PrintString
+ 145              	.LVL15:
+ 156:.\main.c      ****     
+ 157:.\main.c      ****     /***********************************************************************
+ 158:.\main.c      ****     * Select Basic + Extended instruction(functions). This allows using
+ 159:.\main.c      ****     * extended functionality like display flipping. 
+ 160:.\main.c      ****     * 
+ 161:.\main.c      ****     * Each function in I2C LCD component has an address macro and 
+ 162:.\main.c      ****     * the I2C_LCD_AddrSelectExtendedFuncs() is an example of address macro 
+ 163:.\main.c      ****     * usage.
+ 164:.\main.c      ****     ***********************************************************************/
+ 165:.\main.c      ****     I2C_LCD_AddrSelectExtendedFuncs(LCD_MODULE_ADDRESS);
+ 146              		.loc 1 165 0
+ 147 0056 7420     		movs	r0, #116
+ 148 0058 FFF7FEFF 		bl	I2C_LCD_SetAddr
+ 149              	.LVL16:
+ 150 005c 2520     		movs	r0, #37
+ 151 005e FFF7FEFF 		bl	I2C_LCD_WriteControl
+ 152              	.LVL17:
+ 153              	.L10:
+ 166:.\main.c      ****     
+ 167:.\main.c      ****     while(1u)
+ 168:.\main.c      ****     {
+ 169:.\main.c      ****         /* Analyze LCD state variable and set state appropriately */
+ 170:.\main.c      ****         if(NORMAL_STATE == lcdState)
+ 154              		.loc 1 170 0
+ 155 0062 094B     		ldr	r3, .L14+12
+ 156 0064 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 157 0066 13F0FF0F 		tst	r3, #255
+ 158 006a 03D1     		bne	.L11
+ 171:.\main.c      ****         {
+ 172:.\main.c      ****             I2C_LCD_SetTopToBottom();
+ 159              		.loc 1 172 0
+ 160 006c 0420     		movs	r0, #4
+ 161 006e FFF7FEFF 		bl	I2C_LCD_WriteControl
+ 162              	.LVL18:
+ 163 0072 F6E7     		b	.L10
+ 164              	.L11:
+ 173:.\main.c      ****         }
+ 174:.\main.c      ****         else
+ 175:.\main.c      ****         {
+ 176:.\main.c      ****             I2C_LCD_SetBottomToTop();
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccGLB0kf.s 			page 7
+
+
+ 165              		.loc 1 176 0
+ 166 0074 0520     		movs	r0, #5
+ 167 0076 FFF7FEFF 		bl	I2C_LCD_WriteControl
+ 168              	.LVL19:
+ 169 007a F2E7     		b	.L10
+ 170              	.L15:
+ 171              		.align	2
+ 172              	.L14:
+ 173 007c 00000000 		.word	FlipLcdIsr
+ 174 0080 00000000 		.word	.LANCHOR1
+ 175 0084 00000000 		.word	.LC0
+ 176 0088 00000000 		.word	.LANCHOR0
+ 177              		.cfi_endproc
+ 178              	.LFE64:
+ 179              		.size	main, .-main
+ 180              		.global	lcdState
+ 181              		.global	string
+ 182              		.data
+ 183              		.align	2
+ 184              		.set	.LANCHOR1,. + 0
+ 185              		.type	string, %object
+ 186              		.size	string, 8
+ 187              	string:
+ 188 0000 00       		.byte	0
+ 189 0001 01       		.byte	1
+ 190 0002 02       		.byte	2
+ 191 0003 03       		.byte	3
+ 192 0004 04       		.byte	4
+ 193 0005 05       		.byte	5
+ 194 0006 06       		.byte	6
+ 195 0007 07       		.byte	7
+ 196              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 197              		.align	2
+ 198              	.LC0:
+ 199 0000 43797072 		.ascii	"Cypress!\000"
+ 199      65737321 
+ 199      00
+ 200 0009 000000   		.bss
+ 201              		.set	.LANCHOR0,. + 0
+ 202              		.type	lcdState, %object
+ 203              		.size	lcdState, 1
+ 204              	lcdState:
+ 205 0000 00       		.space	1
+ 206              		.text
+ 207              	.Letext0:
+ 208              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 209              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 210              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 211              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 212              		.file 6 "Generated_Source\\PSoC5/CyLib.h"
+ 213              		.file 7 "Generated_Source\\PSoC5/Button_Isr.h"
+ 214              		.file 8 "Generated_Source\\PSoC5/LCD_RST.h"
+ 215              		.file 9 "Generated_Source\\PSoC5/I2C_M.h"
+ 216              		.file 10 "Generated_Source\\PSoC5/I2C_LCD.h"
+ 217              		.file 11 "Generated_Source\\PSoC5/Button.h"
+ 218              		.section	.debug_info,"",%progbits
+ 219              	.Ldebug_info0:
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccGLB0kf.s 			page 8
+
+
+ 220 0000 31030000 		.4byte	0x331
+ 221 0004 0400     		.2byte	0x4
+ 222 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 223 000a 04       		.byte	0x4
+ 224 000b 01       		.uleb128 0x1
+ 225 000c 4F010000 		.4byte	.LASF31
+ 226 0010 01       		.byte	0x1
+ 227 0011 8F000000 		.4byte	.LASF32
+ 228 0015 42000000 		.4byte	.LASF33
+ 229 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 230 001d 00000000 		.4byte	0
+ 231 0021 00000000 		.4byte	.Ldebug_line0
+ 232 0025 02       		.uleb128 0x2
+ 233 0026 01       		.byte	0x1
+ 234 0027 06       		.byte	0x6
+ 235 0028 7A020000 		.4byte	.LASF0
+ 236 002c 02       		.uleb128 0x2
+ 237 002d 01       		.byte	0x1
+ 238 002e 08       		.byte	0x8
+ 239 002f C7000000 		.4byte	.LASF1
+ 240 0033 02       		.uleb128 0x2
+ 241 0034 02       		.byte	0x2
+ 242 0035 05       		.byte	0x5
+ 243 0036 61020000 		.4byte	.LASF2
+ 244 003a 02       		.uleb128 0x2
+ 245 003b 02       		.byte	0x2
+ 246 003c 07       		.byte	0x7
+ 247 003d F9000000 		.4byte	.LASF3
+ 248 0041 03       		.uleb128 0x3
+ 249 0042 26000000 		.4byte	.LASF9
+ 250 0046 02       		.byte	0x2
+ 251 0047 3F       		.byte	0x3f
+ 252 0048 4C000000 		.4byte	0x4c
+ 253 004c 02       		.uleb128 0x2
+ 254 004d 04       		.byte	0x4
+ 255 004e 05       		.byte	0x5
+ 256 004f 71020000 		.4byte	.LASF4
+ 257 0053 02       		.uleb128 0x2
+ 258 0054 04       		.byte	0x4
+ 259 0055 07       		.byte	0x7
+ 260 0056 E7000000 		.4byte	.LASF5
+ 261 005a 02       		.uleb128 0x2
+ 262 005b 08       		.byte	0x8
+ 263 005c 05       		.byte	0x5
+ 264 005d 40020000 		.4byte	.LASF6
+ 265 0061 02       		.uleb128 0x2
+ 266 0062 08       		.byte	0x8
+ 267 0063 07       		.byte	0x7
+ 268 0064 B0000000 		.4byte	.LASF7
+ 269 0068 04       		.uleb128 0x4
+ 270 0069 04       		.byte	0x4
+ 271 006a 05       		.byte	0x5
+ 272 006b 696E7400 		.ascii	"int\000"
+ 273 006f 02       		.uleb128 0x2
+ 274 0070 04       		.byte	0x4
+ 275 0071 07       		.byte	0x7
+ 276 0072 DD010000 		.4byte	.LASF8
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccGLB0kf.s 			page 9
+
+
+ 277 0076 03       		.uleb128 0x3
+ 278 0077 2F020000 		.4byte	.LASF10
+ 279 007b 03       		.byte	0x3
+ 280 007c 2C       		.byte	0x2c
+ 281 007d 41000000 		.4byte	0x41
+ 282 0081 05       		.uleb128 0x5
+ 283 0082 6B020000 		.4byte	.LASF11
+ 284 0086 04       		.byte	0x4
+ 285 0087 9201     		.2byte	0x192
+ 286 0089 2C000000 		.4byte	0x2c
+ 287 008d 05       		.uleb128 0x5
+ 288 008e 48010000 		.4byte	.LASF12
+ 289 0092 04       		.byte	0x4
+ 290 0093 9401     		.2byte	0x194
+ 291 0095 53000000 		.4byte	0x53
+ 292 0099 02       		.uleb128 0x2
+ 293 009a 04       		.byte	0x4
+ 294 009b 04       		.byte	0x4
+ 295 009c AA000000 		.4byte	.LASF13
+ 296 00a0 02       		.uleb128 0x2
+ 297 00a1 08       		.byte	0x8
+ 298 00a2 04       		.byte	0x4
+ 299 00a3 3C010000 		.4byte	.LASF14
+ 300 00a7 05       		.uleb128 0x5
+ 301 00a8 E1000000 		.4byte	.LASF15
+ 302 00ac 04       		.byte	0x4
+ 303 00ad A301     		.2byte	0x1a3
+ 304 00af B3000000 		.4byte	0xb3
+ 305 00b3 02       		.uleb128 0x2
+ 306 00b4 01       		.byte	0x1
+ 307 00b5 08       		.byte	0x8
+ 308 00b6 4E020000 		.4byte	.LASF16
+ 309 00ba 06       		.uleb128 0x6
+ 310 00bb 81000000 		.4byte	0x81
+ 311 00bf 05       		.uleb128 0x5
+ 312 00c0 22020000 		.4byte	.LASF17
+ 313 00c4 04       		.byte	0x4
+ 314 00c5 4E02     		.2byte	0x24e
+ 315 00c7 CB000000 		.4byte	0xcb
+ 316 00cb 07       		.uleb128 0x7
+ 317 00cc 04       		.byte	0x4
+ 318 00cd D1000000 		.4byte	0xd1
+ 319 00d1 08       		.uleb128 0x8
+ 320 00d2 02       		.uleb128 0x2
+ 321 00d3 04       		.byte	0x4
+ 322 00d4 07       		.byte	0x7
+ 323 00d5 37020000 		.4byte	.LASF18
+ 324 00d9 09       		.uleb128 0x9
+ 325 00da 30000000 		.4byte	.LASF34
+ 326 00de 01       		.byte	0x1
+ 327 00df 3E       		.byte	0x3e
+ 328 00e0 00000000 		.4byte	.LFB63
+ 329 00e4 2C000000 		.4byte	.LFE63-.LFB63
+ 330 00e8 01       		.uleb128 0x1
+ 331 00e9 9C       		.byte	0x9c
+ 332 00ea 0C010000 		.4byte	0x10c
+ 333 00ee 0A       		.uleb128 0xa
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccGLB0kf.s 			page 10
+
+
+ 334 00ef 20000000 		.4byte	.LVL0
+ 335 00f3 87020000 		.4byte	0x287
+ 336 00f7 02010000 		.4byte	0x102
+ 337 00fb 0B       		.uleb128 0xb
+ 338 00fc 01       		.uleb128 0x1
+ 339 00fd 50       		.byte	0x50
+ 340 00fe 02       		.uleb128 0x2
+ 341 00ff 08       		.byte	0x8
+ 342 0100 C8       		.byte	0xc8
+ 343 0101 00       		.byte	0
+ 344 0102 0C       		.uleb128 0xc
+ 345 0103 24000000 		.4byte	.LVL1
+ 346 0107 98020000 		.4byte	0x298
+ 347 010b 00       		.byte	0
+ 348 010c 0D       		.uleb128 0xd
+ 349 010d 43010000 		.4byte	.LASF35
+ 350 0111 01       		.byte	0x1
+ 351 0112 62       		.byte	0x62
+ 352 0113 68000000 		.4byte	0x68
+ 353 0117 00000000 		.4byte	.LFB64
+ 354 011b 8C000000 		.4byte	.LFE64-.LFB64
+ 355 011f 01       		.uleb128 0x1
+ 356 0120 9C       		.byte	0x9c
+ 357 0121 44020000 		.4byte	0x244
+ 358 0125 0E       		.uleb128 0xe
+ 359 0126 6900     		.ascii	"i\000"
+ 360 0128 01       		.byte	0x1
+ 361 0129 64       		.byte	0x64
+ 362 012a 81000000 		.4byte	0x81
+ 363 012e 00000000 		.4byte	.LLST0
+ 364 0132 0A       		.uleb128 0xa
+ 365 0133 0A000000 		.4byte	.LVL2
+ 366 0137 A3020000 		.4byte	0x2a3
+ 367 013b 49010000 		.4byte	0x149
+ 368 013f 0B       		.uleb128 0xb
+ 369 0140 01       		.uleb128 0x1
+ 370 0141 50       		.byte	0x50
+ 371 0142 05       		.uleb128 0x5
+ 372 0143 03       		.byte	0x3
+ 373 0144 00000000 		.4byte	FlipLcdIsr
+ 374 0148 00       		.byte	0
+ 375 0149 0A       		.uleb128 0xa
+ 376 014a 10000000 		.4byte	.LVL3
+ 377 014e B4020000 		.4byte	0x2b4
+ 378 0152 5C010000 		.4byte	0x15c
+ 379 0156 0B       		.uleb128 0xb
+ 380 0157 01       		.uleb128 0x1
+ 381 0158 50       		.byte	0x50
+ 382 0159 01       		.uleb128 0x1
+ 383 015a 31       		.byte	0x31
+ 384 015b 00       		.byte	0
+ 385 015c 0A       		.uleb128 0xa
+ 386 015d 16000000 		.4byte	.LVL4
+ 387 0161 87020000 		.4byte	0x287
+ 388 0165 6F010000 		.4byte	0x16f
+ 389 0169 0B       		.uleb128 0xb
+ 390 016a 01       		.uleb128 0x1
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccGLB0kf.s 			page 11
+
+
+ 391 016b 50       		.byte	0x50
+ 392 016c 01       		.uleb128 0x1
+ 393 016d 31       		.byte	0x31
+ 394 016e 00       		.byte	0
+ 395 016f 0A       		.uleb128 0xa
+ 396 0170 1C000000 		.4byte	.LVL5
+ 397 0174 B4020000 		.4byte	0x2b4
+ 398 0178 82010000 		.4byte	0x182
+ 399 017c 0B       		.uleb128 0xb
+ 400 017d 01       		.uleb128 0x1
+ 401 017e 50       		.byte	0x50
+ 402 017f 01       		.uleb128 0x1
+ 403 0180 30       		.byte	0x30
+ 404 0181 00       		.byte	0
+ 405 0182 0C       		.uleb128 0xc
+ 406 0183 20000000 		.4byte	.LVL6
+ 407 0187 C5020000 		.4byte	0x2c5
+ 408 018b 0C       		.uleb128 0xc
+ 409 018c 24000000 		.4byte	.LVL7
+ 410 0190 CC020000 		.4byte	0x2cc
+ 411 0194 0A       		.uleb128 0xa
+ 412 0195 2C000000 		.4byte	.LVL8
+ 413 0199 87020000 		.4byte	0x287
+ 414 019d A9010000 		.4byte	0x1a9
+ 415 01a1 0B       		.uleb128 0xb
+ 416 01a2 01       		.uleb128 0x1
+ 417 01a3 50       		.byte	0x50
+ 418 01a4 03       		.uleb128 0x3
+ 419 01a5 0A       		.byte	0xa
+ 420 01a6 E803     		.2byte	0x3e8
+ 421 01a8 00       		.byte	0
+ 422 01a9 0A       		.uleb128 0xa
+ 423 01aa 34000000 		.4byte	.LVL9
+ 424 01ae D3020000 		.4byte	0x2d3
+ 425 01b2 C1010000 		.4byte	0x1c1
+ 426 01b6 0B       		.uleb128 0xb
+ 427 01b7 01       		.uleb128 0x1
+ 428 01b8 51       		.byte	0x51
+ 429 01b9 01       		.uleb128 0x1
+ 430 01ba 30       		.byte	0x30
+ 431 01bb 0B       		.uleb128 0xb
+ 432 01bc 01       		.uleb128 0x1
+ 433 01bd 50       		.byte	0x50
+ 434 01be 01       		.uleb128 0x1
+ 435 01bf 30       		.byte	0x30
+ 436 01c0 00       		.byte	0
+ 437 01c1 0C       		.uleb128 0xc
+ 438 01c2 40000000 		.4byte	.LVL11
+ 439 01c6 E9020000 		.4byte	0x2e9
+ 440 01ca 0A       		.uleb128 0xa
+ 441 01cb 50000000 		.4byte	.LVL14
+ 442 01cf D3020000 		.4byte	0x2d3
+ 443 01d3 E2010000 		.4byte	0x1e2
+ 444 01d7 0B       		.uleb128 0xb
+ 445 01d8 01       		.uleb128 0x1
+ 446 01d9 51       		.byte	0x51
+ 447 01da 01       		.uleb128 0x1
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccGLB0kf.s 			page 12
+
+
+ 448 01db 30       		.byte	0x30
+ 449 01dc 0B       		.uleb128 0xb
+ 450 01dd 01       		.uleb128 0x1
+ 451 01de 50       		.byte	0x50
+ 452 01df 01       		.uleb128 0x1
+ 453 01e0 31       		.byte	0x31
+ 454 01e1 00       		.byte	0
+ 455 01e2 0A       		.uleb128 0xa
+ 456 01e3 56000000 		.4byte	.LVL15
+ 457 01e7 FA020000 		.4byte	0x2fa
+ 458 01eb F9010000 		.4byte	0x1f9
+ 459 01ef 0B       		.uleb128 0xb
+ 460 01f0 01       		.uleb128 0x1
+ 461 01f1 50       		.byte	0x50
+ 462 01f2 05       		.uleb128 0x5
+ 463 01f3 03       		.byte	0x3
+ 464 01f4 00000000 		.4byte	.LC0
+ 465 01f8 00       		.byte	0
+ 466 01f9 0A       		.uleb128 0xa
+ 467 01fa 5C000000 		.4byte	.LVL16
+ 468 01fe 16030000 		.4byte	0x316
+ 469 0202 0D020000 		.4byte	0x20d
+ 470 0206 0B       		.uleb128 0xb
+ 471 0207 01       		.uleb128 0x1
+ 472 0208 50       		.byte	0x50
+ 473 0209 02       		.uleb128 0x2
+ 474 020a 08       		.byte	0x8
+ 475 020b 74       		.byte	0x74
+ 476 020c 00       		.byte	0
+ 477 020d 0A       		.uleb128 0xa
+ 478 020e 62000000 		.4byte	.LVL17
+ 479 0212 27030000 		.4byte	0x327
+ 480 0216 21020000 		.4byte	0x221
+ 481 021a 0B       		.uleb128 0xb
+ 482 021b 01       		.uleb128 0x1
+ 483 021c 50       		.byte	0x50
+ 484 021d 02       		.uleb128 0x2
+ 485 021e 08       		.byte	0x8
+ 486 021f 25       		.byte	0x25
+ 487 0220 00       		.byte	0
+ 488 0221 0A       		.uleb128 0xa
+ 489 0222 72000000 		.4byte	.LVL18
+ 490 0226 27030000 		.4byte	0x327
+ 491 022a 34020000 		.4byte	0x234
+ 492 022e 0B       		.uleb128 0xb
+ 493 022f 01       		.uleb128 0x1
+ 494 0230 50       		.byte	0x50
+ 495 0231 01       		.uleb128 0x1
+ 496 0232 34       		.byte	0x34
+ 497 0233 00       		.byte	0
+ 498 0234 0F       		.uleb128 0xf
+ 499 0235 7A000000 		.4byte	.LVL19
+ 500 0239 27030000 		.4byte	0x327
+ 501 023d 0B       		.uleb128 0xb
+ 502 023e 01       		.uleb128 0x1
+ 503 023f 50       		.byte	0x50
+ 504 0240 01       		.uleb128 0x1
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccGLB0kf.s 			page 13
+
+
+ 505 0241 35       		.byte	0x35
+ 506 0242 00       		.byte	0
+ 507 0243 00       		.byte	0
+ 508 0244 10       		.uleb128 0x10
+ 509 0245 2F010000 		.4byte	.LASF19
+ 510 0249 05       		.byte	0x5
+ 511 024a 9606     		.2byte	0x696
+ 512 024c 50020000 		.4byte	0x250
+ 513 0250 06       		.uleb128 0x6
+ 514 0251 76000000 		.4byte	0x76
+ 515 0255 11       		.uleb128 0x11
+ 516 0256 A7000000 		.4byte	0xa7
+ 517 025a 65020000 		.4byte	0x265
+ 518 025e 12       		.uleb128 0x12
+ 519 025f D2000000 		.4byte	0xd2
+ 520 0263 07       		.byte	0x7
+ 521 0264 00       		.byte	0
+ 522 0265 13       		.uleb128 0x13
+ 523 0266 3B000000 		.4byte	.LASF20
+ 524 026a 01       		.byte	0x1
+ 525 026b 2B       		.byte	0x2b
+ 526 026c 55020000 		.4byte	0x255
+ 527 0270 05       		.uleb128 0x5
+ 528 0271 03       		.byte	0x3
+ 529 0272 00000000 		.4byte	string
+ 530 0276 13       		.uleb128 0x13
+ 531 0277 86020000 		.4byte	.LASF21
+ 532 027b 01       		.byte	0x1
+ 533 027c 2F       		.byte	0x2f
+ 534 027d BA000000 		.4byte	0xba
+ 535 0281 05       		.uleb128 0x5
+ 536 0282 03       		.byte	0x3
+ 537 0283 00000000 		.4byte	lcdState
+ 538 0287 14       		.uleb128 0x14
+ 539 0288 8F020000 		.4byte	.LASF22
+ 540 028c 06       		.byte	0x6
+ 541 028d 76       		.byte	0x76
+ 542 028e 98020000 		.4byte	0x298
+ 543 0292 15       		.uleb128 0x15
+ 544 0293 8D000000 		.4byte	0x8d
+ 545 0297 00       		.byte	0
+ 546 0298 16       		.uleb128 0x16
+ 547 0299 0C020000 		.4byte	.LASF36
+ 548 029d 0B       		.byte	0xb
+ 549 029e 2B       		.byte	0x2b
+ 550 029f 81000000 		.4byte	0x81
+ 551 02a3 14       		.uleb128 0x14
+ 552 02a4 1C010000 		.4byte	.LASF23
+ 553 02a8 07       		.byte	0x7
+ 554 02a9 18       		.byte	0x18
+ 555 02aa B4020000 		.4byte	0x2b4
+ 556 02ae 15       		.uleb128 0x15
+ 557 02af BF000000 		.4byte	0xbf
+ 558 02b3 00       		.byte	0
+ 559 02b4 14       		.uleb128 0x14
+ 560 02b5 FE010000 		.4byte	.LASF24
+ 561 02b9 08       		.byte	0x8
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccGLB0kf.s 			page 14
+
+
+ 562 02ba 26       		.byte	0x26
+ 563 02bb C5020000 		.4byte	0x2c5
+ 564 02bf 15       		.uleb128 0x15
+ 565 02c0 81000000 		.4byte	0x81
+ 566 02c4 00       		.byte	0
+ 567 02c5 17       		.uleb128 0x17
+ 568 02c6 D5000000 		.4byte	.LASF25
+ 569 02ca 09       		.byte	0x9
+ 570 02cb 93       		.byte	0x93
+ 571 02cc 17       		.uleb128 0x17
+ 572 02cd 53020000 		.4byte	.LASF26
+ 573 02d1 0A       		.byte	0xa
+ 574 02d2 5D       		.byte	0x5d
+ 575 02d3 14       		.uleb128 0x14
+ 576 02d4 15000000 		.4byte	.LASF27
+ 577 02d8 0A       		.byte	0xa
+ 578 02d9 62       		.byte	0x62
+ 579 02da E9020000 		.4byte	0x2e9
+ 580 02de 15       		.uleb128 0x15
+ 581 02df 81000000 		.4byte	0x81
+ 582 02e3 15       		.uleb128 0x15
+ 583 02e4 81000000 		.4byte	0x81
+ 584 02e8 00       		.byte	0
+ 585 02e9 14       		.uleb128 0x14
+ 586 02ea 98000000 		.4byte	.LASF28
+ 587 02ee 0A       		.byte	0xa
+ 588 02ef 60       		.byte	0x60
+ 589 02f0 FA020000 		.4byte	0x2fa
+ 590 02f4 15       		.uleb128 0x15
+ 591 02f5 81000000 		.4byte	0x81
+ 592 02f9 00       		.byte	0
+ 593 02fa 14       		.uleb128 0x14
+ 594 02fb EA010000 		.4byte	.LASF29
+ 595 02ff 0A       		.byte	0xa
+ 596 0300 61       		.byte	0x61
+ 597 0301 0B030000 		.4byte	0x30b
+ 598 0305 15       		.uleb128 0x15
+ 599 0306 0B030000 		.4byte	0x30b
+ 600 030a 00       		.byte	0
+ 601 030b 07       		.uleb128 0x7
+ 602 030c 04       		.byte	0x4
+ 603 030d 11030000 		.4byte	0x311
+ 604 0311 18       		.uleb128 0x18
+ 605 0312 A7000000 		.4byte	0xa7
+ 606 0316 14       		.uleb128 0x14
+ 607 0317 0C010000 		.4byte	.LASF30
+ 608 031b 0A       		.byte	0xa
+ 609 031c 64       		.byte	0x64
+ 610 031d 27030000 		.4byte	0x327
+ 611 0321 15       		.uleb128 0x15
+ 612 0322 81000000 		.4byte	0x81
+ 613 0326 00       		.byte	0
+ 614 0327 19       		.uleb128 0x19
+ 615 0328 00000000 		.4byte	.LASF37
+ 616 032c 0A       		.byte	0xa
+ 617 032d 5F       		.byte	0x5f
+ 618 032e 15       		.uleb128 0x15
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccGLB0kf.s 			page 15
+
+
+ 619 032f 81000000 		.4byte	0x81
+ 620 0333 00       		.byte	0
+ 621 0334 00       		.byte	0
+ 622              		.section	.debug_abbrev,"",%progbits
+ 623              	.Ldebug_abbrev0:
+ 624 0000 01       		.uleb128 0x1
+ 625 0001 11       		.uleb128 0x11
+ 626 0002 01       		.byte	0x1
+ 627 0003 25       		.uleb128 0x25
+ 628 0004 0E       		.uleb128 0xe
+ 629 0005 13       		.uleb128 0x13
+ 630 0006 0B       		.uleb128 0xb
+ 631 0007 03       		.uleb128 0x3
+ 632 0008 0E       		.uleb128 0xe
+ 633 0009 1B       		.uleb128 0x1b
+ 634 000a 0E       		.uleb128 0xe
+ 635 000b 55       		.uleb128 0x55
+ 636 000c 17       		.uleb128 0x17
+ 637 000d 11       		.uleb128 0x11
+ 638 000e 01       		.uleb128 0x1
+ 639 000f 10       		.uleb128 0x10
+ 640 0010 17       		.uleb128 0x17
+ 641 0011 00       		.byte	0
+ 642 0012 00       		.byte	0
+ 643 0013 02       		.uleb128 0x2
+ 644 0014 24       		.uleb128 0x24
+ 645 0015 00       		.byte	0
+ 646 0016 0B       		.uleb128 0xb
+ 647 0017 0B       		.uleb128 0xb
+ 648 0018 3E       		.uleb128 0x3e
+ 649 0019 0B       		.uleb128 0xb
+ 650 001a 03       		.uleb128 0x3
+ 651 001b 0E       		.uleb128 0xe
+ 652 001c 00       		.byte	0
+ 653 001d 00       		.byte	0
+ 654 001e 03       		.uleb128 0x3
+ 655 001f 16       		.uleb128 0x16
+ 656 0020 00       		.byte	0
+ 657 0021 03       		.uleb128 0x3
+ 658 0022 0E       		.uleb128 0xe
+ 659 0023 3A       		.uleb128 0x3a
+ 660 0024 0B       		.uleb128 0xb
+ 661 0025 3B       		.uleb128 0x3b
+ 662 0026 0B       		.uleb128 0xb
+ 663 0027 49       		.uleb128 0x49
+ 664 0028 13       		.uleb128 0x13
+ 665 0029 00       		.byte	0
+ 666 002a 00       		.byte	0
+ 667 002b 04       		.uleb128 0x4
+ 668 002c 24       		.uleb128 0x24
+ 669 002d 00       		.byte	0
+ 670 002e 0B       		.uleb128 0xb
+ 671 002f 0B       		.uleb128 0xb
+ 672 0030 3E       		.uleb128 0x3e
+ 673 0031 0B       		.uleb128 0xb
+ 674 0032 03       		.uleb128 0x3
+ 675 0033 08       		.uleb128 0x8
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccGLB0kf.s 			page 16
+
+
+ 676 0034 00       		.byte	0
+ 677 0035 00       		.byte	0
+ 678 0036 05       		.uleb128 0x5
+ 679 0037 16       		.uleb128 0x16
+ 680 0038 00       		.byte	0
+ 681 0039 03       		.uleb128 0x3
+ 682 003a 0E       		.uleb128 0xe
+ 683 003b 3A       		.uleb128 0x3a
+ 684 003c 0B       		.uleb128 0xb
+ 685 003d 3B       		.uleb128 0x3b
+ 686 003e 05       		.uleb128 0x5
+ 687 003f 49       		.uleb128 0x49
+ 688 0040 13       		.uleb128 0x13
+ 689 0041 00       		.byte	0
+ 690 0042 00       		.byte	0
+ 691 0043 06       		.uleb128 0x6
+ 692 0044 35       		.uleb128 0x35
+ 693 0045 00       		.byte	0
+ 694 0046 49       		.uleb128 0x49
+ 695 0047 13       		.uleb128 0x13
+ 696 0048 00       		.byte	0
+ 697 0049 00       		.byte	0
+ 698 004a 07       		.uleb128 0x7
+ 699 004b 0F       		.uleb128 0xf
+ 700 004c 00       		.byte	0
+ 701 004d 0B       		.uleb128 0xb
+ 702 004e 0B       		.uleb128 0xb
+ 703 004f 49       		.uleb128 0x49
+ 704 0050 13       		.uleb128 0x13
+ 705 0051 00       		.byte	0
+ 706 0052 00       		.byte	0
+ 707 0053 08       		.uleb128 0x8
+ 708 0054 15       		.uleb128 0x15
+ 709 0055 00       		.byte	0
+ 710 0056 27       		.uleb128 0x27
+ 711 0057 19       		.uleb128 0x19
+ 712 0058 00       		.byte	0
+ 713 0059 00       		.byte	0
+ 714 005a 09       		.uleb128 0x9
+ 715 005b 2E       		.uleb128 0x2e
+ 716 005c 01       		.byte	0x1
+ 717 005d 3F       		.uleb128 0x3f
+ 718 005e 19       		.uleb128 0x19
+ 719 005f 03       		.uleb128 0x3
+ 720 0060 0E       		.uleb128 0xe
+ 721 0061 3A       		.uleb128 0x3a
+ 722 0062 0B       		.uleb128 0xb
+ 723 0063 3B       		.uleb128 0x3b
+ 724 0064 0B       		.uleb128 0xb
+ 725 0065 27       		.uleb128 0x27
+ 726 0066 19       		.uleb128 0x19
+ 727 0067 11       		.uleb128 0x11
+ 728 0068 01       		.uleb128 0x1
+ 729 0069 12       		.uleb128 0x12
+ 730 006a 06       		.uleb128 0x6
+ 731 006b 40       		.uleb128 0x40
+ 732 006c 18       		.uleb128 0x18
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccGLB0kf.s 			page 17
+
+
+ 733 006d 9742     		.uleb128 0x2117
+ 734 006f 19       		.uleb128 0x19
+ 735 0070 01       		.uleb128 0x1
+ 736 0071 13       		.uleb128 0x13
+ 737 0072 00       		.byte	0
+ 738 0073 00       		.byte	0
+ 739 0074 0A       		.uleb128 0xa
+ 740 0075 898201   		.uleb128 0x4109
+ 741 0078 01       		.byte	0x1
+ 742 0079 11       		.uleb128 0x11
+ 743 007a 01       		.uleb128 0x1
+ 744 007b 31       		.uleb128 0x31
+ 745 007c 13       		.uleb128 0x13
+ 746 007d 01       		.uleb128 0x1
+ 747 007e 13       		.uleb128 0x13
+ 748 007f 00       		.byte	0
+ 749 0080 00       		.byte	0
+ 750 0081 0B       		.uleb128 0xb
+ 751 0082 8A8201   		.uleb128 0x410a
+ 752 0085 00       		.byte	0
+ 753 0086 02       		.uleb128 0x2
+ 754 0087 18       		.uleb128 0x18
+ 755 0088 9142     		.uleb128 0x2111
+ 756 008a 18       		.uleb128 0x18
+ 757 008b 00       		.byte	0
+ 758 008c 00       		.byte	0
+ 759 008d 0C       		.uleb128 0xc
+ 760 008e 898201   		.uleb128 0x4109
+ 761 0091 00       		.byte	0
+ 762 0092 11       		.uleb128 0x11
+ 763 0093 01       		.uleb128 0x1
+ 764 0094 31       		.uleb128 0x31
+ 765 0095 13       		.uleb128 0x13
+ 766 0096 00       		.byte	0
+ 767 0097 00       		.byte	0
+ 768 0098 0D       		.uleb128 0xd
+ 769 0099 2E       		.uleb128 0x2e
+ 770 009a 01       		.byte	0x1
+ 771 009b 3F       		.uleb128 0x3f
+ 772 009c 19       		.uleb128 0x19
+ 773 009d 03       		.uleb128 0x3
+ 774 009e 0E       		.uleb128 0xe
+ 775 009f 3A       		.uleb128 0x3a
+ 776 00a0 0B       		.uleb128 0xb
+ 777 00a1 3B       		.uleb128 0x3b
+ 778 00a2 0B       		.uleb128 0xb
+ 779 00a3 27       		.uleb128 0x27
+ 780 00a4 19       		.uleb128 0x19
+ 781 00a5 49       		.uleb128 0x49
+ 782 00a6 13       		.uleb128 0x13
+ 783 00a7 11       		.uleb128 0x11
+ 784 00a8 01       		.uleb128 0x1
+ 785 00a9 12       		.uleb128 0x12
+ 786 00aa 06       		.uleb128 0x6
+ 787 00ab 40       		.uleb128 0x40
+ 788 00ac 18       		.uleb128 0x18
+ 789 00ad 9742     		.uleb128 0x2117
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccGLB0kf.s 			page 18
+
+
+ 790 00af 19       		.uleb128 0x19
+ 791 00b0 01       		.uleb128 0x1
+ 792 00b1 13       		.uleb128 0x13
+ 793 00b2 00       		.byte	0
+ 794 00b3 00       		.byte	0
+ 795 00b4 0E       		.uleb128 0xe
+ 796 00b5 34       		.uleb128 0x34
+ 797 00b6 00       		.byte	0
+ 798 00b7 03       		.uleb128 0x3
+ 799 00b8 08       		.uleb128 0x8
+ 800 00b9 3A       		.uleb128 0x3a
+ 801 00ba 0B       		.uleb128 0xb
+ 802 00bb 3B       		.uleb128 0x3b
+ 803 00bc 0B       		.uleb128 0xb
+ 804 00bd 49       		.uleb128 0x49
+ 805 00be 13       		.uleb128 0x13
+ 806 00bf 02       		.uleb128 0x2
+ 807 00c0 17       		.uleb128 0x17
+ 808 00c1 00       		.byte	0
+ 809 00c2 00       		.byte	0
+ 810 00c3 0F       		.uleb128 0xf
+ 811 00c4 898201   		.uleb128 0x4109
+ 812 00c7 01       		.byte	0x1
+ 813 00c8 11       		.uleb128 0x11
+ 814 00c9 01       		.uleb128 0x1
+ 815 00ca 31       		.uleb128 0x31
+ 816 00cb 13       		.uleb128 0x13
+ 817 00cc 00       		.byte	0
+ 818 00cd 00       		.byte	0
+ 819 00ce 10       		.uleb128 0x10
+ 820 00cf 34       		.uleb128 0x34
+ 821 00d0 00       		.byte	0
+ 822 00d1 03       		.uleb128 0x3
+ 823 00d2 0E       		.uleb128 0xe
+ 824 00d3 3A       		.uleb128 0x3a
+ 825 00d4 0B       		.uleb128 0xb
+ 826 00d5 3B       		.uleb128 0x3b
+ 827 00d6 05       		.uleb128 0x5
+ 828 00d7 49       		.uleb128 0x49
+ 829 00d8 13       		.uleb128 0x13
+ 830 00d9 3F       		.uleb128 0x3f
+ 831 00da 19       		.uleb128 0x19
+ 832 00db 3C       		.uleb128 0x3c
+ 833 00dc 19       		.uleb128 0x19
+ 834 00dd 00       		.byte	0
+ 835 00de 00       		.byte	0
+ 836 00df 11       		.uleb128 0x11
+ 837 00e0 01       		.uleb128 0x1
+ 838 00e1 01       		.byte	0x1
+ 839 00e2 49       		.uleb128 0x49
+ 840 00e3 13       		.uleb128 0x13
+ 841 00e4 01       		.uleb128 0x1
+ 842 00e5 13       		.uleb128 0x13
+ 843 00e6 00       		.byte	0
+ 844 00e7 00       		.byte	0
+ 845 00e8 12       		.uleb128 0x12
+ 846 00e9 21       		.uleb128 0x21
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccGLB0kf.s 			page 19
+
+
+ 847 00ea 00       		.byte	0
+ 848 00eb 49       		.uleb128 0x49
+ 849 00ec 13       		.uleb128 0x13
+ 850 00ed 2F       		.uleb128 0x2f
+ 851 00ee 0B       		.uleb128 0xb
+ 852 00ef 00       		.byte	0
+ 853 00f0 00       		.byte	0
+ 854 00f1 13       		.uleb128 0x13
+ 855 00f2 34       		.uleb128 0x34
+ 856 00f3 00       		.byte	0
+ 857 00f4 03       		.uleb128 0x3
+ 858 00f5 0E       		.uleb128 0xe
+ 859 00f6 3A       		.uleb128 0x3a
+ 860 00f7 0B       		.uleb128 0xb
+ 861 00f8 3B       		.uleb128 0x3b
+ 862 00f9 0B       		.uleb128 0xb
+ 863 00fa 49       		.uleb128 0x49
+ 864 00fb 13       		.uleb128 0x13
+ 865 00fc 3F       		.uleb128 0x3f
+ 866 00fd 19       		.uleb128 0x19
+ 867 00fe 02       		.uleb128 0x2
+ 868 00ff 18       		.uleb128 0x18
+ 869 0100 00       		.byte	0
+ 870 0101 00       		.byte	0
+ 871 0102 14       		.uleb128 0x14
+ 872 0103 2E       		.uleb128 0x2e
+ 873 0104 01       		.byte	0x1
+ 874 0105 3F       		.uleb128 0x3f
+ 875 0106 19       		.uleb128 0x19
+ 876 0107 03       		.uleb128 0x3
+ 877 0108 0E       		.uleb128 0xe
+ 878 0109 3A       		.uleb128 0x3a
+ 879 010a 0B       		.uleb128 0xb
+ 880 010b 3B       		.uleb128 0x3b
+ 881 010c 0B       		.uleb128 0xb
+ 882 010d 27       		.uleb128 0x27
+ 883 010e 19       		.uleb128 0x19
+ 884 010f 3C       		.uleb128 0x3c
+ 885 0110 19       		.uleb128 0x19
+ 886 0111 01       		.uleb128 0x1
+ 887 0112 13       		.uleb128 0x13
+ 888 0113 00       		.byte	0
+ 889 0114 00       		.byte	0
+ 890 0115 15       		.uleb128 0x15
+ 891 0116 05       		.uleb128 0x5
+ 892 0117 00       		.byte	0
+ 893 0118 49       		.uleb128 0x49
+ 894 0119 13       		.uleb128 0x13
+ 895 011a 00       		.byte	0
+ 896 011b 00       		.byte	0
+ 897 011c 16       		.uleb128 0x16
+ 898 011d 2E       		.uleb128 0x2e
+ 899 011e 00       		.byte	0
+ 900 011f 3F       		.uleb128 0x3f
+ 901 0120 19       		.uleb128 0x19
+ 902 0121 03       		.uleb128 0x3
+ 903 0122 0E       		.uleb128 0xe
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccGLB0kf.s 			page 20
+
+
+ 904 0123 3A       		.uleb128 0x3a
+ 905 0124 0B       		.uleb128 0xb
+ 906 0125 3B       		.uleb128 0x3b
+ 907 0126 0B       		.uleb128 0xb
+ 908 0127 27       		.uleb128 0x27
+ 909 0128 19       		.uleb128 0x19
+ 910 0129 49       		.uleb128 0x49
+ 911 012a 13       		.uleb128 0x13
+ 912 012b 3C       		.uleb128 0x3c
+ 913 012c 19       		.uleb128 0x19
+ 914 012d 00       		.byte	0
+ 915 012e 00       		.byte	0
+ 916 012f 17       		.uleb128 0x17
+ 917 0130 2E       		.uleb128 0x2e
+ 918 0131 00       		.byte	0
+ 919 0132 3F       		.uleb128 0x3f
+ 920 0133 19       		.uleb128 0x19
+ 921 0134 03       		.uleb128 0x3
+ 922 0135 0E       		.uleb128 0xe
+ 923 0136 3A       		.uleb128 0x3a
+ 924 0137 0B       		.uleb128 0xb
+ 925 0138 3B       		.uleb128 0x3b
+ 926 0139 0B       		.uleb128 0xb
+ 927 013a 27       		.uleb128 0x27
+ 928 013b 19       		.uleb128 0x19
+ 929 013c 3C       		.uleb128 0x3c
+ 930 013d 19       		.uleb128 0x19
+ 931 013e 00       		.byte	0
+ 932 013f 00       		.byte	0
+ 933 0140 18       		.uleb128 0x18
+ 934 0141 26       		.uleb128 0x26
+ 935 0142 00       		.byte	0
+ 936 0143 49       		.uleb128 0x49
+ 937 0144 13       		.uleb128 0x13
+ 938 0145 00       		.byte	0
+ 939 0146 00       		.byte	0
+ 940 0147 19       		.uleb128 0x19
+ 941 0148 2E       		.uleb128 0x2e
+ 942 0149 01       		.byte	0x1
+ 943 014a 3F       		.uleb128 0x3f
+ 944 014b 19       		.uleb128 0x19
+ 945 014c 03       		.uleb128 0x3
+ 946 014d 0E       		.uleb128 0xe
+ 947 014e 3A       		.uleb128 0x3a
+ 948 014f 0B       		.uleb128 0xb
+ 949 0150 3B       		.uleb128 0x3b
+ 950 0151 0B       		.uleb128 0xb
+ 951 0152 27       		.uleb128 0x27
+ 952 0153 19       		.uleb128 0x19
+ 953 0154 3C       		.uleb128 0x3c
+ 954 0155 19       		.uleb128 0x19
+ 955 0156 00       		.byte	0
+ 956 0157 00       		.byte	0
+ 957 0158 00       		.byte	0
+ 958              		.section	.debug_loc,"",%progbits
+ 959              	.Ldebug_loc0:
+ 960              	.LLST0:
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccGLB0kf.s 			page 21
+
+
+ 961 0000 34000000 		.4byte	.LVL9
+ 962 0004 38000000 		.4byte	.LVL10
+ 963 0008 0200     		.2byte	0x2
+ 964 000a 30       		.byte	0x30
+ 965 000b 9F       		.byte	0x9f
+ 966 000c 38000000 		.4byte	.LVL10
+ 967 0010 42000000 		.4byte	.LVL12
+ 968 0014 0100     		.2byte	0x1
+ 969 0016 54       		.byte	0x54
+ 970 0017 44000000 		.4byte	.LVL13
+ 971 001b 8C000000 		.4byte	.LFE64
+ 972 001f 0100     		.2byte	0x1
+ 973 0021 54       		.byte	0x54
+ 974 0022 00000000 		.4byte	0
+ 975 0026 00000000 		.4byte	0
+ 976              		.section	.debug_aranges,"",%progbits
+ 977 0000 24000000 		.4byte	0x24
+ 978 0004 0200     		.2byte	0x2
+ 979 0006 00000000 		.4byte	.Ldebug_info0
+ 980 000a 04       		.byte	0x4
+ 981 000b 00       		.byte	0
+ 982 000c 0000     		.2byte	0
+ 983 000e 0000     		.2byte	0
+ 984 0010 00000000 		.4byte	.LFB63
+ 985 0014 2C000000 		.4byte	.LFE63-.LFB63
+ 986 0018 00000000 		.4byte	.LFB64
+ 987 001c 8C000000 		.4byte	.LFE64-.LFB64
+ 988 0020 00000000 		.4byte	0
+ 989 0024 00000000 		.4byte	0
+ 990              		.section	.debug_ranges,"",%progbits
+ 991              	.Ldebug_ranges0:
+ 992 0000 00000000 		.4byte	.LFB63
+ 993 0004 2C000000 		.4byte	.LFE63
+ 994 0008 00000000 		.4byte	.LFB64
+ 995 000c 8C000000 		.4byte	.LFE64
+ 996 0010 00000000 		.4byte	0
+ 997 0014 00000000 		.4byte	0
+ 998              		.section	.debug_line,"",%progbits
+ 999              	.Ldebug_line0:
+ 1000 0000 E4010000 		.section	.debug_str,"MS",%progbits,1
+ 1000      02009501 
+ 1000      00000201 
+ 1000      FB0E0D00 
+ 1000      01010101 
+ 1001              	.LASF37:
+ 1002 0000 4932435F 		.ascii	"I2C_LCD_WriteControl\000"
+ 1002      4C43445F 
+ 1002      57726974 
+ 1002      65436F6E 
+ 1002      74726F6C 
+ 1003              	.LASF27:
+ 1004 0015 4932435F 		.ascii	"I2C_LCD_Position\000"
+ 1004      4C43445F 
+ 1004      506F7369 
+ 1004      74696F6E 
+ 1004      00
+ 1005              	.LASF9:
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccGLB0kf.s 			page 22
+
+
+ 1006 0026 5F5F696E 		.ascii	"__int32_t\000"
+ 1006      7433325F 
+ 1006      7400
+ 1007              	.LASF34:
+ 1008 0030 466C6970 		.ascii	"FlipLcdIsr\000"
+ 1008      4C636449 
+ 1008      737200
+ 1009              	.LASF20:
+ 1010 003b 73747269 		.ascii	"string\000"
+ 1010      6E6700
+ 1011              	.LASF33:
+ 1012 0042 433A5C55 		.ascii	"C:\\Users\\robert\\Documents\\PSoC Creator\\TestWor"
+ 1012      73657273 
+ 1012      5C726F62 
+ 1012      6572745C 
+ 1012      446F6375 
+ 1013 0070 6B737061 		.ascii	"kspace\\I2C_LCD_Example01.cydsn\000"
+ 1013      63655C49 
+ 1013      32435F4C 
+ 1013      43445F45 
+ 1013      78616D70 
+ 1014              	.LASF32:
+ 1015 008f 2E5C6D61 		.ascii	".\\main.c\000"
+ 1015      696E2E63 
+ 1015      00
+ 1016              	.LASF28:
+ 1017 0098 4932435F 		.ascii	"I2C_LCD_WriteData\000"
+ 1017      4C43445F 
+ 1017      57726974 
+ 1017      65446174 
+ 1017      6100
+ 1018              	.LASF13:
+ 1019 00aa 666C6F61 		.ascii	"float\000"
+ 1019      7400
+ 1020              	.LASF7:
+ 1021 00b0 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1021      206C6F6E 
+ 1021      6720756E 
+ 1021      7369676E 
+ 1021      65642069 
+ 1022              	.LASF1:
+ 1023 00c7 756E7369 		.ascii	"unsigned char\000"
+ 1023      676E6564 
+ 1023      20636861 
+ 1023      7200
+ 1024              	.LASF25:
+ 1025 00d5 4932435F 		.ascii	"I2C_M_Start\000"
+ 1025      4D5F5374 
+ 1025      61727400 
+ 1026              	.LASF15:
+ 1027 00e1 63686172 		.ascii	"char8\000"
+ 1027      3800
+ 1028              	.LASF5:
+ 1029 00e7 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1029      20756E73 
+ 1029      69676E65 
+ 1029      6420696E 
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccGLB0kf.s 			page 23
+
+
+ 1029      7400
+ 1030              	.LASF3:
+ 1031 00f9 73686F72 		.ascii	"short unsigned int\000"
+ 1031      7420756E 
+ 1031      7369676E 
+ 1031      65642069 
+ 1031      6E7400
+ 1032              	.LASF30:
+ 1033 010c 4932435F 		.ascii	"I2C_LCD_SetAddr\000"
+ 1033      4C43445F 
+ 1033      53657441 
+ 1033      64647200 
+ 1034              	.LASF23:
+ 1035 011c 42757474 		.ascii	"Button_Isr_StartEx\000"
+ 1035      6F6E5F49 
+ 1035      73725F53 
+ 1035      74617274 
+ 1035      457800
+ 1036              	.LASF19:
+ 1037 012f 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1037      52784275 
+ 1037      66666572 
+ 1037      00
+ 1038              	.LASF14:
+ 1039 013c 646F7562 		.ascii	"double\000"
+ 1039      6C6500
+ 1040              	.LASF35:
+ 1041 0143 6D61696E 		.ascii	"main\000"
+ 1041      00
+ 1042              	.LASF12:
+ 1043 0148 75696E74 		.ascii	"uint32\000"
+ 1043      333200
+ 1044              	.LASF31:
+ 1045 014f 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1045      4320342E 
+ 1045      392E3320 
+ 1045      32303135 
+ 1045      30333033 
+ 1046 0182 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1046      20726576 
+ 1046      6973696F 
+ 1046      6E203232 
+ 1046      31323230 
+ 1047 01b5 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1047      66756E63 
+ 1047      74696F6E 
+ 1047      2D736563 
+ 1047      74696F6E 
+ 1048              	.LASF8:
+ 1049 01dd 756E7369 		.ascii	"unsigned int\000"
+ 1049      676E6564 
+ 1049      20696E74 
+ 1049      00
+ 1050              	.LASF29:
+ 1051 01ea 4932435F 		.ascii	"I2C_LCD_PrintString\000"
+ 1051      4C43445F 
+ 1051      5072696E 
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccGLB0kf.s 			page 24
+
+
+ 1051      74537472 
+ 1051      696E6700 
+ 1052              	.LASF24:
+ 1053 01fe 4C43445F 		.ascii	"LCD_RST_Write\000"
+ 1053      5253545F 
+ 1053      57726974 
+ 1053      6500
+ 1054              	.LASF36:
+ 1055 020c 42757474 		.ascii	"Button_ClearInterrupt\000"
+ 1055      6F6E5F43 
+ 1055      6C656172 
+ 1055      496E7465 
+ 1055      72727570 
+ 1056              	.LASF17:
+ 1057 0222 63796973 		.ascii	"cyisraddress\000"
+ 1057      72616464 
+ 1057      72657373 
+ 1057      00
+ 1058              	.LASF10:
+ 1059 022f 696E7433 		.ascii	"int32_t\000"
+ 1059      325F7400 
+ 1060              	.LASF18:
+ 1061 0237 73697A65 		.ascii	"sizetype\000"
+ 1061      74797065 
+ 1061      00
+ 1062              	.LASF6:
+ 1063 0240 6C6F6E67 		.ascii	"long long int\000"
+ 1063      206C6F6E 
+ 1063      6720696E 
+ 1063      7400
+ 1064              	.LASF16:
+ 1065 024e 63686172 		.ascii	"char\000"
+ 1065      00
+ 1066              	.LASF26:
+ 1067 0253 4932435F 		.ascii	"I2C_LCD_Start\000"
+ 1067      4C43445F 
+ 1067      53746172 
+ 1067      7400
+ 1068              	.LASF2:
+ 1069 0261 73686F72 		.ascii	"short int\000"
+ 1069      7420696E 
+ 1069      7400
+ 1070              	.LASF11:
+ 1071 026b 75696E74 		.ascii	"uint8\000"
+ 1071      3800
+ 1072              	.LASF4:
+ 1073 0271 6C6F6E67 		.ascii	"long int\000"
+ 1073      20696E74 
+ 1073      00
+ 1074              	.LASF0:
+ 1075 027a 7369676E 		.ascii	"signed char\000"
+ 1075      65642063 
+ 1075      68617200 
+ 1076              	.LASF21:
+ 1077 0286 6C636453 		.ascii	"lcdState\000"
+ 1077      74617465 
+ 1077      00
+ARM GAS  C:\Users\robert\AppData\Local\Temp\ccGLB0kf.s 			page 25
+
+
+ 1078              	.LASF22:
+ 1079 028f 43794465 		.ascii	"CyDelay\000"
+ 1079      6C617900 
+ 1080              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

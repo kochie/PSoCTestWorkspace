@@ -12,13 +12,18 @@
 #include <project.h>
 #include <stdio.h>
 
-uint8 flag = 0;
+uint8 UART_RX_INTERRUPT_FLAG = 0;
 
-int CheckInterrupt(uint InterruptFlag)
+int CheckInterrupt(uint8 *InterruptFlag)
 {
-    if (InterruptFlag == 1)
+    char str[1];
+    
+    if (*InterruptFlag)
     {
-        InterruptFlag = 0;
+        
+        *InterruptFlag = 0;
+//        sprintf(str, "%d", *InterruptFlag);
+//        UART_USB_PutString(str);
         return 1;
     }
     else
@@ -29,25 +34,32 @@ int CheckInterrupt(uint InterruptFlag)
 
 int main()
 {
+    UART_Rx_INTERRUPT_Start();
     CyGlobalIntEnable; /* Enable global interrupts. */
+    
 
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
     UART_USB_Start();
-    int i = 0;
-    char string[8];
-    //UART_1_Enable();
+    int i = 0; 
+    char j[10];
     char ch;
+    UART_USB_PutString("hello\n\r");
     for(;;)
     {
-        ch = UART_USB_GetChar();
-        UART_USB_PutChar(ch);
-        if (ch > 0u)
+        
+        if (CheckInterrupt(&UART_RX_INTERRUPT_FLAG))
         {
-            
-            //UART_USB_PutString("\r\n");
-            
-            //UART_USB_PutString("\r\n");
+//            ch = UART_USB_GetChar();
+//            UART_USB_PutChar(ch);
+//            UART_USB_PutChar(10);
+//            UART_USB_PutChar(13);
+            sprintf(j, "%d\r", i);
+            UART_USB_PutString(j);
+            i++;
         }
+        //ch = UART_USB_GetChar();
+        //UART_USB_PutChar(ch);
+
 //        sprintf(string, "%d", i);
 //        UART_USB_PutString(string);
 //        UART_USB_PutString("\r\n");
