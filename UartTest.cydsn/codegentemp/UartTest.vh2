@@ -2,7 +2,7 @@
 --	Conversion of UartTest.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Fri Sep 16 13:24:42 2016
+--	Wed Sep 21 14:22:27 2016
 --
 
 USE cypress.cypress.all;
@@ -263,7 +263,7 @@ SIGNAL \UART_USB:BUART:rx_status_4\ : bit;
 SIGNAL \UART_USB:BUART:rx_status_5\ : bit;
 SIGNAL \UART_USB:BUART:rx_status_6\ : bit;
 SIGNAL \UART_USB:BUART:rx_addr_match_status\ : bit;
-SIGNAL Net_25 : bit;
+SIGNAL Net_40 : bit;
 SIGNAL \UART_USB:BUART:rx_markspace_pre\ : bit;
 SIGNAL \UART_USB:BUART:rx_parity_error_pre\ : bit;
 SIGNAL \UART_USB:BUART:rx_break_status\ : bit;
@@ -399,42 +399,38 @@ one <=  ('1') ;
 
 Net_3 <= (not \UART_USB:BUART:txn\);
 
-\UART_USB:BUART:counter_load_not\ <= ((not \UART_USB:BUART:tx_bitclk_enable_pre\ and \UART_USB:BUART:tx_state_2\)
-	OR \UART_USB:BUART:tx_state_0\
-	OR \UART_USB:BUART:tx_state_1\);
+\UART_USB:BUART:counter_load_not\ <= ((not \UART_USB:BUART:tx_state_1\ and \UART_USB:BUART:tx_state_2\)
+	OR (not \UART_USB:BUART:tx_state_2\ and \UART_USB:BUART:tx_state_0\)
+	OR (not \UART_USB:BUART:tx_state_0\ and \UART_USB:BUART:tx_state_1\)
+	OR (not \UART_USB:BUART:tx_bitclk_enable_pre\ and \UART_USB:BUART:tx_state_2\));
 
-\UART_USB:BUART:tx_status_0\ <= ((not \UART_USB:BUART:tx_state_1\ and not \UART_USB:BUART:tx_state_0\ and \UART_USB:BUART:tx_bitclk_enable_pre\ and \UART_USB:BUART:tx_fifo_empty\ and \UART_USB:BUART:tx_state_2\));
+\UART_USB:BUART:tx_status_0\ <= ((\UART_USB:BUART:tx_state_1\ and \UART_USB:BUART:tx_state_0\ and \UART_USB:BUART:tx_bitclk_enable_pre\ and \UART_USB:BUART:tx_fifo_empty\ and \UART_USB:BUART:tx_state_2\));
 
 \UART_USB:BUART:tx_status_2\ <= (not \UART_USB:BUART:tx_fifo_notfull\);
 
-Net_26D <= ((not \UART_USB:BUART:reset_reg\ and \UART_USB:BUART:tx_state_2\)
-	OR (not \UART_USB:BUART:reset_reg\ and \UART_USB:BUART:tx_state_0\)
-	OR (not \UART_USB:BUART:reset_reg\ and \UART_USB:BUART:tx_state_1\));
-
 \UART_USB:BUART:tx_bitclk\\D\ <= ((not \UART_USB:BUART:tx_state_2\ and \UART_USB:BUART:tx_bitclk_enable_pre\)
-	OR (\UART_USB:BUART:tx_state_0\ and \UART_USB:BUART:tx_bitclk_enable_pre\)
-	OR (\UART_USB:BUART:tx_state_1\ and \UART_USB:BUART:tx_bitclk_enable_pre\));
+	OR (not \UART_USB:BUART:tx_state_0\ and \UART_USB:BUART:tx_bitclk_enable_pre\)
+	OR (not \UART_USB:BUART:tx_state_1\ and \UART_USB:BUART:tx_bitclk_enable_pre\));
 
 \UART_USB:BUART:tx_mark\\D\ <= ((not \UART_USB:BUART:reset_reg\ and \UART_USB:BUART:tx_mark\));
 
 \UART_USB:BUART:tx_state_2\\D\ <= ((not \UART_USB:BUART:reset_reg\ and not \UART_USB:BUART:tx_state_2\ and \UART_USB:BUART:tx_state_1\ and \UART_USB:BUART:tx_counter_dp\ and \UART_USB:BUART:tx_bitclk\)
 	OR (not \UART_USB:BUART:reset_reg\ and not \UART_USB:BUART:tx_state_2\ and \UART_USB:BUART:tx_state_1\ and \UART_USB:BUART:tx_state_0\ and \UART_USB:BUART:tx_bitclk\)
-	OR (not \UART_USB:BUART:reset_reg\ and not \UART_USB:BUART:tx_state_1\ and \UART_USB:BUART:tx_state_0\ and \UART_USB:BUART:tx_state_2\)
-	OR (not \UART_USB:BUART:reset_reg\ and not \UART_USB:BUART:tx_state_0\ and \UART_USB:BUART:tx_state_1\ and \UART_USB:BUART:tx_state_2\)
-	OR (not \UART_USB:BUART:reset_reg\ and not \UART_USB:BUART:tx_bitclk_enable_pre\ and \UART_USB:BUART:tx_state_2\));
+	OR (not \UART_USB:BUART:reset_reg\ and not \UART_USB:BUART:tx_bitclk_enable_pre\ and \UART_USB:BUART:tx_state_2\)
+	OR (not \UART_USB:BUART:reset_reg\ and not \UART_USB:BUART:tx_state_0\ and \UART_USB:BUART:tx_state_2\)
+	OR (not \UART_USB:BUART:reset_reg\ and not \UART_USB:BUART:tx_state_1\ and \UART_USB:BUART:tx_state_2\));
 
 \UART_USB:BUART:tx_state_1\\D\ <= ((not \UART_USB:BUART:reset_reg\ and not \UART_USB:BUART:tx_state_1\ and not \UART_USB:BUART:tx_state_2\ and \UART_USB:BUART:tx_state_0\ and \UART_USB:BUART:tx_bitclk\)
 	OR (not \UART_USB:BUART:reset_reg\ and not \UART_USB:BUART:tx_state_2\ and not \UART_USB:BUART:tx_bitclk\ and \UART_USB:BUART:tx_state_1\)
+	OR (not \UART_USB:BUART:reset_reg\ and not \UART_USB:BUART:tx_state_0\ and \UART_USB:BUART:tx_bitclk_enable_pre\ and \UART_USB:BUART:tx_state_2\)
 	OR (not \UART_USB:BUART:reset_reg\ and not \UART_USB:BUART:tx_bitclk_enable_pre\ and \UART_USB:BUART:tx_state_1\ and \UART_USB:BUART:tx_state_2\)
-	OR (not \UART_USB:BUART:reset_reg\ and not \UART_USB:BUART:tx_state_0\ and not \UART_USB:BUART:tx_counter_dp\ and \UART_USB:BUART:tx_state_1\)
-	OR (not \UART_USB:BUART:reset_reg\ and not \UART_USB:BUART:tx_state_0\ and \UART_USB:BUART:tx_state_1\ and \UART_USB:BUART:tx_state_2\));
+	OR (not \UART_USB:BUART:reset_reg\ and not \UART_USB:BUART:tx_state_0\ and not \UART_USB:BUART:tx_counter_dp\ and \UART_USB:BUART:tx_state_1\));
 
-\UART_USB:BUART:tx_state_0\\D\ <= ((not \UART_USB:BUART:reset_reg\ and not \UART_USB:BUART:tx_state_1\ and not \UART_USB:BUART:tx_fifo_empty\ and \UART_USB:BUART:tx_bitclk_enable_pre\ and \UART_USB:BUART:tx_state_2\)
-	OR (not \UART_USB:BUART:reset_reg\ and not \UART_USB:BUART:tx_state_1\ and not \UART_USB:BUART:tx_state_0\ and not \UART_USB:BUART:tx_fifo_empty\ and not \UART_USB:BUART:tx_state_2\)
+\UART_USB:BUART:tx_state_0\\D\ <= ((not \UART_USB:BUART:reset_reg\ and not \UART_USB:BUART:tx_state_1\ and not \UART_USB:BUART:tx_state_0\ and not \UART_USB:BUART:tx_fifo_empty\ and not \UART_USB:BUART:tx_state_2\)
+	OR (not \UART_USB:BUART:reset_reg\ and not \UART_USB:BUART:tx_state_1\ and \UART_USB:BUART:tx_bitclk_enable_pre\ and \UART_USB:BUART:tx_state_2\)
 	OR (not \UART_USB:BUART:reset_reg\ and not \UART_USB:BUART:tx_bitclk_enable_pre\ and \UART_USB:BUART:tx_state_0\ and \UART_USB:BUART:tx_state_2\)
 	OR (not \UART_USB:BUART:reset_reg\ and not \UART_USB:BUART:tx_state_2\ and not \UART_USB:BUART:tx_bitclk\ and \UART_USB:BUART:tx_state_0\)
-	OR (not \UART_USB:BUART:reset_reg\ and not \UART_USB:BUART:tx_fifo_empty\ and \UART_USB:BUART:tx_state_0\ and \UART_USB:BUART:tx_state_2\)
-	OR (not \UART_USB:BUART:reset_reg\ and not \UART_USB:BUART:tx_state_1\ and \UART_USB:BUART:tx_state_0\ and \UART_USB:BUART:tx_state_2\));
+	OR (not \UART_USB:BUART:reset_reg\ and not \UART_USB:BUART:tx_fifo_empty\ and \UART_USB:BUART:tx_state_0\ and \UART_USB:BUART:tx_state_2\));
 
 \UART_USB:BUART:txn\\D\ <= ((not \UART_USB:BUART:reset_reg\ and not \UART_USB:BUART:tx_state_0\ and not \UART_USB:BUART:tx_shift_out\ and not \UART_USB:BUART:tx_state_2\ and not \UART_USB:BUART:tx_counter_dp\ and \UART_USB:BUART:tx_state_1\ and \UART_USB:BUART:tx_bitclk\)
 	OR (not \UART_USB:BUART:reset_reg\ and not \UART_USB:BUART:tx_state_1\ and not \UART_USB:BUART:tx_state_2\ and not \UART_USB:BUART:tx_bitclk\ and \UART_USB:BUART:tx_state_0\)
@@ -510,7 +506,7 @@ Net_26D <= ((not \UART_USB:BUART:reset_reg\ and \UART_USB:BUART:tx_state_2\)
 		id=>"b0162966-0060-4af5-82d1-fcb491ad7619/be0a0e37-ad17-42ca-b5a1-1a654d736358",
 		source_clock_id=>"",
 		divisor=>0,
-		period=>"1085069444.44444",
+		period=>"13020833333.3333",
 		is_direct=>'0',
 		is_digital=>'1')
 	PORT MAP(clock_out=>\UART_USB:Net_9\,
@@ -974,7 +970,7 @@ UART_Rx_INTERRUPT:cy_isr_v1_0
 		clk=>\UART_USB:BUART:clock_op\,
 		q=>\UART_USB:BUART:tx_state_2\);
 Net_26:cy_dff
-	PORT MAP(d=>Net_26D,
+	PORT MAP(d=>Net_1,
 		clk=>\UART_USB:BUART:clock_op\,
 		q=>Net_26);
 \UART_USB:BUART:tx_bitclk\:cy_dff

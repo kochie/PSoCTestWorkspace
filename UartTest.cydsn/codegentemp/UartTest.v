@@ -1,6 +1,6 @@
 // ======================================================================
 // UartTest.v generated from TopDesign.cysch
-// 09/16/2016 at 13:24
+// 09/21/2016 at 14:22
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -126,7 +126,7 @@
 `include "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_UART_v2_50\B_UART_v2_50.v"
 `endif
 
-// UART_v2_50(Address1=0, Address2=0, BaudRate=115200, BreakBitsRX=13, BreakBitsTX=13, BreakDetect=false, CRCoutputsEn=false, Enable_RX=1, Enable_RXIntInterrupt=0, Enable_TX=1, Enable_TXIntInterrupt=0, EnableHWAddress=0, EnIntRXInterrupt=false, EnIntTXInterrupt=false, FlowControl=0, HalfDuplexEn=false, HwTXEnSignal=true, InternalClock=true, InternalClockToleranceMinus=3.93736842105263, InternalClockTolerancePlus=3.93736842105263, InternalClockUsed=1, InterruptOnAddDetect=0, InterruptOnAddressMatch=0, InterruptOnBreak=0, InterruptOnByteRcvd=1, InterruptOnOverrunError=0, InterruptOnParityError=0, InterruptOnStopError=0, InterruptOnTXComplete=false, InterruptOnTXFifoEmpty=false, InterruptOnTXFifoFull=false, InterruptOnTXFifoNotFull=false, IntOnAddressDetect=false, IntOnAddressMatch=false, IntOnBreak=false, IntOnByteRcvd=true, IntOnOverrunError=false, IntOnParityError=false, IntOnStopError=false, NumDataBits=8, NumStopBits=1, OverSamplingRate=8, ParityType=0, ParityTypeSw=false, RequiredClock=921600, RXAddressMode=0, RXBufferSize=4, RxBuffRegSizeReplacementString=uint8, RXEnable=true, TXBitClkGenDP=true, TXBufferSize=4, TxBuffRegSizeReplacementString=uint8, TXEnable=true, Use23Polling=true, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMPONENT_NAME=UART_v2_50, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=UART_USB, CY_INSTANCE_SHORT_NAME=UART_USB, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=50, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.3 CP3, INSTANCE_NAME=UART_USB, )
+// UART_v2_50(Address1=0, Address2=0, BaudRate=9600, BreakBitsRX=13, BreakBitsTX=13, BreakDetect=false, CRCoutputsEn=false, Enable_RX=1, Enable_RXIntInterrupt=0, Enable_TX=1, Enable_TXIntInterrupt=0, EnableHWAddress=0, EnIntRXInterrupt=false, EnIntTXInterrupt=false, FlowControl=0, HalfDuplexEn=false, HwTXEnSignal=false, InternalClock=true, InternalClockToleranceMinus=3.93736842105263, InternalClockTolerancePlus=3.93736842105263, InternalClockUsed=1, InterruptOnAddDetect=0, InterruptOnAddressMatch=0, InterruptOnBreak=0, InterruptOnByteRcvd=1, InterruptOnOverrunError=0, InterruptOnParityError=0, InterruptOnStopError=0, InterruptOnTXComplete=false, InterruptOnTXFifoEmpty=false, InterruptOnTXFifoFull=false, InterruptOnTXFifoNotFull=false, IntOnAddressDetect=false, IntOnAddressMatch=false, IntOnBreak=false, IntOnByteRcvd=true, IntOnOverrunError=false, IntOnParityError=false, IntOnStopError=false, NumDataBits=8, NumStopBits=2, OverSamplingRate=8, ParityType=0, ParityTypeSw=false, RequiredClock=76800, RXAddressMode=0, RXBufferSize=4, RxBuffRegSizeReplacementString=uint8, RXEnable=true, TXBitClkGenDP=true, TXBufferSize=4, TxBuffRegSizeReplacementString=uint8, TXEnable=true, Use23Polling=true, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMPONENT_NAME=UART_v2_50, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=UART_USB, CY_INSTANCE_SHORT_NAME=UART_USB, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=50, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.3 CP3, INSTANCE_NAME=UART_USB, )
 module UART_v2_50_0 (
     rx_clk,
     rx_data,
@@ -161,9 +161,9 @@ module UART_v2_50_0 (
     parameter EnIntTXInterrupt = 0;
     parameter FlowControl = 0;
     parameter HalfDuplexEn = 0;
-    parameter HwTXEnSignal = 1;
+    parameter HwTXEnSignal = 0;
     parameter NumDataBits = 8;
-    parameter NumStopBits = 1;
+    parameter NumStopBits = 2;
     parameter ParityType = 0;
     parameter RXEnable = 1;
     parameter TXEnable = 1;
@@ -177,7 +177,7 @@ module UART_v2_50_0 (
 		#(.id("b0162966-0060-4af5-82d1-fcb491ad7619/be0a0e37-ad17-42ca-b5a1-1a654d736358"),
 		  .source_clock_id(""),
 		  .divisor(0),
-		  .period("1085069444.44444"),
+		  .period("13020833333.3333"),
 		  .is_direct(0),
 		  .is_digital(1))
 		IntClock
@@ -209,9 +209,9 @@ module UART_v2_50_0 (
     defparam BUART.CRCoutputsEn = 0;
     defparam BUART.FlowControl = 0;
     defparam BUART.HalfDuplexEn = 0;
-    defparam BUART.HwTXEnSignal = 1;
+    defparam BUART.HwTXEnSignal = 0;
     defparam BUART.NumDataBits = 8;
-    defparam BUART.NumStopBits = 1;
+    defparam BUART.NumStopBits = 2;
     defparam BUART.OverSampleCount = 8;
     defparam BUART.ParityType = 0;
     defparam BUART.ParityTypeSw = 0;
@@ -236,8 +236,8 @@ module top ;
           wire  Net_28;
           wire  Net_27;
           wire  Net_26;
-          wire  Net_25;
-          wire  Net_24;
+          wire  Net_40;
+          wire  Net_39;
           wire  Net_1;
           wire  Net_7;
           wire  Net_3;
@@ -248,7 +248,7 @@ module top ;
     UART_v2_50_0 UART_USB (
         .cts_n(1'b0),
         .tx(Net_3),
-        .rts_n(Net_25),
+        .rts_n(Net_40),
         .tx_en(Net_26),
         .clock(1'b0),
         .reset(Net_1),
@@ -265,9 +265,9 @@ module top ;
     defparam UART_USB.EnIntTXInterrupt = 0;
     defparam UART_USB.FlowControl = 0;
     defparam UART_USB.HalfDuplexEn = 0;
-    defparam UART_USB.HwTXEnSignal = 1;
+    defparam UART_USB.HwTXEnSignal = 0;
     defparam UART_USB.NumDataBits = 8;
-    defparam UART_USB.NumStopBits = 1;
+    defparam UART_USB.NumStopBits = 2;
     defparam UART_USB.ParityType = 0;
     defparam UART_USB.RXEnable = 1;
     defparam UART_USB.TXEnable = 1;

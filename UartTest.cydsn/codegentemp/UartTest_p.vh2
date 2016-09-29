@@ -1,5 +1,5 @@
 -- Project:   UartTest
--- Generated: 09/16/2016 13:24:43
+-- Generated: 09/21/2016 14:22:27
 -- PSoC Creator  3.3 CP3
 
 ENTITY UartTest IS
@@ -637,7 +637,7 @@ BEGIN
 
     \UART_USB:BUART:counter_load_not\:macrocell
         GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * main_2) + (!main_0 * !main_1 * !main_3)",
+            eqn_main => "(!main_0 * !main_1 * !main_3) + (main_0 * main_1 * main_2 * main_3)",
             clken_mode => 1)
         PORT MAP(
             q => \UART_USB:BUART:counter_load_not\,
@@ -648,7 +648,7 @@ BEGIN
 
     \UART_USB:BUART:tx_status_0\:macrocell
         GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * main_2 * main_3 * main_4)",
+            eqn_main => "(main_0 * main_1 * main_2 * main_3 * main_4)",
             clken_mode => 1)
         PORT MAP(
             q => \UART_USB:BUART:tx_status_0\,
@@ -902,7 +902,7 @@ BEGIN
 
     \UART_USB:BUART:tx_state_1\:macrocell
         GENERIC MAP(
-            eqn_main => "(main_0 * main_1 * main_2 * main_3) + (main_0 * !main_3 * main_4 * main_5) + (main_1 * !main_3 * main_5)",
+            eqn_main => "(!main_0 * !main_1 * main_2 * main_3) + (main_0 * main_1 * main_2 * main_3) + (main_0 * !main_3 * main_4 * main_5) + (main_1 * !main_3 * main_5)",
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -917,7 +917,7 @@ BEGIN
 
     \UART_USB:BUART:tx_state_0\:macrocell
         GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * main_2 * !main_3) + (!main_0 * !main_1 * !main_3 * !main_4) + (main_0 * main_1 * main_2 * main_3 * main_4) + (main_1 * !main_4 * main_5)",
+            eqn_main => "(!main_0 * !main_1 * main_2 * main_4) + (!main_0 * !main_1 * !main_3 * !main_4) + (main_0 * main_1 * main_2 * main_3 * main_4) + (main_1 * !main_4 * main_5)",
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -932,7 +932,7 @@ BEGIN
 
     \UART_USB:BUART:tx_state_2\:macrocell
         GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * main_2 * main_3) + (main_0 * main_1 * main_2 * main_3) + (main_0 * main_1 * !main_3 * main_5) + (main_0 * !main_3 * main_4 * main_5)",
+            eqn_main => "(main_0 * main_1 * main_2 * main_3) + (main_0 * main_1 * !main_3 * main_5) + (main_0 * !main_3 * main_4 * main_5)",
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -947,7 +947,7 @@ BEGIN
 
     \UART_USB:BUART:tx_bitclk\:macrocell
         GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * main_3) + (!main_2)",
+            eqn_main => "(main_0 * main_1 * main_3) + (!main_2)",
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(

@@ -159,7 +159,6 @@ void UART_Rx_INTERRUPT_Stop(void)
 *******************************************************************************/
 CY_ISR(UART_Rx_INTERRUPT_Interrupt)
 {
-    
     #ifdef UART_Rx_INTERRUPT_INTERRUPT_INTERRUPT_CALLBACK
         UART_Rx_INTERRUPT_Interrupt_InterruptCallback();
     #endif /* UART_Rx_INTERRUPT_INTERRUPT_INTERRUPT_CALLBACK */ 

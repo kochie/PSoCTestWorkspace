@@ -14,6 +14,8 @@
 
 uint8 UART_RX_INTERRUPT_FLAG = 0;
 
+
+
 int CheckInterrupt(uint8 *InterruptFlag)
 {
     char str[1];
@@ -41,31 +43,21 @@ int main()
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
     UART_USB_Start();
     int i = 0; 
-    char j[10];
+    char uart_buffer[50];
+    memset(&uart_buffer[0], 0, sizeof(uart_buffer));
     char ch;
-    UART_USB_PutString("hello\n\r");
+    //UART_USB_PutString("hello\r\n");
+    UART_USB_PutString("AT+NAME");
+    CyDelay(500);
+    UART_USB_PutString("\r\n");
+    
     for(;;)
-    {
-        
+    {        
         if (CheckInterrupt(&UART_RX_INTERRUPT_FLAG))
         {
-//            ch = UART_USB_GetChar();
-//            UART_USB_PutChar(ch);
-//            UART_USB_PutChar(10);
-//            UART_USB_PutChar(13);
-            sprintf(j, "%d\r", i);
-            UART_USB_PutString(j);
-            i++;
+            ch = UART_USB_GetChar();
+            UART_USB_PutChar(ch);
         }
-        //ch = UART_USB_GetChar();
-        //UART_USB_PutChar(ch);
-
-//        sprintf(string, "%d", i);
-//        UART_USB_PutString(string);
-//        UART_USB_PutString("\r\n");
-//        i++;
-
-
     }
 }
 

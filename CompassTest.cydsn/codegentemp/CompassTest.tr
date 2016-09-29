@@ -66,9 +66,9 @@ Port Name  Setup to Clk  Clock Name:Phase
 
 Port Name         Clock to Out  Clock Name:Phase             
 ----------------  ------------  ---------------------------  
-SCL_1(0)_PAD:out  21217         CyBUS_CLK(fixed-function):R  
-SDA_1(0)_PAD:out  20658         CyBUS_CLK(fixed-function):R  
-Tx_1(0)_PAD       32675         UART_USB_IntClock:R          
+SCL_1(0)_PAD:out  25439         CyBUS_CLK(fixed-function):R  
+SDA_1(0)_PAD:out  25529         CyBUS_CLK(fixed-function):R  
+Tx_1(0)_PAD       30279         UART_USB_IntClock:R          
 
 
                          3.3::Pad to Pad

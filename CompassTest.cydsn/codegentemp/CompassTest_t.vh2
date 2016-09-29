@@ -1,5 +1,5 @@
 -- Project:   C:\Users\robert\Documents\PSoC Creator\TestWorkspace\CompassTest.cydsn\CompassTest.cyprj
--- Generated: 09/16/2016 17:45:02
+-- Generated: 09/28/2016 17:45:12
 -- PSoC Creator  3.3 CP3
 
 ENTITY CompassTest IS
@@ -119,9 +119,9 @@ ARCHITECTURE __DEFAULT__ OF CompassTest IS
     SIGNAL \ClockBlock.clk_bus_glb_ff__sig\ : bit;
     ATTRIBUTE Location OF ClockBlock : LABEL IS "F(Clock,0)";
     ATTRIBUTE lib_model OF SDA_1(0) : LABEL IS "iocell1";
-    ATTRIBUTE Location OF SDA_1(0) : LABEL IS "P12[5]";
+    ATTRIBUTE Location OF SDA_1(0) : LABEL IS "P12[1]";
     ATTRIBUTE lib_model OF SCL_1(0) : LABEL IS "iocell2";
-    ATTRIBUTE Location OF SCL_1(0) : LABEL IS "P12[4]";
+    ATTRIBUTE Location OF SCL_1(0) : LABEL IS "P12[0]";
     ATTRIBUTE lib_model OF Rx_1(0) : LABEL IS "iocell3";
     ATTRIBUTE Location OF Rx_1(0) : LABEL IS "P12[6]";
     ATTRIBUTE lib_model OF Tx_1(0) : LABEL IS "iocell4";

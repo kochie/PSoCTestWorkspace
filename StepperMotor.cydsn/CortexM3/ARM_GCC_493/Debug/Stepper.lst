@@ -1,0 +1,1659 @@
+ARM GAS  C:\Users\robert\AppData\Local\Temp\cct8EINp.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"Stepper.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.DirectionUp,"ax",%progbits
+  19              		.align	2
+  20              		.global	DirectionUp
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	DirectionUp, %function
+  24              	DirectionUp:
+  25              	.LFB63:
+  26              		.file 1 ".\\Stepper.c"
+   1:.\Stepper.c   **** /* ========================================
+   2:.\Stepper.c   ****  *
+   3:.\Stepper.c   ****  * Copyright YOUR COMPANY, THE YEAR
+   4:.\Stepper.c   ****  * All Rights Reserved
+   5:.\Stepper.c   ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\Stepper.c   ****  *
+   7:.\Stepper.c   ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\Stepper.c   ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\Stepper.c   ****  *
+  10:.\Stepper.c   ****  * ========================================
+  11:.\Stepper.c   **** */
+  12:.\Stepper.c   **** #include <project.h>
+  13:.\Stepper.c   **** #include "Stepper.h"
+  14:.\Stepper.c   **** 
+  15:.\Stepper.c   **** extern uint8 flag;
+  16:.\Stepper.c   **** 
+  17:.\Stepper.c   **** #define StepDelay 700
+  18:.\Stepper.c   **** #define Lead 8
+  19:.\Stepper.c   **** #define MAX_HEIGHT 2400
+  20:.\Stepper.c   **** 
+  21:.\Stepper.c   **** int HEIGHT;
+  22:.\Stepper.c   **** 
+  23:.\Stepper.c   **** void DirectionUp(void)
+  24:.\Stepper.c   **** {
+  27              		.loc 1 24 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31 0000 08B5     		push	{r3, lr}
+  32              		.cfi_def_cfa_offset 8
+  33              		.cfi_offset 3, -8
+ARM GAS  C:\Users\robert\AppData\Local\Temp\cct8EINp.s 			page 2
+
+
+  34              		.cfi_offset 14, -4
+  25:.\Stepper.c   ****     Stepper_Direction_Write(0);
+  35              		.loc 1 25 0
+  36 0002 0020     		movs	r0, #0
+  37 0004 FFF7FEFF 		bl	Stepper_Direction_Write
+  38              	.LVL0:
+  39 0008 08BD     		pop	{r3, pc}
+  40              		.cfi_endproc
+  41              	.LFE63:
+  42              		.size	DirectionUp, .-DirectionUp
+  43 000a 00BF     		.section	.text.DirectionDown,"ax",%progbits
+  44              		.align	2
+  45              		.global	DirectionDown
+  46              		.thumb
+  47              		.thumb_func
+  48              		.type	DirectionDown, %function
+  49              	DirectionDown:
+  50              	.LFB64:
+  26:.\Stepper.c   **** }
+  27:.\Stepper.c   **** 
+  28:.\Stepper.c   **** void DirectionDown(void)
+  29:.\Stepper.c   **** {
+  51              		.loc 1 29 0
+  52              		.cfi_startproc
+  53              		@ args = 0, pretend = 0, frame = 0
+  54              		@ frame_needed = 0, uses_anonymous_args = 0
+  55 0000 08B5     		push	{r3, lr}
+  56              		.cfi_def_cfa_offset 8
+  57              		.cfi_offset 3, -8
+  58              		.cfi_offset 14, -4
+  30:.\Stepper.c   ****     Stepper_Direction_Write(1);
+  59              		.loc 1 30 0
+  60 0002 0120     		movs	r0, #1
+  61 0004 FFF7FEFF 		bl	Stepper_Direction_Write
+  62              	.LVL1:
+  63 0008 08BD     		pop	{r3, pc}
+  64              		.cfi_endproc
+  65              	.LFE64:
+  66              		.size	DirectionDown, .-DirectionDown
+  67 000a 00BF     		.section	.text.StepperEnable,"ax",%progbits
+  68              		.align	2
+  69              		.global	StepperEnable
+  70              		.thumb
+  71              		.thumb_func
+  72              		.type	StepperEnable, %function
+  73              	StepperEnable:
+  74              	.LFB65:
+  31:.\Stepper.c   **** }
+  32:.\Stepper.c   **** 
+  33:.\Stepper.c   **** void StepperEnable(void)
+  34:.\Stepper.c   **** {
+  75              		.loc 1 34 0
+  76              		.cfi_startproc
+  77              		@ args = 0, pretend = 0, frame = 0
+  78              		@ frame_needed = 0, uses_anonymous_args = 0
+  79 0000 08B5     		push	{r3, lr}
+  80              		.cfi_def_cfa_offset 8
+ARM GAS  C:\Users\robert\AppData\Local\Temp\cct8EINp.s 			page 3
+
+
+  81              		.cfi_offset 3, -8
+  82              		.cfi_offset 14, -4
+  35:.\Stepper.c   ****     Stepper_Enable_Write(0);
+  83              		.loc 1 35 0
+  84 0002 0020     		movs	r0, #0
+  85 0004 FFF7FEFF 		bl	Stepper_Enable_Write
+  86              	.LVL2:
+  87 0008 08BD     		pop	{r3, pc}
+  88              		.cfi_endproc
+  89              	.LFE65:
+  90              		.size	StepperEnable, .-StepperEnable
+  91 000a 00BF     		.section	.text.StepperDisable,"ax",%progbits
+  92              		.align	2
+  93              		.global	StepperDisable
+  94              		.thumb
+  95              		.thumb_func
+  96              		.type	StepperDisable, %function
+  97              	StepperDisable:
+  98              	.LFB66:
+  36:.\Stepper.c   **** }
+  37:.\Stepper.c   **** 
+  38:.\Stepper.c   **** void StepperDisable(void)
+  39:.\Stepper.c   **** {
+  99              		.loc 1 39 0
+ 100              		.cfi_startproc
+ 101              		@ args = 0, pretend = 0, frame = 0
+ 102              		@ frame_needed = 0, uses_anonymous_args = 0
+ 103 0000 08B5     		push	{r3, lr}
+ 104              		.cfi_def_cfa_offset 8
+ 105              		.cfi_offset 3, -8
+ 106              		.cfi_offset 14, -4
+  40:.\Stepper.c   ****     Stepper_Enable_Write(1);
+ 107              		.loc 1 40 0
+ 108 0002 0120     		movs	r0, #1
+ 109 0004 FFF7FEFF 		bl	Stepper_Enable_Write
+ 110              	.LVL3:
+ 111 0008 08BD     		pop	{r3, pc}
+ 112              		.cfi_endproc
+ 113              	.LFE66:
+ 114              		.size	StepperDisable, .-StepperDisable
+ 115 000a 00BF     		.section	.text.Step,"ax",%progbits
+ 116              		.align	2
+ 117              		.global	Step
+ 118              		.thumb
+ 119              		.thumb_func
+ 120              		.type	Step, %function
+ 121              	Step:
+ 122              	.LFB67:
+  41:.\Stepper.c   **** }
+  42:.\Stepper.c   **** 
+  43:.\Stepper.c   **** void Step(void)
+  44:.\Stepper.c   **** {
+ 123              		.loc 1 44 0
+ 124              		.cfi_startproc
+ 125              		@ args = 0, pretend = 0, frame = 0
+ 126              		@ frame_needed = 0, uses_anonymous_args = 0
+ 127 0000 08B5     		push	{r3, lr}
+ARM GAS  C:\Users\robert\AppData\Local\Temp\cct8EINp.s 			page 4
+
+
+ 128              		.cfi_def_cfa_offset 8
+ 129              		.cfi_offset 3, -8
+ 130              		.cfi_offset 14, -4
+  45:.\Stepper.c   ****     {
+  46:.\Stepper.c   ****         Stepper_Step_Write(1);
+ 131              		.loc 1 46 0
+ 132 0002 0120     		movs	r0, #1
+ 133 0004 FFF7FEFF 		bl	Stepper_Step_Write
+ 134              	.LVL4:
+  47:.\Stepper.c   ****         CyDelayUs(StepDelay);
+ 135              		.loc 1 47 0
+ 136 0008 4FF42F70 		mov	r0, #700
+ 137 000c FFF7FEFF 		bl	CyDelayUs
+ 138              	.LVL5:
+  48:.\Stepper.c   ****         Stepper_Step_Write(0);
+ 139              		.loc 1 48 0
+ 140 0010 0020     		movs	r0, #0
+ 141 0012 FFF7FEFF 		bl	Stepper_Step_Write
+ 142              	.LVL6:
+  49:.\Stepper.c   ****         CyDelayUs(StepDelay);
+ 143              		.loc 1 49 0
+ 144 0016 4FF42F70 		mov	r0, #700
+ 145 001a FFF7FEFF 		bl	CyDelayUs
+ 146              	.LVL7:
+ 147 001e 08BD     		pop	{r3, pc}
+ 148              		.cfi_endproc
+ 149              	.LFE67:
+ 150              		.size	Step, .-Step
+ 151              		.section	.text.StepperStep,"ax",%progbits
+ 152              		.align	2
+ 153              		.global	StepperStep
+ 154              		.thumb
+ 155              		.thumb_func
+ 156              		.type	StepperStep, %function
+ 157              	StepperStep:
+ 158              	.LFB68:
+  50:.\Stepper.c   ****     }
+  51:.\Stepper.c   **** 
+  52:.\Stepper.c   **** }
+  53:.\Stepper.c   **** 
+  54:.\Stepper.c   **** 
+  55:.\Stepper.c   **** 
+  56:.\Stepper.c   **** void StepperStep(int step)
+  57:.\Stepper.c   **** {    
+ 159              		.loc 1 57 0
+ 160              		.cfi_startproc
+ 161              		@ args = 0, pretend = 0, frame = 0
+ 162              		@ frame_needed = 0, uses_anonymous_args = 0
+ 163              	.LVL8:
+ 164 0000 70B5     		push	{r4, r5, r6, lr}
+ 165              		.cfi_def_cfa_offset 16
+ 166              		.cfi_offset 4, -16
+ 167              		.cfi_offset 5, -12
+ 168              		.cfi_offset 6, -8
+ 169              		.cfi_offset 14, -4
+  58:.\Stepper.c   ****     int step_height;
+  59:.\Stepper.c   ****     if (step >= 0)
+ARM GAS  C:\Users\robert\AppData\Local\Temp\cct8EINp.s 			page 5
+
+
+ 170              		.loc 1 59 0
+ 171 0002 041E     		subs	r4, r0, #0
+ 172 0004 06DB     		blt	.L12
+  60:.\Stepper.c   ****     {
+  61:.\Stepper.c   ****         flag = 0;
+ 173              		.loc 1 61 0
+ 174 0006 0022     		movs	r2, #0
+ 175 0008 1C4B     		ldr	r3, .L20
+ 176 000a 1A70     		strb	r2, [r3]
+  62:.\Stepper.c   ****         DirectionUp();
+ 177              		.loc 1 62 0
+ 178 000c FFF7FEFF 		bl	DirectionUp
+ 179              	.LVL9:
+  63:.\Stepper.c   ****         step_height = 1;
+ 180              		.loc 1 63 0
+ 181 0010 0126     		movs	r6, #1
+ 182 0012 04E0     		b	.L13
+ 183              	.LVL10:
+ 184              	.L12:
+  64:.\Stepper.c   ****     }
+  65:.\Stepper.c   ****     else
+  66:.\Stepper.c   ****     {
+  67:.\Stepper.c   ****         DirectionDown();
+ 185              		.loc 1 67 0
+ 186 0014 FFF7FEFF 		bl	DirectionDown
+ 187              	.LVL11:
+  68:.\Stepper.c   ****         step = -step;
+ 188              		.loc 1 68 0
+ 189 0018 6442     		negs	r4, r4
+ 190              	.LVL12:
+  69:.\Stepper.c   ****         step_height = -1;
+ 191              		.loc 1 69 0
+ 192 001a 4FF0FF36 		mov	r6, #-1
+ 193              	.LVL13:
+ 194              	.L13:
+  70:.\Stepper.c   ****     }
+  71:.\Stepper.c   ****     
+  72:.\Stepper.c   ****     StepperEnable();
+ 195              		.loc 1 72 0
+ 196 001e FFF7FEFF 		bl	StepperEnable
+ 197              	.LVL14:
+  73:.\Stepper.c   ****     while (step--)
+ 198              		.loc 1 73 0
+ 199 0022 25E0     		b	.L14
+ 200              	.LVL15:
+ 201              	.L18:
+  74:.\Stepper.c   ****     {
+  75:.\Stepper.c   ****         if (flag==1){
+ 202              		.loc 1 75 0
+ 203 0024 154B     		ldr	r3, .L20
+ 204 0026 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 205 0028 012B     		cmp	r3, #1
+ 206 002a 06D1     		bne	.L15
+  76:.\Stepper.c   ****             StepperDisable();
+ 207              		.loc 1 76 0
+ 208 002c FFF7FEFF 		bl	StepperDisable
+ 209              	.LVL16:
+ARM GAS  C:\Users\robert\AppData\Local\Temp\cct8EINp.s 			page 6
+
+
+  77:.\Stepper.c   ****             CyDelay(1000);
+ 210              		.loc 1 77 0
+ 211 0030 4FF47A70 		mov	r0, #1000
+ 212 0034 FFF7FEFF 		bl	CyDelay
+ 213              	.LVL17:
+  78:.\Stepper.c   ****             //flag =0;
+  79:.\Stepper.c   ****             return;
+ 214              		.loc 1 79 0
+ 215 0038 70BD     		pop	{r4, r5, r6, pc}
+ 216              	.LVL18:
+ 217              	.L15:
+  80:.\Stepper.c   ****         }
+  81:.\Stepper.c   ****         if (HEIGHT > MAX_HEIGHT)
+ 218              		.loc 1 81 0
+ 219 003a 114B     		ldr	r3, .L20+4
+ 220 003c 1B68     		ldr	r3, [r3]
+ 221 003e B3F5166F 		cmp	r3, #2400
+ 222 0042 0EDD     		ble	.L17
+  82:.\Stepper.c   ****         {
+  83:.\Stepper.c   ****             CyDelay(1000);
+ 223              		.loc 1 83 0
+ 224 0044 4FF47A70 		mov	r0, #1000
+ 225 0048 FFF7FEFF 		bl	CyDelay
+ 226              	.LVL19:
+  84:.\Stepper.c   ****             DirectionDown();
+ 227              		.loc 1 84 0
+ 228 004c FFF7FEFF 		bl	DirectionDown
+ 229              	.LVL20:
+  85:.\Stepper.c   ****             Step();
+ 230              		.loc 1 85 0
+ 231 0050 FFF7FEFF 		bl	Step
+ 232              	.LVL21:
+  86:.\Stepper.c   ****             HEIGHT = HEIGHT - 1;
+ 233              		.loc 1 86 0
+ 234 0054 0A4A     		ldr	r2, .L20+4
+ 235 0056 1368     		ldr	r3, [r2]
+ 236 0058 013B     		subs	r3, r3, #1
+ 237 005a 1360     		str	r3, [r2]
+  87:.\Stepper.c   ****             StepperDisable();
+ 238              		.loc 1 87 0
+ 239 005c FFF7FEFF 		bl	StepperDisable
+ 240              	.LVL22:
+  88:.\Stepper.c   ****             return;
+ 241              		.loc 1 88 0
+ 242 0060 70BD     		pop	{r4, r5, r6, pc}
+ 243              	.LVL23:
+ 244              	.L17:
+  89:.\Stepper.c   ****         }
+  90:.\Stepper.c   ****         else{
+  91:.\Stepper.c   ****             Step();
+ 245              		.loc 1 91 0
+ 246 0062 FFF7FEFF 		bl	Step
+ 247              	.LVL24:
+  92:.\Stepper.c   ****             HEIGHT = HEIGHT + step_height;
+ 248              		.loc 1 92 0
+ 249 0066 064A     		ldr	r2, .L20+4
+ 250 0068 1368     		ldr	r3, [r2]
+ARM GAS  C:\Users\robert\AppData\Local\Temp\cct8EINp.s 			page 7
+
+
+ 251 006a 3344     		add	r3, r3, r6
+ 252 006c 1360     		str	r3, [r2]
+  73:.\Stepper.c   ****     {
+ 253              		.loc 1 73 0
+ 254 006e 2C46     		mov	r4, r5
+ 255              	.LVL25:
+ 256              	.L14:
+ 257 0070 651E     		subs	r5, r4, #1
+ 258              	.LVL26:
+ 259 0072 002C     		cmp	r4, #0
+ 260 0074 D6D1     		bne	.L18
+  93:.\Stepper.c   ****         }     
+  94:.\Stepper.c   ****     }
+  95:.\Stepper.c   ****     StepperDisable();
+ 261              		.loc 1 95 0
+ 262 0076 FFF7FEFF 		bl	StepperDisable
+ 263              	.LVL27:
+ 264 007a 70BD     		pop	{r4, r5, r6, pc}
+ 265              	.LVL28:
+ 266              	.L21:
+ 267              		.align	2
+ 268              	.L20:
+ 269 007c 00000000 		.word	flag
+ 270 0080 00000000 		.word	HEIGHT
+ 271              		.cfi_endproc
+ 272              	.LFE68:
+ 273              		.size	StepperStep, .-StepperStep
+ 274              		.section	.text.StepperRotate,"ax",%progbits
+ 275              		.align	2
+ 276              		.global	StepperRotate
+ 277              		.thumb
+ 278              		.thumb_func
+ 279              		.type	StepperRotate, %function
+ 280              	StepperRotate:
+ 281              	.LFB69:
+  96:.\Stepper.c   **** }
+  97:.\Stepper.c   **** 
+  98:.\Stepper.c   **** void StepperRotate(int degree)
+  99:.\Stepper.c   **** {
+ 282              		.loc 1 99 0
+ 283              		.cfi_startproc
+ 284              		@ args = 0, pretend = 0, frame = 0
+ 285              		@ frame_needed = 0, uses_anonymous_args = 0
+ 286              	.LVL29:
+ 287 0000 08B5     		push	{r3, lr}
+ 288              		.cfi_def_cfa_offset 8
+ 289              		.cfi_offset 3, -8
+ 290              		.cfi_offset 14, -4
+ 100:.\Stepper.c   ****     StepperStep(degree*200/360);
+ 291              		.loc 1 100 0
+ 292 0002 C823     		movs	r3, #200
+ 293 0004 03FB00F3 		mul	r3, r3, r0
+ 294 0008 0448     		ldr	r0, .L24
+ 295              	.LVL30:
+ 296 000a 80FB0320 		smull	r2, r0, r0, r3
+ 297 000e 1844     		add	r0, r0, r3
+ 298 0010 DB17     		asrs	r3, r3, #31
+ARM GAS  C:\Users\robert\AppData\Local\Temp\cct8EINp.s 			page 8
+
+
+ 299 0012 C3EB2020 		rsb	r0, r3, r0, asr #8
+ 300 0016 FFF7FEFF 		bl	StepperStep
+ 301              	.LVL31:
+ 302 001a 08BD     		pop	{r3, pc}
+ 303              	.L25:
+ 304              		.align	2
+ 305              	.L24:
+ 306 001c B7600BB6 		.word	-1240768329
+ 307              		.cfi_endproc
+ 308              	.LFE69:
+ 309              		.size	StepperRotate, .-StepperRotate
+ 310              		.section	.text.StepperMove,"ax",%progbits
+ 311              		.align	2
+ 312              		.global	StepperMove
+ 313              		.thumb
+ 314              		.thumb_func
+ 315              		.type	StepperMove, %function
+ 316              	StepperMove:
+ 317              	.LFB70:
+ 101:.\Stepper.c   **** }
+ 102:.\Stepper.c   **** 
+ 103:.\Stepper.c   **** void StepperMove(int height)
+ 104:.\Stepper.c   **** {
+ 318              		.loc 1 104 0
+ 319              		.cfi_startproc
+ 320              		@ args = 0, pretend = 0, frame = 0
+ 321              		@ frame_needed = 0, uses_anonymous_args = 0
+ 322              	.LVL32:
+ 323 0000 08B5     		push	{r3, lr}
+ 324              		.cfi_def_cfa_offset 8
+ 325              		.cfi_offset 3, -8
+ 326              		.cfi_offset 14, -4
+ 105:.\Stepper.c   ****     StepperStep(height*200/Lead);
+ 327              		.loc 1 105 0
+ 328 0002 C823     		movs	r3, #200
+ 329 0004 03FB00F0 		mul	r0, r3, r0
+ 330              	.LVL33:
+ 331 0008 0028     		cmp	r0, #0
+ 332 000a 00DA     		bge	.L27
+ 333 000c 0730     		adds	r0, r0, #7
+ 334              	.L27:
+ 335 000e C010     		asrs	r0, r0, #3
+ 336 0010 FFF7FEFF 		bl	StepperStep
+ 337              	.LVL34:
+ 338 0014 08BD     		pop	{r3, pc}
+ 339              		.cfi_endproc
+ 340              	.LFE70:
+ 341              		.size	StepperMove, .-StepperMove
+ 342 0016 00BF     		.section	.text.StepperFindZero,"ax",%progbits
+ 343              		.align	2
+ 344              		.global	StepperFindZero
+ 345              		.thumb
+ 346              		.thumb_func
+ 347              		.type	StepperFindZero, %function
+ 348              	StepperFindZero:
+ 349              	.LFB71:
+ 106:.\Stepper.c   **** }
+ARM GAS  C:\Users\robert\AppData\Local\Temp\cct8EINp.s 			page 9
+
+
+ 107:.\Stepper.c   **** 
+ 108:.\Stepper.c   **** void StepperFindZero(void)
+ 109:.\Stepper.c   **** {
+ 350              		.loc 1 109 0
+ 351              		.cfi_startproc
+ 352              		@ args = 0, pretend = 0, frame = 0
+ 353              		@ frame_needed = 0, uses_anonymous_args = 0
+ 354 0000 08B5     		push	{r3, lr}
+ 355              		.cfi_def_cfa_offset 8
+ 356              		.cfi_offset 3, -8
+ 357              		.cfi_offset 14, -4
+ 110:.\Stepper.c   ****     DirectionDown();
+ 358              		.loc 1 110 0
+ 359 0002 FFF7FEFF 		bl	DirectionDown
+ 360              	.LVL35:
+ 111:.\Stepper.c   ****     StepperEnable();
+ 361              		.loc 1 111 0
+ 362 0006 FFF7FEFF 		bl	StepperEnable
+ 363              	.LVL36:
+ 112:.\Stepper.c   ****     while(flag == 0)
+ 364              		.loc 1 112 0
+ 365 000a 01E0     		b	.L30
+ 366              	.L31:
+ 113:.\Stepper.c   ****     {
+ 114:.\Stepper.c   ****         Step();
+ 367              		.loc 1 114 0
+ 368 000c FFF7FEFF 		bl	Step
+ 369              	.LVL37:
+ 370              	.L30:
+ 112:.\Stepper.c   ****     while(flag == 0)
+ 371              		.loc 1 112 0
+ 372 0010 044B     		ldr	r3, .L33
+ 373 0012 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 374 0014 002B     		cmp	r3, #0
+ 375 0016 F9D0     		beq	.L31
+ 115:.\Stepper.c   ****     }
+ 116:.\Stepper.c   ****     StepperDisable();
+ 376              		.loc 1 116 0
+ 377 0018 FFF7FEFF 		bl	StepperDisable
+ 378              	.LVL38:
+ 117:.\Stepper.c   ****     HEIGHT = 0;
+ 379              		.loc 1 117 0
+ 380 001c 0022     		movs	r2, #0
+ 381 001e 024B     		ldr	r3, .L33+4
+ 382 0020 1A60     		str	r2, [r3]
+ 383 0022 08BD     		pop	{r3, pc}
+ 384              	.L34:
+ 385              		.align	2
+ 386              	.L33:
+ 387 0024 00000000 		.word	flag
+ 388 0028 00000000 		.word	HEIGHT
+ 389              		.cfi_endproc
+ 390              	.LFE71:
+ 391              		.size	StepperFindZero, .-StepperFindZero
+ 392              		.comm	HEIGHT,4,4
+ 393              		.text
+ 394              	.Letext0:
+ARM GAS  C:\Users\robert\AppData\Local\Temp\cct8EINp.s 			page 10
+
+
+ 395              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 396              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 397              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 398              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 399              		.file 6 "Generated_Source\\PSoC5/Stepper_Direction.h"
+ 400              		.file 7 "Generated_Source\\PSoC5/Stepper_Enable.h"
+ 401              		.file 8 "Generated_Source\\PSoC5/Stepper_Step.h"
+ 402              		.file 9 "Generated_Source\\PSoC5/CyLib.h"
+ 403              		.section	.debug_info,"",%progbits
+ 404              	.Ldebug_info0:
+ 405 0000 AB030000 		.4byte	0x3ab
+ 406 0004 0400     		.2byte	0x4
+ 407 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 408 000a 04       		.byte	0x4
+ 409 000b 01       		.uleb128 0x1
+ 410 000c F8000000 		.4byte	.LASF37
+ 411 0010 01       		.byte	0x1
+ 412 0011 8F000000 		.4byte	.LASF38
+ 413 0015 D3010000 		.4byte	.LASF39
+ 414 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 415 001d 00000000 		.4byte	0
+ 416 0021 00000000 		.4byte	.Ldebug_line0
+ 417 0025 02       		.uleb128 0x2
+ 418 0026 08       		.byte	0x8
+ 419 0027 07       		.byte	0x7
+ 420 0028 9F010000 		.4byte	.LASF0
+ 421 002c 02       		.uleb128 0x2
+ 422 002d 04       		.byte	0x4
+ 423 002e 07       		.byte	0x7
+ 424 002f 8B010000 		.4byte	.LASF1
+ 425 0033 03       		.uleb128 0x3
+ 426 0034 04       		.byte	0x4
+ 427 0035 05       		.byte	0x5
+ 428 0036 696E7400 		.ascii	"int\000"
+ 429 003a 02       		.uleb128 0x2
+ 430 003b 01       		.byte	0x1
+ 431 003c 06       		.byte	0x6
+ 432 003d 65020000 		.4byte	.LASF2
+ 433 0041 02       		.uleb128 0x2
+ 434 0042 01       		.byte	0x1
+ 435 0043 08       		.byte	0x8
+ 436 0044 9B000000 		.4byte	.LASF3
+ 437 0048 02       		.uleb128 0x2
+ 438 0049 02       		.byte	0x2
+ 439 004a 05       		.byte	0x5
+ 440 004b 40020000 		.4byte	.LASF4
+ 441 004f 02       		.uleb128 0x2
+ 442 0050 02       		.byte	0x2
+ 443 0051 07       		.byte	0x7
+ 444 0052 55000000 		.4byte	.LASF5
+ 445 0056 04       		.uleb128 0x4
+ 446 0057 3F000000 		.4byte	.LASF9
+ 447 005b 02       		.byte	0x2
+ 448 005c 3F       		.byte	0x3f
+ 449 005d 61000000 		.4byte	0x61
+ 450 0061 02       		.uleb128 0x2
+ 451 0062 04       		.byte	0x4
+ARM GAS  C:\Users\robert\AppData\Local\Temp\cct8EINp.s 			page 11
+
+
+ 452 0063 05       		.byte	0x5
+ 453 0064 50020000 		.4byte	.LASF6
+ 454 0068 02       		.uleb128 0x2
+ 455 0069 04       		.byte	0x4
+ 456 006a 07       		.byte	0x7
+ 457 006b CE000000 		.4byte	.LASF7
+ 458 006f 02       		.uleb128 0x2
+ 459 0070 08       		.byte	0x8
+ 460 0071 05       		.byte	0x5
+ 461 0072 1A020000 		.4byte	.LASF8
+ 462 0076 04       		.uleb128 0x4
+ 463 0077 C2010000 		.4byte	.LASF10
+ 464 007b 03       		.byte	0x3
+ 465 007c 2C       		.byte	0x2c
+ 466 007d 56000000 		.4byte	0x56
+ 467 0081 05       		.uleb128 0x5
+ 468 0082 4A020000 		.4byte	.LASF11
+ 469 0086 04       		.byte	0x4
+ 470 0087 9201     		.2byte	0x192
+ 471 0089 41000000 		.4byte	0x41
+ 472 008d 05       		.uleb128 0x5
+ 473 008e E0000000 		.4byte	.LASF12
+ 474 0092 04       		.byte	0x4
+ 475 0093 9301     		.2byte	0x193
+ 476 0095 4F000000 		.4byte	0x4f
+ 477 0099 05       		.uleb128 0x5
+ 478 009a F1000000 		.4byte	.LASF13
+ 479 009e 04       		.byte	0x4
+ 480 009f 9401     		.2byte	0x194
+ 481 00a1 68000000 		.4byte	0x68
+ 482 00a5 02       		.uleb128 0x2
+ 483 00a6 04       		.byte	0x4
+ 484 00a7 04       		.byte	0x4
+ 485 00a8 89000000 		.4byte	.LASF14
+ 486 00ac 02       		.uleb128 0x2
+ 487 00ad 08       		.byte	0x8
+ 488 00ae 04       		.byte	0x4
+ 489 00af BB010000 		.4byte	.LASF15
+ 490 00b3 02       		.uleb128 0x2
+ 491 00b4 01       		.byte	0x1
+ 492 00b5 08       		.byte	0x8
+ 493 00b6 59020000 		.4byte	.LASF16
+ 494 00ba 02       		.uleb128 0x2
+ 495 00bb 04       		.byte	0x4
+ 496 00bc 07       		.byte	0x7
+ 497 00bd CA010000 		.4byte	.LASF17
+ 498 00c1 06       		.uleb128 0x6
+ 499 00c2 49000000 		.4byte	.LASF18
+ 500 00c6 01       		.byte	0x1
+ 501 00c7 17       		.byte	0x17
+ 502 00c8 00000000 		.4byte	.LFB63
+ 503 00cc 0A000000 		.4byte	.LFE63-.LFB63
+ 504 00d0 01       		.uleb128 0x1
+ 505 00d1 9C       		.byte	0x9c
+ 506 00d2 E6000000 		.4byte	0xe6
+ 507 00d6 07       		.uleb128 0x7
+ 508 00d7 08000000 		.4byte	.LVL0
+ARM GAS  C:\Users\robert\AppData\Local\Temp\cct8EINp.s 			page 12
+
+
+ 509 00db 5D030000 		.4byte	0x35d
+ 510 00df 08       		.uleb128 0x8
+ 511 00e0 01       		.uleb128 0x1
+ 512 00e1 50       		.byte	0x50
+ 513 00e2 01       		.uleb128 0x1
+ 514 00e3 30       		.byte	0x30
+ 515 00e4 00       		.byte	0
+ 516 00e5 00       		.byte	0
+ 517 00e6 06       		.uleb128 0x6
+ 518 00e7 1C000000 		.4byte	.LASF19
+ 519 00eb 01       		.byte	0x1
+ 520 00ec 1C       		.byte	0x1c
+ 521 00ed 00000000 		.4byte	.LFB64
+ 522 00f1 0A000000 		.4byte	.LFE64-.LFB64
+ 523 00f5 01       		.uleb128 0x1
+ 524 00f6 9C       		.byte	0x9c
+ 525 00f7 0B010000 		.4byte	0x10b
+ 526 00fb 07       		.uleb128 0x7
+ 527 00fc 08000000 		.4byte	.LVL1
+ 528 0100 5D030000 		.4byte	0x35d
+ 529 0104 08       		.uleb128 0x8
+ 530 0105 01       		.uleb128 0x1
+ 531 0106 50       		.byte	0x50
+ 532 0107 01       		.uleb128 0x1
+ 533 0108 31       		.byte	0x31
+ 534 0109 00       		.byte	0
+ 535 010a 00       		.byte	0
+ 536 010b 06       		.uleb128 0x6
+ 537 010c 71020000 		.4byte	.LASF20
+ 538 0110 01       		.byte	0x1
+ 539 0111 21       		.byte	0x21
+ 540 0112 00000000 		.4byte	.LFB65
+ 541 0116 0A000000 		.4byte	.LFE65-.LFB65
+ 542 011a 01       		.uleb128 0x1
+ 543 011b 9C       		.byte	0x9c
+ 544 011c 30010000 		.4byte	0x130
+ 545 0120 07       		.uleb128 0x7
+ 546 0121 08000000 		.4byte	.LVL2
+ 547 0125 6E030000 		.4byte	0x36e
+ 548 0129 08       		.uleb128 0x8
+ 549 012a 01       		.uleb128 0x1
+ 550 012b 50       		.byte	0x50
+ 551 012c 01       		.uleb128 0x1
+ 552 012d 30       		.byte	0x30
+ 553 012e 00       		.byte	0
+ 554 012f 00       		.byte	0
+ 555 0130 06       		.uleb128 0x6
+ 556 0131 93020000 		.4byte	.LASF21
+ 557 0135 01       		.byte	0x1
+ 558 0136 26       		.byte	0x26
+ 559 0137 00000000 		.4byte	.LFB66
+ 560 013b 0A000000 		.4byte	.LFE66-.LFB66
+ 561 013f 01       		.uleb128 0x1
+ 562 0140 9C       		.byte	0x9c
+ 563 0141 55010000 		.4byte	0x155
+ 564 0145 07       		.uleb128 0x7
+ 565 0146 08000000 		.4byte	.LVL3
+ARM GAS  C:\Users\robert\AppData\Local\Temp\cct8EINp.s 			page 13
+
+
+ 566 014a 6E030000 		.4byte	0x36e
+ 567 014e 08       		.uleb128 0x8
+ 568 014f 01       		.uleb128 0x1
+ 569 0150 50       		.byte	0x50
+ 570 0151 01       		.uleb128 0x1
+ 571 0152 31       		.byte	0x31
+ 572 0153 00       		.byte	0
+ 573 0154 00       		.byte	0
+ 574 0155 06       		.uleb128 0x6
+ 575 0156 C9000000 		.4byte	.LASF22
+ 576 015a 01       		.byte	0x1
+ 577 015b 2B       		.byte	0x2b
+ 578 015c 00000000 		.4byte	.LFB67
+ 579 0160 20000000 		.4byte	.LFE67-.LFB67
+ 580 0164 01       		.uleb128 0x1
+ 581 0165 9C       		.byte	0x9c
+ 582 0166 B7010000 		.4byte	0x1b7
+ 583 016a 09       		.uleb128 0x9
+ 584 016b 08000000 		.4byte	.LVL4
+ 585 016f 7F030000 		.4byte	0x37f
+ 586 0173 7D010000 		.4byte	0x17d
+ 587 0177 08       		.uleb128 0x8
+ 588 0178 01       		.uleb128 0x1
+ 589 0179 50       		.byte	0x50
+ 590 017a 01       		.uleb128 0x1
+ 591 017b 31       		.byte	0x31
+ 592 017c 00       		.byte	0
+ 593 017d 09       		.uleb128 0x9
+ 594 017e 10000000 		.4byte	.LVL5
+ 595 0182 90030000 		.4byte	0x390
+ 596 0186 92010000 		.4byte	0x192
+ 597 018a 08       		.uleb128 0x8
+ 598 018b 01       		.uleb128 0x1
+ 599 018c 50       		.byte	0x50
+ 600 018d 03       		.uleb128 0x3
+ 601 018e 0A       		.byte	0xa
+ 602 018f BC02     		.2byte	0x2bc
+ 603 0191 00       		.byte	0
+ 604 0192 09       		.uleb128 0x9
+ 605 0193 16000000 		.4byte	.LVL6
+ 606 0197 7F030000 		.4byte	0x37f
+ 607 019b A5010000 		.4byte	0x1a5
+ 608 019f 08       		.uleb128 0x8
+ 609 01a0 01       		.uleb128 0x1
+ 610 01a1 50       		.byte	0x50
+ 611 01a2 01       		.uleb128 0x1
+ 612 01a3 30       		.byte	0x30
+ 613 01a4 00       		.byte	0
+ 614 01a5 07       		.uleb128 0x7
+ 615 01a6 1E000000 		.4byte	.LVL7
+ 616 01aa 90030000 		.4byte	0x390
+ 617 01ae 08       		.uleb128 0x8
+ 618 01af 01       		.uleb128 0x1
+ 619 01b0 50       		.byte	0x50
+ 620 01b1 03       		.uleb128 0x3
+ 621 01b2 0A       		.byte	0xa
+ 622 01b3 BC02     		.2byte	0x2bc
+ARM GAS  C:\Users\robert\AppData\Local\Temp\cct8EINp.s 			page 14
+
+
+ 623 01b5 00       		.byte	0
+ 624 01b6 00       		.byte	0
+ 625 01b7 06       		.uleb128 0x6
+ 626 01b8 10000000 		.4byte	.LASF23
+ 627 01bc 01       		.byte	0x1
+ 628 01bd 38       		.byte	0x38
+ 629 01be 00000000 		.4byte	.LFB68
+ 630 01c2 84000000 		.4byte	.LFE68-.LFB68
+ 631 01c6 01       		.uleb128 0x1
+ 632 01c7 9C       		.byte	0x9c
+ 633 01c8 66020000 		.4byte	0x266
+ 634 01cc 0A       		.uleb128 0xa
+ 635 01cd B6010000 		.4byte	.LASF25
+ 636 01d1 01       		.byte	0x1
+ 637 01d2 38       		.byte	0x38
+ 638 01d3 33000000 		.4byte	0x33
+ 639 01d7 00000000 		.4byte	.LLST0
+ 640 01db 0B       		.uleb128 0xb
+ 641 01dc A9000000 		.4byte	.LASF40
+ 642 01e0 01       		.byte	0x1
+ 643 01e1 3A       		.byte	0x3a
+ 644 01e2 33000000 		.4byte	0x33
+ 645 01e6 55000000 		.4byte	.LLST1
+ 646 01ea 0C       		.uleb128 0xc
+ 647 01eb 10000000 		.4byte	.LVL9
+ 648 01ef C1000000 		.4byte	0xc1
+ 649 01f3 0C       		.uleb128 0xc
+ 650 01f4 18000000 		.4byte	.LVL11
+ 651 01f8 E6000000 		.4byte	0xe6
+ 652 01fc 0C       		.uleb128 0xc
+ 653 01fd 22000000 		.4byte	.LVL14
+ 654 0201 0B010000 		.4byte	0x10b
+ 655 0205 0C       		.uleb128 0xc
+ 656 0206 30000000 		.4byte	.LVL16
+ 657 020a 30010000 		.4byte	0x130
+ 658 020e 09       		.uleb128 0x9
+ 659 020f 38000000 		.4byte	.LVL17
+ 660 0213 A1030000 		.4byte	0x3a1
+ 661 0217 23020000 		.4byte	0x223
+ 662 021b 08       		.uleb128 0x8
+ 663 021c 01       		.uleb128 0x1
+ 664 021d 50       		.byte	0x50
+ 665 021e 03       		.uleb128 0x3
+ 666 021f 0A       		.byte	0xa
+ 667 0220 E803     		.2byte	0x3e8
+ 668 0222 00       		.byte	0
+ 669 0223 09       		.uleb128 0x9
+ 670 0224 4C000000 		.4byte	.LVL19
+ 671 0228 A1030000 		.4byte	0x3a1
+ 672 022c 38020000 		.4byte	0x238
+ 673 0230 08       		.uleb128 0x8
+ 674 0231 01       		.uleb128 0x1
+ 675 0232 50       		.byte	0x50
+ 676 0233 03       		.uleb128 0x3
+ 677 0234 0A       		.byte	0xa
+ 678 0235 E803     		.2byte	0x3e8
+ 679 0237 00       		.byte	0
+ARM GAS  C:\Users\robert\AppData\Local\Temp\cct8EINp.s 			page 15
+
+
+ 680 0238 0C       		.uleb128 0xc
+ 681 0239 50000000 		.4byte	.LVL20
+ 682 023d E6000000 		.4byte	0xe6
+ 683 0241 0C       		.uleb128 0xc
+ 684 0242 54000000 		.4byte	.LVL21
+ 685 0246 55010000 		.4byte	0x155
+ 686 024a 0C       		.uleb128 0xc
+ 687 024b 60000000 		.4byte	.LVL22
+ 688 024f 30010000 		.4byte	0x130
+ 689 0253 0C       		.uleb128 0xc
+ 690 0254 66000000 		.4byte	.LVL24
+ 691 0258 55010000 		.4byte	0x155
+ 692 025c 0C       		.uleb128 0xc
+ 693 025d 7A000000 		.4byte	.LVL27
+ 694 0261 30010000 		.4byte	0x130
+ 695 0265 00       		.byte	0
+ 696 0266 06       		.uleb128 0x6
+ 697 0267 68000000 		.4byte	.LASF24
+ 698 026b 01       		.byte	0x1
+ 699 026c 62       		.byte	0x62
+ 700 026d 00000000 		.4byte	.LFB69
+ 701 0271 20000000 		.4byte	.LFE69-.LFB69
+ 702 0275 01       		.uleb128 0x1
+ 703 0276 9C       		.byte	0x9c
+ 704 0277 C8020000 		.4byte	0x2c8
+ 705 027b 0A       		.uleb128 0xa
+ 706 027c 5E020000 		.4byte	.LASF26
+ 707 0280 01       		.byte	0x1
+ 708 0281 62       		.byte	0x62
+ 709 0282 33000000 		.4byte	0x33
+ 710 0286 81000000 		.4byte	.LLST2
+ 711 028a 07       		.uleb128 0x7
+ 712 028b 1A000000 		.4byte	.LVL31
+ 713 028f B7010000 		.4byte	0x1b7
+ 714 0293 08       		.uleb128 0x8
+ 715 0294 01       		.uleb128 0x1
+ 716 0295 50       		.byte	0x50
+ 717 0296 2F       		.uleb128 0x2f
+ 718 0297 F3       		.byte	0xf3
+ 719 0298 01       		.uleb128 0x1
+ 720 0299 50       		.byte	0x50
+ 721 029a 08       		.byte	0x8
+ 722 029b C8       		.byte	0xc8
+ 723 029c 1E       		.byte	0x1e
+ 724 029d F3       		.byte	0xf3
+ 725 029e 01       		.uleb128 0x1
+ 726 029f 50       		.byte	0x50
+ 727 02a0 08       		.byte	0x8
+ 728 02a1 C8       		.byte	0xc8
+ 729 02a2 1E       		.byte	0x1e
+ 730 02a3 F7       		.byte	0xf7
+ 731 02a4 33       		.uleb128 0x33
+ 732 02a5 F7       		.byte	0xf7
+ 733 02a6 25       		.uleb128 0x25
+ 734 02a7 F4       		.byte	0xf4
+ 735 02a8 25       		.uleb128 0x25
+ 736 02a9 08       		.byte	0x8
+ARM GAS  C:\Users\robert\AppData\Local\Temp\cct8EINp.s 			page 16
+
+
+ 737 02aa B7600BB6 		.8byte	0xffffffffb60b60b7
+ 737      FFFFFFFF 
+ 738 02b2 1E       		.byte	0x1e
+ 739 02b3 08       		.byte	0x8
+ 740 02b4 20       		.byte	0x20
+ 741 02b5 F7       		.byte	0xf7
+ 742 02b6 25       		.uleb128 0x25
+ 743 02b7 25       		.byte	0x25
+ 744 02b8 F7       		.byte	0xf7
+ 745 02b9 2C       		.uleb128 0x2c
+ 746 02ba 22       		.byte	0x22
+ 747 02bb 38       		.byte	0x38
+ 748 02bc 26       		.byte	0x26
+ 749 02bd F3       		.byte	0xf3
+ 750 02be 01       		.uleb128 0x1
+ 751 02bf 50       		.byte	0x50
+ 752 02c0 08       		.byte	0x8
+ 753 02c1 C8       		.byte	0xc8
+ 754 02c2 1E       		.byte	0x1e
+ 755 02c3 4F       		.byte	0x4f
+ 756 02c4 26       		.byte	0x26
+ 757 02c5 1C       		.byte	0x1c
+ 758 02c6 00       		.byte	0
+ 759 02c7 00       		.byte	0
+ 760 02c8 06       		.uleb128 0x6
+ 761 02c9 87020000 		.4byte	.LASF27
+ 762 02cd 01       		.byte	0x1
+ 763 02ce 67       		.byte	0x67
+ 764 02cf 00000000 		.4byte	.LFB70
+ 765 02d3 16000000 		.4byte	.LFE70-.LFB70
+ 766 02d7 01       		.uleb128 0x1
+ 767 02d8 9C       		.byte	0x9c
+ 768 02d9 F6020000 		.4byte	0x2f6
+ 769 02dd 0A       		.uleb128 0xa
+ 770 02de B5000000 		.4byte	.LASF28
+ 771 02e2 01       		.byte	0x1
+ 772 02e3 67       		.byte	0x67
+ 773 02e4 33000000 		.4byte	0x33
+ 774 02e8 A2000000 		.4byte	.LLST3
+ 775 02ec 0C       		.uleb128 0xc
+ 776 02ed 14000000 		.4byte	.LVL34
+ 777 02f1 B7010000 		.4byte	0x1b7
+ 778 02f5 00       		.byte	0
+ 779 02f6 06       		.uleb128 0x6
+ 780 02f7 00000000 		.4byte	.LASF29
+ 781 02fb 01       		.byte	0x1
+ 782 02fc 6C       		.byte	0x6c
+ 783 02fd 00000000 		.4byte	.LFB71
+ 784 0301 2C000000 		.4byte	.LFE71-.LFB71
+ 785 0305 01       		.uleb128 0x1
+ 786 0306 9C       		.byte	0x9c
+ 787 0307 30030000 		.4byte	0x330
+ 788 030b 0C       		.uleb128 0xc
+ 789 030c 06000000 		.4byte	.LVL35
+ 790 0310 E6000000 		.4byte	0xe6
+ 791 0314 0C       		.uleb128 0xc
+ 792 0315 0A000000 		.4byte	.LVL36
+ARM GAS  C:\Users\robert\AppData\Local\Temp\cct8EINp.s 			page 17
+
+
+ 793 0319 0B010000 		.4byte	0x10b
+ 794 031d 0C       		.uleb128 0xc
+ 795 031e 10000000 		.4byte	.LVL37
+ 796 0322 55010000 		.4byte	0x155
+ 797 0326 0C       		.uleb128 0xc
+ 798 0327 1C000000 		.4byte	.LVL38
+ 799 032b 30010000 		.4byte	0x130
+ 800 032f 00       		.byte	0
+ 801 0330 0D       		.uleb128 0xd
+ 802 0331 BC000000 		.4byte	.LASF30
+ 803 0335 05       		.byte	0x5
+ 804 0336 9606     		.2byte	0x696
+ 805 0338 3C030000 		.4byte	0x33c
+ 806 033c 0E       		.uleb128 0xe
+ 807 033d 76000000 		.4byte	0x76
+ 808 0341 0F       		.uleb128 0xf
+ 809 0342 86010000 		.4byte	.LASF31
+ 810 0346 01       		.byte	0x1
+ 811 0347 0F       		.byte	0xf
+ 812 0348 81000000 		.4byte	0x81
+ 813 034c 10       		.uleb128 0x10
+ 814 034d 98010000 		.4byte	.LASF32
+ 815 0351 01       		.byte	0x1
+ 816 0352 15       		.byte	0x15
+ 817 0353 33000000 		.4byte	0x33
+ 818 0357 05       		.uleb128 0x5
+ 819 0358 03       		.byte	0x3
+ 820 0359 00000000 		.4byte	HEIGHT
+ 821 035d 11       		.uleb128 0x11
+ 822 035e 28020000 		.4byte	.LASF33
+ 823 0362 06       		.byte	0x6
+ 824 0363 26       		.byte	0x26
+ 825 0364 6E030000 		.4byte	0x36e
+ 826 0368 12       		.uleb128 0x12
+ 827 0369 81000000 		.4byte	0x81
+ 828 036d 00       		.byte	0
+ 829 036e 11       		.uleb128 0x11
+ 830 036f 2A000000 		.4byte	.LASF34
+ 831 0373 07       		.byte	0x7
+ 832 0374 26       		.byte	0x26
+ 833 0375 7F030000 		.4byte	0x37f
+ 834 0379 12       		.uleb128 0x12
+ 835 037a 81000000 		.4byte	0x81
+ 836 037e 00       		.byte	0
+ 837 037f 11       		.uleb128 0x11
+ 838 0380 76000000 		.4byte	.LASF35
+ 839 0384 08       		.byte	0x8
+ 840 0385 26       		.byte	0x26
+ 841 0386 90030000 		.4byte	0x390
+ 842 038a 12       		.uleb128 0x12
+ 843 038b 81000000 		.4byte	0x81
+ 844 038f 00       		.byte	0
+ 845 0390 11       		.uleb128 0x11
+ 846 0391 E7000000 		.4byte	.LASF36
+ 847 0395 09       		.byte	0x9
+ 848 0396 77       		.byte	0x77
+ 849 0397 A1030000 		.4byte	0x3a1
+ARM GAS  C:\Users\robert\AppData\Local\Temp\cct8EINp.s 			page 18
+
+
+ 850 039b 12       		.uleb128 0x12
+ 851 039c 8D000000 		.4byte	0x8d
+ 852 03a0 00       		.byte	0
+ 853 03a1 13       		.uleb128 0x13
+ 854 03a2 7F020000 		.4byte	.LASF41
+ 855 03a6 09       		.byte	0x9
+ 856 03a7 76       		.byte	0x76
+ 857 03a8 12       		.uleb128 0x12
+ 858 03a9 99000000 		.4byte	0x99
+ 859 03ad 00       		.byte	0
+ 860 03ae 00       		.byte	0
+ 861              		.section	.debug_abbrev,"",%progbits
+ 862              	.Ldebug_abbrev0:
+ 863 0000 01       		.uleb128 0x1
+ 864 0001 11       		.uleb128 0x11
+ 865 0002 01       		.byte	0x1
+ 866 0003 25       		.uleb128 0x25
+ 867 0004 0E       		.uleb128 0xe
+ 868 0005 13       		.uleb128 0x13
+ 869 0006 0B       		.uleb128 0xb
+ 870 0007 03       		.uleb128 0x3
+ 871 0008 0E       		.uleb128 0xe
+ 872 0009 1B       		.uleb128 0x1b
+ 873 000a 0E       		.uleb128 0xe
+ 874 000b 55       		.uleb128 0x55
+ 875 000c 17       		.uleb128 0x17
+ 876 000d 11       		.uleb128 0x11
+ 877 000e 01       		.uleb128 0x1
+ 878 000f 10       		.uleb128 0x10
+ 879 0010 17       		.uleb128 0x17
+ 880 0011 00       		.byte	0
+ 881 0012 00       		.byte	0
+ 882 0013 02       		.uleb128 0x2
+ 883 0014 24       		.uleb128 0x24
+ 884 0015 00       		.byte	0
+ 885 0016 0B       		.uleb128 0xb
+ 886 0017 0B       		.uleb128 0xb
+ 887 0018 3E       		.uleb128 0x3e
+ 888 0019 0B       		.uleb128 0xb
+ 889 001a 03       		.uleb128 0x3
+ 890 001b 0E       		.uleb128 0xe
+ 891 001c 00       		.byte	0
+ 892 001d 00       		.byte	0
+ 893 001e 03       		.uleb128 0x3
+ 894 001f 24       		.uleb128 0x24
+ 895 0020 00       		.byte	0
+ 896 0021 0B       		.uleb128 0xb
+ 897 0022 0B       		.uleb128 0xb
+ 898 0023 3E       		.uleb128 0x3e
+ 899 0024 0B       		.uleb128 0xb
+ 900 0025 03       		.uleb128 0x3
+ 901 0026 08       		.uleb128 0x8
+ 902 0027 00       		.byte	0
+ 903 0028 00       		.byte	0
+ 904 0029 04       		.uleb128 0x4
+ 905 002a 16       		.uleb128 0x16
+ 906 002b 00       		.byte	0
+ARM GAS  C:\Users\robert\AppData\Local\Temp\cct8EINp.s 			page 19
+
+
+ 907 002c 03       		.uleb128 0x3
+ 908 002d 0E       		.uleb128 0xe
+ 909 002e 3A       		.uleb128 0x3a
+ 910 002f 0B       		.uleb128 0xb
+ 911 0030 3B       		.uleb128 0x3b
+ 912 0031 0B       		.uleb128 0xb
+ 913 0032 49       		.uleb128 0x49
+ 914 0033 13       		.uleb128 0x13
+ 915 0034 00       		.byte	0
+ 916 0035 00       		.byte	0
+ 917 0036 05       		.uleb128 0x5
+ 918 0037 16       		.uleb128 0x16
+ 919 0038 00       		.byte	0
+ 920 0039 03       		.uleb128 0x3
+ 921 003a 0E       		.uleb128 0xe
+ 922 003b 3A       		.uleb128 0x3a
+ 923 003c 0B       		.uleb128 0xb
+ 924 003d 3B       		.uleb128 0x3b
+ 925 003e 05       		.uleb128 0x5
+ 926 003f 49       		.uleb128 0x49
+ 927 0040 13       		.uleb128 0x13
+ 928 0041 00       		.byte	0
+ 929 0042 00       		.byte	0
+ 930 0043 06       		.uleb128 0x6
+ 931 0044 2E       		.uleb128 0x2e
+ 932 0045 01       		.byte	0x1
+ 933 0046 3F       		.uleb128 0x3f
+ 934 0047 19       		.uleb128 0x19
+ 935 0048 03       		.uleb128 0x3
+ 936 0049 0E       		.uleb128 0xe
+ 937 004a 3A       		.uleb128 0x3a
+ 938 004b 0B       		.uleb128 0xb
+ 939 004c 3B       		.uleb128 0x3b
+ 940 004d 0B       		.uleb128 0xb
+ 941 004e 27       		.uleb128 0x27
+ 942 004f 19       		.uleb128 0x19
+ 943 0050 11       		.uleb128 0x11
+ 944 0051 01       		.uleb128 0x1
+ 945 0052 12       		.uleb128 0x12
+ 946 0053 06       		.uleb128 0x6
+ 947 0054 40       		.uleb128 0x40
+ 948 0055 18       		.uleb128 0x18
+ 949 0056 9742     		.uleb128 0x2117
+ 950 0058 19       		.uleb128 0x19
+ 951 0059 01       		.uleb128 0x1
+ 952 005a 13       		.uleb128 0x13
+ 953 005b 00       		.byte	0
+ 954 005c 00       		.byte	0
+ 955 005d 07       		.uleb128 0x7
+ 956 005e 898201   		.uleb128 0x4109
+ 957 0061 01       		.byte	0x1
+ 958 0062 11       		.uleb128 0x11
+ 959 0063 01       		.uleb128 0x1
+ 960 0064 31       		.uleb128 0x31
+ 961 0065 13       		.uleb128 0x13
+ 962 0066 00       		.byte	0
+ 963 0067 00       		.byte	0
+ARM GAS  C:\Users\robert\AppData\Local\Temp\cct8EINp.s 			page 20
+
+
+ 964 0068 08       		.uleb128 0x8
+ 965 0069 8A8201   		.uleb128 0x410a
+ 966 006c 00       		.byte	0
+ 967 006d 02       		.uleb128 0x2
+ 968 006e 18       		.uleb128 0x18
+ 969 006f 9142     		.uleb128 0x2111
+ 970 0071 18       		.uleb128 0x18
+ 971 0072 00       		.byte	0
+ 972 0073 00       		.byte	0
+ 973 0074 09       		.uleb128 0x9
+ 974 0075 898201   		.uleb128 0x4109
+ 975 0078 01       		.byte	0x1
+ 976 0079 11       		.uleb128 0x11
+ 977 007a 01       		.uleb128 0x1
+ 978 007b 31       		.uleb128 0x31
+ 979 007c 13       		.uleb128 0x13
+ 980 007d 01       		.uleb128 0x1
+ 981 007e 13       		.uleb128 0x13
+ 982 007f 00       		.byte	0
+ 983 0080 00       		.byte	0
+ 984 0081 0A       		.uleb128 0xa
+ 985 0082 05       		.uleb128 0x5
+ 986 0083 00       		.byte	0
+ 987 0084 03       		.uleb128 0x3
+ 988 0085 0E       		.uleb128 0xe
+ 989 0086 3A       		.uleb128 0x3a
+ 990 0087 0B       		.uleb128 0xb
+ 991 0088 3B       		.uleb128 0x3b
+ 992 0089 0B       		.uleb128 0xb
+ 993 008a 49       		.uleb128 0x49
+ 994 008b 13       		.uleb128 0x13
+ 995 008c 02       		.uleb128 0x2
+ 996 008d 17       		.uleb128 0x17
+ 997 008e 00       		.byte	0
+ 998 008f 00       		.byte	0
+ 999 0090 0B       		.uleb128 0xb
+ 1000 0091 34       		.uleb128 0x34
+ 1001 0092 00       		.byte	0
+ 1002 0093 03       		.uleb128 0x3
+ 1003 0094 0E       		.uleb128 0xe
+ 1004 0095 3A       		.uleb128 0x3a
+ 1005 0096 0B       		.uleb128 0xb
+ 1006 0097 3B       		.uleb128 0x3b
+ 1007 0098 0B       		.uleb128 0xb
+ 1008 0099 49       		.uleb128 0x49
+ 1009 009a 13       		.uleb128 0x13
+ 1010 009b 02       		.uleb128 0x2
+ 1011 009c 17       		.uleb128 0x17
+ 1012 009d 00       		.byte	0
+ 1013 009e 00       		.byte	0
+ 1014 009f 0C       		.uleb128 0xc
+ 1015 00a0 898201   		.uleb128 0x4109
+ 1016 00a3 00       		.byte	0
+ 1017 00a4 11       		.uleb128 0x11
+ 1018 00a5 01       		.uleb128 0x1
+ 1019 00a6 31       		.uleb128 0x31
+ 1020 00a7 13       		.uleb128 0x13
+ARM GAS  C:\Users\robert\AppData\Local\Temp\cct8EINp.s 			page 21
+
+
+ 1021 00a8 00       		.byte	0
+ 1022 00a9 00       		.byte	0
+ 1023 00aa 0D       		.uleb128 0xd
+ 1024 00ab 34       		.uleb128 0x34
+ 1025 00ac 00       		.byte	0
+ 1026 00ad 03       		.uleb128 0x3
+ 1027 00ae 0E       		.uleb128 0xe
+ 1028 00af 3A       		.uleb128 0x3a
+ 1029 00b0 0B       		.uleb128 0xb
+ 1030 00b1 3B       		.uleb128 0x3b
+ 1031 00b2 05       		.uleb128 0x5
+ 1032 00b3 49       		.uleb128 0x49
+ 1033 00b4 13       		.uleb128 0x13
+ 1034 00b5 3F       		.uleb128 0x3f
+ 1035 00b6 19       		.uleb128 0x19
+ 1036 00b7 3C       		.uleb128 0x3c
+ 1037 00b8 19       		.uleb128 0x19
+ 1038 00b9 00       		.byte	0
+ 1039 00ba 00       		.byte	0
+ 1040 00bb 0E       		.uleb128 0xe
+ 1041 00bc 35       		.uleb128 0x35
+ 1042 00bd 00       		.byte	0
+ 1043 00be 49       		.uleb128 0x49
+ 1044 00bf 13       		.uleb128 0x13
+ 1045 00c0 00       		.byte	0
+ 1046 00c1 00       		.byte	0
+ 1047 00c2 0F       		.uleb128 0xf
+ 1048 00c3 34       		.uleb128 0x34
+ 1049 00c4 00       		.byte	0
+ 1050 00c5 03       		.uleb128 0x3
+ 1051 00c6 0E       		.uleb128 0xe
+ 1052 00c7 3A       		.uleb128 0x3a
+ 1053 00c8 0B       		.uleb128 0xb
+ 1054 00c9 3B       		.uleb128 0x3b
+ 1055 00ca 0B       		.uleb128 0xb
+ 1056 00cb 49       		.uleb128 0x49
+ 1057 00cc 13       		.uleb128 0x13
+ 1058 00cd 3F       		.uleb128 0x3f
+ 1059 00ce 19       		.uleb128 0x19
+ 1060 00cf 3C       		.uleb128 0x3c
+ 1061 00d0 19       		.uleb128 0x19
+ 1062 00d1 00       		.byte	0
+ 1063 00d2 00       		.byte	0
+ 1064 00d3 10       		.uleb128 0x10
+ 1065 00d4 34       		.uleb128 0x34
+ 1066 00d5 00       		.byte	0
+ 1067 00d6 03       		.uleb128 0x3
+ 1068 00d7 0E       		.uleb128 0xe
+ 1069 00d8 3A       		.uleb128 0x3a
+ 1070 00d9 0B       		.uleb128 0xb
+ 1071 00da 3B       		.uleb128 0x3b
+ 1072 00db 0B       		.uleb128 0xb
+ 1073 00dc 49       		.uleb128 0x49
+ 1074 00dd 13       		.uleb128 0x13
+ 1075 00de 3F       		.uleb128 0x3f
+ 1076 00df 19       		.uleb128 0x19
+ 1077 00e0 02       		.uleb128 0x2
+ARM GAS  C:\Users\robert\AppData\Local\Temp\cct8EINp.s 			page 22
+
+
+ 1078 00e1 18       		.uleb128 0x18
+ 1079 00e2 00       		.byte	0
+ 1080 00e3 00       		.byte	0
+ 1081 00e4 11       		.uleb128 0x11
+ 1082 00e5 2E       		.uleb128 0x2e
+ 1083 00e6 01       		.byte	0x1
+ 1084 00e7 3F       		.uleb128 0x3f
+ 1085 00e8 19       		.uleb128 0x19
+ 1086 00e9 03       		.uleb128 0x3
+ 1087 00ea 0E       		.uleb128 0xe
+ 1088 00eb 3A       		.uleb128 0x3a
+ 1089 00ec 0B       		.uleb128 0xb
+ 1090 00ed 3B       		.uleb128 0x3b
+ 1091 00ee 0B       		.uleb128 0xb
+ 1092 00ef 27       		.uleb128 0x27
+ 1093 00f0 19       		.uleb128 0x19
+ 1094 00f1 3C       		.uleb128 0x3c
+ 1095 00f2 19       		.uleb128 0x19
+ 1096 00f3 01       		.uleb128 0x1
+ 1097 00f4 13       		.uleb128 0x13
+ 1098 00f5 00       		.byte	0
+ 1099 00f6 00       		.byte	0
+ 1100 00f7 12       		.uleb128 0x12
+ 1101 00f8 05       		.uleb128 0x5
+ 1102 00f9 00       		.byte	0
+ 1103 00fa 49       		.uleb128 0x49
+ 1104 00fb 13       		.uleb128 0x13
+ 1105 00fc 00       		.byte	0
+ 1106 00fd 00       		.byte	0
+ 1107 00fe 13       		.uleb128 0x13
+ 1108 00ff 2E       		.uleb128 0x2e
+ 1109 0100 01       		.byte	0x1
+ 1110 0101 3F       		.uleb128 0x3f
+ 1111 0102 19       		.uleb128 0x19
+ 1112 0103 03       		.uleb128 0x3
+ 1113 0104 0E       		.uleb128 0xe
+ 1114 0105 3A       		.uleb128 0x3a
+ 1115 0106 0B       		.uleb128 0xb
+ 1116 0107 3B       		.uleb128 0x3b
+ 1117 0108 0B       		.uleb128 0xb
+ 1118 0109 27       		.uleb128 0x27
+ 1119 010a 19       		.uleb128 0x19
+ 1120 010b 3C       		.uleb128 0x3c
+ 1121 010c 19       		.uleb128 0x19
+ 1122 010d 00       		.byte	0
+ 1123 010e 00       		.byte	0
+ 1124 010f 00       		.byte	0
+ 1125              		.section	.debug_loc,"",%progbits
+ 1126              	.Ldebug_loc0:
+ 1127              	.LLST0:
+ 1128 0000 00000000 		.4byte	.LVL8
+ 1129 0004 0F000000 		.4byte	.LVL9-1
+ 1130 0008 0100     		.2byte	0x1
+ 1131 000a 50       		.byte	0x50
+ 1132 000b 0F000000 		.4byte	.LVL9-1
+ 1133 000f 14000000 		.4byte	.LVL10
+ 1134 0013 0100     		.2byte	0x1
+ARM GAS  C:\Users\robert\AppData\Local\Temp\cct8EINp.s 			page 23
+
+
+ 1135 0015 54       		.byte	0x54
+ 1136 0016 14000000 		.4byte	.LVL10
+ 1137 001a 17000000 		.4byte	.LVL11-1
+ 1138 001e 0100     		.2byte	0x1
+ 1139 0020 50       		.byte	0x50
+ 1140 0021 17000000 		.4byte	.LVL11-1
+ 1141 0025 24000000 		.4byte	.LVL15
+ 1142 0029 0100     		.2byte	0x1
+ 1143 002b 54       		.byte	0x54
+ 1144 002c 24000000 		.4byte	.LVL15
+ 1145 0030 70000000 		.4byte	.LVL25
+ 1146 0034 0100     		.2byte	0x1
+ 1147 0036 55       		.byte	0x55
+ 1148 0037 70000000 		.4byte	.LVL25
+ 1149 003b 72000000 		.4byte	.LVL26
+ 1150 003f 0100     		.2byte	0x1
+ 1151 0041 54       		.byte	0x54
+ 1152 0042 72000000 		.4byte	.LVL26
+ 1153 0046 7C000000 		.4byte	.LVL28
+ 1154 004a 0100     		.2byte	0x1
+ 1155 004c 55       		.byte	0x55
+ 1156 004d 00000000 		.4byte	0
+ 1157 0051 00000000 		.4byte	0
+ 1158              	.LLST1:
+ 1159 0055 10000000 		.4byte	.LVL9
+ 1160 0059 14000000 		.4byte	.LVL10
+ 1161 005d 0200     		.2byte	0x2
+ 1162 005f 31       		.byte	0x31
+ 1163 0060 9F       		.byte	0x9f
+ 1164 0061 1A000000 		.4byte	.LVL12
+ 1165 0065 1E000000 		.4byte	.LVL13
+ 1166 0069 0300     		.2byte	0x3
+ 1167 006b 09       		.byte	0x9
+ 1168 006c FF       		.byte	0xff
+ 1169 006d 9F       		.byte	0x9f
+ 1170 006e 1E000000 		.4byte	.LVL13
+ 1171 0072 7C000000 		.4byte	.LVL28
+ 1172 0076 0100     		.2byte	0x1
+ 1173 0078 56       		.byte	0x56
+ 1174 0079 00000000 		.4byte	0
+ 1175 007d 00000000 		.4byte	0
+ 1176              	.LLST2:
+ 1177 0081 00000000 		.4byte	.LVL29
+ 1178 0085 0A000000 		.4byte	.LVL30
+ 1179 0089 0100     		.2byte	0x1
+ 1180 008b 50       		.byte	0x50
+ 1181 008c 0A000000 		.4byte	.LVL30
+ 1182 0090 20000000 		.4byte	.LFE69
+ 1183 0094 0400     		.2byte	0x4
+ 1184 0096 F3       		.byte	0xf3
+ 1185 0097 01       		.uleb128 0x1
+ 1186 0098 50       		.byte	0x50
+ 1187 0099 9F       		.byte	0x9f
+ 1188 009a 00000000 		.4byte	0
+ 1189 009e 00000000 		.4byte	0
+ 1190              	.LLST3:
+ 1191 00a2 00000000 		.4byte	.LVL32
+ARM GAS  C:\Users\robert\AppData\Local\Temp\cct8EINp.s 			page 24
+
+
+ 1192 00a6 08000000 		.4byte	.LVL33
+ 1193 00aa 0100     		.2byte	0x1
+ 1194 00ac 50       		.byte	0x50
+ 1195 00ad 08000000 		.4byte	.LVL33
+ 1196 00b1 16000000 		.4byte	.LFE70
+ 1197 00b5 0400     		.2byte	0x4
+ 1198 00b7 F3       		.byte	0xf3
+ 1199 00b8 01       		.uleb128 0x1
+ 1200 00b9 50       		.byte	0x50
+ 1201 00ba 9F       		.byte	0x9f
+ 1202 00bb 00000000 		.4byte	0
+ 1203 00bf 00000000 		.4byte	0
+ 1204              		.section	.debug_aranges,"",%progbits
+ 1205 0000 5C000000 		.4byte	0x5c
+ 1206 0004 0200     		.2byte	0x2
+ 1207 0006 00000000 		.4byte	.Ldebug_info0
+ 1208 000a 04       		.byte	0x4
+ 1209 000b 00       		.byte	0
+ 1210 000c 0000     		.2byte	0
+ 1211 000e 0000     		.2byte	0
+ 1212 0010 00000000 		.4byte	.LFB63
+ 1213 0014 0A000000 		.4byte	.LFE63-.LFB63
+ 1214 0018 00000000 		.4byte	.LFB64
+ 1215 001c 0A000000 		.4byte	.LFE64-.LFB64
+ 1216 0020 00000000 		.4byte	.LFB65
+ 1217 0024 0A000000 		.4byte	.LFE65-.LFB65
+ 1218 0028 00000000 		.4byte	.LFB66
+ 1219 002c 0A000000 		.4byte	.LFE66-.LFB66
+ 1220 0030 00000000 		.4byte	.LFB67
+ 1221 0034 20000000 		.4byte	.LFE67-.LFB67
+ 1222 0038 00000000 		.4byte	.LFB68
+ 1223 003c 84000000 		.4byte	.LFE68-.LFB68
+ 1224 0040 00000000 		.4byte	.LFB69
+ 1225 0044 20000000 		.4byte	.LFE69-.LFB69
+ 1226 0048 00000000 		.4byte	.LFB70
+ 1227 004c 16000000 		.4byte	.LFE70-.LFB70
+ 1228 0050 00000000 		.4byte	.LFB71
+ 1229 0054 2C000000 		.4byte	.LFE71-.LFB71
+ 1230 0058 00000000 		.4byte	0
+ 1231 005c 00000000 		.4byte	0
+ 1232              		.section	.debug_ranges,"",%progbits
+ 1233              	.Ldebug_ranges0:
+ 1234 0000 00000000 		.4byte	.LFB63
+ 1235 0004 0A000000 		.4byte	.LFE63
+ 1236 0008 00000000 		.4byte	.LFB64
+ 1237 000c 0A000000 		.4byte	.LFE64
+ 1238 0010 00000000 		.4byte	.LFB65
+ 1239 0014 0A000000 		.4byte	.LFE65
+ 1240 0018 00000000 		.4byte	.LFB66
+ 1241 001c 0A000000 		.4byte	.LFE66
+ 1242 0020 00000000 		.4byte	.LFB67
+ 1243 0024 20000000 		.4byte	.LFE67
+ 1244 0028 00000000 		.4byte	.LFB68
+ 1245 002c 84000000 		.4byte	.LFE68
+ 1246 0030 00000000 		.4byte	.LFB69
+ 1247 0034 20000000 		.4byte	.LFE69
+ 1248 0038 00000000 		.4byte	.LFB70
+ARM GAS  C:\Users\robert\AppData\Local\Temp\cct8EINp.s 			page 25
+
+
+ 1249 003c 16000000 		.4byte	.LFE70
+ 1250 0040 00000000 		.4byte	.LFB71
+ 1251 0044 2C000000 		.4byte	.LFE71
+ 1252 0048 00000000 		.4byte	0
+ 1253 004c 00000000 		.4byte	0
+ 1254              		.section	.debug_line,"",%progbits
+ 1255              	.Ldebug_line0:
+ 1256 0000 51020000 		.section	.debug_str,"MS",%progbits,1
+ 1256      02009401 
+ 1256      00000201 
+ 1256      FB0E0D00 
+ 1256      01010101 
+ 1257              	.LASF29:
+ 1258 0000 53746570 		.ascii	"StepperFindZero\000"
+ 1258      70657246 
+ 1258      696E645A 
+ 1258      65726F00 
+ 1259              	.LASF23:
+ 1260 0010 53746570 		.ascii	"StepperStep\000"
+ 1260      70657253 
+ 1260      74657000 
+ 1261              	.LASF19:
+ 1262 001c 44697265 		.ascii	"DirectionDown\000"
+ 1262      6374696F 
+ 1262      6E446F77 
+ 1262      6E00
+ 1263              	.LASF34:
+ 1264 002a 53746570 		.ascii	"Stepper_Enable_Write\000"
+ 1264      7065725F 
+ 1264      456E6162 
+ 1264      6C655F57 
+ 1264      72697465 
+ 1265              	.LASF9:
+ 1266 003f 5F5F696E 		.ascii	"__int32_t\000"
+ 1266      7433325F 
+ 1266      7400
+ 1267              	.LASF18:
+ 1268 0049 44697265 		.ascii	"DirectionUp\000"
+ 1268      6374696F 
+ 1268      6E557000 
+ 1269              	.LASF5:
+ 1270 0055 73686F72 		.ascii	"short unsigned int\000"
+ 1270      7420756E 
+ 1270      7369676E 
+ 1270      65642069 
+ 1270      6E7400
+ 1271              	.LASF24:
+ 1272 0068 53746570 		.ascii	"StepperRotate\000"
+ 1272      70657252 
+ 1272      6F746174 
+ 1272      6500
+ 1273              	.LASF35:
+ 1274 0076 53746570 		.ascii	"Stepper_Step_Write\000"
+ 1274      7065725F 
+ 1274      53746570 
+ 1274      5F577269 
+ 1274      746500
+ARM GAS  C:\Users\robert\AppData\Local\Temp\cct8EINp.s 			page 26
+
+
+ 1275              	.LASF14:
+ 1276 0089 666C6F61 		.ascii	"float\000"
+ 1276      7400
+ 1277              	.LASF38:
+ 1278 008f 2E5C5374 		.ascii	".\\Stepper.c\000"
+ 1278      65707065 
+ 1278      722E6300 
+ 1279              	.LASF3:
+ 1280 009b 756E7369 		.ascii	"unsigned char\000"
+ 1280      676E6564 
+ 1280      20636861 
+ 1280      7200
+ 1281              	.LASF40:
+ 1282 00a9 73746570 		.ascii	"step_height\000"
+ 1282      5F686569 
+ 1282      67687400 
+ 1283              	.LASF28:
+ 1284 00b5 68656967 		.ascii	"height\000"
+ 1284      687400
+ 1285              	.LASF30:
+ 1286 00bc 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1286      52784275 
+ 1286      66666572 
+ 1286      00
+ 1287              	.LASF22:
+ 1288 00c9 53746570 		.ascii	"Step\000"
+ 1288      00
+ 1289              	.LASF7:
+ 1290 00ce 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1290      20756E73 
+ 1290      69676E65 
+ 1290      6420696E 
+ 1290      7400
+ 1291              	.LASF12:
+ 1292 00e0 75696E74 		.ascii	"uint16\000"
+ 1292      313600
+ 1293              	.LASF36:
+ 1294 00e7 43794465 		.ascii	"CyDelayUs\000"
+ 1294      6C617955 
+ 1294      7300
+ 1295              	.LASF13:
+ 1296 00f1 75696E74 		.ascii	"uint32\000"
+ 1296      333200
+ 1297              	.LASF37:
+ 1298 00f8 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1298      4320342E 
+ 1298      392E3320 
+ 1298      32303135 
+ 1298      30333033 
+ 1299 012b 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1299      20726576 
+ 1299      6973696F 
+ 1299      6E203232 
+ 1299      31323230 
+ 1300 015e 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1300      66756E63 
+ 1300      74696F6E 
+ARM GAS  C:\Users\robert\AppData\Local\Temp\cct8EINp.s 			page 27
+
+
+ 1300      2D736563 
+ 1300      74696F6E 
+ 1301              	.LASF31:
+ 1302 0186 666C6167 		.ascii	"flag\000"
+ 1302      00
+ 1303              	.LASF1:
+ 1304 018b 756E7369 		.ascii	"unsigned int\000"
+ 1304      676E6564 
+ 1304      20696E74 
+ 1304      00
+ 1305              	.LASF32:
+ 1306 0198 48454947 		.ascii	"HEIGHT\000"
+ 1306      485400
+ 1307              	.LASF0:
+ 1308 019f 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1308      206C6F6E 
+ 1308      6720756E 
+ 1308      7369676E 
+ 1308      65642069 
+ 1309              	.LASF25:
+ 1310 01b6 73746570 		.ascii	"step\000"
+ 1310      00
+ 1311              	.LASF15:
+ 1312 01bb 646F7562 		.ascii	"double\000"
+ 1312      6C6500
+ 1313              	.LASF10:
+ 1314 01c2 696E7433 		.ascii	"int32_t\000"
+ 1314      325F7400 
+ 1315              	.LASF17:
+ 1316 01ca 73697A65 		.ascii	"sizetype\000"
+ 1316      74797065 
+ 1316      00
+ 1317              	.LASF39:
+ 1318 01d3 433A5C55 		.ascii	"C:\\Users\\robert\\Documents\\PSoC Creator\\Stepper"
+ 1318      73657273 
+ 1318      5C726F62 
+ 1318      6572745C 
+ 1318      446F6375 
+ 1319 0201 4D6F746F 		.ascii	"Motor\\StepperMotor.cydsn\000"
+ 1319      725C5374 
+ 1319      65707065 
+ 1319      724D6F74 
+ 1319      6F722E63 
+ 1320              	.LASF8:
+ 1321 021a 6C6F6E67 		.ascii	"long long int\000"
+ 1321      206C6F6E 
+ 1321      6720696E 
+ 1321      7400
+ 1322              	.LASF33:
+ 1323 0228 53746570 		.ascii	"Stepper_Direction_Write\000"
+ 1323      7065725F 
+ 1323      44697265 
+ 1323      6374696F 
+ 1323      6E5F5772 
+ 1324              	.LASF4:
+ 1325 0240 73686F72 		.ascii	"short int\000"
+ 1325      7420696E 
+ARM GAS  C:\Users\robert\AppData\Local\Temp\cct8EINp.s 			page 28
+
+
+ 1325      7400
+ 1326              	.LASF11:
+ 1327 024a 75696E74 		.ascii	"uint8\000"
+ 1327      3800
+ 1328              	.LASF6:
+ 1329 0250 6C6F6E67 		.ascii	"long int\000"
+ 1329      20696E74 
+ 1329      00
+ 1330              	.LASF16:
+ 1331 0259 63686172 		.ascii	"char\000"
+ 1331      00
+ 1332              	.LASF26:
+ 1333 025e 64656772 		.ascii	"degree\000"
+ 1333      656500
+ 1334              	.LASF2:
+ 1335 0265 7369676E 		.ascii	"signed char\000"
+ 1335      65642063 
+ 1335      68617200 
+ 1336              	.LASF20:
+ 1337 0271 53746570 		.ascii	"StepperEnable\000"
+ 1337      70657245 
+ 1337      6E61626C 
+ 1337      6500
+ 1338              	.LASF41:
+ 1339 027f 43794465 		.ascii	"CyDelay\000"
+ 1339      6C617900 
+ 1340              	.LASF27:
+ 1341 0287 53746570 		.ascii	"StepperMove\000"
+ 1341      7065724D 
+ 1341      6F766500 
+ 1342              	.LASF21:
+ 1343 0293 53746570 		.ascii	"StepperDisable\000"
+ 1343      70657244 
+ 1343      69736162 
+ 1343      6C6500
+ 1344              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

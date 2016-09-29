@@ -12,6 +12,9 @@
 <v>.\I2C_LCD_Example01.cydsn\I2C_LCD_Example01.cyprj</v>
 <v>.\DelSig_I2CS01.cydsn\DelSig_I2CS01.cyprj</v>
 <v>.\DelSig_I2CS_Test01.cydsn\DelSig_I2CS_Test01.cyprj</v>
+<v>.\StepperMotor.cydsn\StepperMotor.cyprj</v>
+<v>.\ArmEncoderTest.cydsn\ArmEncoderTest.cyprj</v>
+<v>.\I2C_Test.cydsn\I2C_Test.cyprj</v>
 </projects>
 <workspace_id v="ffdca596-d22c-4aa1-b268-cc1b9b65a470" />
 <WriteAppVersionLastSavedWith v="3.3.0.9604" />

@@ -1,0 +1,12 @@
+C:\Users\robert\Documents\PSoC Creator\TestWorkspace\CompassTest.cydsn\CompassTest.cyprj|8712416e-60d9-4f27-8618-2d02626e2e6c
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|c0251ccf-b605-4772-887b-36f45ec1365e
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|6bc2fb4a-7efd-4d5a-9f05-d07252296bc9
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|2942787e-548e-4745-940c-458eb9589561
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|bc05a297-34a6-4846-b479-f90ad043c948
+C:\Users\robert\Documents\PSoC Creator\TestWorkspace\UartTest.cydsn\UartTest.cyprj|0f436a34-1a78-4fa9-a824-c82583bdc9c0
+C:\Users\robert\Documents\PSoC Creator\TestWorkspace\I2C_LCD_Example01.cydsn\I2C_LCD_Example01.cyprj|bb173246-5899-41e8-9909-b9f656abd14f
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|159ed642-40b9-4ab4-985b-4f41c43f436c
+C:\Users\robert\Documents\PSoC Creator\TestWorkspace\DelSig_I2CS01.cydsn\DelSig_I2CS01.cyprj|e7ae45b9-0f2d-4714-89bb-61504eaf7278
+C:\Users\robert\Documents\PSoC Creator\TestWorkspace\DelSig_I2CS_Test01.cydsn\DelSig_I2CS_Test01.cyprj|46d916c9-ac18-49a3-9248-3a5c226ccf7e
+C:\Users\robert\Documents\PSoC Creator\TestWorkspace\StepperMotor.cydsn\StepperMotor.cyprj|60a29b32-5617-4847-99a8-27372456a020
+C:\Users\robert\Documents\PSoC Creator\TestWorkspace\ArmEncoderTest.cydsn\ArmEncoderTest.cyprj|bf419b2f-c948-4fcf-9872-dfd19e72ceb5
